@@ -35,7 +35,6 @@
     overflow-x: hidden;
   }
 
-  /* GRID BG */
   body::before {
     content: '';
     position: fixed;
@@ -48,7 +47,6 @@
     z-index: 0;
   }
 
-  /* ====== HEADER ====== */
   .site-header {
     position: relative;
     z-index: 10;
@@ -102,9 +100,7 @@
     flex-wrap: wrap;
   }
 
-  .stat {
-    text-align: center;
-  }
+  .stat { text-align: center; }
 
   .stat-n {
     font-family: var(--mono);
@@ -119,7 +115,6 @@
     letter-spacing: 0.05em;
   }
 
-  /* ====== NAV ====== */
   .nav-wrap {
     position: sticky;
     top: 0;
@@ -161,7 +156,6 @@
     border-bottom-color: var(--accent);
   }
 
-  /* ====== MAIN ====== */
   .main {
     position: relative;
     z-index: 1;
@@ -170,8 +164,8 @@
     padding: 2rem 1.5rem 4rem;
   }
 
-  /* ====== UNIT OVERVIEW ====== */
   #overview-view { display: block; }
+
   .unit-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -270,7 +264,6 @@
 
   .unit-card:hover .open-arrow { transform: translateX(4px); color: var(--c); }
 
-  /* ====== UNIT DETAIL ====== */
   .unit-detail { display: none; }
   .unit-detail.active { display: block; }
 
@@ -315,7 +308,6 @@
     gap: 1rem;
   }
 
-  /* ====== SUBTEMA ACCORDION ====== */
   .subtema-block {
     background: var(--bg2);
     border: 1px solid rgba(255,255,255,0.06);
@@ -384,7 +376,6 @@
     margin-top: 1rem;
   }
 
-  /* ====== PROGRAM WIDGET ====== */
   .prog-widget {
     background: var(--bg);
     border: 1px solid rgba(0,212,255,0.15);
@@ -505,7 +496,6 @@
     word-break: break-all;
   }
 
-  /* ====== SECTION HEADER ====== */
   .section-label {
     font-family: var(--mono);
     font-size: 11px;
@@ -516,7 +506,6 @@
     margin-top: 0.5rem;
   }
 
-  /* animations */
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
@@ -533,7 +522,6 @@
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="site-header">
   <div class="tag">Ingeniería · Matemáticas</div>
   <h1>Métodos<br><span>Numéricos</span></h1>
@@ -545,7 +533,6 @@
   </div>
 </header>
 
-<!-- NAV -->
 <nav class="nav-wrap">
   <div class="nav-inner">
     <button class="nav-btn active" onclick="showOverview()">▦ Todas</button>
@@ -560,7 +547,7 @@
 
 <div class="main">
 
-  <!-- ===== OVERVIEW ===== -->
+  <!-- OVERVIEW -->
   <div id="overview-view">
     <p class="section-label">Selecciona una unidad para explorar</p>
     <div class="unit-grid">
@@ -673,205 +660,100 @@
 
       <!-- 1.1 -->
       <div class="subtema-block" style="--c:#00d4ff">
-  <div class="subtema-header" onclick="toggle(this)">
-    <span class="subtema-num">1.1</span>
-    <span class="subtema-name">Importancia de los métodos numéricos</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="subtema-body">
-    <p class="teoria">Los métodos numéricos vuelven aptos para entender esquemas numéricos a fin de resolver problemas matemáticos, de ingeniería y científicos en una computadora, reducir esquemas numéricos básicos, escribir programas y resolverlos en una computadora y usar correctamente el software existente para dichos métodos y no solo aumenta nuestra habilidad para el uso de computadoras sino que también amplia la pericia matemática y la comprensión de los principios científicos básicos.</p>
-    <p class="teoria">Pueden ser aplicados para resolver procedimientos matemáticos en:</p>
-    <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
-      <li>Cálculo de derivadas.</li>
-      <li>Integrales.</li>
-      <li>Ecuaciones diferenciales.</li>
-      <li>Operaciones con matrices.</li>
-      <li>Interpolaciones.</li>
-      <li>Ajuste de curvas.</li>
-      <li>Polinomios.</li>
-    </ul>
-    <p class="teoria">En el proceso de solución de problemas por medio de computadoras, se requieren los siguientes pasos:</p>
-    <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
-      <li><strong>Especificación del problema.</strong> Con esto se indica que se debe identificar perfectamente el problema y sus limitaciones, las variables que intervienen y los resultados deseados.</li>
-      <li><strong>Análisis.</strong> Es la formulación de la solución del problema denominada también algoritmo, de manera que se tenga una serie de pasos que resuelvan el problema y que sean susceptibles de ejecutarse en la computadora.</li>
-      <li><strong>Programación.</strong> Este paso consiste en traducir el método de análisis o algoritmo de solución expresándole como una serie detallada de operaciones.</li>
-      <li><strong>Verificación.</strong> Es la prueba exhaustiva del programa para eliminar todos los errores que tenga de manera que efectúe lo que desea; los resultados de prueba se comparan con soluciones conocidas de problemas ya resueltos.</li>
-      <li><strong>Documentación.</strong> Consiste en preparar un instructivo del programa de manera que cualquier persona pueda conocer y utilizar el programa.</li>
-      <li><strong>Producción.</strong> Es la última etapa en la que solo se proporcionan datos de entrada del programa obteniéndose las soluciones correspondientes.</li>
-    </ul>
-    <div style="margin-top:1.25rem; text-align:center;">
-      <img src="infografia_metodos.jpg"
-           alt="Infografía Métodos Numéricos"
-           style="max-width:100%; border-radius:12px; border:1px solid rgba(0,212,255,0.15);">
-    </div>
-  </div>
-</div>
-      
+        <div class="subtema-header" onclick="toggle(this)">
+          <span class="subtema-num">1.1</span>
+          <span class="subtema-name">Importancia de los métodos numéricos</span>
+          <span class="chevron">▾</span>
+        </div>
+        <div class="subtema-body">
+          <p class="teoria">Los métodos numéricos vuelven aptos para entender esquemas numéricos a fin de resolver problemas matemáticos, de ingeniería y científicos en una computadora, reducir esquemas numéricos básicos, escribir programas y resolverlos en una computadora y usar correctamente el software existente para dichos métodos y no solo aumenta nuestra habilidad para el uso de computadoras sino que también amplia la pericia matemática y la comprensión de los principios científicos básicos.</p>
+          <p class="teoria">Pueden ser aplicados para resolver procedimientos matemáticos en:</p>
+          <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
+            <li>Cálculo de derivadas.</li>
+            <li>Integrales.</li>
+            <li>Ecuaciones diferenciales.</li>
+            <li>Operaciones con matrices.</li>
+            <li>Interpolaciones.</li>
+            <li>Ajuste de curvas.</li>
+            <li>Polinomios.</li>
+          </ul>
+          <p class="teoria">En el proceso de solución de problemas por medio de computadoras, se requieren los siguientes pasos:</p>
+          <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
+            <li><strong>Especificación del problema.</strong> Con esto se indica que se debe identificar perfectamente el problema y sus limitaciones, las variables que intervienen y los resultados deseados.</li>
+            <li><strong>Análisis.</strong> Es la formulación de la solución del problema denominada también algoritmo, de manera que se tenga una serie de pasos que resuelvan el problema y que sean susceptibles de ejecutarse en la computadora.</li>
+            <li><strong>Programación.</strong> Este paso consiste en traducir el método de análisis o algoritmo de solución expresándole como una serie detallada de operaciones.</li>
+            <li><strong>Verificación.</strong> Es la prueba exhaustiva del programa para eliminar todos los errores que tenga de manera que efectúe lo que desea; los resultados de prueba se comparan con soluciones conocidas de problemas ya resueltos.</li>
+            <li><strong>Documentación.</strong> Consiste en preparar un instructivo del programa de manera que cualquier persona pueda conocer y utilizar el programa.</li>
+            <li><strong>Producción.</strong> Es la última etapa en la que solo se proporcionan datos de entrada del programa obteniéndose las soluciones correspondientes.</li>
+          </ul>
+          <!-- INFOGRAFÍA: pon el archivo infografia_metodos.jpg en la misma carpeta que este HTML -->
+          <div style="margin-top:1.25rem; text-align:center;">
+            <img src="infografia_metodos.jpg"
+                 alt="Infografía Métodos Numéricos"
+                 style="max-width:100%; border-radius:12px; border:1px solid rgba(0,212,255,0.15);">
+          </div>
+        </div>
+      </div>
+
       <!-- 1.2 -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">1.2</span>
-          <span class="subtema-name">Cifra significativa, precisión, exactitud, incertidumbre y sesgo</span>
-          <span class="has-prog">Programa</span>
+          <span class="subtema-name">Conceptos básicos: cifra significativa, precisión, exactitud, incertidumbre y sesgo</span>
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-           <p class="teoria"><strong>CIFRAS SIGNIFICATIVAS:</strong><br>
-        Las cifras significativas son los dígitos de un número que consideramos no nulos.<br>
-        <strong>Norma:</strong> Son significativos todos los dígitos distintos de cero.<br>
-        <strong>Ejemplo:</strong> 8723 tiene cuatro cifras significativas.</p>
+          <p class="teoria"><strong>CIFRAS SIGNIFICATIVAS:</strong><br>
+          Las cifras significativas son los dígitos de un número que consideramos no nulos.<br>
+          <strong>Norma:</strong> Son significativos todos los dígitos distintos de cero.<br>
+          <strong>Ejemplo:</strong> 8723 tiene cuatro cifras significativas.</p>
 
-        <p class="teoria"><strong>PRECISIÓN Y EXACTITUD:</strong><br>
-        La exactitud es lo cerca que el resultado de una medición está del valor verdadero.<br>
-        La precisión es lo cerca que los valores medidos están unos de otros.</p>
-        <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
-          <li>Exactitud baja / Precisión alta</li>
-          <li>Exactitud alta / Precisión baja</li>
-          <li>Exactitud alta / Precisión alta</li>
-        </ul>
+          <p class="teoria"><strong>PRECISIÓN Y EXACTITUD:</strong><br>
+          La exactitud es lo cerca que el resultado de una medición está del valor verdadero.<br>
+          La precisión es lo cerca que los valores medidos están unos de otros.</p>
+          <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
+            <li>Exactitud baja / Precisión alta</li>
+            <li>Exactitud alta / Precisión baja</li>
+            <li>Exactitud alta / Precisión alta</li>
+          </ul>
 
-        <p class="teoria"><strong>INCERTIDUMBRE:</strong><br>
-        Se refiere al grado de alejamiento entre sí, a las diversas aproximaciones a un valor verdadero. La incertidumbre puede derivarse de una falta de información o incluso por que exista desacuerdo sobre lo que se sabe o lo que podría saberse. Puede tener varios tipos de origen, desde errores cuantificables en los datos hasta terminología definida de forma ambigua o previsiones inciertas del comportamiento humano. La incertidumbre puede, por lo tanto, ser representada por medidas cuantitativas (por ejemplo, un rango de valores calculados según distintos modelos) o por afirmaciones cualitativas (por ejemplo, al reflejar el juicio de un grupo de expertos).</p>
+          <p class="teoria"><strong>INCERTIDUMBRE:</strong><br>
+          Se refiere al grado de alejamiento entre sí, a las diversas aproximaciones a un valor verdadero. La incertidumbre puede derivarse de una falta de información o incluso por que exista desacuerdo sobre lo que se sabe o lo que podría saberse. Puede tener varios tipos de origen, desde errores cuantificables en los datos hasta terminología definida de forma ambigua o previsiones inciertas del comportamiento humano. La incertidumbre puede, por lo tanto, ser representada por medidas cuantitativas (por ejemplo, un rango de valores calculados según distintos modelos) o por afirmaciones cualitativas (por ejemplo, al reflejar el juicio de un grupo de expertos).</p>
 
-        <p class="teoria"><strong>SESGO:</strong><br>
-        Es un alejamiento sistemático del valor verdadero a calcular. Así como el error, de acuerdo con las formas por las cuales se produce, puede minimizarse, la ocurrencia de sesgo también puede ser neutralizada o controlada. En ocasiones sin embargo, es imposible controlar el sesgo y por cierto el error. En tales circunstancias conviene al menos estar en antecedente y tener conciencia de su existencia.</p>
-
-        <div class="prog-widget">
-          <div class="prog-top-bar">
-            <span class="prog-label">▶ error_relativo.py</span>
-            <div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div>
-          </div>
-          <div class="code-area"><span class="cm"># Cálculo de error absoluto y relativo</span>
-<span class="kw">def</span> <span class="fn">calcular_errores</span>(v_verdadero, v_aproximado):
-    e_abs = <span class="fn">abs</span>(v_verdadero - v_aproximado)
-    e_rel = (e_abs / <span class="fn">abs</span>(v_verdadero)) * <span class="nm">100</span>
-    <span class="kw">return</span> e_abs, e_rel</div>
-          <div class="prog-inputs">
-            <div class="inp-group"><label>Valor verdadero</label><input class="prog-input" id="p12a" type="number" value="3.14159" placeholder="ej: 3.14159"></div>
-            <div class="inp-group"><label>Valor aproximado</label><input class="prog-input" id="p12b" type="number" value="3.14" placeholder="ej: 3.14"></div>
-          </div>
-          <div class="prog-footer">
-            <button class="run-btn" onclick="run12()">▶ Ejecutar</button>
-            <div class="output-box" id="out12">Esperando...</div>
-          </div>
+          <p class="teoria"><strong>SESGO:</strong><br>
+          Es un alejamiento sistemático del valor verdadero a calcular. Así como el error, de acuerdo con las formas por las cuales se produce, puede minimizarse, la ocurrencia de sesgo también puede ser neutralizada o controlada. En ocasiones sin embargo, es imposible controlar el sesgo y por cierto el error. En tales circunstancias conviene al menos estar en antecedente y tener conciencia de su existencia.</p>
         </div>
       </div>
-    </div>
 
       <!-- 1.3 -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">1.3</span>
-          <span class="subtema-name">Tipo de errores</span>
+          <span class="subtema-name">Tipos de errores</span>
           <span class="has-prog">Programa</span>
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-           <p class="teoria"><strong>Errores Inherentes a los Métodos Numéricos:</strong> Un error es una incertidumbre en el resultado de una medida. Se define como la diferencia entre el valor real y una aproximación a este valor.</p>
+          <p class="teoria"><strong>Errores Inherentes a los Métodos Numéricos:</strong> Un error es una incertidumbre en el resultado de una medida. Se define como la diferencia entre el valor real y una aproximación a este valor.</p>
+          <p class="teoria"><strong>Error de redondeo:</strong> Se originan al realizar los cálculos que todo método numérico o analítico requieren y son debidos a la imposibilidad de tomar todas las cifras que resultan de operaciones aritméticas como los productos y los cocientes, teniendo que retener en cada operación el número de cifras que permita el instrumento de cálculo que se esté utilizando.</p>
+          <p class="teoria"><strong>Error por Truncamiento:</strong> Existen muchos procesos que requieren la ejecución de un número infinito de instrucciones para hallar la solución exacta de un determinado problema. Puesto que es totalmente imposible realizar infinitas instrucciones, el proceso debe truncarse. En consecuencia, no se halla la solución exacta que se pretendía encontrar, sino una aproximación a la misma.</p>
+          <p class="teoria"><strong>Error Numérico Total:</strong> Se entiende como la suma de los errores de redondeo y truncamiento introducidos en el cálculo.</p>
+          <p class="teoria"><strong>Errores Humanos:</strong> Son los errores por negligencia o equivocación. Actualmente las computadoras son muy exactas y el error es atribuido a los hombres. Los errores humanos son inevitables pero se pueden minimizar.</p>
+          <p class="teoria"><strong>Error Inherente:</strong> En ocasiones, los datos que se inician los cálculos contienen un cierto error debido a que se han obtenido mediante la medida experimental de una determinada magnitud física.</p>
+          <p class="teoria"><strong>Error Absoluto:</strong> El error absoluto no es negativo. Es una colección (suma) de errores. Debido a que si un número y su parte fraccionaria conformada por un conjunto de dígitos infinita requieren ser representada numéricamente, su forma aproximada es donde se presenta este tipo de error.</p>
+          <p class="teoria"><strong>Error Relativo:</strong> Es el error absoluto dividido entre un número positivo adecuado. Generalmente, el divisor es una de tres elecciones: la magnitud del valor exacto, la magnitud del valor calculado (o redondeado) o el promedio de estas dos cantidades.</p>
 
-        <p class="teoria"><strong>Error de redondeo:</strong> Se originan al realizar los cálculos que todo método numérico o analítico requieren y son debidos a la imposibilidad de tomar todas las cifras que resultan de operaciones aritméticas como los productos y los cocientes, teniendo que retener en cada operación el número de cifras que permita el instrumento de cálculo que se esté utilizando.</p>
-
-        <p class="teoria"><strong>Error por Truncamiento:</strong> Existen muchos procesos que requieren la ejecución de un número infinito de instrucciones para hallar la solución exacta de un determinado problema. Puesto que es totalmente imposible realizar infinitas instrucciones, el proceso debe truncarse. En consecuencia, no se halla la solución exacta que se pretendía encontrar, sino una aproximación a la misma.</p>
-
-        <p class="teoria"><strong>Error Numérico Total:</strong> Se entiende como la suma de los errores de redondeo y truncamiento introducidos en el cálculo.</p>
-
-        <p class="teoria"><strong>Errores Humanos:</strong> Son los errores por negligencia o equivocación. Actualmente las computadoras son muy exactas y el error es atribuido a los hombres. Los errores humanos son inevitables pero se pueden minimizar.</p>
-
-        <p class="teoria"><strong>Error Inherente:</strong> En ocasiones, los datos que se inician los cálculos contienen un cierto error debido a que se han obtenido mediante la medida experimental de una determinada magnitud física.</p>
-
-        <p class="teoria"><strong>Error Absoluto:</strong> El error absoluto no es negativo. Es una colección (suma) de errores. Debido a que si un número y su parte fraccionaria conformada por un conjunto de dígitos infinita requieren ser representada numéricamente, su forma aproximada es donde se presenta este tipo de error.</p>
-
-        <p class="teoria"><strong>Error Relativo:</strong> Es el error absoluto dividido entre un número positivo adecuado. Generalmente, el divisor es una de tres elecciones: la magnitud del valor exacto, la magnitud del valor calculado (o redondeado) o el promedio de estas dos cantidades.</p>
-
-        <div class="prog-widget">
-          <div class="prog-top-bar">
-            <span class="prog-label">▶ error_truncamiento.py</span>
-            <div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div>
-          </div>
-          <div class="code-area"><span class="cm"># Aproximación de e^x con serie de Taylor</span>
-<span class="kw">import</span> math
-<span class="kw">def</span> <span class="fn">taylor_exp</span>(x, n_terminos):
-    resultado = <span class="nm">0</span>
-    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(n_terminos):
-        resultado += (x**i) / <span class="fn">math.factorial</span>(i)
-    <span class="kw">return</span> resultado</div>
-          <div class="prog-inputs">
-            <div class="inp-group"><label>Valor de x</label><input class="prog-input" id="p13a" type="number" value="2" placeholder="ej: 2"></div>
-            <div class="inp-group"><label>Nº de términos</label><input class="prog-input" id="p13b" type="number" value="5" placeholder="ej: 5"></div>
-          </div>
-          <div class="prog-footer">
-            <button class="run-btn" onclick="run13()">▶ Ejecutar</button>
-            <div class="output-box" id="out13">Esperando...</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-      <!-- 1.4 -->
-      <div class="subtema-block" style="--c:#00d4ff">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">1.4</span>
-          <span class="subtema-name">Software de cómputo numérico</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-           <p class="teoria">Muchos problemas de cómputo en ingeniería pueden ser divididos en pedazos de cálculos bien conocidos, como solución de sistemas de ecuaciones lineales, transformada rápida de Fourier, etc. Por consecuencia, frecuentemente el programador sólo tiene que escribir una rutina pequeña (driver) para el problema particular que tenga, porque el software para resolver las subtareas se encuentra ya disponible. De esta forma la gente no tiene que realizar el problema una y otra vez. Para álgebra lineal y algunos otros cómputos numéricos básicos hay software de calidad gratis (a través de Netlib).</p>
-
-        <p class="teoria"><strong>NETLIB:</strong><br>
-        Netlib contiene software de alta calidad que ha sido probado en forma intensiva, pero todo el software libre no tiene garantía y tiene poco soporte. Para poder usar el software, primero se tiene que descargar en su computadora y entonces compilarlo.</p>
-
-        <p class="teoria"><strong>NAG:</strong><br>
-        El Grupo de Algoritmos numéricos (Numerical Algorithms Group) (NAG) ha desarrollado una biblioteca de Fortran conteniendo alrededor de 1000 subrutinas accesibles al usuario para resolver problemas generales de matemáticas aplicadas, incluyendo: ecuaciones diferenciales ordinarias y parciales, transformada rápida de Fourier, cuadratura, álgebra lineal, ecuaciones no lineales, ecuaciones integrales, y más.</p>
-
-        <p class="teoria"><strong>IMSL:</strong><br>
-        La biblioteca numérica de Fortran IMSL hecha por Visual Numerics, Inc. cubre muchas de las áreas contenidas en la biblioteca NAG. También tiene soporte para analizar y presentar datos estadísticos en aplicaciones científicas y de negocios.</p>
-
-        <p class="teoria"><strong>NUMERICAL RECIPES:</strong><br>
-        Los libros de Numerical Recipes in C/Fortran son muy populares entre los ingenieros porque pueden ser usados como libro de cocina donde se puede encontrar una "receta (recipe)" para resolver algún problema a mano. Sin embargo, el software correspondiente de Numerical Recipes no es comparable en alcance o calidad al dado por NAG o IMSL. Es un software muy usado en universidades, centros de investigación y por ingenieros. En los últimos años ha incluido muchas más capacidades, como la de programar directamente procesadores digitales de señal, crear código VHDL y otras.</p>
-
-        <p class="teoria"><strong>MATLAB:</strong><br>
-        Es un programa de cálculo numérico, orientado a matrices y vectores. Por tanto desde el principio hay que pensar que todo lo que se pretenda hacer con él, será mucho más rápido y efectivo si se piensa en términos de matrices y vectores.</p>
-
-        <p class="teoria"><strong>GNU OCTAVE:</strong><br>
-        Es un programa libre para realizar cálculos numéricos. Como indica su nombre, es parte del proyecto GNU. MATLAB es considerado su equivalente comercial. Entre varias características que comparten se puede destacar que ambos ofrecen un intérprete permitiendo ejecutar órdenes en modo interactivo. Nótese que Octave no es un sistema de álgebra computacional como podría ser GNU Máxima, sino que usa un lenguaje que está orientado al análisis numérico.</p>
-      </div>
-    </div>
-
-      <!-- 1.5 -->
-      <div class="subtema-block" style="--c:#00d4ff">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">1.5</span>
-          <span class="subtema-name">Métodos iterativos</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-           <p class="teoria">Un método iterativo trata de resolver un problema matemático (como una ecuación o un sistema de ecuaciones) mediante aproximaciones sucesivas a la solución, empezando desde una estimación inicial.</p>
-
-        <p class="teoria">Esta aproximación contrasta con los métodos directos, que tratan de resolver el problema de una sola vez, como resolver un sistema de ecuaciones Ax = b encontrando la inversa de la matriz A.</p>
-
-        <p class="teoria">Los métodos iterativos son muy útiles para resolver problemas que involucran un número grande de variables (a veces del orden de millones), donde los métodos directos tendrían un coste prohibitivo incluso con la potencia del mejor computador disponible.</p>
-
-        <p class="teoria">En este tipo de métodos se parte de un valor inicial y se aplica un proceso repetitivo que va mejorando la aproximación hasta obtener un resultado suficientemente cercano al valor real.</p>
-
-        <p class="teoria"><strong>Entre las principales características de los métodos iterativos se encuentran:</strong></p>
-        <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
-          <li>Utilizan aproximaciones sucesivas.</li>
-          <li>Requieren un valor inicial.</li>
-          <li>Funcionan mejor en problemas grandes.</li>
-          <li>Permiten reducir el tiempo de cálculo en comparación con los métodos directos.</li>
-        </ul>
-
-        <div class="prog-widget">
-  <div class="prog-top-bar">
-    <span class="prog-label">▶ CalculadoraErrores.java</span>
-    <div class="dots">
-      <div class="dot" style="background:#ef4444"></div>
-      <div class="dot" style="background:#f59e0b"></div>
-      <div class="dot" style="background:#10b981"></div>
-    </div>
-  </div>
-  <div class="code-area"><span class="kw">public class</span> <span class="fn">CalculadoraErrores</span> {
+          <!-- CÓDIGO JAVA -->
+          <div class="prog-widget">
+            <div class="prog-top-bar">
+              <span class="prog-label">▶ CalculadoraErrores.java</span>
+              <div class="dots">
+                <div class="dot" style="background:#ef4444"></div>
+                <div class="dot" style="background:#f59e0b"></div>
+                <div class="dot" style="background:#10b981"></div>
+              </div>
+            </div>
+            <div class="code-area"><span class="kw">public class</span> <span class="fn">CalculadoraErrores</span> {
 
   <span class="kw">public static void</span> <span class="fn">main</span>(String[] args) {
     Scanner scanner = <span class="kw">new</span> <span class="fn">Scanner</span>(System.in);
@@ -899,27 +781,67 @@
   <span class="kw">public static double</span> <span class="fn">calcularErrorPorcentual</span>(<span class="kw">double</span> eRelativo) {
     <span class="kw">return</span> eRelativo * <span class="nm">100</span>;
   }
-
 }</div>
+            <div class="prog-inputs">
+              <div class="inp-group">
+                <label>Valor real</label>
+                <input class="prog-input" id="java-vr" type="number" value="9.81" step="any">
+              </div>
+              <div class="inp-group">
+                <label>Valor aproximado</label>
+                <input class="prog-input" id="java-va" type="number" value="9.75" step="any">
+              </div>
+            </div>
+            <div class="prog-footer">
+              <button class="run-btn" onclick="runJava()">▶ Ejecutar</button>
+              <div class="output-box" id="out-java">Esperando...</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <!-- Inputs interactivos en JavaScript que simulan el programa Java -->
-  <div class="prog-inputs">
-    <div class="inp-group">
-      <label>Valor real</label>
-      <input class="prog-input" id="java-vr" type="number" value="9.81" step="any">
+      <!-- 1.4 -->
+      <div class="subtema-block" style="--c:#00d4ff">
+        <div class="subtema-header" onclick="toggle(this)">
+          <span class="subtema-num">1.4</span>
+          <span class="subtema-name">Software de cómputo numérico</span>
+          <span class="chevron">▾</span>
+        </div>
+        <div class="subtema-body">
+          <p class="teoria">Muchos problemas de cómputo en ingeniería pueden ser divididos en pedazos de cálculos bien conocidos, como solución de sistemas de ecuaciones lineales, transformada rápida de Fourier, etc. Por consecuencia, frecuentemente el programador sólo tiene que escribir una rutina pequeña (driver) para el problema particular que tenga, porque el software para resolver las subtareas se encuentra ya disponible. De esta forma la gente no tiene que realizar el problema una y otra vez. Para álgebra lineal y algunos otros cómputos numéricos básicos hay software de calidad gratis (a través de Netlib).</p>
+          <p class="teoria"><strong>NETLIB:</strong><br>Netlib contiene software de alta calidad que ha sido probado en forma intensiva, pero todo el software libre no tiene garantía y tiene poco soporte. Para poder usar el software, primero se tiene que descargar en su computadora y entonces compilarlo.</p>
+          <p class="teoria"><strong>NAG:</strong><br>El Grupo de Algoritmos numéricos (Numerical Algorithms Group) (NAG) ha desarrollado una biblioteca de Fortran conteniendo alrededor de 1000 subrutinas accesibles al usuario para resolver problemas generales de matemáticas aplicadas, incluyendo: ecuaciones diferenciales ordinarias y parciales, transformada rápida de Fourier, cuadratura, álgebra lineal, ecuaciones no lineales, ecuaciones integrales, y más.</p>
+          <p class="teoria"><strong>IMSL:</strong><br>La biblioteca numérica de Fortran IMSL hecha por Visual Numerics, Inc. cubre muchas de las áreas contenidas en la biblioteca NAG. También tiene soporte para analizar y presentar datos estadísticos en aplicaciones científicas y de negocios.</p>
+          <p class="teoria"><strong>NUMERICAL RECIPES:</strong><br>Los libros de Numerical Recipes in C/Fortran son muy populares entre los ingenieros porque pueden ser usados como libro de cocina donde se puede encontrar una "receta (recipe)" para resolver algún problema a mano. Sin embargo, el software correspondiente de Numerical Recipes no es comparable en alcance o calidad al dado por NAG o IMSL. Es un software muy usado en universidades, centros de investigación y por ingenieros.</p>
+          <p class="teoria"><strong>MATLAB:</strong><br>Es un programa de cálculo numérico, orientado a matrices y vectores. Por tanto desde el principio hay que pensar que todo lo que se pretenda hacer con él, será mucho más rápido y efectivo si se piensa en términos de matrices y vectores.</p>
+          <p class="teoria"><strong>GNU OCTAVE:</strong><br>Es un programa libre para realizar cálculos numéricos. Como indica su nombre, es parte del proyecto GNU. MATLAB es considerado su equivalente comercial. Entre varias características que comparten se puede destacar que ambos ofrecen un intérprete permitiendo ejecutar órdenes en modo interactivo. Nótese que Octave no es un sistema de álgebra computacional como podría ser GNU Máxima, sino que usa un lenguaje que está orientado al análisis numérico.</p>
+        </div>
+      </div>
+
+      <!-- 1.5 -->
+      <div class="subtema-block" style="--c:#00d4ff">
+        <div class="subtema-header" onclick="toggle(this)">
+          <span class="subtema-num">1.5</span>
+          <span class="subtema-name">Métodos iterativos</span>
+          <span class="chevron">▾</span>
+        </div>
+        <div class="subtema-body">
+          <p class="teoria">Un método iterativo trata de resolver un problema matemático (como una ecuación o un sistema de ecuaciones) mediante aproximaciones sucesivas a la solución, empezando desde una estimación inicial.</p>
+          <p class="teoria">Esta aproximación contrasta con los métodos directos, que tratan de resolver el problema de una sola vez, como resolver un sistema de ecuaciones Ax = b encontrando la inversa de la matriz A.</p>
+          <p class="teoria">Los métodos iterativos son muy útiles para resolver problemas que involucran un número grande de variables (a veces del orden de millones), donde los métodos directos tendrían un coste prohibitivo incluso con la potencia del mejor computador disponible.</p>
+          <p class="teoria">En este tipo de métodos se parte de un valor inicial y se aplica un proceso repetitivo que va mejorando la aproximación hasta obtener un resultado suficientemente cercano al valor real.</p>
+          <p class="teoria"><strong>Entre las principales características de los métodos iterativos se encuentran:</strong></p>
+          <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
+            <li>Utilizan aproximaciones sucesivas.</li>
+            <li>Requieren un valor inicial.</li>
+            <li>Funcionan mejor en problemas grandes.</li>
+            <li>Permiten reducir el tiempo de cálculo en comparación con los métodos directos.</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
-    <div class="inp-group">
-      <label>Valor aproximado</label>
-      <input class="prog-input" id="java-va" type="number" value="9.75" step="any">
-    </div>
   </div>
-  <div class="prog-footer">
-    <button class="run-btn" onclick="runJava()">▶ Ejecutar</button>
-    <div class="output-box" id="out-java">Esperando...</div>
-  </div>
-</div>
-  </div>
-</div>
 
   <!-- ===== UNIT 2 ===== -->
   <div class="unit-detail" id="unit-2">
@@ -1541,10 +1463,9 @@
     </div>
   </div>
 
-</div><!-- end main -->
+</div>
 
 <script>
-// ============ NAVIGATION ============
 function showOverview() {
   document.getElementById('overview-view').style.display = 'block';
   document.querySelectorAll('.unit-detail').forEach(d => d.classList.remove('active'));
@@ -1559,46 +1480,35 @@ function showUnit(n) {
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ============ ACCORDION ============
 function toggle(header) {
   const block = header.parentElement;
   block.classList.toggle('open');
 }
 
-// ============ PROGRAMS ============
 function v(id) { return document.getElementById(id).value; }
 function out(id, text) { document.getElementById(id).textContent = text; }
 
-function run12() {
-  const a = parseFloat(v('p12a')), b = parseFloat(v('p12b'));
-  if(isNaN(a)||isNaN(b)||a===0){out('out12','Error: valores inválidos');return;}
-  const eAbs = Math.abs(a-b);
-  const eRel = (eAbs/Math.abs(a))*100;
-  out('out12', `Error absoluto: ${eAbs.toFixed(6)}\nError relativo: ${eRel.toFixed(4)} %`);
-}
-
-function run13() {
-  const x = parseFloat(v('p13a')), n = parseInt(v('p13b'));
-  if(isNaN(x)||isNaN(n)||n<1){out('out13','Error: valores inválidos');return;}
-  let result = 0, fact = 1;
-  for(let i=0;i<n;i++){
-    if(i>0) fact*=i;
-    result += Math.pow(x,i)/fact;
+function runJava() {
+  const vr = parseFloat(document.getElementById('java-vr').value);
+  const va = parseFloat(document.getElementById('java-va').value);
+  if (isNaN(vr) || isNaN(va) || vr === 0) {
+    document.getElementById('out-java').textContent = 'Error: valores inválidos';
+    return;
   }
-  const exact = Math.exp(x);
-  out('out13', `Aprox (${n} términos): ${result.toFixed(8)}\nValor exacto e^${x}: ${exact.toFixed(8)}\nError: ${Math.abs(exact-result).toFixed(8)}`);
-}
-
-function run15() {
-  const n = parseFloat(v('p15a'));
-  if(isNaN(n)||n<=0){out('out15','Error: número debe ser positivo');return;}
-  let x = n/2, iters = 0;
-  while(true){
-    const xn = (x + n/x)/2; iters++;
-    if(Math.abs(xn-x)<1e-10) break;
-    x = xn;
-  }
-  out('out15', `√${n} ≈ ${x.toFixed(10)}\nExacto: ${Math.sqrt(n).toFixed(10)}\nIteraciones: ${iters}`);
+  const eAbs = Math.abs(vr - va);
+  const eRel = eAbs / Math.abs(vr);
+  const ePct = eRel * 100;
+  let interp = '';
+  if (eAbs < 0.01)      interp = '✓ Error absoluto muy pequeño (excelente precisión)';
+  else if (eAbs < 0.1)  interp = '✓ Error absoluto pequeño (buena precisión)';
+  else if (eAbs < 1)    interp = '△ Error absoluto moderado';
+  else                  interp = '✗ Error absoluto grande (baja precisión)';
+  if (ePct < 1)         interp += '\n✓ Error porcentual menor al 1% (excelente exactitud)';
+  else if (ePct < 5)    interp += '\n✓ Error porcentual entre 1% y 5% (buena exactitud)';
+  else if (ePct < 10)   interp += '\n△ Error porcentual entre 5% y 10% (exactitud aceptable)';
+  else                  interp += '\n✗ Error porcentual mayor al 10% (baja exactitud)';
+  document.getElementById('out-java').textContent =
+    `Error Absoluto: ${eAbs.toFixed(4)}\nError Relativo: ${eRel.toFixed(6)}\nError Porcentual: ${ePct.toFixed(4)}%\n${interp}`;
 }
 
 function run22() {
@@ -1744,27 +1654,7 @@ function run62() {
   const exact=Math.exp(-xf*xf);
   out('out62', `RK4: y(${xf}) ≈ ${y.toFixed(10)}\nExacto e^(-${xf}²) = ${exact.toFixed(10)}\nError: ${Math.abs(y-exact).toExponential(2)}`);
 }
-
-function runJava() {
-  const vr = parseFloat(document.getElementById('java-vr').value);
-  const va = parseFloat(document.getElementById('java-va').value);
-  if (isNaN(vr) || isNaN(va) || vr === 0) {
-    document.getElementById('out-java').textContent = 'Error: valores inválidos';
-    return;
-  }
-  const eAbs = Math.abs(vr - va);
-  const eRel = eAbs / Math.abs(vr);
-  const ePct = eRel * 100;
-  let interpretacion = '';
-  if (eAbs < 0.01) interpretacion = '✓ Error absoluto muy pequeño (excelente precisión)';
-  else if (eAbs < 0.1) interpretacion = '✓ Error absoluto pequeño (buena precisión)';
-  else if (eAbs < 1)   interpretacion = '△ Error absoluto moderado';
-  else                 interpretacion = '✗ Error absoluto grande (baja precisión)';
-  document.getElementById('out-java').textContent =
-    `Error Absoluto: ${eAbs.toFixed(4)}\nError Relativo: ${eRel.toFixed(6)}\nError Porcentual: ${ePct.toFixed(4)}%\n${interpretacion}`;
-}
 </script>
 
-    
 </body>
 </html>
