@@ -1,4 +1,4 @@
-me lo puedes agregar en mi codigo todo eso <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -645,13 +645,12 @@ me lo puedes agregar en mi codigo todo eso <!DOCTYPE html>
       <div class="unit-card" style="--c:#ef4444" onclick="showUnit(5)">
         <div class="unit-num">UNIDAD 05</div>
         <div class="unit-title">Interpolación y Ajuste de Funciones</div>
-       <div class="unit-subtemas-preview">
-  <div class="preview-item">Polinomio de Newton</div>
-  <div class="preview-item">Polinomio de Lagrange</div>
-  <div class="preview-item">Interpolación segmentada</div>
-  <div class="preview-item">Regresión y mínimos cuadrados</div>
-  <div class="preview-item">Problemas de aplicación</div>
-</div>
+        <div class="unit-subtemas-preview">
+          <div class="preview-item">Polinomio de Newton</div>
+          <div class="preview-item">Polinomio de Lagrange</div>
+          <div class="preview-item">Interpolación segmentada</div>
+          <div class="preview-item">Regresión y mínimos cuadrados</div>
+        </div>
         <div class="unit-footer">
           <span class="badge" style="border-color:rgba(239,68,68,0.3);color:#ef4444">4 subtemas</span>
           <span class="open-arrow">→</span>
@@ -661,12 +660,12 @@ me lo puedes agregar en mi codigo todo eso <!DOCTYPE html>
       <div class="unit-card" style="--c:#ec4899" onclick="showUnit(6)">
         <div class="unit-num">UNIDAD 06</div>
         <div class="unit-title">Solución de Ecuaciones Diferenciales</div>
-      <div class="unit-subtemas-preview">
-  <div class="preview-item">Métodos de un paso (Runge-Kutta)</div>
-  <div class="preview-item">Método de pasos múltiples</div>
-  <div class="preview-item">Sistemas de ecuaciones diferenciales</div>
-  <div class="preview-item">Aplicaciones</div>
-</div>
+        <div class="unit-subtemas-preview">
+          <div class="preview-item">Métodos de paso</div>
+          <div class="preview-item">Método de pasos múltiples</div>
+          <div class="preview-item">Sistemas de EDOs</div>
+          <div class="preview-item">Aplicaciones</div>
+        </div>
         <div class="unit-footer">
           <span class="badge" style="border-color:rgba(236,72,153,0.3);color:#ec4899">4 subtemas</span>
           <span class="open-arrow">→</span>
@@ -1119,79 +1118,11 @@ me lo puedes agregar en mi codigo todo eso <!DOCTYPE html>
       </div>
     </div>
     <div class="subtemas-list">
-     <!-- 5.1 Polinomio de Newton -->
-<div class="subtema-block" style="--c:#ef4444">
-  <div class="subtema-header" onclick="toggle(this)">
-    <span class="subtema-num">5.1</span>
-    <span class="subtema-name">Polinomio de interpolación de Newton</span>
-    <span class="chevron">▾</span>
+      <div class="subtema-block" style="--c:#ef4444"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.1</span><span class="subtema-name">Polinomio de Newton</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ newton.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x1,y1</label><input id="p51a" class="prog-input" placeholder="1,1"></div><div class="inp-group"><label>x2,y2</label><input id="p51b" class="prog-input" placeholder="2,4"></div><div class="inp-group"><label>x3,y3</label><input id="p51c" class="prog-input" placeholder="3,9"></div><div class="inp-group"><label>Evaluar x</label><input id="p51d" class="prog-input" type="number" value="2.5"></div></div><div class="prog-footer"><button class="run-btn" onclick="run51()">▶ Ejecutar</button><div class="output-box" id="out51">Esperando...</div></div></div></div></div>
+      <div class="subtema-block" style="--c:#ef4444"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.2</span><span class="subtema-name">Polinomio de Lagrange</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ lagrange.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x1,y1</label><input id="p52a" class="prog-input" placeholder="0,1"></div><div class="inp-group"><label>x2,y2</label><input id="p52b" class="prog-input" placeholder="1,2.718"></div><div class="inp-group"><label>x3,y3</label><input id="p52c" class="prog-input" placeholder="2,7.389"></div><div class="inp-group"><label>Evaluar x</label><input id="p52d" class="prog-input" type="number" value="0.5"></div></div><div class="prog-footer"><button class="run-btn" onclick="run52()">▶ Ejecutar</button><div class="output-box" id="out52">Esperando...</div></div></div></div></div>
+      <div class="subtema-block" style="--c:#ef4444"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.3</span><span class="subtema-name">Mínimos cuadrados</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ minimos_cuadrados.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x (separados ,)</label><input id="p55a" class="prog-input" value="1,2,3,4,5"></div><div class="inp-group"><label>y (separados ,)</label><input id="p55b" class="prog-input" value="2.1,3.9,6.2,7.8,10.1"></div></div><div class="prog-footer"><button class="run-btn" onclick="run55()">▶ Ejecutar</button><div class="output-box" id="out55">Esperando...</div></div></div></div></div>
+    </div>
   </div>
-  <div class="subtema-body">
-    <p class="teoria">El polinomio de Newton usa diferencias divididas. Se expresa como: P(x) = a₀ + a₁(x-x₀) + a₂(x-x₀)(x-x₁) + ...</p>
-    <p class="teoria">Las diferencias divididas se calculan recursivamente: f[xᵢ, xᵢ₊₁] = (f[xᵢ₊₁] - f[xᵢ])/(xᵢ₊₁ - xᵢ)</p>
-    <p class="teoria">Ventaja: permite agregar nuevos puntos sin recalcular todo.</p>
-  </div>
-</div>
-
-<!-- 5.2 Polinomio de Lagrange -->
-<div class="subtema-block" style="--c:#ef4444">
-  <div class="subtema-header" onclick="toggle(this)">
-    <span class="subtema-num">5.2</span>
-    <span class="subtema-name">Polinomio de interpolación de Lagrange</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="subtema-body">
-    <p class="teoria">P(x) = Σ yᵢ·Lᵢ(x), donde Lᵢ(x) = Π (x-xⱼ)/(xᵢ-xⱼ) para j≠i</p>
-    <p class="teoria">Propiedad: Lᵢ(xⱼ) = 1 si i=j, y 0 si i≠j.</p>
-    <p class="teoria"><strong>Fenómeno de Runge:</strong> Con puntos equidistantes y polinomios de grado alto, aparecen oscilaciones en los extremos.</p>
-  </div>
-</div>
-
-<!-- 5.3 Interpolación segmentada (splines) -->
-<div class="subtema-block" style="--c:#ef4444">
-  <div class="subtema-header" onclick="toggle(this)">
-    <span class="subtema-num">5.3</span>
-    <span class="subtema-name">Interpolación segmentada (splines)</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="subtema-body">
-    <p class="teoria"><strong>Spline cúbico:</strong> En cada subintervalo [xᵢ, xᵢ₊₁] se usa un polinomio cúbico diferente.</p>
-    <p class="teoria">Condiciones: continuidad de f, f' y f'' en los nodos.</p>
-    <p class="teoria"><strong>Tipos de splines:</strong> Natural (S''=0 en extremos), Sujeto (se especifican derivadas), Periódico (para funciones periódicas).</p>
-    <p class="teoria">Ventajas: Suavidad, precisión O(h⁴), sin oscilaciones de Runge.</p>
-  </div>
-</div>
-
-<!-- 5.4 Regresión y mínimos cuadrados -->
-<div class="subtema-block" style="--c:#ef4444">
-  <div class="subtema-header" onclick="toggle(this)">
-    <span class="subtema-num">5.4</span>
-    <span class="subtema-name">Regresión y mínimos cuadrados</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="subtema-body">
-    <p class="teoria">Minimiza la suma de cuadrados de los residuales: R = Σ [yᵢ - (axᵢ+b)]²</p>
-    <p class="teoria"><strong>Ecuaciones normales (regresión lineal):</strong> a = (nΣxy - ΣxΣy)/(nΣx² - (Σx)²), b = (Σy - aΣx)/n</p>
-    <p class="teoria"><strong>Coeficiente de correlación de Pearson (r):</strong> mide la fuerza de la relación lineal. r=1 (correlación perfecta positiva), r=-1 (negativa), r=0 (sin correlación).</p>
-    <p class="teoria">Se puede extender a regresión polinómica y no lineal.</p>
-  </div>
-</div>
-
-<!-- 5.5 Aplicaciones -->
-<div class="subtema-block" style="--c:#ef4444">
-  <div class="subtema-header" onclick="toggle(this)">
-    <span class="subtema-num">5.5</span>
-    <span class="subtema-name">Problemas de aplicación</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="subtema-body">
-    <p class="teoria"><strong>Ingeniería:</strong> Splines en CAD, calibración de sensores, curvas esfuerzo-deformación.</p>
-    <p class="teoria"><strong>Economía:</strong> Curvas de rendimiento (bonos), relación ingreso-gasto.</p>
-    <p class="teoria"><strong>Procesamiento de imágenes:</strong> Interpolación bilineal y bicúbica (escalado).</p>
-    <p class="teoria"><strong>Biología:</strong> Curvas de crecimiento, splines en modelado anatómico.</p>
-    <p class="teoria"><strong>Animación:</strong> Trayectorias suaves con Bézier y B-splines.</p>
-  </div>
-</div>
 
   <!-- ===== UNIT 6 ===== -->
   <div class="unit-detail" id="unit-6">
@@ -1203,69 +1134,9 @@ me lo puedes agregar en mi codigo todo eso <!DOCTYPE html>
       </div>
     </div>
     <div class="subtemas-list">
-     <!-- 6.1 Métodos de un paso (Runge-Kutta) -->
-<div class="subtema-block" style="--c:#ec4899">
-  <div class="subtema-header" onclick="toggle(this)">
-    <span class="subtema-num">6.1</span>
-    <span class="subtema-name">Métodos de un paso (Runge-Kutta)</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="subtema-body">
-    <p class="teoria"><strong>Método de Euler:</strong> yₙ₊₁ = yₙ + h·f(xₙ, yₙ) (Error O(h))</p>
-    <p class="teoria"><strong>Runge-Kutta 4to orden (RK4):</strong></p>
-    <p class="teoria">k₁ = h·f(xₙ, yₙ)</p>
-    <p class="teoria">k₂ = h·f(xₙ + h/2, yₙ + k₁/2)</p>
-    <p class="teoria">k₃ = h·f(xₙ + h/2, yₙ + k₂/2)</p>
-    <p class="teoria">k₄ = h·f(xₙ + h, yₙ + k₃)</p>
-    <p class="teoria">yₙ₊₁ = yₙ + (k₁ + 2k₂ + 2k₃ + k₄)/6  (Error O(h⁴))</p>
-  </div>
-</div>
-
-<!-- 6.2 Método de pasos múltiples -->
-<div class="subtema-block" style="--c:#ec4899">
-  <div class="subtema-header" onclick="toggle(this)">
-    <span class="subtema-num">6.2</span>
-    <span class="subtema-name">Método de pasos múltiples</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="subtema-body">
-    <p class="teoria"><strong>Adams-Bashforth (explícito):</strong> Usa puntos anteriores para extrapolar.</p>
-    <p class="teoria">Orden 2 (2 pasos): yₙ₊₁ = yₙ + h/2·[3f(xₙ,yₙ) - f(xₙ₋₁,yₙ₋₁)]</p>
-    <p class="teoria"><strong>Adams-Moulton (implícito):</strong> Más estable.</p>
-    <p class="teoria"><strong>Predictor-Corrector:</strong> Combina Adams-Bashforth (predice) y Adams-Moulton (corrige).</p>
-    <p class="teoria"><strong>BDF (diferenciación hacia atrás):</strong> Para problemas rígidos (stiff).</p>
-  </div>
-</div>
-
-<!-- 6.3 Sistemas de ecuaciones diferenciales -->
-<div class="subtema-block" style="--c:#ec4899">
-  <div class="subtema-header" onclick="toggle(this)">
-    <span class="subtema-num">6.3</span>
-    <span class="subtema-name">Sistemas de ecuaciones diferenciales</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="subtema-body">
-    <p class="teoria">Un sistema de m EDOs: dy/dx = f(x, y). Se resuelve aplicando el método a cada componente vectorialmente.</p>
-    <p class="teoria"><strong>Reducción de orden:</strong> Una EDO de orden n se transforma en un sistema de n EDOs de primer orden.</p>
-    <p class="teoria"><strong>Ejemplo (oscilador armónico):</strong> y'' + ω²y = 0 → y₁' = y₂, y₂' = -ω²y₁</p>
-    <p class="teoria"><strong>Ejemplo (Lotka-Volterra):</strong> dx/dt = αx - βxy, dy/dt = δxy - γy</p>
-  </div>
-</div>
-
-<!-- 6.4 Aplicaciones -->
-<div class="subtema-block" style="--c:#ec4899">
-  <div class="subtema-header" onclick="toggle(this)">
-    <span class="subtema-num">6.4</span>
-    <span class="subtema-name">Aplicaciones</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="subtema-body">
-    <p class="teoria"><strong>Ingeniería mecánica:</strong> Vibraciones de estructuras, simulaciones sísmicas.</p>
-    <p class="teoria"><strong>Ingeniería eléctrica:</strong> Circuitos RLC, respuesta transitoria.</p>
-    <p class="teoria"><strong>Epidemiología:</strong> Modelo SIR (Susceptible-Infectado-Recuperado) para propagación de enfermedades.</p>
-    <p class="teoria"><strong>Astronomía:</strong> Problema de los n cuerpos, trayectorias orbitales.</p>
-    <p class="teoria"><strong>Climatología:</strong> Modelos climáticos, ecuaciones de Lorenz (caos).</p>
-    <p class="teoria"><strong>Robótica:</strong> Trayectorias de robots, control PID.</p>
+      <div class="subtema-block" style="--c:#ec4899"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">6.1</span><span class="subtema-name">Método de Euler</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ euler.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x final</label><input id="p61a" class="prog-input" type="number" value="1"></div><div class="inp-group"><label>h</label><input id="p61b" class="prog-input" type="number" value="0.1"></div></div><div class="prog-footer"><button class="run-btn" onclick="run61()">▶ Ejecutar</button><div class="output-box" id="out61">Esperando...</div></div></div></div></div>
+      <div class="subtema-block" style="--c:#ec4899"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">6.2</span><span class="subtema-name">Runge-Kutta 4to orden</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ rk4.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x final</label><input id="p62a" class="prog-input" type="number" value="1"></div><div class="inp-group"><label>h</label><input id="p62b" class="prog-input" type="number" value="0.1"></div></div><div class="prog-footer"><button class="run-btn" onclick="run62()">▶ Ejecutar</button><div class="output-box" id="out62">Esperando...</div></div></div></div></div>
+    </div>
   </div>
 </div>
 
