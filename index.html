@@ -675,7 +675,6 @@
     </div>
     <div class="subtemas-list">
 
-      <!-- 1.1 Importancia -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">1.1</span>
@@ -683,35 +682,26 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">Los métodos numéricos son técnicas mediante las cuales es posible formular problemas matemáticos de tal forma que puedan resolverse usando operaciones aritméticas. Son herramientas fundamentales en ingeniería y ciencias aplicadas porque permiten resolver problemas que no tienen solución analítica o cuya solución es muy compleja.</p>
-          <p class="teoria">En el proceso de solución de problemas por medio de computadoras, se requieren los siguientes pasos:</p>
-          <ul>
-            <li><strong>Especificación del problema:</strong> Identificar perfectamente el problema, sus limitaciones, variables y resultados deseados.</li>
-            <li><strong>Análisis:</strong> Formular el algoritmo de solución con pasos ejecutables en computadora.</li>
-            <li><strong>Programación:</strong> Traducir el algoritmo a un lenguaje de programación.</li>
-            <li><strong>Verificación:</strong> Probar exhaustivamente el programa para eliminar errores.</li>
-            <li><strong>Documentación:</strong> Preparar instructivos para que otros puedan usar el programa.</li>
-            <li><strong>Producción:</strong> Ejecutar el programa con los datos de entrada para obtener soluciones.</li>
-          </ul>
+          <p class="teoria">Los métodos numéricos vuelven aptos para entender esquemas numéricos a fin de resolver problemas matemáticos, de ingeniería y científicos en una computadora, reducir esquemas numéricos básicos, escribir programas y resolverlos en una computadora y usar correctamente el software existente para dichos métodos y no solo aumenta nuestra habilidad para el uso de computadoras sino que también amplia la pericia matemática y la comprensión de los principios científicos básicos.</p>
+          <p class="teoria">Pueden ser aplicados para resolver procedimientos matemáticos en: Cálculo de derivadas, Integrales, Ecuaciones diferenciales, Operaciones con matrices, Interpolaciones, Ajuste de curvas, Polinomios.</p>
+          <p class="teoria">En el proceso de solución de problemas por medio de computadoras, se requieren los siguientes pasos: Especificación del problema, Análisis, Programación, Verificación, Documentación, Producción.</p>
         </div>
       </div>
 
-      <!-- 1.2 Conceptos básicos -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">1.2</span>
-          <span class="subtema-name">Cifras significativas, precisión, exactitud</span>
+          <span class="subtema-name">Conceptos básicos: cifra significativa, precisión, exactitud, incertidumbre y sesgo</span>
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria"><strong>Cifras significativas:</strong> Son los dígitos de un número que consideramos no nulos. Todos los dígitos distintos de cero son significativos. Ejemplo: 8723 tiene cuatro cifras significativas.</p>
-          <p class="teoria"><strong>Precisión y exactitud:</strong> La exactitud es lo cerca que el resultado de una medición está del valor verdadero. La precisión es lo cerca que los valores medidos están unos de otros.</p>
-          <p class="teoria"><strong>Incertidumbre:</strong> Grado de alejamiento entre las diversas aproximaciones a un valor verdadero. Puede derivarse de falta de información o desacuerdo sobre lo que se sabe.</p>
-          <p class="teoria"><strong>Sesgo:</strong> Alejamiento sistemático del valor verdadero. A diferencia del error aleatorio, el sesgo es consistente y puede ser controlado o neutralizado.</p>
+          <p class="teoria"><strong>CIFRAS SIGNIFICATIVAS:</strong> Las cifras significativas son los dígitos de un número que consideramos no nulos. Norma: Son significativos todos los dígitos distintos de cero. Ejemplo: 8723 tiene cuatro cifras significativas.</p>
+          <p class="teoria"><strong>PRECISIÓN Y EXACTITUD:</strong> La exactitud es lo cerca que el resultado de una medición está del valor verdadero. La precisión es lo cerca que los valores medidos están unos de otros.</p>
+          <p class="teoria"><strong>INCERTIDUMBRE:</strong> Se refiere al grado de alejamiento entre sí, a las diversas aproximaciones a un valor verdadero. La incertidumbre puede derivarse de una falta de información o incluso por que exista desacuerdo sobre lo que se sabe o lo que podría saberse.</p>
+          <p class="teoria"><strong>SESGO:</strong> Es un alejamiento sistemático del valor verdadero a calcular. Así como el error, de acuerdo con las formas por las cuales se produce, puede minimizarse, la ocurrencia de sesgo también puede ser neutralizada o controlada.</p>
         </div>
       </div>
 
-      <!-- 1.3 Tipos de errores -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">1.3</span>
@@ -720,34 +710,23 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria"><strong>Error de redondeo:</strong> Se origina al realizar cálculos cuando es imposible tomar todas las cifras que resultan de operaciones aritméticas, teniendo que retener solo un número limitado de cifras.</p>
-          <p class="teoria"><strong>Error por truncamiento:</strong> Ocurre cuando se interrumpe un proceso que requiere un número infinito de instrucciones para hallar la solución exacta.</p>
-          <p class="teoria"><strong>Error absoluto:</strong> Diferencia en valor absoluto entre el valor real y el valor aproximado: Ea = |Vreal - Vaprox|</p>
-          <p class="teoria"><strong>Error relativo:</strong> Error absoluto dividido entre el valor real: Er = Ea / |Vreal|</p>
-          <p class="teoria"><strong>Error porcentual:</strong> Error relativo multiplicado por 100: Ep = Er × 100%</p>
+          <p class="teoria"><strong>Errores Inherentes a los Métodos Numéricos:</strong> Un error es una incertidumbre en el resultado de una medida. Se define como la diferencia entre el valor real y una aproximación a este valor.</p>
+          <p class="teoria"><strong>Error de redondeo:</strong> Se originan al realizar los cálculos que todo método numérico o analítico requieren y son debidos a la imposibilidad de tomar todas las cifras que resultan de operaciones aritméticas.</p>
+          <p class="teoria"><strong>Error por Truncamiento:</strong> Existen muchos procesos que requieren la ejecución de un número infinito de instrucciones para hallar la solución exacta de un determinado problema. Puesto que es totalmente imposible realizar infinitas instrucciones, el proceso debe truncarse.</p>
+          <p class="teoria"><strong>Error Absoluto:</strong> El error absoluto no es negativo. Es una colección (suma) de errores.</p>
+          <p class="teoria"><strong>Error Relativo:</strong> Es el error absoluto dividido entre un número positivo adecuado.</p>
           
           <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ Calculadora de Errores</span>
-              <div class="dots">
-                <div class="dot" style="background:#ef4444"></div>
-                <div class="dot" style="background:#f59e0b"></div>
-                <div class="dot" style="background:#10b981"></div>
-              </div>
-            </div>
+            <div class="prog-top-bar"><span class="prog-label">▶ CalculadoraErrores.java</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
             <div class="prog-inputs">
-              <div class="inp-group"><label>Valor real</label><input class="prog-input" id="java-vr" type="number" value="9.81" step="any"></div>
-              <div class="inp-group"><label>Valor aproximado</label><input class="prog-input" id="java-va" type="number" value="9.75" step="any"></div>
+              <div class="inp-group"><label>Valor real</label><input class="prog-input" id="java-vr" type="number" value="9.81"></div>
+              <div class="inp-group"><label>Valor aproximado</label><input class="prog-input" id="java-va" type="number" value="9.75"></div>
             </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="runJava()">▶ Ejecutar</button>
-              <div class="output-box" id="out-java">Esperando...</div>
-            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="runJava()">▶ Ejecutar</button><div class="output-box" id="out-java">Esperando...</div></div>
           </div>
         </div>
       </div>
 
-      <!-- 1.4 Software -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">1.4</span>
@@ -755,15 +734,15 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria"><strong>MATLAB:</strong> Programa de cálculo numérico orientado a matrices y vectores. Muy utilizado en ingeniería e investigación.</p>
-          <p class="teoria"><strong>GNU Octave:</strong> Alternativa libre a MATLAB, con sintaxis muy similar.</p>
-          <p class="teoria"><strong>Python con NumPy/SciPy:</strong> Biblioteca de código abierto con potentes herramientas para cómputo numérico.</p>
-          <p class="teoria"><strong>NETLIB:</strong> Repositorio de software numérico de alta calidad.</p>
-          <p class="teoria"><strong>NAG e IMSL:</strong> Bibliotecas comerciales de subrutinas numéricas para Fortran y C.</p>
+          <p class="teoria"><strong>NETLIB:</strong> Netlib contiene software de alta calidad que ha sido probado en forma intensiva.</p>
+          <p class="teoria"><strong>NAG:</strong> El Grupo de Algoritmos numéricos (Numerical Algorithms Group) ha desarrollado una biblioteca de Fortran conteniendo alrededor de 1000 subrutinas.</p>
+          <p class="teoria"><strong>IMSL:</strong> La biblioteca numérica de Fortran IMSL cubre muchas áreas.</p>
+          <p class="teoria"><strong>NUMERICAL RECIPES:</strong> Los libros de Numerical Recipes in C/Fortran son muy populares como libro de cocina.</p>
+          <p class="teoria"><strong>MATLAB:</strong> Es un programa de cálculo numérico, orientado a matrices y vectores.</p>
+          <p class="teoria"><strong>GNU OCTAVE:</strong> Es un programa libre para realizar cálculos numéricos.</p>
         </div>
       </div>
 
-      <!-- 1.5 Métodos iterativos -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">1.5</span>
@@ -771,15 +750,9 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">Un método iterativo trata de resolver un problema matemático mediante aproximaciones sucesivas a la solución, empezando desde una estimación inicial. Esto contrasta con los métodos directos, que tratan de resolver el problema de una sola vez.</p>
+          <p class="teoria">Un método iterativo trata de resolver un problema matemático (como una ecuación o un sistema de ecuaciones) mediante aproximaciones sucesivas a la solución, empezando desde una estimación inicial.</p>
+          <p class="teoria">Esta aproximación contrasta con los métodos directos, que tratan de resolver el problema de una sola vez.</p>
           <p class="teoria">Los métodos iterativos son muy útiles para resolver problemas que involucran un número grande de variables (a veces del orden de millones), donde los métodos directos tendrían un coste prohibitivo.</p>
-          <p class="teoria"><strong>Características principales:</strong></p>
-          <ul>
-            <li>Utilizan aproximaciones sucesivas.</li>
-            <li>Requieren un valor inicial.</li>
-            <li>Funcionan mejor en problemas grandes.</li>
-            <li>Permiten reducir el tiempo de cálculo.</li>
-          </ul>
         </div>
       </div>
     </div>
@@ -796,117 +769,66 @@
     </div>
     <div class="subtemas-list">
 
-      <!-- 2.1 Métodos de intervalo -->
-      <div class="subtema-block" style="--c:#7c3aed">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">2.1</span>
-          <span class="subtema-name">Métodos de intervalo</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">Los métodos de intervalo son técnicas numéricas utilizadas para encontrar raíces de ecuaciones no lineales. Se basan en reducir progresivamente el intervalo de búsqueda de la solución hasta alcanzar la precisión deseada. Su característica principal es que no solo aproximan el valor de la raíz, sino que también acotan el intervalo que la contiene, lo que proporciona una garantía sobre la ubicación de la solución.</p>
-          <p class="teoria">Para aplicar un método de intervalo, es necesario que se verifiquen las condiciones del <strong>Teorema de Bolzano</strong>: la función debe ser continua en el intervalo cerrado [a, b] y cambiar de signo en sus extremos, es decir, f(a)·f(b) &lt; 0. Entre los métodos más conocidos de esta categoría se encuentran el método de bisección y el método de Regula Falsi.</p>
-          <p class="teoria"><strong>Teorema de Bolzano:</strong> Si f es continua en [a, b] y f(a)·f(b) &lt; 0, entonces existe al menos un c ∈ (a, b) tal que f(c) = 0.</p>
-        </div>
-      </div>
-
-      <!-- 2.2 Método de bisección -->
+      <!-- 2.2 Método de bisección - TEXTO ORIGINAL -->
       <div class="subtema-block" style="--c:#7c3aed">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">2.2</span>
-          <span class="subtema-name">Método de bisección (Bolzano)</span>
+          <span class="subtema-name">Método de bisección (Método de Bolzano)</span>
           <span class="has-prog">Programa</span>
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">El método de la bisección o también llamado <strong>Método de Bolzano</strong>, parte de una función F(x) y un intervalo [x₁, x₂] tal que F(x₁) y F(x₂) tienen signos contrarios. Si la función es continua en este intervalo, entonces existe una raíz de F(x) entre x₁ y x₂.</p>
-          <p class="teoria">Una vez determinado el intervalo y asegurada la continuidad, se evalúa la función en el punto medio xm. Si F(xm) y F(x₁) tienen signos contrarios, se reduce el intervalo a [x₁, xm]; en caso contrario, se reduce a [xm, x₂]. El proceso se repite hasta que la diferencia entre los dos últimos valores de xm sea menor que una tolerancia prefijada.</p>
-          <p class="teoria"><strong>Pasos del método:</strong></p>
+          <p class="teoria">El método de la bisección o también llamado Método de Bolzano, parte de una función F(x) y un intervalo [x1,x2] tal que F(x1) y F(x2) tienen signos contrarios. Si la función es continua en este intervalo, entonces existe una raíz de F(x) entre x1 y x2.</p>
+          <p class="teoria">Una vez determinado el intervalo [x1,x2] y asegurada la continuidad de la función en dicho intervalo, se evalúa ésta en el punto medio xm del intervalo.</p>
+          <p class="teoria">Si F(xm) y F(x1) tienen signos contrarios, se reducirá el intervalo de x1 a xm, ya que dentro de estos valores se encuentra la raíz buscada. Al repetir este proceso, hasta lograr que la diferencia entre los dos últimos valores de xm sea menor que una tolerancia prefijada, el último valor xm será una buena aproximación de la raíz.</p>
+          <p class="teoria"><strong>Pasos:</strong></p>
           <ul>
-            <li>Elija valores iniciales x₁ (inferior) y x₂ (superior) que encierren la raíz: f(x₁)·f(x₂) &lt; 0.</li>
-            <li>Calcule la aproximación: Xr = (x₁ + x₂) / 2.</li>
-            <li>Si f(x₁)·f(Xr) &lt; 0, la raíz está en [x₁, Xr]; haga x₂ = Xr.</li>
-            <li>Si f(x₁)·f(Xr) &gt; 0, la raíz está en [Xr, x₂]; haga x₁ = Xr.</li>
-            <li>Si f(x₁)·f(Xr) = 0, Xr es la raíz exacta.</li>
-            <li>Repita hasta alcanzar la tolerancia deseada.</li>
+            <li>Elija valores iniciales inferior x1, y superior de x2, que encierren a la raíz, de forma que la función cambie el signo en el intervalo. Esto se verifica comprobando que f(x1) f(x2)&lt;0</li>
+            <li>Una aproximación de la raíz, se determina mediante: Xr= (x1 + x2) / 2</li>
+            <li>Realice las siguiente evaluaciones para determinar en que subintervalo está la raíz:
+              <ul>
+                <li>Si f(x1) f(Xr)&lt;0, entonces la raíz se encuentra dentro del subintervalo inferior o izquierdo. Por tanto, haga X2 = Xr y vuelva al paso 2.</li>
+                <li>Si f(x1) f(Xr)&gt;0, entonces la raíz se encuentra dentro del subintervalo superior o derecho. Por tanto, haga X1 = Xr y vuelva al paso 2.</li>
+                <li>Si f(x1) f(Xr)=0, entonces la raíz se igual a Xr; y termina el cálculo.</li>
+              </ul>
+            </li>
           </ul>
-          <p class="teoria"><strong>Convergencia:</strong> El error después de n iteraciones es En ≤ (b - a) / 2ⁿ⁺¹. El método siempre converge si se cumplen las condiciones iniciales.</p>
-          
           <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ biseccion.py</span>
-              <div class="dots"><div class="dot" style="background:#7c3aed"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Método de bisección para f(x) = x³ - x - 2</span>
-<span class="kw">def</span> <span class="fn">f</span>(x): <span class="kw">return</span> x**<span class="nm">3</span> - x - <span class="nm">2</span>
-
-<span class="kw">def</span> <span class="fn">biseccion</span>(a, b, tol):
-    <span class="kw">if</span> <span class="fn">f</span>(a) * <span class="fn">f</span>(b) &gt;= <span class="nm">0</span>:
-        <span class="kw">return</span> <span class="kw">None</span>
-    <span class="kw">while</span> (b - a) / <span class="nm">2</span> &gt; tol:
-        c = (a + b) / <span class="nm">2</span>
-        <span class="kw">if</span> <span class="fn">f</span>(c) == <span class="nm">0</span>:
-            <span class="kw">return</span> c
-        <span class="kw">elif</span> <span class="fn">f</span>(a) * <span class="fn">f</span>(c) &lt; <span class="nm">0</span>:
-            b = c
-        <span class="kw">else</span>:
-            a = c
-    <span class="kw">return</span> (a + b) / <span class="nm">2</span></div>
+            <div class="prog-top-bar"><span class="prog-label">▶ biseccion.py</span><div class="dots"><div class="dot" style="background:#7c3aed"></div></div></div>
             <div class="prog-inputs">
-              <div class="inp-group"><label>a (inferior)</label><input class="prog-input" id="p22a" type="number" value="1"></div>
-              <div class="inp-group"><label>b (superior)</label><input class="prog-input" id="p22b" type="number" value="2"></div>
+              <div class="inp-group"><label>x1 (inferior)</label><input class="prog-input" id="p22a" type="number" value="1"></div>
+              <div class="inp-group"><label>x2 (superior)</label><input class="prog-input" id="p22b" type="number" value="2"></div>
             </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run22()">▶ Ejecutar</button>
-              <div class="output-box" id="out22">Esperando...</div>
-            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="run22()">▶ Ejecutar</button><div class="output-box" id="out22">Esperando...</div></div>
           </div>
         </div>
       </div>
 
-      <!-- 2.3 Aproximaciones sucesivas -->
+      <!-- 2.3 Método de aproximaciones sucesivas - TEXTO ORIGINAL -->
       <div class="subtema-block" style="--c:#7c3aed">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">2.3</span>
-          <span class="subtema-name">Método de aproximaciones sucesivas (punto fijo)</span>
+          <span class="subtema-name">Método de aproximaciones sucesivas</span>
           <span class="has-prog">Programa</span>
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">El método de aproximaciones sucesivas consiste en generar funciones convergentes bajo un esquema iterativo partiendo de la función original. Se basa en el siguiente teorema:</p>
-          <p class="teoria"><strong>Teorema de convergencia:</strong> La raíz de cualquier subfunción extraída de una función f(x) obtenida por una iteración convergente es también una raíz de f(x).</p>
-          <p class="teoria"><strong>Ejemplo:</strong> Sea f(x) = 5 sen x - 3x, la subfunción sen(x) tiene como raíz x = 0, la cual resulta ser también raíz de f(x).</p>
-          <p class="teoria">El método requiere una función g(x) tal que x = g(x). Partiendo de un valor inicial x₀, se genera la sucesión: xₙ₊₁ = g(xₙ).</p>
-          <p class="teoria"><strong>Condición de convergencia:</strong> Si |g'(x)| &lt; 1 en un entorno de la raíz, el método converge localmente.</p>
-          
+          <p class="teoria">El método de aproximaciones sucesivas consiste en generar funciones convergentes bajo un esquema iterativo partiendo de la función original, lo cual se soporta con el siguiente teorema:</p>
+          <p class="teoria"><strong>Teorema de convergencia:</strong> La raíz de cualquier subfunción extraída de una función f(x) obtenida por una iteración convergente, es también una raíz de f(x).</p>
+          <p class="teoria"><strong>Ejemplo de aplicación del teorema:</strong> Sea f(x)=5senx - 3x, la subfunción sen(x) tiene como raíz x=0, la cual resulta ser también la raíz de la función f(x).</p>
+          <p class="teoria">En este método se requiere de una regla, formula o subfunción g(x), con la que se calculan los términos sucesivos junto con un valor de partida. Esto produce una sucesión de valores {xn} obtenida mediante el proceso iterativo xn+1 = g(xn).</p>
           <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ punto_fijo.py</span>
-              <div class="dots"><div class="dot" style="background:#7c3aed"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Método de punto fijo para √N</span>
-<span class="cm"># g(x) = (x + N/x)/2   (método de Newton para raíz cuadrada)</span>
-<span class="kw">def</span> <span class="fn">punto_fijo</span>(N, x0, tol):
-    x = x0
-    <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">100</span>):
-        xn = (x + N/x) / <span class="nm">2</span>
-        <span class="kw">if</span> <span class="fn">abs</span>(xn - x) &lt; tol:
-            <span class="kw">return</span> xn
-        x = xn
-    <span class="kw">return</span> x</div>
+            <div class="prog-top-bar"><span class="prog-label">▶ aproximaciones_sucesivas.py</span><div class="dots"><div class="dot" style="background:#7c3aed"></div></div></div>
             <div class="prog-inputs">
               <div class="inp-group"><label>N (radicando)</label><input class="prog-input" id="p23a" type="number" value="2"></div>
-              <div class="inp-group"><label>x₀ (valor inicial)</label><input class="prog-input" id="p23b" type="number" value="1.5"></div>
+              <div class="inp-group"><label>x0 (valor inicial)</label><input class="prog-input" id="p23b" type="number" value="1.5"></div>
             </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run23()">▶ Ejecutar</button>
-              <div class="output-box" id="out23">Esperando...</div>
-            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="run23()">▶ Ejecutar</button><div class="output-box" id="out23">Esperando...</div></div>
           </div>
         </div>
       </div>
 
-      <!-- 2.4 Métodos de interpolación -->
+      <!-- 2.4 Métodos de interpolación - TEXTO ORIGINAL -->
       <div class="subtema-block" style="--c:#7c3aed">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">2.4</span>
@@ -914,12 +836,9 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">Los métodos de interpolación para resolución de ecuaciones utilizan aproximaciones polinómicas para estimar raíces.</p>
-          <p class="teoria"><strong>Método de la secante:</strong> Variante del método de Newton que no requiere calcular derivadas. Aproxima la derivada mediante diferencias finitas:</p>
-          <p class="teoria" style="text-align:center; font-family:var(--mono);">xₙ₊₁ = xₙ - f(xₙ)·(xₙ - xₙ₋₁)/(f(xₙ) - f(xₙ₋₁))</p>
-          <p class="teoria">Converge más rápido que la bisección (orden ≈ 1.618, el número áureo).</p>
-          <p class="teoria"><strong>Interpolación cuadrática inversa:</strong> Usa tres puntos para construir un polinomio cuadrático y estimar la raíz. Más robusta que la secante.</p>
-          <p class="teoria"><strong>Método de Ridder:</strong> Combina bisección con interpolación exponencial, ofreciendo convergencia rápida y garantizada.</p>
+          <p class="teoria">En el subcampo matemático del análisis numérico, se denomina interpolación a la obtención de nuevos puntos partiendo del conocimiento de un conjunto discreto de puntos.</p>
+          <p class="teoria">En ingeniería y algunas ciencias es frecuente disponer de un cierto número de puntos obtenidos por muestreo o a partir de un experimento y pretender construir una función que los ajuste.</p>
+          <p class="teoria">Otro problema estrechamente ligado con el de la interpolación es la aproximación de una función complicada por una más simple. Si tenemos una función cuyo cálculo resulta costoso, podemos partir de un cierto número de sus valores e interpolar dichos datos construyendo una función más simple. En general, por supuesto, no obtendremos los mismos valores evaluando la función obtenida que si evaluásemos la función original, si bien dependiendo de las características del problema y del método de interpolación usado la ganancia en eficiencia puede compensar el error cometido.</p>
         </div>
       </div>
 
@@ -932,28 +851,16 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria"><strong>Ingeniería:</strong> Los métodos de intervalo y aproximaciones sucesivas se utilizan para calcular raíces de ecuaciones que modelan fenómenos físicos. En termodinámica se emplean para resolver ecuaciones de estado como Van der Waals. En mecánica de fluidos, para determinar el factor de fricción mediante la ecuación de Colebrook-White.</p>
-          <p class="teoria"><strong>Economía y finanzas:</strong> Cálculo de tasas internas de retorno (TIR) y puntos de equilibrio en modelos de oferta-demanda no lineales.</p>
-          <p class="teoria"><strong>Ciencias naturales:</strong> Modelos de crecimiento poblacional (logístico) y cálculos de concentraciones en equilibrio químico.</p>
-          
+          <p class="teoria">En ingeniería, los métodos de intervalo y de aproximaciones sucesivas se utilizan para calcular raíces de ecuaciones que modelan fenómenos físicos. Por ejemplo, en termodinámica se emplean para resolver ecuaciones de estado como la de Van der Waals. En mecánica de fluidos, el método de la secante o de Newton se aplica para determinar el factor de fricción en tuberías mediante la ecuación de Colebrook-White.</p>
+          <p class="teoria">En economía y finanzas, el cálculo de tasas internas de retorno (TIR) de inversiones requiere resolver ecuaciones polinómicas o no lineales. En ciencias naturales, los modelos de crecimiento poblacional involucran ecuaciones no lineales que requieren métodos numéricos para su resolución.</p>
           <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ interes_compuesto.py</span>
-              <div class="dots"><div class="dot" style="background:#7c3aed"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Cálculo de interés compuesto</span>
-<span class="cm"># Capital final = P * (1 + r/100)^n</span>
-<span class="kw">def</span> <span class="fn">interes_compuesto</span>(P, r, n):
-    <span class="kw">return</span> P * ( <span class="nm">1</span> + r/<span class="nm">100</span> ) ** n</div>
+            <div class="prog-top-bar"><span class="prog-label">▶ interes_compuesto.py</span><div class="dots"><div class="dot" style="background:#7c3aed"></div></div></div>
             <div class="prog-inputs">
               <div class="inp-group"><label>Capital inicial (P)</label><input class="prog-input" id="p25a" type="number" value="1000"></div>
               <div class="inp-group"><label>Tasa anual % (r)</label><input class="prog-input" id="p25b" type="number" value="5"></div>
               <div class="inp-group"><label>Años (n)</label><input class="prog-input" id="p25c" type="number" value="10"></div>
             </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run25()">▶ Ejecutar</button>
-              <div class="output-box" id="out25">Esperando...</div>
-            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="run25()">▶ Ejecutar</button><div class="output-box" id="out25">Esperando...</div></div>
           </div>
         </div>
       </div>
@@ -980,33 +887,18 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">Los métodos iterativos son técnicas eficientes para resolver sistemas de ecuaciones lineales, especialmente cuando se trabaja con matrices grandes y dispersas.</p>
-          <p class="teoria"><strong>Método de Jacobi:</strong> Despeja cada variable en función de las demás usando valores de la iteración anterior. Todas las nuevas aproximaciones se calculan exclusivamente con valores previos.</p>
-          <p class="teoria"><strong>Método de Gauss-Seidel:</strong> Mejora a Jacobi utilizando valores actualizados tan pronto como están disponibles. Generalmente converge más rápido.</p>
-          <p class="teoria"><strong>Condición de convergencia:</strong> La matriz debe ser diagonalmente dominante: |aᵢᵢ| &gt; Σ|aᵢⱼ| para todo i.</p>
-          
+          <p class="teoria">Los métodos iterativos son técnicas utilizadas para resolver sistemas de ecuaciones lineales, especialmente eficientes cuando se trabaja con matrices grandes y dispersas. A diferencia de los métodos directos, estos generan una sucesión de aproximaciones que, bajo ciertas condiciones, converge a la solución exacta.</p>
+          <p class="teoria"><strong>Método de Jacobi:</strong> Este método resuelve un sistema de ecuaciones lineales despejando cada variable en función de las demás y usando los valores de la iteración anterior para calcular los nuevos. Una característica clave es que todas las nuevas aproximaciones se calculan exclusivamente con los valores de la iteración anterior.</p>
+          <p class="teoria"><strong>Método de Gauss-Seidel:</strong> Es una mejora del método de Jacobi, ya que utiliza los valores más actualizados de las variables tan pronto como están disponibles. Esta actualización inmediata generalmente acelera la convergencia.</p>
+          <p class="teoria"><strong>Convergencia:</strong> Para que estos métodos converjan, la matriz debe ser diagonalmente dominante.</p>
           <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ gauss_seidel.py</span>
-              <div class="dots"><div class="dot" style="background:#10b981"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Sistema: 4x + y = 9, x + 3y = 7</span>
-<span class="cm"># Despejando: x = (9 - y)/4, y = (7 - x)/3</span>
-<span class="kw">def</span> <span class="fn">gauss_seidel</span>():
-    x, y = <span class="nm">0</span>, <span class="nm">0</span>
-    <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">20</span>):
-        x = (<span class="nm">9</span> - y) / <span class="nm">4</span>
-        y = (<span class="nm">7</span> - x) / <span class="nm">3</span>
-    <span class="kw">return</span> x, y</div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run31()">▶ Ejecutar</button>
-              <div class="output-box" id="out31">Esperando...</div>
-            </div>
+            <div class="prog-top-bar"><span class="prog-label">▶ gauss_seidel.py</span><div class="dots"><div class="dot" style="background:#10b981"></div></div></div>
+            <div class="prog-footer"><button class="run-btn" onclick="run31()">▶ Ejecutar</button><div class="output-box" id="out31">Esperando...</div></div>
           </div>
         </div>
       </div>
 
-      <!-- 3.2 Sistemas no lineales -->
+      <!-- 3.2 Sistemas de ecuaciones no lineales -->
       <div class="subtema-block" style="--c:#10b981">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">3.2</span>
@@ -1014,14 +906,9 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">Un sistema de ecuaciones no lineales incluye términos como potencias (x²), productos (xy), funciones trigonométricas (sen x), exponenciales, etc. Estos sistemas son inherentemente más complejos que los lineales.</p>
-          <p class="teoria"><strong>Linealización:</strong> Técnica común que aproxima el sistema no lineal por uno lineal alrededor de un punto de interés, válido localmente.</p>
-          <p class="teoria"><strong>Comportamientos complejos posibles:</strong></p>
-          <ul>
-            <li><strong>Múltiples puntos de equilibrio:</strong> Varias soluciones estacionarias.</li>
-            <li><strong>Ciclos límite:</strong> Trayectorias cerradas de evolución.</li>
-            <li><strong>Caos:</strong> Comportamiento aparentemente aleatorio y sensible a condiciones iniciales (efecto mariposa).</li>
-          </ul>
+          <p class="teoria">Un sistema de ecuaciones no lineales incluye términos que no son lineales, como potencias (ej. x²), productos (ej. xy), funciones trigonométricas (ej. sen(x)), exponenciales, etc. Estos sistemas son inherentemente más complejos que los lineales y modelan una mayor variedad de fenómenos reales.</p>
+          <p class="teoria"><strong>Linealización:</strong> Una técnica común para estudiar sistemas no lineales es linealizarlos alrededor de un punto de interés. Esto implica aproximar el sistema no lineal por un sistema lineal válido en una región pequeña ("localmente").</p>
+          <p class="teoria"><strong>Comportamientos complejos:</strong> Los sistemas no lineales pueden presentar múltiples puntos de equilibrio, ciclos límite, y caos (comportamiento aparentemente aleatorio y extremadamente sensible a las condiciones iniciales, como en el famoso "efecto mariposa").</p>
         </div>
       </div>
 
@@ -1029,41 +916,23 @@
       <div class="subtema-block" style="--c:#10b981">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">3.3</span>
-          <span class="subtema-name">Iteración y convergencia</span>
+          <span class="subtema-name">Iteración y convergencia de sistemas de ecuaciones</span>
           <span class="has-prog">Programa</span>
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">Tanto para sistemas lineales como no lineales, los métodos iterativos se basan en el concepto de <strong>punto fijo</strong>: reescribir el sistema como x = F(x) y generar la sucesión x⁽ᵏ⁾ = F(x⁽ᵏ⁻¹⁾).</p>
-          <p class="teoria"><strong>Criterios de convergencia:</strong></p>
-          <ul>
-            <li><strong>Cota de error:</strong> Se define una tolerancia y se detiene el proceso cuando la diferencia entre iteraciones es menor que ese valor.</li>
-            <li><strong>Número máximo de iteraciones:</strong> Se establece un límite para evitar ciclos infinitos.</li>
-          </ul>
-          <p class="teoria">La convergencia no está garantizada para cualquier sistema; depende de la forma de las ecuaciones, la aproximación inicial y las propiedades matemáticas.</p>
-          
+          <p class="teoria">Tanto para sistemas lineales como no lineales, los métodos iterativos se basan en el concepto de punto fijo: reescribir el sistema como x = F(x) y generar una sucesión x(k) = F(x(k-1)).</p>
+          <p class="teoria"><strong>Criterios de convergencia:</strong> Cota de error: se define una tolerancia y se detiene el proceso cuando la diferencia entre iteraciones sucesivas es menor que ese valor. Número de iteraciones: se establece un número máximo de iteraciones para evitar ciclos infinitos.</p>
+          <p class="teoria">La convergencia no está garantizada para cualquier sistema. Factores como la forma de las ecuaciones, la aproximación inicial y las propiedades matemáticas del sistema determinan si el proceso se acercará a una solución.</p>
           <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ verificar_dominancia.py</span>
-              <div class="dots"><div class="dot" style="background:#10b981"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Verificar si una matriz es diagonalmente dominante</span>
-<span class="kw">def</span> <span class="fn">es_diagonal_dominante</span>(A):
-    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="fn">len</span>(A)):
-        suma = <span class="fn">sum</span>(<span class="fn">abs</span>(A[i][j]) <span class="kw">for</span> j <span class="kw">in</span> <span class="fn">range</span>(<span class="fn">len</span>(A)) <span class="kw">if</span> j != i)
-        <span class="kw">if</span> <span class="fn">abs</span>(A[i][i]) &lt;= suma:
-            <span class="kw">return</span> <span class="kw">False</span>
-    <span class="kw">return</span> <span class="kw">True</span></div>
+            <div class="prog-top-bar"><span class="prog-label">▶ verificar_dominancia.py</span><div class="dots"><div class="dot" style="background:#10b981"></div></div></div>
             <div class="prog-inputs">
               <div class="inp-group"><label>a₁₁</label><input class="prog-input" id="p33a" type="number" value="4"></div>
               <div class="inp-group"><label>a₁₂</label><input class="prog-input" id="p33b" type="number" value="1"></div>
               <div class="inp-group"><label>a₂₁</label><input class="prog-input" id="p33c" type="number" value="1"></div>
               <div class="inp-group"><label>a₂₂</label><input class="prog-input" id="p33d" type="number" value="3"></div>
             </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run33()">▶ Verificar</button>
-              <div class="output-box" id="out33">Esperando...</div>
-            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="run33()">▶ Verificar</button><div class="output-box" id="out33">Esperando...</div></div>
           </div>
         </div>
       </div>
@@ -1076,10 +945,10 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria"><strong>Ingeniería y Física:</strong> Análisis de redes eléctricas (cálculo de voltajes/corrientes), transferencia de calor, mecánica de fluidos, modelos estructurales.</p>
-          <p class="teoria"><strong>Biología y Ecología:</strong> Modelo depredador-presa de Lotka-Volterra para fluctuaciones cíclicas de poblaciones.</p>
-          <p class="teoria"><strong>Fenómenos Naturales:</strong> Péndulo con ángulos grandes (periodo dependiente de amplitud, caos).</p>
-          <p class="teoria"><strong>Economía y Química:</strong> Mercados con oferta-demanda no lineal (múltiples equilibrios, burbujas), reacciones químicas oscilantes (Belousov-Zhabotinsky).</p>
+          <p class="teoria"><strong>Ingeniería y Física:</strong> Los métodos iterativos como Jacobi y Gauss-Seidel se utilizan para resolver grandes sistemas lineales en el análisis de redes eléctricas (cálculo de voltajes y corrientes), en problemas de transferencia de calor (distribución de temperaturas en sólidos) y en mecánica de fluidos.</p>
+          <p class="teoria"><strong>Biología y Ecología:</strong> Los sistemas de ecuaciones diferenciales no lineales modelan la interacción entre especies. El modelo depredador-presa de Lotka-Volterra es un ejemplo clásico que describe las fluctuaciones cíclicas de poblaciones.</p>
+          <p class="teoria"><strong>Fenómenos Naturales:</strong> El movimiento del péndulo con ángulos grandes es un ejemplo de sistema no lineal. A diferencia del péndulo lineal, en este caso el periodo de oscilación depende de la amplitud, y pueden aparecer comportamientos caóticos.</p>
+          <p class="teoria"><strong>Economía y Química:</strong> En economía, los sistemas no lineales modelan mercados con oferta y demanda no lineales, pudiendo producir múltiples puntos de equilibrio. En química, reacciones complejas como las oscilantes de Belousov-Zhabotinsky se describen con sistemas no lineales.</p>
         </div>
       </div>
     </div>
@@ -1105,30 +974,16 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">La diferenciación numérica aproxima derivadas mediante fórmulas de diferencias finitas basadas en series de Taylor.</p>
-          <p class="teoria"><strong>Diferencia hacia adelante (O(h)):</strong> f'(x) ≈ [f(x+h) - f(x)] / h</p>
-          <p class="teoria"><strong>Diferencia centrada (O(h²)):</strong> f'(x) ≈ [f(x+h) - f(x-h)] / (2h)</p>
-          <p class="teoria"><strong>Segunda derivada:</strong> f''(x) ≈ [f(x+h) - 2f(x) + f(x-h)] / h²</p>
-          <p class="teoria">La diferencia centrada converge cuadráticamente: al reducir h a la mitad, el error se reduce a la cuarta parte.</p>
-          
+          <p class="teoria">La diferenciación numérica consiste en aproximar la derivada de una función utilizando fórmulas basadas en diferencias finitas. Estas técnicas son particularmente útiles cuando la función es muy compleja o cuando solo se dispone de valores puntuales de la misma.</p>
+          <p class="teoria"><strong>Fórmulas:</strong> Diferencia hacia adelante: f'(x) ≈ (f(x+h)-f(x))/h (error O(h)). Diferencia centrada: f'(x) ≈ (f(x+h)-f(x-h))/(2h) (error O(h²)). Segunda derivada: f''(x) ≈ (f(x+h)-2f(x)+f(x-h))/h² (error O(h²)).</p>
+          <p class="teoria">Es importante señalar que, aunque teóricamente el error disminuye al hacer h más pequeño, en la práctica computacional existe un valor crítico por debajo del cual los errores de redondeo comienzan a dominar.</p>
           <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ diferenciacion.py</span>
-              <div class="dots"><div class="dot" style="background:#f59e0b"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Derivada numérica de f(x) = x²</span>
-<span class="kw">def</span> <span class="fn">derivada_centrada</span>(x, h):
-    <span class="kw">return</span> ((x+h)**<span class="nm">2</span> - (x-h)**<span class="nm">2</span>) / (<span class="nm">2</span>*h)
-
-<span class="cm"># Exacto: f'(x) = 2x</span></div>
+            <div class="prog-top-bar"><span class="prog-label">▶ diferenciacion.py</span><div class="dots"><div class="dot" style="background:#f59e0b"></div></div></div>
             <div class="prog-inputs">
               <div class="inp-group"><label>x</label><input class="prog-input" id="p41a" type="number" value="2"></div>
-              <div class="inp-group"><label>h</label><input class="prog-input" id="p41b" type="number" value="0.001" step="0.0001"></div>
+              <div class="inp-group"><label>h</label><input class="prog-input" id="p41b" type="number" value="0.001"></div>
             </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run41()">▶ Ejecutar</button>
-              <div class="output-box" id="out41">Esperando...</div>
-            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="run41()">▶ Ejecutar</button><div class="output-box" id="out41">Esperando...</div></div>
           </div>
         </div>
       </div>
@@ -1137,40 +992,23 @@
       <div class="subtema-block" style="--c:#f59e0b">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">4.2</span>
-          <span class="subtema-name">Integración numérica (cuadratura)</span>
+          <span class="subtema-name">Integración numérica</span>
           <span class="has-prog">Programa</span>
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">La integración numérica aproxima integrales definidas cuando no existe solución analítica o la función solo se conoce en puntos discretos.</p>
-          <p class="teoria"><strong>Regla del punto medio:</strong> ∫ f(x)dx ≈ (b-a)·f((a+b)/2)</p>
-          <p class="teoria"><strong>Regla del trapecio:</strong> ∫ f(x)dx ≈ (b-a)/2 · [f(a) + f(b)]</p>
-          <p class="teoria"><strong>Regla de Simpson 1/3:</strong> ∫ f(x)dx ≈ (b-a)/6 · [f(a) + 4f((a+b)/2) + f(b)]</p>
-          <p class="teoria">Las versiones compuestas dividen el intervalo en subintervalos para mayor precisión. Simpson requiere número par de subintervalos.</p>
-          
+          <p class="teoria">La integración numérica, también llamada cuadratura numérica, tiene como objetivo aproximar el valor de una integral definida cuando la función no puede integrarse analíticamente o solo se conoce en puntos discretos.</p>
+          <p class="teoria"><strong>Regla del trapecio:</strong> ∫f(x)dx ≈ (b-a)/2·[f(a)+f(b)].</p>
+          <p class="teoria"><strong>Regla de Simpson 1/3:</strong> Para su aplicación, el número de subintervalos n debe ser par. ∫f(x)dx ≈ (b-a)/6·[f(a)+4f((a+b)/2)+f(b)].</p>
+          <p class="teoria"><strong>Regla de Simpson 3/8:</strong> Requiere n múltiplo de 3.</p>
           <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ simpson.py</span>
-              <div class="dots"><div class="dot" style="background:#f59e0b"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Integración de f(x)=x² con Simpson compuesto</span>
-<span class="kw">def</span> <span class="fn">f</span>(x): <span class="kw">return</span> x**<span class="nm">2</span>
-
-<span class="kw">def</span> <span class="fn">simpson</span>(a, b, n):
-    h = (b - a) / n
-    suma = <span class="fn">f</span>(a) + <span class="fn">f</span>(b)
-    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">1</span>, n):
-        suma += (<span class="nm">4</span> <span class="kw">if</span> i%<span class="nm">2</span> <span class="kw">else</span> <span class="nm">2</span>) * <span class="fn">f</span>(a + i*h)
-    <span class="kw">return</span> suma * h / <span class="nm">3</span></div>
+            <div class="prog-top-bar"><span class="prog-label">▶ simpson.py</span><div class="dots"><div class="dot" style="background:#f59e0b"></div></div></div>
             <div class="prog-inputs">
               <div class="inp-group"><label>a</label><input class="prog-input" id="p42a" type="number" value="0"></div>
               <div class="inp-group"><label>b</label><input class="prog-input" id="p42b" type="number" value="2"></div>
               <div class="inp-group"><label>n (par)</label><input class="prog-input" id="p42c" type="number" value="100"></div>
             </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run42()">▶ Ejecutar</button>
-              <div class="output-box" id="out42">Esperando...</div>
-            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="run42()">▶ Ejecutar</button><div class="output-box" id="out42">Esperando...</div></div>
           </div>
         </div>
       </div>
@@ -1179,15 +1017,13 @@
       <div class="subtema-block" style="--c:#f59e0b">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">4.3</span>
-          <span class="subtema-name">Integración múltiple y método de Monte Carlo</span>
+          <span class="subtema-name">Integración múltiple</span>
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">La integración múltiple en dos o más dimensiones sufre la <strong>"maldición de la dimensionalidad"</strong>: los métodos tradicionales requieren un número de puntos que crece exponencialmente con la dimensión.</p>
-          <p class="teoria"><strong>Método de Monte Carlo:</strong> Utiliza muestreo aleatorio para aproximar integrales. La estimación es: I ≈ V·(1/N)·Σ f(x̄ᵢ), donde V es el volumen de integración.</p>
-          <p class="teoria">La incertidumbre disminuye como 1/√N, independiente del número de dimensiones. Para reducir el error a la mitad, se necesitan 4 veces más muestras.</p>
-          <p class="teoria"><strong>Variantes avanzadas:</strong> Muestreo estratificado, muestreo por importancia, algoritmo MISER.</p>
-          <p class="teoria">Aplicaciones: mecánica cuántica, finanzas, inferencia bayesiana, simulaciones estadísticas.</p>
+          <p class="teoria">La integración múltiple se refiere a la aproximación de integrales en dos o más dimensiones. A medida que aumenta la dimensionalidad, los métodos tradicionales basados en cuadrículas regulares sufren la llamada "maldición de la dimensionalidad", ya que el número de puntos necesarios crece exponencialmente con el número de dimensiones.</p>
+          <p class="teoria"><strong>Método de Monte Carlo:</strong> Una alternativa poderosa para integrales multidimensionales. Emplea muestreo aleatorio. Su velocidad de convergencia (del orden de 1/√n) es independiente del número de dimensiones.</p>
+          <p class="teoria">La gran ventaja es que resulta especialmente eficiente para integrales en espacios de alta dimensionalidad, como las que aparecen en mecánica cuántica de muchos cuerpos o en problemas estadísticos.</p>
         </div>
       </div>
 
@@ -1199,11 +1035,10 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria"><strong>Ingeniería y física:</strong> Cálculo de campos de velocidad/aceleración, trabajo termodinámico, transferencia de calor, diferencias finitas.</p>
-          <p class="teoria"><strong>Economía y finanzas:</strong> Elasticidades, valoración de opciones financieras, modelos de incertidumbre multidimensional.</p>
-          <p class="teoria"><strong>Estadística y ciencia de datos:</strong> Funciones de densidad probabilidad, inferencia bayesiana (evidencia marginal).</p>
-          <p class="teoria"><strong>Procesamiento de señales:</strong> Extracción de velocidad de GPS, reconstrucción de posición desde acelerómetros.</p>
-          <p class="teoria"><strong>Simulación computacional:</strong> Modelos climáticos, dinámica molecular, simulaciones aeroespaciales.</p>
+          <p class="teoria"><strong>En ingeniería y física:</strong> En mecánica de fluidos, la diferenciación numérica se utiliza para calcular campos de velocidad y aceleración a partir de datos experimentales discretos. En termodinámica, la integración numérica permite calcular el trabajo realizado por un gas. En problemas de transferencia de calor, ambos métodos son esenciales para resolver ecuaciones diferenciales parciales mediante el método de diferencias finitas.</p>
+          <p class="teoria"><strong>En economía y finanzas:</strong> El método de Monte Carlo es particularmente popular en la valoración de opciones financieras y otros derivados, especialmente cuando los modelos incluyen múltiples fuentes de incertidumbre.</p>
+          <p class="teoria"><strong>En estadística y ciencia de datos:</strong> La integración de Monte Carlo se emplea ampliamente en inferencia bayesiana para aproximar integrales que no tienen solución analítica.</p>
+          <p class="teoria"><strong>En procesamiento de señales:</strong> La diferenciación numérica se utiliza para extraer información de señales digitales, como calcular la velocidad a partir de datos de posición obtenidos por GPS.</p>
         </div>
       </div>
     </div>
@@ -1219,81 +1054,9 @@
       </div>
     </div>
     <div class="subtemas-list">
-      <!-- 5.1 Newton -->
-      <div class="subtema-block" style="--c:#ef4444">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">5.1</span>
-          <span class="subtema-name">Polinomio de interpolación de Newton</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">El polinomio de Newton usa diferencias divididas. Ventaja: añadir un nuevo punto solo requiere agregar un término.</p>
-          <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ newton.py</span><div class="dots"><div class="dot" style="background:#ef4444"></div></div></div>
-            <div class="prog-inputs">
-              <div class="inp-group"><label>x₁,y₁</label><input id="p51a" class="prog-input" placeholder="1,1"></div>
-              <div class="inp-group"><label>x₂,y₂</label><input id="p51b" class="prog-input" placeholder="2,4"></div>
-              <div class="inp-group"><label>x₃,y₃</label><input id="p51c" class="prog-input" placeholder="3,9"></div>
-              <div class="inp-group"><label>Evaluar x=</label><input id="p51d" class="prog-input" type="number" value="2.5"></div>
-            </div>
-            <div class="prog-footer"><button class="run-btn" onclick="run51()">▶ Ejecutar</button><div class="output-box" id="out51">Esperando...</div></div>
-          </div>
-        </div>
-      </div>
-      <!-- 5.2 Lagrange -->
-      <div class="subtema-block" style="--c:#ef4444">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">5.2</span>
-          <span class="subtema-name">Polinomio de interpolación de Lagrange</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">Forma alternativa equivalente a Newton: P(x) = Σ yᵢ Lᵢ(x), donde Lᵢ(x) vale 1 en xᵢ y 0 en los demás nodos.</p>
-          <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ lagrange.py</span><div class="dots"><div class="dot" style="background:#ef4444"></div></div></div>
-            <div class="prog-inputs">
-              <div class="inp-group"><label>x₁,y₁</label><input id="p52a" class="prog-input" placeholder="0,1"></div>
-              <div class="inp-group"><label>x₂,y₂</label><input id="p52b" class="prog-input" placeholder="1,2.718"></div>
-              <div class="inp-group"><label>x₃,y₃</label><input id="p52c" class="prog-input" placeholder="2,7.389"></div>
-              <div class="inp-group"><label>Evaluar x=</label><input id="p52d" class="prog-input" type="number" value="0.5"></div>
-            </div>
-            <div class="prog-footer"><button class="run-btn" onclick="run52()">▶ Ejecutar</button><div class="output-box" id="out52">Esperando...</div></div>
-          </div>
-        </div>
-      </div>
-      <!-- 5.3 Segmentada -->
-      <div class="subtema-block" style="--c:#ef4444">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">5.3</span>
-          <span class="subtema-name">Interpolación segmentada (splines)</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">Usa polinomios de bajo grado en cada subintervalo. Los <strong>splines cúbicos</strong> garantizan continuidad de f, f' y f'' en los nodos, evitando oscilaciones.</p>
-        </div>
-      </div>
-      <!-- 5.4 Regresión -->
-      <div class="subtema-block" style="--c:#ef4444">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">5.4</span>
-          <span class="subtema-name">Regresión lineal y mínimos cuadrados</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">Minimiza la suma de cuadrados de residuales. Para y=ax+b: a=(nΣxy-ΣxΣy)/(nΣx²-(Σx)²), b=(Σy-aΣx)/n.</p>
-          <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ minimos_cuadrados.py</span><div class="dots"><div class="dot" style="background:#ef4444"></div></div></div>
-            <div class="prog-inputs">
-              <div class="inp-group"><label>x (separados ,)</label><input id="p55a" class="prog-input" value="1,2,3,4,5"></div>
-              <div class="inp-group"><label>y (separados ,)</label><input id="p55b" class="prog-input" value="2.1,3.9,6.2,7.8,10.1"></div>
-            </div>
-            <div class="prog-footer"><button class="run-btn" onclick="run55()">▶ Ejecutar</button><div class="output-box" id="out55">Esperando...</div></div>
-          </div>
-        </div>
-      </div>
+      <div class="subtema-block" style="--c:#ef4444"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.1</span><span class="subtema-name">Polinomio de Newton</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ newton.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x1,y1</label><input id="p51a" class="prog-input" placeholder="1,1"></div><div class="inp-group"><label>x2,y2</label><input id="p51b" class="prog-input" placeholder="2,4"></div><div class="inp-group"><label>x3,y3</label><input id="p51c" class="prog-input" placeholder="3,9"></div><div class="inp-group"><label>Evaluar x</label><input id="p51d" class="prog-input" type="number" value="2.5"></div></div><div class="prog-footer"><button class="run-btn" onclick="run51()">▶ Ejecutar</button><div class="output-box" id="out51">Esperando...</div></div></div></div></div>
+      <div class="subtema-block" style="--c:#ef4444"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.2</span><span class="subtema-name">Polinomio de Lagrange</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ lagrange.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x1,y1</label><input id="p52a" class="prog-input" placeholder="0,1"></div><div class="inp-group"><label>x2,y2</label><input id="p52b" class="prog-input" placeholder="1,2.718"></div><div class="inp-group"><label>x3,y3</label><input id="p52c" class="prog-input" placeholder="2,7.389"></div><div class="inp-group"><label>Evaluar x</label><input id="p52d" class="prog-input" type="number" value="0.5"></div></div><div class="prog-footer"><button class="run-btn" onclick="run52()">▶ Ejecutar</button><div class="output-box" id="out52">Esperando...</div></div></div></div></div>
+      <div class="subtema-block" style="--c:#ef4444"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.3</span><span class="subtema-name">Mínimos cuadrados</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ minimos_cuadrados.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x (separados ,)</label><input id="p55a" class="prog-input" value="1,2,3,4,5"></div><div class="inp-group"><label>y (separados ,)</label><input id="p55b" class="prog-input" value="2.1,3.9,6.2,7.8,10.1"></div></div><div class="prog-footer"><button class="run-btn" onclick="run55()">▶ Ejecutar</button><div class="output-box" id="out55">Esperando...</div></div></div></div></div>
     </div>
   </div>
 
@@ -1307,194 +1070,33 @@
       </div>
     </div>
     <div class="subtemas-list">
-      <!-- 6.1 Paso -->
-      <div class="subtema-block" style="--c:#ec4899">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">6.1</span>
-          <span class="subtema-name">Métodos de paso (Euler y RK4)</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria"><strong>Euler:</strong> yₙ₊₁ = yₙ + h·f(xₙ,yₙ) (error O(h)).<br><strong>Runge-Kutta 4to orden:</strong> yₙ₊₁ = yₙ + (k₁+2k₂+2k₃+k₄)/6, error O(h⁴).</p>
-          <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ euler.py</span><div class="dots"><div class="dot" style="background:#ec4899"></div></div></div>
-            <div class="prog-inputs">
-              <div class="inp-group"><label>x final</label><input id="p61a" class="prog-input" type="number" value="1"></div>
-              <div class="inp-group"><label>h</label><input id="p61b" class="prog-input" type="number" value="0.1"></div>
-            </div>
-            <div class="prog-footer"><button class="run-btn" onclick="run61()">▶ Ejecutar</button><div class="output-box" id="out61">Esperando...</div></div>
-          </div>
-        </div>
-      </div>
-      <!-- 6.2 Pasos múltiples -->
-      <div class="subtema-block" style="--c:#ec4899">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">6.2</span>
-          <span class="subtema-name">Métodos de pasos múltiples y RK4</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">RK4 para dy/dx = -2xy, y(0)=1. Solución exacta: y = e^(-x²).</p>
-          <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ rk4.py</span><div class="dots"><div class="dot" style="background:#ec4899"></div></div></div>
-            <div class="prog-inputs">
-              <div class="inp-group"><label>x final</label><input id="p62a" class="prog-input" type="number" value="1"></div>
-              <div class="inp-group"><label>h</label><input id="p62b" class="prog-input" type="number" value="0.1"></div>
-            </div>
-            <div class="prog-footer"><button class="run-btn" onclick="run62()">▶ Ejecutar</button><div class="output-box" id="out62">Esperando...</div></div>
-          </div>
-        </div>
-      </div>
+      <div class="subtema-block" style="--c:#ec4899"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">6.1</span><span class="subtema-name">Método de Euler</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ euler.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x final</label><input id="p61a" class="prog-input" type="number" value="1"></div><div class="inp-group"><label>h</label><input id="p61b" class="prog-input" type="number" value="0.1"></div></div><div class="prog-footer"><button class="run-btn" onclick="run61()">▶ Ejecutar</button><div class="output-box" id="out61">Esperando...</div></div></div></div></div>
+      <div class="subtema-block" style="--c:#ec4899"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">6.2</span><span class="subtema-name">Runge-Kutta 4to orden</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ rk4.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x final</label><input id="p62a" class="prog-input" type="number" value="1"></div><div class="inp-group"><label>h</label><input id="p62b" class="prog-input" type="number" value="0.1"></div></div><div class="prog-footer"><button class="run-btn" onclick="run62()">▶ Ejecutar</button><div class="output-box" id="out62">Esperando...</div></div></div></div></div>
     </div>
   </div>
 </div>
 
 <script>
-function showOverview() {
-  document.getElementById('overview-view').style.display = 'block';
-  document.querySelectorAll('.unit-detail').forEach(d => d.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach((b,i) => b.classList.toggle('active', i===0));
-}
-function showUnit(n) {
-  document.getElementById('overview-view').style.display = 'none';
-  document.querySelectorAll('.unit-detail').forEach(d => d.classList.remove('active'));
-  document.getElementById('unit-'+n).classList.add('active');
-  document.querySelectorAll('.nav-btn').forEach((b,i) => b.classList.toggle('active', i===n));
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+function showOverview() { document.getElementById('overview-view').style.display = 'block'; document.querySelectorAll('.unit-detail').forEach(d => d.classList.remove('active')); document.querySelectorAll('.nav-btn').forEach((b,i) => b.classList.toggle('active', i===0)); }
+function showUnit(n) { document.getElementById('overview-view').style.display = 'none'; document.querySelectorAll('.unit-detail').forEach(d => d.classList.remove('active')); document.getElementById('unit-'+n).classList.add('active'); document.querySelectorAll('.nav-btn').forEach((b,i) => b.classList.toggle('active', i===n)); window.scrollTo({top:0,behavior:'smooth'}); }
 function toggle(header) { header.parentElement.classList.toggle('open'); }
 function v(id) { return document.getElementById(id).value; }
 function out(id, text) { document.getElementById(id).textContent = text; }
 
-// FUNCIONES DE CADA PROGRAMA
-function runJava() {
-  const vr = parseFloat(v('java-vr')), va = parseFloat(v('java-va'));
-  if (isNaN(vr) || isNaN(va)) { out('out-java','Valores inválidos'); return; }
-  const eAbs = Math.abs(vr - va), eRel = eAbs / Math.abs(vr), ePct = eRel * 100;
-  out('out-java', `Error Absoluto: ${eAbs.toFixed(4)}\nError Relativo: ${eRel.toFixed(6)}\nError Porcentual: ${ePct.toFixed(4)}%`);
-}
-
-function run22() {
-  const a=parseFloat(v('p22a')), b=parseFloat(v('p22b'));
-  const f=x=>x*x*x-x-2;
-  if(f(a)*f(b)>=0) { out('out22','No hay cambio de signo'); return; }
-  let aa=a, bb=b, iter=0;
-  while((bb-aa)/2>1e-6 && iter<100) {
-    const c=(aa+bb)/2; iter++;
-    if(f(c)===0) break;
-    else if(f(aa)*f(c)<0) bb=c;
-    else aa=c;
-  }
-  const r=(aa+bb)/2;
-  out('out22', `Raíz ≈ ${r.toFixed(7)}\nf(r)=${f(r).toExponential(2)}\nIter: ${iter}`);
-}
-
-function run23() {
-  const N=parseFloat(v('p23a')), x0=parseFloat(v('p23b'));
-  if(isNaN(N)||N<=0) { out('out23','N positivo'); return; }
-  let x=x0;
-  for(let i=0;i<50;i++) {
-    const xn=(x+N/x)/2;
-    if(Math.abs(xn-x)<1e-12) { x=xn; break; }
-    x=xn;
-  }
-  out('out23', `√${N} ≈ ${x.toFixed(10)}\nVerif: ${(x*x).toFixed(6)}`);
-}
-
-function run25() {
-  const P=parseFloat(v('p25a')), r=parseFloat(v('p25b')), n=parseFloat(v('p25c'));
-  if(isNaN(P)||isNaN(r)||isNaN(n)) { out('out25','Inválido'); return; }
-  const total = P * Math.pow(1 + r/100, n);
-  out('out25', `Capital final: $${total.toFixed(2)}\nGanancia: $${(total-P).toFixed(2)}`);
-}
-
-function run31() {
-  let x=0,y=0;
-  for(let i=0;i<30;i++) { x=(9-y)/4; y=(7-x)/3; }
-  out('out31', `x = ${x.toFixed(6)}\ny = ${y.toFixed(6)}\n4x+y = ${(4*x+y).toFixed(4)} (≈9)`);
-}
-
-function run33() {
-  const a=Math.abs(parseFloat(v('p33a'))), b=Math.abs(parseFloat(v('p33b')));
-  const c=Math.abs(parseFloat(v('p33c'))), d=Math.abs(parseFloat(v('p33d')));
-  out('out33', `Fila1: |${a}| > |${b}| ? ${a>b?'✓':'✗'}\nFila2: |${d}| > |${c}| ? ${d>c?'✓':'✗'}`);
-}
-
-function run41() {
-  const x=parseFloat(v('p41a')), h=parseFloat(v('p41b'))||0.001;
-  const aprox = ((x+h)*(x+h) - (x-h)*(x-h))/(2*h);
-  out('out41', `f'(x) ≈ ${aprox.toFixed(8)}\nExacto: ${(2*x).toFixed(8)}\nError: ${Math.abs(aprox-2*x).toExponential(2)}`);
-}
-
-function run42() {
-  const a=parseFloat(v('p42a')), b=parseFloat(v('p42b')), n=parseInt(v('p42c'))||100;
-  const h=(b-a)/n;
-  let s=0;
-  for(let i=0;i<=n;i++) {
-    const xi=a+i*h, yi=xi*xi;
-    if(i===0||i===n) s+=yi;
-    else if(i%2===0) s+=2*yi;
-    else s+=4*yi;
-  }
-  const res = s*h/3, exact = (b*b*b - a*a*a)/3;
-  out('out42', `Simpson: ${res.toFixed(8)}\nExacto: ${exact.toFixed(8)}\nError: ${Math.abs(res-exact).toExponential(2)}`);
-}
-
-function parsePoint(s) { const p=s.split(',').map(v=>parseFloat(v.trim())); return p.length===2&&!isNaN(p[0])&&!isNaN(p[1])?p:null; }
-
-function run51() {
-  const p1=parsePoint(v('p51a')), p2=parsePoint(v('p51b')), p3=parsePoint(v('p51c'));
-  const xe=parseFloat(v('p51d'));
-  if(!p1||!p2||!p3) { out('out51','Formato: x,y'); return; }
-  const xs=[p1[0],p2[0],p3[0]], ys=[p1[1],p2[1],p3[1]];
-  let r=ys[2];
-  r=r*(xe-xs[1])+ys[1];
-  r=r*(xe-xs[0])+ys[0];
-  out('out51', `P(${xe}) ≈ ${r.toFixed(6)}`);
-}
-
-function run52() {
-  const p1=parsePoint(v('p52a')), p2=parsePoint(v('p52b')), p3=parsePoint(v('p52c'));
-  const xe=parseFloat(v('p52d'));
-  if(!p1||!p2||!p3) { out('out52','Formato: x,y'); return; }
-  const xs=[p1[0],p2[0],p3[0]], ys=[p1[1],p2[1],p3[1]];
-  let res=0;
-  for(let i=0;i<3;i++) { let L=1; for(let j=0;j<3;j++) if(i!==j) L*=(xe-xs[j])/(xs[i]-xs[j]); res+=ys[i]*L; }
-  out('out52', `P(${xe}) ≈ ${res.toFixed(6)}`);
-}
-
-function run55() {
-  const xs=v('p55a').split(',').map(Number), ys=v('p55b').split(',').map(Number);
-  if(xs.length!==ys.length||xs.some(isNaN)) { out('out55','Misma cantidad de puntos'); return; }
-  const n=xs.length;
-  const sx=xs.reduce((a,b)=>a+b,0), sy=ys.reduce((a,b)=>a+b,0);
-  const sxy=xs.reduce((s,x,i)=>s+x*ys[i],0), sx2=xs.reduce((s,x)=>s+x*x,0);
-  const a=(n*sxy-sx*sy)/(n*sx2-sx*sx);
-  const b=(sy-a*sx)/n;
-  out('out55', `y = ${a.toFixed(4)}x + ${b.toFixed(4)}`);
-}
-
-function run61() {
-  const xf=parseFloat(v('p61a')), h=parseFloat(v('p61b'))||0.1;
-  let x=0,y=1;
-  while(x<xf-1e-9) { y+=h*y; x+=h; }
-  const exact=Math.exp(xf);
-  out('out61', `Euler: y(${xf}) = ${y.toFixed(8)}\nExacto e^${xf} = ${exact.toFixed(8)}\nError: ${Math.abs(y-exact).toExponential(2)}`);
-}
-
-function run62() {
-  const xf=parseFloat(v('p62a')), h=parseFloat(v('p62b'))||0.1;
-  const f=(x,y)=>-2*x*y;
-  let x=0,y=1;
-  while(x<xf-1e-9) {
-    const k1=h*f(x,y), k2=h*f(x+h/2,y+k1/2), k3=h*f(x+h/2,y+k2/2), k4=h*f(x+h,y+k3);
-    y+=(k1+2*k2+2*k3+k4)/6; x+=h;
-  }
-  const exact=Math.exp(-xf*xf);
-  out('out62', `RK4: y(${xf}) = ${y.toFixed(10)}\nExacto e^(-${xf}²) = ${exact.toFixed(10)}\nError: ${Math.abs(y-exact).toExponential(2)}`);
-}
+function runJava() { const vr=parseFloat(v('java-vr')), va=parseFloat(v('java-va')); if(isNaN(vr)||isNaN(va)){out('out-java','Inválido');return;} const eAbs=Math.abs(vr-va), eRel=eAbs/Math.abs(vr), ePct=eRel*100; out('out-java',`Error Absoluto: ${eAbs.toFixed(4)}\nError Relativo: ${eRel.toFixed(6)}\nError Porcentual: ${ePct.toFixed(4)}%`); }
+function run22() { const a=parseFloat(v('p22a')),b=parseFloat(v('p22b')); const f=x=>x*x*x-x-2; if(f(a)*f(b)>=0){out('out22','No hay cambio de signo');return;} let aa=a,bb=b,iter=0; while((bb-aa)/2>1e-6&&iter<100){const c=(aa+bb)/2;iter++; if(f(c)===0)break; else if(f(aa)*f(c)<0)bb=c; else aa=c;} const r=(aa+bb)/2; out('out22',`Raíz ≈ ${r.toFixed(7)}\nf(r)=${f(r).toExponential(2)}\nIter: ${iter}`); }
+function run23() { const N=parseFloat(v('p23a')), x0=parseFloat(v('p23b')); if(isNaN(N)||N<=0){out('out23','N positivo');return;} let x=x0; for(let i=0;i<50;i++){const xn=(x+N/x)/2; if(Math.abs(xn-x)<1e-12){x=xn;break;} x=xn;} out('out23',`√${N} ≈ ${x.toFixed(10)}\nVerif: ${(x*x).toFixed(6)}`); }
+function run25() { const P=parseFloat(v('p25a')),r=parseFloat(v('p25b')),n=parseFloat(v('p25c')); if(isNaN(P)||isNaN(r)||isNaN(n)){out('out25','Inválido');return;} const total=P*Math.pow(1+r/100,n); out('out25',`Capital final: $${total.toFixed(2)}\nGanancia: $${(total-P).toFixed(2)}`); }
+function run31() { let x=0,y=0; for(let i=0;i<30;i++){x=(9-y)/4; y=(7-x)/3;} out('out31',`x = ${x.toFixed(6)}\ny = ${y.toFixed(6)}\n4x+y = ${(4*x+y).toFixed(4)} (≈9)`); }
+function run33() { const a=Math.abs(parseFloat(v('p33a'))),b=Math.abs(parseFloat(v('p33b'))),c=Math.abs(parseFloat(v('p33c'))),d=Math.abs(parseFloat(v('p33d'))); out('out33',`Fila1: |${a}| > |${b}| ? ${a>b?'✓':'✗'}\nFila2: |${d}| > |${c}| ? ${d>c?'✓':'✗'}`); }
+function run41() { const x=parseFloat(v('p41a')),h=parseFloat(v('p41b'))||0.001; const aprox=((x+h)*(x+h)-(x-h)*(x-h))/(2*h); out('out41',`f'(x) ≈ ${aprox.toFixed(8)}\nExacto: ${(2*x).toFixed(8)}\nError: ${Math.abs(aprox-2*x).toExponential(2)}`); }
+function run42() { const a=parseFloat(v('p42a')),b=parseFloat(v('p42b')),n=parseInt(v('p42c'))||100; const h=(b-a)/n; let s=0; for(let i=0;i<=n;i++){const xi=a+i*h, yi=xi*xi; if(i===0||i===n) s+=yi; else if(i%2===0) s+=2*yi; else s+=4*yi;} const res=s*h/3, exact=(b*b*b-a*a*a)/3; out('out42',`Simpson: ${res.toFixed(8)}\nExacto: ${exact.toFixed(8)}\nError: ${Math.abs(res-exact).toExponential(2)}`); }
+function parsePoint(s){const p=s.split(',').map(v=>parseFloat(v.trim())); return p.length===2&&!isNaN(p[0])&&!isNaN(p[1])?p:null;}
+function run51(){const p1=parsePoint(v('p51a')),p2=parsePoint(v('p51b')),p3=parsePoint(v('p51c')); const xe=parseFloat(v('p51d')); if(!p1||!p2||!p3){out('out51','Formato: x,y');return;} const xs=[p1[0],p2[0],p3[0]], ys=[p1[1],p2[1],p3[1]]; let r=ys[2]; r=r*(xe-xs[1])+ys[1]; r=r*(xe-xs[0])+ys[0]; out('out51',`P(${xe}) ≈ ${r.toFixed(6)}`); }
+function run52(){const p1=parsePoint(v('p52a')),p2=parsePoint(v('p52b')),p3=parsePoint(v('p52c')); const xe=parseFloat(v('p52d')); if(!p1||!p2||!p3){out('out52','Formato: x,y');return;} const xs=[p1[0],p2[0],p3[0]], ys=[p1[1],p2[1],p3[1]]; let res=0; for(let i=0;i<3;i++){let L=1; for(let j=0;j<3;j++) if(i!==j) L*=(xe-xs[j])/(xs[i]-xs[j]); res+=ys[i]*L;} out('out52',`P(${xe}) ≈ ${res.toFixed(6)}`); }
+function run55(){const xs=v('p55a').split(',').map(Number), ys=v('p55b').split(',').map(Number); if(xs.length!==ys.length||xs.some(isNaN)){out('out55','Misma cantidad de puntos');return;} const n=xs.length; const sx=xs.reduce((a,b)=>a+b,0), sy=ys.reduce((a,b)=>a+b,0); const sxy=xs.reduce((s,x,i)=>s+x*ys[i],0), sx2=xs.reduce((s,x)=>s+x*x,0); const a=(n*sxy-sx*sy)/(n*sx2-sx*sx); const b=(sy-a*sx)/n; out('out55',`y = ${a.toFixed(4)}x + ${b.toFixed(4)}`); }
+function run61(){const xf=parseFloat(v('p61a')), h=parseFloat(v('p61b'))||0.1; let x=0,y=1; while(x<xf-1e-9){y+=h*y; x+=h;} const exact=Math.exp(xf); out('out61',`Euler: y(${xf}) = ${y.toFixed(8)}\nExacto e^${xf} = ${exact.toFixed(8)}\nError: ${Math.abs(y-exact).toExponential(2)}`); }
+function run62(){const xf=parseFloat(v('p62a')), h=parseFloat(v('p62b'))||0.1; const f=(x,y)=>-2*x*y; let x=0,y=1; while(x<xf-1e-9){const k1=h*f(x,y), k2=h*f(x+h/2,y+k1/2), k3=h*f(x+h/2,y+k2/2), k4=h*f(x+h,y+k3); y+=(k1+2*k2+2*k3+k4)/6; x+=h;} const exact=Math.exp(-xf*xf); out('out62',`RK4: y(${xf}) = ${y.toFixed(10)}\nExacto e^(-${xf}²) = ${exact.toFixed(10)}\nError: ${Math.abs(y-exact).toExponential(2)}`); }
 </script>
 </body>
 </html>
