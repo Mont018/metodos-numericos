@@ -850,352 +850,277 @@
     </div>
   </div>
 
-  <!-- ===== UNIT 2 ===== -->
-  <div class="unit-detail" id="unit-2">
-    <div class="detail-header">
-      <button class="back-btn" onclick="showOverview()">← Volver</button>
-      <div class="detail-title-wrap">
-        <h2 style="color:#7c3aed">Unidad 2</h2>
-        <p>Métodos de Solución de Ecuaciones</p>
-      </div>
-    </div>
-    <div class="subtemas-list">
-
-      <div class="subtema-block" style="--c:#7c3aed">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">2.1</span>
-          <span class="subtema-name">Métodos de intervalo</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">Los métodos de intervalo (o métodos de acotación) se basan en el teorema de valor intermedio: si f(a) y f(b) tienen signos opuestos, existe al menos una raíz en [a,b]. Garantizan convergencia pero pueden ser lentos. Ejemplos: bisección y regla falsa.</p>
-        </div>
-      </div>
-
-      <div class="subtema-block" style="--c:#7c3aed">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">2.2</span>
-          <span class="subtema-name">Método de bisección</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">El método de bisección divide repetidamente el intervalo [a,b] a la mitad y selecciona el subintervalo donde ocurre el cambio de signo. Es robusto y siempre converge, aunque lentamente. Requiere aproximadamente log₂((b-a)/ε) iteraciones.</p>
-          <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ biseccion.py</span>
-              <div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Método de bisección para f(x) = x³ - x - 2</span>
-<span class="kw">def</span> <span class="fn">f</span>(x):
-    <span class="kw">return</span> x**<span class="nm">3</span> - x - <span class="nm">2</span>
-
-<span class="kw">def</span> <span class="fn">biseccion</span>(a, b, tol=<span class="nm">0.001</span>):
-    iters = []
-    <span class="kw">while</span> (b - a) / <span class="nm">2</span> &gt; tol:
-        c = (a + b) / <span class="nm">2</span>
-        iters.append(c)
-        <span class="kw">if</span> <span class="fn">f</span>(c) == <span class="nm">0</span>: <span class="kw">break</span>
-        <span class="kw">elif</span> <span class="fn">f</span>(a) * <span class="fn">f</span>(c) &lt; <span class="nm">0</span>: b = c
-        <span class="kw">else</span>: a = c
-    <span class="kw">return</span> (a+b)/<span class="nm">2</span>, <span class="fn">len</span>(iters)</div>
-            <div class="prog-inputs">
-              <div class="inp-group"><label>Límite a</label><input class="prog-input" id="p22a" type="number" value="1"></div>
-              <div class="inp-group"><label>Límite b</label><input class="prog-input" id="p22b" type="number" value="2"></div>
-            </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run22()">▶ Ejecutar</button>
-              <div class="output-box" id="out22">Esperando...</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="subtema-block" style="--c:#7c3aed">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">2.3</span>
-          <span class="subtema-name">Método de aproximaciones sucesivas</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">También llamado método de punto fijo. Se reescribe f(x)=0 como x=g(x) y se itera xₙ₊₁=g(xₙ). Converge si |g'(x)|&lt;1 en el intervalo. El método de Newton-Raphson es una variante de punto fijo de convergencia cuadrática.</p>
-          <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ newton_raphson.py</span>
-              <div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Newton-Raphson para f(x) = x² - N (raíz de N)</span>
-<span class="kw">def</span> <span class="fn">newton</span>(N, x0, tol=<span class="nm">1e-6</span>):
-    x = x0
-    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">100</span>):
-        fx = x**<span class="nm">2</span> - N
-        dfx = <span class="nm">2</span>*x
-        x_new = x - fx/dfx
-        <span class="kw">if</span> <span class="fn">abs</span>(x_new - x) &lt; tol:
-            <span class="kw">return</span> x_new, i+<span class="nm">1</span>
-        x = x_new</div>
-            <div class="prog-inputs">
-              <div class="inp-group"><label>N (encontrar √N)</label><input class="prog-input" id="p23a" type="number" value="9"></div>
-              <div class="inp-group"><label>Estimación inicial x₀</label><input class="prog-input" id="p23b" type="number" value="3"></div>
-            </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run23()">▶ Ejecutar</button>
-              <div class="output-box" id="out23">Esperando...</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="subtema-block" style="--c:#7c3aed">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">2.4</span>
-          <span class="subtema-name">Métodos de interpolación</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">La interpolación es el proceso de estimar valores intermedios entre puntos discretos de datos. La regla falsa (Regula Falsi) es un método de intervalo que usa interpolación lineal para estimar la raíz: c = b - f(b)(b-a)/(f(b)-f(a)).</p>
-        </div>
-      </div>
-
-      <div class="subtema-block" style="--c:#7c3aed">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">2.5</span>
-          <span class="subtema-name">Aplicaciones</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">Aplicación práctica: encontrar la tasa de interés de un préstamo. Dado un préstamo P, n pagos mensuales de pago A, encontrar la tasa mensual i que satisface la ecuación financiera usando bisección.</p>
-          <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ aplicacion_prestamo.py</span>
-              <div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Calcular el monto final con interés compuesto</span>
-<span class="kw">def</span> <span class="fn">interes_compuesto</span>(P, r, n):
-    <span class="st">"""P=capital, r=tasa anual (%), n=años"""</span>
-    <span class="kw">return</span> P * (<span class="nm">1</span> + r/<span class="nm">100</span>)**n</div>
-            <div class="prog-inputs">
-              <div class="inp-group"><label>Capital P ($)</label><input class="prog-input" id="p25a" type="number" value="10000"></div>
-              <div class="inp-group"><label>Tasa anual (%)</label><input class="prog-input" id="p25b" type="number" value="5"></div>
-              <div class="inp-group"><label>Años n</label><input class="prog-input" id="p25c" type="number" value="10"></div>
-            </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run25()">▶ Ejecutar</button>
-              <div class="output-box" id="out25">Esperando...</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+ <!-- ===== UNIT 2 ===== -->
+<div class="unit-detail" id="unit-2">
+  <div class="detail-header">
+    <button class="back-btn" onclick="showOverview()">← Volver</button>
+    <div class="detail-title-wrap">
+      <h2 style="color:#7c3aed">Unidad 2</h2>
+      <p>Métodos de Solución de Ecuaciones</p>
     </div>
   </div>
+  <div class="subtemas-list">
+
+    <!-- 2.1 -->
+    <div class="subtema-block" style="--c:#7c3aed">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">2.1</span>
+        <span class="subtema-name">Métodos de intervalo</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="subtema-body">
+        <p class="teoria">Los métodos de intervalo son técnicas numéricas utilizadas para encontrar raíces de ecuaciones no lineales. Estos métodos se basan en reducir progresivamente el intervalo de búsqueda de la solución hasta alcanzar la precisión deseada. Su característica principal es que no solo aproximan el valor de la raíz, sino que también acotan el intervalo que la contiene, lo que proporciona una garantía sobre la ubicación de la solución.</p>
+        <p class="teoria">Para aplicar un método de intervalo, es necesario que se verifiquen las condiciones del <strong>Teorema de Bolzano</strong>: la función debe ser continua en el intervalo cerrado [a,b] y cambiar de signo en sus extremos, es decir, f(a)·f(b) &lt; 0. Entre los métodos más conocidos de esta categoría se encuentran el método de bisección y el método de Regula Falsi.</p>
+      </div>
+    </div>
+
+    <!-- 2.2 -->
+    <div class="subtema-block" style="--c:#7c3aed">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">2.2</span>
+        <span class="subtema-name">Método de bisección</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="subtema-body">
+        <p class="teoria">El método de la bisección o también llamado <strong>Método de Bolzano</strong>, parte de una función F(x) y un intervalo [x1, x2] tal que F(x1) y F(x2) tienen signos contrarios. Si la función es continua en este intervalo, entonces existe una raíz de F(x) entre x1 y x2.</p>
+        <p class="teoria">Una vez determinado el intervalo [x1, x2] y asegurada la continuidad de la función en dicho intervalo, se evalúa ésta en el punto medio xm del intervalo. Si F(xm) y F(x1) tienen signos contrarios, se reducirá el intervalo de x1 a xm, ya que dentro de estos valores se encuentra la raíz buscada. Al repetir este proceso, hasta lograr que la diferencia entre los dos últimos valores de xm sea menor que una tolerancia prefijada, el último valor xm será una buena aproximación de la raíz.</p>
+        <p class="teoria"><strong>Pasos:</strong></p>
+        <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
+          <li>Elija valores iniciales inferior x1, y superior x2, que encierren a la raíz, de forma que la función cambie el signo en el intervalo. Esto se verifica comprobando que f(x1)·f(x2) &lt; 0.</li>
+          <li>Una aproximación de la raíz se determina mediante: Xr = (x1 + x2) / 2.</li>
+          <li>Realice las siguientes evaluaciones para determinar en qué subintervalo está la raíz:
+            <ul style="margin-left:1.5rem;margin-top:0.5rem">
+              <li>Si f(x1)·f(Xr) &lt; 0, entonces la raíz se encuentra dentro del subintervalo inferior o izquierdo. Por tanto, haga X2 = Xr y vuelva al paso 2.</li>
+              <li>Si f(x1)·f(Xr) &gt; 0, entonces la raíz se encuentra dentro del subintervalo superior o derecho. Por tanto, haga X1 = Xr y vuelva al paso 2.</li>
+              <li>Si f(x1)·f(Xr) = 0, entonces la raíz es igual a Xr; y termina el cálculo.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2.3 -->
+    <div class="subtema-block" style="--c:#7c3aed">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">2.3</span>
+        <span class="subtema-name">Método de aproximaciones sucesivas</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="subtema-body">
+        <p class="teoria">El método de aproximaciones sucesivas consiste en generar funciones convergentes bajo un esquema iterativo partiendo de la función original, lo cual se soporta con el siguiente teorema:</p>
+        <p class="teoria"><strong>Teorema de convergencia:</strong> La raíz de cualquier subfunción extraída de una función f(x) obtenida por una iteración convergente, es también una raíz de f(x).</p>
+        <p class="teoria"><strong>Ejemplo de aplicación del teorema:</strong> Sea f(x) = 5 sen x - 3x, la subfunción sen(x) tiene como raíz x = 0, la cual resulta ser también la raíz de la función f(x).</p>
+        <p class="teoria">En este método se requiere de una regla, fórmula o subfunción g(x), con la que se calculan los términos sucesivos junto con un valor de partida. Esto produce una sucesión de valores {xn} obtenida mediante el proceso iterativo xn+1 = g(xn).</p>
+      </div>
+    </div>
+
+    <!-- 2.4 -->
+    <div class="subtema-block" style="--c:#7c3aed">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">2.4</span>
+        <span class="subtema-name">Métodos de interpolación</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="subtema-body">
+        <p class="teoria">Los métodos de interpolación para la resolución de ecuaciones son técnicas que utilizan aproximaciones polinómicas para estimar las raíces de una función. Se pueden mencionar los siguientes métodos:</p>
+        <p class="teoria"><strong>Método de la secante.</strong> Es una variante del método de Newton que no requiere calcular derivadas. En lugar de usar la tangente, aproxima la derivada mediante una diferencia finita entre dos iteraciones anteriores. La fórmula de recurrencia es: x_(n+1) = x_n - f(x_n)·(x_n - x_(n-1)) / (f(x_n) - f(x_(n-1))). Este método converge más rápido que la bisección (su orden de convergencia es aproximadamente 1.618, el número áureo), pero no garantiza la convergencia para todas las funciones.</p>
+        <p class="teoria"><strong>Interpolación cuadrática inversa.</strong> Este método utiliza tres puntos para construir un polinomio de interpolación cuadrático y estimar la raíz. Suele ser más robusto que el método de la secante.</p>
+        <p class="teoria"><strong>Método de Ridder.</strong> Es una variante que combina la bisección con interpolación exponencial, ofreciendo convergencia rápida y garantizada para funciones continuas.</p>
+      </div>
+    </div>
+
+    <!-- 2.5 -->
+    <div class="subtema-block" style="--c:#7c3aed">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">2.5</span>
+        <span class="subtema-name">Aplicaciones</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="subtema-body">
+        <p class="teoria"><strong>En ingeniería.</strong> Los métodos de intervalo y de aproximaciones sucesivas se utilizan para calcular raíces de ecuaciones que modelan fenómenos físicos. Por ejemplo, en termodinámica se emplean para resolver ecuaciones de estado como la de Van der Waals, que permite predecir el comportamiento de gases reales. En mecánica de fluidos, el método de la secante o de Newton se aplica para determinar el factor de fricción en tuberías mediante la ecuación de Colebrook-White, una ecuación no lineal implícita.</p>
+        <p class="teoria"><strong>En economía y finanzas.</strong> El cálculo de tasas internas de retorno (TIR) de inversiones requiere resolver ecuaciones polinómicas o no lineales, donde la bisección o Newton son herramientas estándar. También se aplican en modelos de oferta y demanda para encontrar puntos de equilibrio cuando las curvas son no lineales.</p>
+        <p class="teoria"><strong>En ciencias naturales.</strong> En biología, los modelos de crecimiento poblacional (como el modelo logístico) involucran ecuaciones no lineales que requieren métodos numéricos para su resolución. En química, el cálculo de concentraciones en equilibrio de reacciones complejas a menudo conduce a ecuaciones polinómicas de grado superior que deben resolverse numéricamente.</p>
+        <p class="teoria"><strong>En el ámbito educativo y computacional.</strong> Existen numerosas aplicaciones móviles y software especializado que implementan estos métodos para ayudar a estudiantes y profesionales. Por ejemplo, Photomath y Symbolab son herramientas que permiten escanear o ingresar ecuaciones y obtienen soluciones paso a paso utilizando técnicas como Newton-Raphson, bisección y otros métodos numéricos. Estas aplicaciones no solo proporcionan la solución, sino que muestran el proceso completo de resolución, lo que facilita el aprendizaje de los conceptos subyacentes.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
 
   <!-- ===== UNIT 3 ===== -->
-  <div class="unit-detail" id="unit-3">
-    <div class="detail-header">
-      <button class="back-btn" onclick="showOverview()">← Volver</button>
-      <div class="detail-title-wrap">
-        <h2 style="color:#10b981">Unidad 3</h2>
-        <p>Métodos de Solución de Sistemas de Ecuaciones</p>
-      </div>
-    </div>
-    <div class="subtemas-list">
-
-      <div class="subtema-block" style="--c:#10b981">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">3.1</span>
-          <span class="subtema-name">Métodos iterativos</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">Los métodos iterativos para sistemas de ecuaciones lineales incluyen <strong>Jacobi</strong> y <strong>Gauss-Seidel</strong>. Jacobi actualiza todas las variables usando los valores de la iteración anterior. Gauss-Seidel usa los valores más recientes disponibles, convergiendo más rápido.</p>
-          <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ gauss_seidel.py</span>
-              <div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Gauss-Seidel: 4x+y=9, x+3y=7</span>
-<span class="kw">def</span> <span class="fn">gauss_seidel</span>(tol=<span class="nm">0.001</span>):
-    x, y = <span class="nm">0</span>, <span class="nm">0</span>
-    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">50</span>):
-        x_n = (<span class="nm">9</span> - y) / <span class="nm">4</span>
-        y_n = (<span class="nm">7</span> - x_n) / <span class="nm">3</span>
-        <span class="kw">if</span> <span class="fn">abs</span>(x_n-x) + <span class="fn">abs</span>(y_n-y) &lt; tol:
-            <span class="kw">return</span> x_n, y_n, i+<span class="nm">1</span>
-        x, y = x_n, y_n</div>
-            <div class="prog-footer" style="padding-top:0.75rem">
-              <button class="run-btn" onclick="run31()">▶ Ejecutar</button>
-              <div class="output-box" id="out31">Esperando...</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="subtema-block" style="--c:#10b981">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">3.2</span>
-          <span class="subtema-name">Sistemas de ecuaciones no lineales</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">Para sistemas de ecuaciones no lineales F(x)=0, se generaliza Newton-Raphson usando la matriz Jacobiana J(x). La iteración es xₙ₊₁ = xₙ - J⁻¹(xₙ)F(xₙ). Requiere resolver un sistema lineal en cada iteración, lo que puede ser costoso computacionalmente.</p>
-        </div>
-      </div>
-
-      <div class="subtema-block" style="--c:#10b981">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">3.3</span>
-          <span class="subtema-name">Iteración y convergencia de sistemas</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">La convergencia de métodos iterativos para sistemas depende del radio espectral de la matriz de iteración. Para Jacobi y Gauss-Seidel, la condición suficiente es que la matriz sea diagonal dominante: |aᵢᵢ| &gt; Σⱼ≠ᵢ|aᵢⱼ|.</p>
-          <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ diagonal_dominante.py</span>
-              <div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Verificar diagonal dominante de una matriz 2x2</span>
-<span class="kw">def</span> <span class="fn">es_diagonal_dominante</span>(a11, a12, a21, a22):
-    fila1 = <span class="fn">abs</span>(a11) &gt; <span class="fn">abs</span>(a12)
-    fila2 = <span class="fn">abs</span>(a22) &gt; <span class="fn">abs</span>(a21)
-    <span class="kw">return</span> fila1 <span class="kw">and</span> fila2</div>
-            <div class="prog-inputs">
-              <div class="inp-group"><label>a11</label><input class="prog-input" id="p33a" type="number" value="4"></div>
-              <div class="inp-group"><label>a12</label><input class="prog-input" id="p33b" type="number" value="1"></div>
-              <div class="inp-group"><label>a21</label><input class="prog-input" id="p33c" type="number" value="1"></div>
-              <div class="inp-group"><label>a22</label><input class="prog-input" id="p33d" type="number" value="3"></div>
-            </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run33()">▶ Ejecutar</button>
-              <div class="output-box" id="out33">Esperando...</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="subtema-block" style="--c:#10b981">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">3.4</span>
-          <span class="subtema-name">Aplicaciones</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">Los sistemas de ecuaciones aparecen en: análisis de circuitos eléctricos (leyes de Kirchhoff), análisis de estructuras (método de rigidez), redes de fluidos, modelos económicos de insumo-producto (modelo de Leontief), y simulaciones de fluidos computacionales (CFD).</p>
-        </div>
-      </div>
-
+<div class="unit-detail" id="unit-3">
+  <div class="detail-header">
+    <button class="back-btn" onclick="showOverview()">← Volver</button>
+    <div class="detail-title-wrap">
+      <h2 style="color:#10b981">Unidad 3</h2>
+      <p>Métodos de Solución de Sistemas de Ecuaciones</p>
     </div>
   </div>
+  <div class="subtemas-list">
 
-  <!-- ===== UNIT 4 ===== -->
-  <div class="unit-detail" id="unit-4">
-    <div class="detail-header">
-      <button class="back-btn" onclick="showOverview()">← Volver</button>
-      <div class="detail-title-wrap">
-        <h2 style="color:#f59e0b">Unidad 4</h2>
-        <p>Diferenciación e Integración Numérica</p>
+    <!-- 3.1 -->
+    <div class="subtema-block" style="--c:#10b981">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">3.1</span>
+        <span class="subtema-name">Métodos iterativos</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="subtema-body">
+        <p class="teoria">Los métodos iterativos son técnicas utilizadas para resolver sistemas de ecuaciones lineales, especialmente eficientes cuando se trabaja con matrices grandes y dispersas (con muchos ceros). A diferencia de los métodos directos, estos generan una sucesión de aproximaciones que, bajo ciertas condiciones, converge a la solución exacta.</p>
+        <p class="teoria"><strong>Método de Jacobi.</strong> Este método, nombrado en honor al matemático Carl Gustav Jacob Jacobi, resuelve un sistema de ecuaciones lineales despejando cada variable en función de las demás y usando los valores de la iteración anterior para calcular los nuevos. Una característica clave del método de Jacobi es que todas las nuevas aproximaciones se calculan exclusivamente con los valores de la iteración anterior. Esto significa que, hasta que no se completa una iteración completa (calcular todas las xi), los valores anteriores permanecen sin cambios.</p>
+        <p class="teoria"><strong>Método de Gauss-Seidel.</strong> Este método recibe su nombre de los matemáticos Carl Friedrich Gauss y Philipp Ludwig von Seidel. Es una mejora del método de Jacobi, ya que utiliza los valores más actualizados de las variables tan pronto como están disponibles. Al calcular x1(k), se usan los valores x2(k-1), x3(k-1),…. Sin embargo, al calcular x2(k), se utiliza el recién calculado x1(k) en lugar de x1(k-1). Esta actualización inmediata generalmente acelera la convergencia.</p>
+        <p class="teoria"><strong>Comparación y Convergencia:</strong></p>
+        <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
+          <li><strong>Eficiencia:</strong> El método de Gauss-Seidel suele preferirse sobre el de Jacobi porque converge más rápidamente para la mayoría de los sistemas. En los ejemplos prácticos, se ha observado que Gauss-Seidel alcanza la solución en menos iteraciones.</li>
+          <li><strong>Convergencia:</strong> Para que estos métodos converjan a la solución, la matriz del sistema debe cumplir ciertas propiedades. Un requisito común es que la matriz sea diagonalmente dominante (el valor absoluto del elemento en la diagonal de cada fila sea mayor que la suma de los valores absolutos de los demás elementos de esa fila).</li>
+        </ul>
       </div>
     </div>
-    <div class="subtemas-list">
 
-      <div class="subtema-block" style="--c:#f59e0b">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">4.1</span>
-          <span class="subtema-name">Diferenciación numérica</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">La diferenciación numérica aproxima derivadas mediante diferencias finitas. Las fórmulas principales son: <strong>Hacia adelante</strong>: f'(x) ≈ [f(x+h)-f(x)]/h, <strong>Hacia atrás</strong>: f'(x) ≈ [f(x)-f(x-h)]/h, <strong>Centrada</strong>: f'(x) ≈ [f(x+h)-f(x-h)]/(2h), con error O(h²).</p>
-          <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ diferenciacion_numerica.py</span>
-              <div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Diferenciación de f(x) = x² en un punto</span>
-<span class="kw">def</span> <span class="fn">derivada_centrada</span>(f, x, h=<span class="nm">0.001</span>):
-    <span class="kw">return</span> (f(x+h) - f(x-h)) / (<span class="nm">2</span>*h)
-
-<span class="kw">def</span> <span class="fn">f</span>(x): <span class="kw">return</span> x**<span class="nm">2</span>
-<span class="cm"># Derivada exacta de x² en x=a es 2a</span></div>
-            <div class="prog-inputs">
-              <div class="inp-group"><label>Punto x</label><input class="prog-input" id="p41a" type="number" value="3"></div>
-              <div class="inp-group"><label>Paso h</label><input class="prog-input" id="p41b" type="number" value="0.001" step="0.001"></div>
-            </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run41()">▶ Ejecutar</button>
-              <div class="output-box" id="out41">Esperando...</div>
-            </div>
-          </div>
-        </div>
+    <!-- 3.2 -->
+    <div class="subtema-block" style="--c:#10b981">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">3.2</span>
+        <span class="subtema-name">Sistemas de ecuaciones no lineales</span>
+        <span class="chevron">▾</span>
       </div>
-
-      <div class="subtema-block" style="--c:#f59e0b">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">4.2</span>
-          <span class="subtema-name">Integración numérica</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">Los métodos de integración numérica aproximan ∫f(x)dx. <strong>Regla del trapecio</strong>: divide el área bajo la curva en trapecios. <strong>Regla de Simpson 1/3</strong>: usa polinomios cuadráticos, con error O(h⁴), más precisa. <strong>Regla de Simpson 3/8</strong>: usa polinomios cúbicos.</p>
-          <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ simpson.py</span>
-              <div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div>
-            </div>
-            <div class="code-area"><span class="cm"># Integración de f(x)=x² con regla de Simpson</span>
-<span class="kw">def</span> <span class="fn">simpson_13</span>(a, b, n=<span class="nm">100</span>):
-    <span class="kw">if</span> n % <span class="nm">2</span> != <span class="nm">0</span>: n += <span class="nm">1</span>
-    h = (b - a) / n
-    xs = [a + i*h <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(n+<span class="nm">1</span>)]
-    ys = [x**<span class="nm">2</span> <span class="kw">for</span> x <span class="kw">in</span> xs]
-    s = ys[<span class="nm">0</span>] + ys[-<span class="nm">1</span>]
-    s += <span class="nm">4</span>*<span class="fn">sum</span>(ys[<span class="nm">1</span>::<span class="nm">2</span>]) + <span class="nm">2</span>*<span class="fn">sum</span>(ys[<span class="nm">2</span>:-<span class="nm">1</span>:<span class="nm">2</span>])
-    <span class="kw">return</span> h*s/<span class="nm">3</span></div>
-            <div class="prog-inputs">
-              <div class="inp-group"><label>Límite a</label><input class="prog-input" id="p42a" type="number" value="0"></div>
-              <div class="inp-group"><label>Límite b</label><input class="prog-input" id="p42b" type="number" value="3"></div>
-              <div class="inp-group"><label>Subintervalos n</label><input class="prog-input" id="p42c" type="number" value="100"></div>
-            </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="run42()">▶ Ejecutar</button>
-              <div class="output-box" id="out42">Esperando...</div>
-            </div>
-          </div>
-        </div>
+      <div class="subtema-body">
+        <p class="teoria">Un sistema de ecuaciones no lineales incluye términos que no son lineales, como potencias (ej. x²), productos (ej. xy), funciones trigonométricas (ej. sin(x)), exponenciales, etc. Estos sistemas son inherentemente más complejos que los lineales y modelan una mayor variedad de fenómenos reales.</p>
+        <p class="teoria"><strong>Linealización:</strong> Una técnica común para estudiar sistemas no lineales es linealizarlos alrededor de un punto de interés. Esto implica aproximar el sistema no lineal por un sistema lineal válido en una región pequeña ("localmente"), lo que permite analizar su comportamiento cualitativo.</p>
+        <p class="teoria"><strong>Comportamientos complejos:</strong> Los sistemas no lineales pueden presentar fenómenos que no existen en los lineales, como:</p>
+        <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
+          <li><strong>Múltiples puntos de equilibrio:</strong> Varias soluciones estacionarias.</li>
+          <li><strong>Ciclos límite:</strong> Trayectorias cerradas hacia las cuales evoluciona el sistema.</li>
+          <li><strong>Caos:</strong> Comportamiento aparentemente aleatorio y extremadamente sensible a las condiciones iniciales, como en el famoso "efecto mariposa".</li>
+        </ul>
       </div>
+    </div>
 
-      <div class="subtema-block" style="--c:#f59e0b">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">4.3</span>
-          <span class="subtema-name">Integración múltiple</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">La integración múltiple extiende los métodos univariados. Para doble integral ∬f(x,y)dxdy se aplica integración numérica sucesivamente: primero sobre x para cada y fijo, luego sobre y. La cuadratura de Gauss en 2D es eficiente para regiones regulares.</p>
-        </div>
+    <!-- 3.3 -->
+    <div class="subtema-block" style="--c:#10b981">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">3.3</span>
+        <span class="subtema-name">Iteración y convergencia de sistemas de ecuaciones</span>
+        <span class="chevron">▾</span>
       </div>
-
-      <div class="subtema-block" style="--c:#f59e0b">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">4.4</span>
-          <span class="subtema-name">Aplicaciones</span>
-          <span class="chevron">▾</span>
-        </div>
-        <div class="subtema-body">
-          <p class="teoria">Aplicaciones de integración numérica: cálculo de trabajo en física (W=∫F·dx), centros de masa de figuras irregulares, análisis espectral de señales (transformada de Fourier discreta), cálculo de probabilidades en distribuciones continuas, y dinámica de fluidos.</p>
-        </div>
+      <div class="subtema-body">
+        <p class="teoria">Tanto para sistemas lineales como no lineales, los métodos iterativos se basan en el concepto de punto fijo: reescribir el sistema como x = F(x) y generar una sucesión x(k) = F(x(k-1)).</p>
+        <p class="teoria"><strong>Criterios de convergencia:</strong></p>
+        <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
+          <li><strong>Cota de error:</strong> Se define una tolerancia (ej. 10⁻⁶) y detiene el proceso cuando la diferencia entre iteraciones sucesivas es menor que ese valor.</li>
+          <li><strong>Número de iteraciones:</strong> Se establece un número máximo de iteraciones para evitar ciclos infinitos en caso de que el método no converja.</li>
+        </ul>
+        <p class="teoria">La convergencia no está garantizada para cualquier sistema. Factores como la forma de las ecuaciones, la aproximación inicial y las propiedades matemáticas del sistema determinan si el proceso se acercará a una solución.</p>
       </div>
+    </div>
 
+    <!-- 3.4 -->
+    <div class="subtema-block" style="--c:#10b981">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">3.4</span>
+        <span class="subtema-name">Aplicaciones</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="subtema-body">
+        <p class="teoria"><strong>Ingeniería y Física.</strong> Los métodos iterativos como Jacobi y Gauss-Seidel se utilizan para resolver grandes sistemas lineales en el análisis de redes eléctricas (cálculo de voltajes y corrientes), en problemas de transferencia de calor (distribución de temperaturas en sólidos) y en mecánica de fluidos (análisis de flujos en tuberías y perfiles aerodinámicos). Estos métodos son preferidos por su eficiencia computacional cuando se trabaja con matrices grandes y dispersas.</p>
+        <p class="teoria"><strong>Biología y Ecología.</strong> Los sistemas de ecuaciones diferenciales no lineales modelan la interacción entre especies. El modelo depredador-presa de Lotka-Volterra es un ejemplo clásico que describe las fluctuaciones cíclicas de poblaciones como lobos y ciervos, generando comportamientos como oscilaciones sostenidas que no pueden explicarse con modelos lineales.</p>
+        <p class="teoria"><strong>Fenómenos Naturales.</strong> El movimiento del péndulo con ángulos grandes es un ejemplo de sistema no lineal. A diferencia del péndulo lineal (para pequeñas oscilaciones), en este caso el periodo de oscilación depende de la amplitud, y al añadir amortiguamiento y fuerzas externas pueden aparecer comportamientos caóticos.</p>
+        <p class="teoria"><strong>Economía y Química.</strong> En economía, los sistemas no lineales modelan mercados con oferta y demanda no lineales, pudiendo producir múltiples puntos de equilibrio (distintos precios estables) o inestabilidades como burbujas especulativas y colapsos. En química, reacciones complejas como las oscilantes de Belousov-Zhabotinsky se describen con sistemas no lineales, donde los puntos de equilibrio determinan si la reacción se estabiliza u oscila en el tiempo.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+ <!-- ===== UNIT 4 ===== -->
+<div class="unit-detail" id="unit-4">
+  <div class="detail-header">
+    <button class="back-btn" onclick="showOverview()">← Volver</button>
+    <div class="detail-title-wrap">
+      <h2 style="color:#f59e0b">Unidad 4</h2>
+      <p>Diferenciación e Integración Numérica</p>
     </div>
   </div>
+  <div class="subtemas-list">
 
+    <!-- 4.1 -->
+    <div class="subtema-block" style="--c:#f59e0b">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">4.1</span>
+        <span class="subtema-name">Diferenciación numérica</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="subtema-body">
+        <p class="teoria">La diferenciación numérica se basa en aproximar la derivada de una función mediante fórmulas de diferencias finitas, que se obtienen a partir de la expansión en series de Taylor. La aproximación más directa para la primera derivada es la <strong>fórmula de diferencia hacia adelante</strong>:</p>
+        <p class="teoria" style="text-align:center; font-family:'Space Mono',monospace; font-size:13px;">f'(x) ≈ [f(x+h) - f(x)] / h</p>
+        <p class="teoria">donde h es un incremento pequeño. Esta fórmula tiene un error de orden O(h), lo que significa que converge linealmente. Para obtener mayor precisión, se puede utilizar la <strong>fórmula de diferencia centrada</strong>:</p>
+        <p class="teoria" style="text-align:center; font-family:'Space Mono',monospace; font-size:13px;">f'(x) ≈ [f(x+h) - f(x-h)] / 2h + O(h²)</p>
+        <p class="teoria">Esta aproximación tiene error de orden cuadrático, lo que implica que al reducir h a la mitad, el error se reduce aproximadamente a la cuarta parte. Para la <strong>segunda derivada</strong>, una fórmula común es:</p>
+        <p class="teoria" style="text-align:center; font-family:'Space Mono',monospace; font-size:13px;">f''(x) ≈ [f(x+h) - 2f(x) + f(x-h)] / h² + O(h²)</p>
+        <p class="teoria">Es importante señalar que, aunque teóricamente el error disminuye al hacer h más pequeño, en la práctica computacional existe un valor crítico por debajo del cual los errores de redondeo comienzan a dominar, empeorando la aproximación.</p>
+      </div>
+    </div>
+
+    <!-- 4.2 -->
+    <div class="subtema-block" style="--c:#f59e0b">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">4.2</span>
+        <span class="subtema-name">Integración numérica</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="subtema-body">
+        <p class="teoria">La integración numérica, también denominada <strong>cuadratura numérica</strong>, tiene como objetivo aproximar el valor de una integral definida I = ∫[a,b] f(x)dx. Las fórmulas de cuadratura pueden clasificarse en <strong>simples</strong>, si la aproximación se realiza sobre el intervalo completo [a,b], o <strong>compuestas</strong>, si primero se divide el intervalo en n subintervalos y luego se aplica la fórmula a cada uno.</p>
+        <p class="teoria"><strong>Regla del punto medio.</strong> Es la fórmula más simple, equivalente a sustituir la función por un polinomio de interpolación de grado cero (una constante) evaluada en el punto medio del intervalo:</p>
+        <p class="teoria" style="text-align:center; font-family:'Space Mono',monospace; font-size:13px;">∫[a,b] f(x)dx ≈ (b-a) · f((a+b)/2)</p>
+        <p class="teoria">Esta fórmula calcula el área de un rectángulo cuya altura es el valor de la función en el punto medio.</p>
+        <p class="teoria"><strong>Regla del trapecio.</strong> Esta fórmula sustituye la función por un polinomio de interpolación de grado uno (una línea recta) que pasa por los puntos de la función en los extremos del intervalo, calculando así el área de un trapecio. La regla simple es:</p>
+        <p class="teoria" style="text-align:center; font-family:'Space Mono',monospace; font-size:13px;">∫[a,b] f(x)dx ≈ (b-a)/2 · (f(a) + f(b))</p>
+        <p class="teoria">En su forma compuesta, para n subintervalos: ∫[a,b] f(x)dx ≈ h/2 · [f(x₀) + 2·Σf(xᵢ) + f(xₙ)]</p>
+        <p class="teoria"><strong>Regla de Simpson 1/3.</strong> Esta regla utiliza un polinomio de interpolación de grado dos (una parábola) que pasa por los puntos de la función en los extremos y en el punto medio del intervalo. La fórmula simple es:</p>
+        <p class="teoria" style="text-align:center; font-family:'Space Mono',monospace; font-size:13px;">∫[a,b] f(x)dx ≈ (b-a)/6 · (f(a) + 4·f((a+b)/2) + f(b))</p>
+        <p class="teoria">Para su aplicación en múltiples subintervalos, el número de estos debe ser par. La versión compuesta es: h/3 · [f(x₀) + 4·Σf(xᵢ impar) + 2·Σf(xⱼ par) + f(xₙ)]</p>
+      </div>
+    </div>
+
+    <!-- 4.3 -->
+    <div class="subtema-block" style="--c:#f59e0b">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">4.3</span>
+        <span class="subtema-name">Integración múltiple</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="subtema-body">
+        <p class="teoria">La integración múltiple se refiere a la aproximación de integrales en dos o más dimensiones. A medida que aumenta la dimensionalidad, los métodos tradicionales basados en cuadrículas regulares sufren la llamada <strong>"maldición de la dimensionalidad"</strong>, ya que el número de puntos necesarios crece exponencialmente con el número de dimensiones.</p>
+        <p class="teoria"><strong>Método de Monte Carlo.</strong> Este es un enfoque probabilístico que emplea números aleatorios para aproximar integrales, resultando particularmente útil para integrales en dimensiones altas. A diferencia de los métodos determinísticos que evalúan el integrando en una cuadrícula regular, Monte Carlo selecciona puntos al azar. La ley de los grandes números garantiza que el promedio de las evaluaciones converge al valor real de la integral.</p>
+        <p class="teoria">La incertidumbre asociada a esta estimación disminuye como 1/√N, lo que significa que para reducir el error a la mitad se necesitan cuatro veces más muestras. Una propiedad fundamental del método de Monte Carlo es que su velocidad de convergencia es independiente del número de dimensiones, a diferencia de los métodos determinísticos.</p>
+        <p class="teoria">Existen variantes más avanzadas que mejoran la eficiencia del método básico:</p>
+        <ul style="color:var(--text2);font-size:14px;line-height:2;margin-left:1.5rem;margin-bottom:1.25rem">
+          <li><strong>Muestreo estratificado:</strong> Divide la región en subdominios y asigna puntos de muestreo en función de la varianza detectada en cada uno.</li>
+          <li><strong>Muestreo por importancia:</strong> Utiliza distribuciones de muestreo no uniformes para concentrar los puntos en las regiones donde el integrando tiene mayor variabilidad.</li>
+          <li><strong>Algoritmo MISER:</strong> Implementa un muestreo estratificado recursivo que, en cada paso, determina la dimensión más conveniente para subdividir la región, minimizando así la varianza total.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4.4 -->
+    <div class="subtema-block" style="--c:#f59e0b">
+      <div class="subtema-header" onclick="toggle(this)">
+        <span class="subtema-num">4.4</span>
+        <span class="subtema-name">Aplicaciones</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="subtema-body">
+        <p class="teoria"><strong>En ingeniería y física.</strong> En mecánica de fluidos, la diferenciación numérica se utiliza para calcular campos de velocidad y aceleración a partir de datos experimentales discretos. En termodinámica, la integración numérica permite calcular el trabajo realizado por un gas en procesos donde la presión varía de forma no analítica. En problemas de transferencia de calor, ambos métodos son esenciales para resolver ecuaciones diferenciales parciales mediante el método de diferencias finitas.</p>
+        <p class="teoria"><strong>En economía y finanzas.</strong> El cálculo de derivadas de curvas de oferta y demanda a partir de datos de mercado permite estimar elasticidades. El método de Monte Carlo es particularmente popular en la valoración de opciones financieras y otros derivados, especialmente cuando los modelos incluyen múltiples fuentes de incertidumbre. La independencia de la convergencia respecto a la dimensionalidad hace de Monte Carlo la herramienta estándar en este campo.</p>
+        <p class="teoria"><strong>En estadística y ciencia de datos.</strong> La integración numérica es fundamental para calcular funciones de densidad de probabilidad y valores esperados. En inferencia bayesiana, el método de Monte Carlo se emplea ampliamente para aproximar integrales que no tienen solución analítica, como el cálculo de la evidencia marginal o las distribuciones predictivas posteriores.</p>
+        <p class="teoria"><strong>En procesamiento de señales.</strong> La diferenciación numérica se utiliza para extraer información de señales digitales, como calcular la velocidad a partir de datos de posición obtenidos por GPS. La integración numérica se emplea para reconstruir señales a partir de sus derivadas, por ejemplo, para obtener la posición a partir de acelerómetros.</p>
+        <p class="teoria"><strong>En simulación computacional.</strong> Cualquier simulación que modele fenómenos continuos requiere, en algún punto, aproximar derivadas o integrales. Los modelos climáticos, las simulaciones aeroespaciales, los estudios de dinámica molecular y las simulaciones de sistemas biológicos dependen fuertemente de estas técnicas numéricas.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+    
   <!-- ===== UNIT 5 ===== -->
   <div class="unit-detail" id="unit-5">
     <div class="detail-header">
