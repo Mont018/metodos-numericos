@@ -545,8 +545,8 @@
   <p>Unidades, subtemas y programas interactivos para comprender y aplicar los métodos numéricos.</p>
   <div class="header-stats">
     <div class="stat"><div class="stat-n">6</div><div class="stat-l">Unidades</div></div>
-    <div class="stat"><div class="stat-n">27</div><div class="stat-l">Subtemas</div></div>
-    <div class="stat"><div class="stat-n">10+</div><div class="stat-l">Programas</div></div>
+    <div class="stat"><div class="stat-n">24</div><div class="stat-l">Subtemas</div></div>
+    <div class="stat"><div class="stat-n">5+</div><div class="stat-l">Programas</div></div>
   </div>
 </header>
 
@@ -675,6 +675,7 @@
     </div>
     <div class="subtemas-list">
 
+      <!-- 1.1 Importancia -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">1.1</span>
@@ -683,11 +684,29 @@
         </div>
         <div class="subtema-body">
           <p class="teoria">Los métodos numéricos vuelven aptos para entender esquemas numéricos a fin de resolver problemas matemáticos, de ingeniería y científicos en una computadora, reducir esquemas numéricos básicos, escribir programas y resolverlos en una computadora y usar correctamente el software existente para dichos métodos y no solo aumenta nuestra habilidad para el uso de computadoras sino que también amplia la pericia matemática y la comprensión de los principios científicos básicos.</p>
-          <p class="teoria">Pueden ser aplicados para resolver procedimientos matemáticos en: Cálculo de derivadas, Integrales, Ecuaciones diferenciales, Operaciones con matrices, Interpolaciones, Ajuste de curvas, Polinomios.</p>
-          <p class="teoria">En el proceso de solución de problemas por medio de computadoras, se requieren los siguientes pasos: Especificación del problema, Análisis, Programación, Verificación, Documentación, Producción.</p>
+          <p class="teoria">Pueden ser aplicados para resolver procedimientos matemáticos en:</p>
+          <ul>
+            <li>Cálculo de derivadas.</li>
+            <li>Integrales.</li>
+            <li>Ecuaciones diferenciales.</li>
+            <li>Operaciones con matrices.</li>
+            <li>Interpolaciones.</li>
+            <li>Ajuste de curvas.</li>
+            <li>Polinomios.</li>
+          </ul>
+          <p class="teoria">En el proceso de solución de problemas por medio de computadoras, se requieren los siguientes pasos:</p>
+          <ul>
+            <li><strong>Especificación del problema.</strong> Con esto se indica que se debe identificar perfectamente el problema y sus limitaciones, las variables que intervienen y los resultados deseados.</li>
+            <li><strong>Análisis.</strong> Es la formulación de la solución del problema denominada también algoritmo, de manera que se tenga una serie de pasos que resuelvan el problema y que sean susceptibles de ejecutarse en la computadora.</li>
+            <li><strong>Programación.</strong> Este paso consiste en traducir el método de análisis o algoritmo de solución expresándole como una serie detallada de operaciones.</li>
+            <li><strong>Verificación.</strong> Es la prueba exhaustiva del programa para eliminar todos los errores que tenga de manera que efectúe lo que desea los resultados de prueba se comparan con soluciones conocidas de problemas ya resueltos.</li>
+            <li><strong>Documentación.</strong> Consiste en preparar un instructivo del programa de manera que cualquier persona pueda conocer y utilizar el programa.</li>
+            <li><strong>Producción.</strong> Es la última etapa en la que solo se proporcionan datos de entrada del programa obteniéndose las soluciones correspondientes.</li>
+          </ul>
         </div>
       </div>
 
+      <!-- 1.2 Conceptos básicos -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">1.2</span>
@@ -695,13 +714,15 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria"><strong>CIFRAS SIGNIFICATIVAS:</strong> Las cifras significativas son los dígitos de un número que consideramos no nulos. Norma: Son significativos todos los dígitos distintos de cero. Ejemplo: 8723 tiene cuatro cifras significativas.</p>
-          <p class="teoria"><strong>PRECISIÓN Y EXACTITUD:</strong> La exactitud es lo cerca que el resultado de una medición está del valor verdadero. La precisión es lo cerca que los valores medidos están unos de otros.</p>
-          <p class="teoria"><strong>INCERTIDUMBRE:</strong> Se refiere al grado de alejamiento entre sí, a las diversas aproximaciones a un valor verdadero. La incertidumbre puede derivarse de una falta de información o incluso por que exista desacuerdo sobre lo que se sabe o lo que podría saberse.</p>
-          <p class="teoria"><strong>SESGO:</strong> Es un alejamiento sistemático del valor verdadero a calcular. Así como el error, de acuerdo con las formas por las cuales se produce, puede minimizarse, la ocurrencia de sesgo también puede ser neutralizada o controlada.</p>
+          <p class="teoria"><strong>CIFRAS SIGNIFICATIVAS:</strong><br>Las cifras significativas son los dígitos de un número que consideramos no nulos.<br>Norma: Son significativos todos los dígitos distintos de cero.<br>Ejemplo: 8723 tiene cuatro cifras significativas.</p>
+          <p class="teoria"><strong>PRECISIÓN Y EXACTITUD:</strong><br>La exactitud es lo cerca que el resultado de una medición está del valor verdadero.<br>La precisión es lo cerca que los valores medidos están unos de otros.</p>
+          <p class="teoria">Exactitud baja / Precisión alta → Exactitud alta / Precisión baja → Exactitud alta / Precisión alta</p>
+          <p class="teoria"><strong>INCERTIDUMBRE.</strong><br>Se refiere al grado de alejamiento entre sí, a las diversas aproximaciones a un valor verdadero. La incertidumbre puede derivarse de una falta de información o incluso por que exista desacuerdo sobre lo que se sabe o lo que podría saberse. Puede tener varios tipos de origen, desde errores cuantificables en los datos hasta terminología definida de forma ambigua o previsiones inciertas del comportamiento humano. La incertidumbre puede, por lo tanto, ser representada por medidas cuantitativas (por ejemplo, un rango de valores calculados según distintos modelos) o por afirmaciones cualitativas (por ejemplo, al reflejar el juicio de un grupo de expertos).</p>
+          <p class="teoria"><strong>SESGO.</strong><br>Es un alejamiento sistemático del valor verdadero a calcular. Así como el error, de acuerdo con las formas por las cuales se produce, puede minimizarse, la ocurrencia de sesgo también puede ser neutralizada o controlada. En ocasiones sin embargo, es imposible controlar el sesgo y por cierto el error. En tales circunstancias conviene al menos estar en antecedente y tener conciencia de su existencia.</p>
         </div>
       </div>
 
+      <!-- 1.3 Tipos de errores -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">1.3</span>
@@ -711,22 +732,32 @@
         </div>
         <div class="subtema-body">
           <p class="teoria"><strong>Errores Inherentes a los Métodos Numéricos:</strong> Un error es una incertidumbre en el resultado de una medida. Se define como la diferencia entre el valor real y una aproximación a este valor.</p>
-          <p class="teoria"><strong>Error de redondeo:</strong> Se originan al realizar los cálculos que todo método numérico o analítico requieren y son debidos a la imposibilidad de tomar todas las cifras que resultan de operaciones aritméticas.</p>
-          <p class="teoria"><strong>Error por Truncamiento:</strong> Existen muchos procesos que requieren la ejecución de un número infinito de instrucciones para hallar la solución exacta de un determinado problema. Puesto que es totalmente imposible realizar infinitas instrucciones, el proceso debe truncarse.</p>
-          <p class="teoria"><strong>Error Absoluto:</strong> El error absoluto no es negativo. Es una colección (suma) de errores.</p>
-          <p class="teoria"><strong>Error Relativo:</strong> Es el error absoluto dividido entre un número positivo adecuado.</p>
+          <p class="teoria"><strong>Error de redondeo:</strong> Se originan al realizar los cálculos que todo método numérico o analítico requieren y son debidos a la imposibilidad de tomar todas las cifras que resultan de operaciones aritméticas como los productos y los cocientes, teniendo que retener en cada operación el número de cifras que permita el instrumento de cálculo que se esté utilizando.</p>
+          <p class="teoria"><strong>Error por Truncamiento:</strong> Existen muchos procesos que requieren la ejecución de un número infinito de instrucciones para hallar la solución exacta de un determinado problema. Puesto que es totalmente imposible realizar infinitas instrucciones, el proceso debe truncarse. En consecuencia, no se halla la solución exacta que se pretendía encontrar, sino una aproximación a la misma.</p>
+          <p class="teoria"><strong>Error Numérico Total:</strong> Se entiende como la suma de los errores de redondeo y truncamiento introducidos en el cálculo.</p>
+          <p class="teoria"><strong>Errores Humanos:</strong> Son los errores por negligencia o equivocación. Actualmente las computadoras son muy exactas y el error es atribuido a los hombres. Los errores humanos son inevitables pero se pueden minimizar.</p>
+          <p class="teoria"><strong>Error Inherente:</strong> En ocasiones, los datos que se inician los cálculos contienen un cierto error debido a que se han obtenido mediante la medida experimental de una determinada magnitud física.</p>
+          <p class="teoria"><strong>Error Absoluto:</strong> El error absoluto no es negativo. Es una colección (suma) de errores. Debido a que si un número y su parte fraccionaria conformada por un conjunto de dígitos infinita requieren ser representada numéricamente, su forma aproximada es donde se presenta este tipo de error.</p>
+          <p class="teoria"><strong>Error Relativo:</strong> Es el error absoluto dividido entre un número positivo adecuado. Generalmente, el divisor es una de tres elecciones: la magnitud del valor exacto, la magnitud del valor calculado (o redondeado) o el promedio de estas dos cantidades.</p>
           
           <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ CalculadoraErrores.java</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
+            <div class="prog-top-bar">
+              <span class="prog-label">▶ Calculadora de Errores</span>
+              <div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div>
+            </div>
             <div class="prog-inputs">
               <div class="inp-group"><label>Valor real</label><input class="prog-input" id="java-vr" type="number" value="9.81"></div>
               <div class="inp-group"><label>Valor aproximado</label><input class="prog-input" id="java-va" type="number" value="9.75"></div>
             </div>
-            <div class="prog-footer"><button class="run-btn" onclick="runJava()">▶ Ejecutar</button><div class="output-box" id="out-java">Esperando...</div></div>
+            <div class="prog-footer">
+              <button class="run-btn" onclick="runJava()">▶ Ejecutar</button>
+              <div class="output-box" id="out-java">Esperando...</div>
+            </div>
           </div>
         </div>
       </div>
 
+      <!-- 1.4 Software -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">1.4</span>
@@ -734,15 +765,17 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria"><strong>NETLIB:</strong> Netlib contiene software de alta calidad que ha sido probado en forma intensiva.</p>
-          <p class="teoria"><strong>NAG:</strong> El Grupo de Algoritmos numéricos (Numerical Algorithms Group) ha desarrollado una biblioteca de Fortran conteniendo alrededor de 1000 subrutinas.</p>
-          <p class="teoria"><strong>IMSL:</strong> La biblioteca numérica de Fortran IMSL cubre muchas áreas.</p>
-          <p class="teoria"><strong>NUMERICAL RECIPES:</strong> Los libros de Numerical Recipes in C/Fortran son muy populares como libro de cocina.</p>
-          <p class="teoria"><strong>MATLAB:</strong> Es un programa de cálculo numérico, orientado a matrices y vectores.</p>
-          <p class="teoria"><strong>GNU OCTAVE:</strong> Es un programa libre para realizar cálculos numéricos.</p>
+          <p class="teoria">Muchos problemas de cómputo en ingeniería pueden ser divididos en pedazos de cálculos bien conocidos, como solución de sistemas de ecuaciones lineales, transformada rápida de Fourier, etc. Por consecuencia, frecuentemente el programador sólo tiene que escribir una rutina pequeña (driver) para el problema particular que tenga, porque el software para resolver las subtareas se encuentra ya disponible. De esta forma la gente no tiene que realizar el problema una y otra vez. Para álgebra lineal y algunos otros cómputos numéricos básicos hay software de calidad gratis (a través de Netlib).</p>
+          <p class="teoria"><strong>NETLIB:</strong> Netlib contiene software de alta calidad que ha sido probado en forma intensiva, pero todo el software libre no tiene garantía y tiene poco soporte. Para poder usar el software, primero se tiene que descargar en su computadora y entonces compilarlo.</p>
+          <p class="teoria"><strong>NAG:</strong> El Grupo de Algoritmos numéricos (Numerical Algorithms Group) (NAG) ha desarrollado una biblioteca de Fortran conteniendo alrededor de 1000 subrutinas accesibles al usuario para resolver problemas generales de matemáticas aplicadas, incluyendo: ecuaciones diferenciales ordinarias y parciales, transformada rápida de Fourier, cuadratura, álgebra lineal, ecuaciones no lineales, ecuaciones integrales, y más.</p>
+          <p class="teoria"><strong>IMSL:</strong> La biblioteca numérica de Fortran IMSL hecha por Visual Numerics, Inc. cubre muchas de las áreas contenidas en la biblioteca NAG. También tiene soporte para analizar y presentar datos estadísticos en aplicaciones científicas y de negocios.</p>
+          <p class="teoria"><strong>NUMERICAL RECIPES:</strong> Los libros de Numerical Recipes in C/Fortran son muy populares entre los ingenieros porque pueden ser usados como libro de cocina donde se puede encontrar una "receta (recipe)" para resolver algún problema a mano. Sin embargo, el software correspondiente de Numerical Recipes no es comparable en alcance o calidad al dado por NAG o IMSL. Es un software muy usado en universidades, centros de investigación y por ingenieros. En los últimos años ha incluido muchas más capacidades, como la de programar directamente procesadores digitales de señal, crear código VHDL y otras.</p>
+          <p class="teoria"><strong>MATLAB:</strong> Es un programa de cálculo numérico, orientado a matrices y vectores. Por tanto desde el principio hay que pensar que todo lo que se pretenda hacer con él, será mucho más rápido y efectivo si se piensa en términos de matrices y vectores.</p>
+          <p class="teoria"><strong>GNU OCTAVE:</strong> Es un programa libre para realizar cálculos numéricos. Como indica su nombre, es parte del proyecto GNU. MATLAB es considerado su equivalente comercial. Entre varias características que comparten se puede destacar que ambos ofrecen un intérprete permitiendo ejecutar órdenes en modo interactivo. Nótese que Octave no es un sistema de álgebra computacional como podría ser GNU Máxima, sino que usa un lenguaje que está orientado al análisis numérico.</p>
         </div>
       </div>
 
+      <!-- 1.5 Métodos iterativos -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">1.5</span>
@@ -751,8 +784,16 @@
         </div>
         <div class="subtema-body">
           <p class="teoria">Un método iterativo trata de resolver un problema matemático (como una ecuación o un sistema de ecuaciones) mediante aproximaciones sucesivas a la solución, empezando desde una estimación inicial.</p>
-          <p class="teoria">Esta aproximación contrasta con los métodos directos, que tratan de resolver el problema de una sola vez.</p>
-          <p class="teoria">Los métodos iterativos son muy útiles para resolver problemas que involucran un número grande de variables (a veces del orden de millones), donde los métodos directos tendrían un coste prohibitivo.</p>
+          <p class="teoria">Esta aproximación contrasta con los métodos directos, que tratan de resolver el problema de una sola vez, como resolver un sistema de ecuaciones Ax = b encontrando la inversa de la matriz A.</p>
+          <p class="teoria">Los métodos iterativos son muy útiles para resolver problemas que involucran un número grande de variables (a veces del orden de millones), donde los métodos directos tendrían un coste prohibitivo incluso con la potencia del mejor computador disponible.</p>
+          <p class="teoria">En este tipo de métodos se parte de un valor inicial y se aplica un proceso repetitivo que va mejorando la aproximación hasta obtener un resultado suficientemente cercano al valor real.</p>
+          <p class="teoria">Entre las principales características de los métodos iterativos se encuentran:</p>
+          <ul>
+            <li>Utilizan aproximaciones sucesivas.</li>
+            <li>Requieren un valor inicial.</li>
+            <li>Funcionan mejor en problemas grandes.</li>
+            <li>Permiten reducir el tiempo de cálculo en comparación con los métodos directos.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -769,27 +810,40 @@
     </div>
     <div class="subtemas-list">
 
-      <!-- 2.2 Método de bisección - TEXTO ORIGINAL -->
+      <!-- 2.1 Métodos de intervalo -->
+      <div class="subtema-block" style="--c:#7c3aed">
+        <div class="subtema-header" onclick="toggle(this)">
+          <span class="subtema-num">2.1</span>
+          <span class="subtema-name">Métodos de intervalo</span>
+          <span class="chevron">▾</span>
+        </div>
+        <div class="subtema-body">
+          <p class="teoria">Los métodos de intervalo son técnicas numéricas utilizadas para encontrar raíces de ecuaciones no lineales. Estos métodos se basan en reducir progresivamente el intervalo de búsqueda de la solución hasta alcanzar la precisión deseada. Su característica principal es que no solo aproximan el valor de la raíz, sino que también acotan el intervalo que la contiene, lo que proporciona una garantía sobre la ubicación de la solución.</p>
+          <p class="teoria">Para aplicar un método de intervalo, es necesario que se verifiquen las condiciones del Teorema de Bolzano: la función debe ser continua en el intervalo cerrado [a,b] y cambiar de signo en sus extremos, es decir, f(a)⋅f(b)&lt;0. Entre los métodos más conocidos de esta categoría se encuentran el método de bisección y el método de Regula Falsi.</p>
+        </div>
+      </div>
+
+      <!-- 2.2 Método de bisección -->
       <div class="subtema-block" style="--c:#7c3aed">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">2.2</span>
-          <span class="subtema-name">Método de bisección (Método de Bolzano)</span>
+          <span class="subtema-name">Método de bisección</span>
           <span class="has-prog">Programa</span>
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">El método de la bisección o también llamado Método de Bolzano, parte de una función F(x) y un intervalo [x1,x2] tal que F(x1) y F(x2) tienen signos contrarios. Si la función es continua en este intervalo, entonces existe una raíz de F(x) entre x1 y x2.</p>
-          <p class="teoria">Una vez determinado el intervalo [x1,x2] y asegurada la continuidad de la función en dicho intervalo, se evalúa ésta en el punto medio xm del intervalo.</p>
+          <p class="teoria">El método de la bisección o también llamado Método de Bolzano, parte de una función F(x) y un intervalo [x1, x2] tal que F(x1) y F(x2) tienen signos contrarios. Si la función es continua en este intervalo, entonces existe una raíz de F(x) entre x1 y x2.</p>
+          <p class="teoria">Una vez determinado el intervalo [x1, x2] y asegurada la continuidad de la función en dicho intervalo, se evalúa ésta en el punto medio xm del intervalo.</p>
           <p class="teoria">Si F(xm) y F(x1) tienen signos contrarios, se reducirá el intervalo de x1 a xm, ya que dentro de estos valores se encuentra la raíz buscada. Al repetir este proceso, hasta lograr que la diferencia entre los dos últimos valores de xm sea menor que una tolerancia prefijada, el último valor xm será una buena aproximación de la raíz.</p>
           <p class="teoria"><strong>Pasos:</strong></p>
           <ul>
-            <li>Elija valores iniciales inferior x1, y superior de x2, que encierren a la raíz, de forma que la función cambie el signo en el intervalo. Esto se verifica comprobando que f(x1) f(x2)&lt;0</li>
-            <li>Una aproximación de la raíz, se determina mediante: Xr= (x1 + x2) / 2</li>
-            <li>Realice las siguiente evaluaciones para determinar en que subintervalo está la raíz:
+            <li>Elija valores iniciales inferior x1, y superior x2, que encierren a la raíz, de forma que la función cambie el signo en el intervalo. Esto se verifica comprobando que f(x1) f(x2) &lt; 0.</li>
+            <li>Una aproximación de la raíz se determina mediante: Xr = (x1 + x2) / 2.</li>
+            <li>Realice las siguientes evaluaciones para determinar en qué subintervalo está la raíz:
               <ul>
-                <li>Si f(x1) f(Xr)&lt;0, entonces la raíz se encuentra dentro del subintervalo inferior o izquierdo. Por tanto, haga X2 = Xr y vuelva al paso 2.</li>
-                <li>Si f(x1) f(Xr)&gt;0, entonces la raíz se encuentra dentro del subintervalo superior o derecho. Por tanto, haga X1 = Xr y vuelva al paso 2.</li>
-                <li>Si f(x1) f(Xr)=0, entonces la raíz se igual a Xr; y termina el cálculo.</li>
+                <li>Si f(x1) f(Xr) &lt; 0, entonces la raíz se encuentra dentro del subintervalo inferior o izquierdo. Por tanto, haga X2 = Xr y vuelva al paso 2.</li>
+                <li>Si f(x1) f(Xr) &gt; 0, entonces la raíz se encuentra dentro del subintervalo superior o derecho. Por tanto, haga X1 = Xr y vuelva al paso 2.</li>
+                <li>Si f(x1) f(Xr) = 0, entonces la raíz es igual a Xr; y termina el cálculo.</li>
               </ul>
             </li>
           </ul>
@@ -804,7 +858,7 @@
         </div>
       </div>
 
-      <!-- 2.3 Método de aproximaciones sucesivas - TEXTO ORIGINAL -->
+      <!-- 2.3 Método de aproximaciones sucesivas -->
       <div class="subtema-block" style="--c:#7c3aed">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">2.3</span>
@@ -815,20 +869,20 @@
         <div class="subtema-body">
           <p class="teoria">El método de aproximaciones sucesivas consiste en generar funciones convergentes bajo un esquema iterativo partiendo de la función original, lo cual se soporta con el siguiente teorema:</p>
           <p class="teoria"><strong>Teorema de convergencia:</strong> La raíz de cualquier subfunción extraída de una función f(x) obtenida por una iteración convergente, es también una raíz de f(x).</p>
-          <p class="teoria"><strong>Ejemplo de aplicación del teorema:</strong> Sea f(x)=5senx - 3x, la subfunción sen(x) tiene como raíz x=0, la cual resulta ser también la raíz de la función f(x).</p>
-          <p class="teoria">En este método se requiere de una regla, formula o subfunción g(x), con la que se calculan los términos sucesivos junto con un valor de partida. Esto produce una sucesión de valores {xn} obtenida mediante el proceso iterativo xn+1 = g(xn).</p>
+          <p class="teoria"><strong>Ejemplo de aplicación del teorema:</strong> Sea f(x) = 5 sen x - 3x, la subfunción sen(x) tiene como raíz x = 0, la cual resulta ser también la raíz de la función f(x).</p>
+          <p class="teoria">En este método se requiere de una regla, fórmula o subfunción g(x), con la que se calculan los términos sucesivos junto con un valor de partida. Esto produce una sucesión de valores {xn} obtenida mediante el proceso iterativo xn+1 = g(xn).</p>
           <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ aproximaciones_sucesivas.py</span><div class="dots"><div class="dot" style="background:#7c3aed"></div></div></div>
+            <div class="prog-top-bar"><span class="prog-label">▶ punto_fijo.py</span><div class="dots"><div class="dot" style="background:#7c3aed"></div></div></div>
             <div class="prog-inputs">
               <div class="inp-group"><label>N (radicando)</label><input class="prog-input" id="p23a" type="number" value="2"></div>
-              <div class="inp-group"><label>x0 (valor inicial)</label><input class="prog-input" id="p23b" type="number" value="1.5"></div>
+              <div class="inp-group"><label>x0 (inicial)</label><input class="prog-input" id="p23b" type="number" value="1.5"></div>
             </div>
             <div class="prog-footer"><button class="run-btn" onclick="run23()">▶ Ejecutar</button><div class="output-box" id="out23">Esperando...</div></div>
           </div>
         </div>
       </div>
 
-      <!-- 2.4 Métodos de interpolación - TEXTO ORIGINAL -->
+      <!-- 2.4 Métodos de interpolación -->
       <div class="subtema-block" style="--c:#7c3aed">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">2.4</span>
@@ -836,9 +890,12 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">En el subcampo matemático del análisis numérico, se denomina interpolación a la obtención de nuevos puntos partiendo del conocimiento de un conjunto discreto de puntos.</p>
-          <p class="teoria">En ingeniería y algunas ciencias es frecuente disponer de un cierto número de puntos obtenidos por muestreo o a partir de un experimento y pretender construir una función que los ajuste.</p>
-          <p class="teoria">Otro problema estrechamente ligado con el de la interpolación es la aproximación de una función complicada por una más simple. Si tenemos una función cuyo cálculo resulta costoso, podemos partir de un cierto número de sus valores e interpolar dichos datos construyendo una función más simple. En general, por supuesto, no obtendremos los mismos valores evaluando la función obtenida que si evaluásemos la función original, si bien dependiendo de las características del problema y del método de interpolación usado la ganancia en eficiencia puede compensar el error cometido.</p>
+          <p class="teoria">Los métodos de interpolación para la resolución de ecuaciones son técnicas que utilizan aproximaciones polinómicas para estimar las raíces de una función. Aunque los resultados de búsqueda proporcionados no detallan exhaustivamente esta categoría, se pueden mencionar métodos como:</p>
+          <p class="teoria"><strong>Método de la secante.</strong> Es una variante del método de Newton que no requiere calcular derivadas. En lugar de usar la tangente, aproxima la derivada mediante una diferencia finita entre dos iteraciones anteriores. La fórmula de recurrencia es:</p>
+          <p class="teoria" style="text-align:center; font-family:var(--mono);">x_(n+1)=x_n-f(x_n)·(x_n-x_(n-1))/(f(x_n)-f(x_(n-1)))</p>
+          <p class="teoria">Este método converge más rápido que la bisección (su orden de convergencia es aproximadamente 1.618, el número áureo), pero no garantiza la convergencia para todas las funciones.</p>
+          <p class="teoria"><strong>Interpolación cuadrática inversa.</strong> Este método utiliza tres puntos para construir un polinomio de interpolación cuadrático y estimar la raíz. Suele ser más robusto que el método de la secante.</p>
+          <p class="teoria"><strong>Método de Ridder.</strong> Es una variante que combina la bisección con interpolación exponencial, ofreciendo convergencia rápida y garantizada para funciones continuas.</p>
         </div>
       </div>
 
@@ -851,8 +908,12 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">En ingeniería, los métodos de intervalo y de aproximaciones sucesivas se utilizan para calcular raíces de ecuaciones que modelan fenómenos físicos. Por ejemplo, en termodinámica se emplean para resolver ecuaciones de estado como la de Van der Waals. En mecánica de fluidos, el método de la secante o de Newton se aplica para determinar el factor de fricción en tuberías mediante la ecuación de Colebrook-White.</p>
-          <p class="teoria">En economía y finanzas, el cálculo de tasas internas de retorno (TIR) de inversiones requiere resolver ecuaciones polinómicas o no lineales. En ciencias naturales, los modelos de crecimiento poblacional involucran ecuaciones no lineales que requieren métodos numéricos para su resolución.</p>
+          <p class="teoria">Los métodos numéricos para la resolución de ecuaciones tienen aplicaciones muy variadas en distintos campos de la ciencia y la ingeniería.</p>
+          <p class="teoria"><strong>En ingeniería.</strong> Los métodos de intervalo y de aproximaciones sucesivas se utilizan para calcular raíces de ecuaciones que modelan fenómenos físicos. Por ejemplo, en termodinámica se emplean para resolver ecuaciones de estado como la de Van der Waals, que permite predecir el comportamiento de gases reales. En mecánica de fluidos, el método de la secante o de Newton se aplica para determinar el factor de fricción en tuberías mediante la ecuación de Colebrook-White, una ecuación no lineal implícita.</p>
+          <p class="teoria"><strong>En economía y finanzas.</strong> El cálculo de tasas internas de retorno (TIR) de inversiones requiere resolver ecuaciones polinómicas o no lineales, donde la bisección o Newton son herramientas estándar. También se aplican en modelos de oferta y demanda para encontrar puntos de equilibrio cuando las curvas son no lineales.</p>
+          <p class="teoria"><strong>En ciencias naturales.</strong> En biología, los modelos de crecimiento poblacional (como el modelo logístico) involucran ecuaciones no lineales que requieren métodos numéricos para su resolución. En química, el cálculo de concentraciones en equilibrio de reacciones complejas a menudo conduce a ecuaciones polinómicas de grado superior que deben resolverse numéricamente.</p>
+          <p class="teoria"><strong>En el ámbito educativo y computacional.</strong> Existen numerosas aplicaciones móviles y software especializado que implementan estos métodos para ayudar a estudiantes y profesionales. Por ejemplo, Photomath y Symbolab son herramientas que permiten escanear o ingresar ecuaciones y obtienen soluciones paso a paso utilizando técnicas como Newton-Raphson, bisección y otros métodos numéricos. Estas aplicaciones no solo proporcionan la solución, sino que muestran el proceso completo de resolución, lo que facilita el aprendizaje de los conceptos subyacentes.</p>
+          
           <div class="prog-widget">
             <div class="prog-top-bar"><span class="prog-label">▶ interes_compuesto.py</span><div class="dots"><div class="dot" style="background:#7c3aed"></div></div></div>
             <div class="prog-inputs">
@@ -882,15 +943,15 @@
       <div class="subtema-block" style="--c:#10b981">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">3.1</span>
-          <span class="subtema-name">Métodos iterativos (Jacobi y Gauss-Seidel)</span>
+          <span class="subtema-name">Métodos iterativos</span>
           <span class="has-prog">Programa</span>
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">Los métodos iterativos son técnicas utilizadas para resolver sistemas de ecuaciones lineales, especialmente eficientes cuando se trabaja con matrices grandes y dispersas. A diferencia de los métodos directos, estos generan una sucesión de aproximaciones que, bajo ciertas condiciones, converge a la solución exacta.</p>
-          <p class="teoria"><strong>Método de Jacobi:</strong> Este método resuelve un sistema de ecuaciones lineales despejando cada variable en función de las demás y usando los valores de la iteración anterior para calcular los nuevos. Una característica clave es que todas las nuevas aproximaciones se calculan exclusivamente con los valores de la iteración anterior.</p>
-          <p class="teoria"><strong>Método de Gauss-Seidel:</strong> Es una mejora del método de Jacobi, ya que utiliza los valores más actualizados de las variables tan pronto como están disponibles. Esta actualización inmediata generalmente acelera la convergencia.</p>
-          <p class="teoria"><strong>Convergencia:</strong> Para que estos métodos converjan, la matriz debe ser diagonalmente dominante.</p>
+          <p class="teoria">Los métodos iterativos son técnicas utilizadas para resolver sistemas de ecuaciones lineales, especialmente eficientes cuando se trabaja con matrices grandes y dispersas (con muchos ceros). A diferencia de los métodos directos, estos generan una sucesión de aproximaciones que, bajo ciertas condiciones, converge a la solución exacta.</p>
+          <p class="teoria"><strong>Método de Jacobi</strong><br>Este método, nombrado en honor al matemático Carl Gustav Jacob Jacobi, resuelve un sistema de ecuaciones lineales despejando cada variable en función de las demás y usando los valores de la iteración anterior para calcular los nuevos.<br>Fundamento: Dado un sistema de ecuaciones, se despeja la incógnita x_i de la ecuación i. Para la iteración k, se calcula:<br>x_i^(k) = (1/a_ii) (b_i - ∑_{j≠i} a_ij x_j^(k-1))<br>Una característica clave del método de Jacobi es que todas las nuevas aproximaciones se calculan exclusivamente con los valores de la iteración anterior. Esto significa que, hasta que no se completa una iteración completa (calcular todas las x_i), los valores anteriores permanecen sin cambios.</p>
+          <p class="teoria"><strong>Método de Gauss-Seidel</strong><br>Este método recibe su nombre de los matemáticos Carl Friedrich Gauss y Philipp Ludwig von Seidel. Es una mejora del método de Jacobi, ya que utiliza los valores más actualizados de las variables tan pronto como están disponibles.<br>Proceso: Al calcular x_1^(k), se usan los valores x_2^(k-1), x_3^(k-1),... Sin embargo, al calcular x_2^(k), se utiliza el recién calculado x_1^(k) en lugar de x_1^(k-1). Esta actualización inmediata generalmente acelera la convergencia.</p>
+          <p class="teoria"><strong>Comparación y Convergencia</strong><br>Eficiencia: El método de Gauss-Seidel suele preferirse sobre el de Jacobi porque converge más rápidamente para la mayoría de los sistemas. En los ejemplos prácticos, se ha observado que Gauss-Seidel alcanza la solución en menos iteraciones.<br>Convergencia: Para que estos métodos converjan a la solución, la matriz del sistema debe cumplir ciertas propiedades. Un requisito común es que la matriz sea diagonalmente dominante (el valor absoluto del elemento en la diagonal de cada fila sea mayor que la suma de los valores absolutos de los demás elementos de esa fila).</p>
           <div class="prog-widget">
             <div class="prog-top-bar"><span class="prog-label">▶ gauss_seidel.py</span><div class="dots"><div class="dot" style="background:#10b981"></div></div></div>
             <div class="prog-footer"><button class="run-btn" onclick="run31()">▶ Ejecutar</button><div class="output-box" id="out31">Esperando...</div></div>
@@ -898,17 +959,22 @@
         </div>
       </div>
 
-      <!-- 3.2 Sistemas de ecuaciones no lineales -->
+      <!-- 3.2 Sistema de ecuaciones no lineales -->
       <div class="subtema-block" style="--c:#10b981">
         <div class="subtema-header" onclick="toggle(this)">
           <span class="subtema-num">3.2</span>
-          <span class="subtema-name">Sistemas de ecuaciones no lineales</span>
+          <span class="subtema-name">Sistema de ecuaciones no lineales</span>
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">Un sistema de ecuaciones no lineales incluye términos que no son lineales, como potencias (ej. x²), productos (ej. xy), funciones trigonométricas (ej. sen(x)), exponenciales, etc. Estos sistemas son inherentemente más complejos que los lineales y modelan una mayor variedad de fenómenos reales.</p>
-          <p class="teoria"><strong>Linealización:</strong> Una técnica común para estudiar sistemas no lineales es linealizarlos alrededor de un punto de interés. Esto implica aproximar el sistema no lineal por un sistema lineal válido en una región pequeña ("localmente").</p>
-          <p class="teoria"><strong>Comportamientos complejos:</strong> Los sistemas no lineales pueden presentar múltiples puntos de equilibrio, ciclos límite, y caos (comportamiento aparentemente aleatorio y extremadamente sensible a las condiciones iniciales, como en el famoso "efecto mariposa").</p>
+          <p class="teoria">Un sistema de ecuaciones no lineales incluye términos que no son lineales, como potencias (ej. x^2), productos (ej. xy), funciones trigonométricas (ej. sen(x)), exponenciales, etc. Estos sistemas son inherentemente más complejos que los lineales y modelan una mayor variedad de fenómenos reales.</p>
+          <p class="teoria"><strong>Linealización:</strong> Una técnica común para estudiar sistemas no lineales es linealizarlos alrededor de un punto de interés. Esto implica aproximar el sistema no lineal por un sistema lineal válido en una región pequeña ("localmente"), lo que permite analizar su comportamiento cualitativo.</p>
+          <p class="teoria"><strong>Comportamientos complejos:</strong> Los sistemas no lineales pueden presentar fenómenos que no existen en los lineales, como:</p>
+          <ul>
+            <li><strong>Múltiples puntos de equilibrio:</strong> Varias soluciones estacionarias.</li>
+            <li><strong>Ciclos límite:</strong> Trayectorias cerradas hacia las cuales evoluciona el sistema.</li>
+            <li><strong>Caos:</strong> Comportamiento aparentemente aleatorio y extremadamente sensible a las condiciones iniciales, como en el famoso "efecto mariposa".</li>
+          </ul>
         </div>
       </div>
 
@@ -921,8 +987,12 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">Tanto para sistemas lineales como no lineales, los métodos iterativos se basan en el concepto de punto fijo: reescribir el sistema como x = F(x) y generar una sucesión x(k) = F(x(k-1)).</p>
-          <p class="teoria"><strong>Criterios de convergencia:</strong> Cota de error: se define una tolerancia y se detiene el proceso cuando la diferencia entre iteraciones sucesivas es menor que ese valor. Número de iteraciones: se establece un número máximo de iteraciones para evitar ciclos infinitos.</p>
+          <p class="teoria">Tanto para sistemas lineales como no lineales, los métodos iterativos se basan en el concepto de punto fijo: reescribir el sistema como x = F(x) y generar una sucesión x^(k) = F(x^(k-1)).</p>
+          <p class="teoria"><strong>Criterios de convergencia:</strong></p>
+          <ul>
+            <li><strong>Cota de error:</strong> Se define una tolerancia (ej. 10^(-6)) y detiene el proceso cuando la diferencia entre iteraciones sucesivas es menor que ese valor.</li>
+            <li><strong>Número de iteraciones:</strong> Se establece un número máximo de iteraciones para evitar ciclos infinitos en caso de que el método no converja.</li>
+          </ul>
           <p class="teoria">La convergencia no está garantizada para cualquier sistema. Factores como la forma de las ecuaciones, la aproximación inicial y las propiedades matemáticas del sistema determinan si el proceso se acercará a una solución.</p>
           <div class="prog-widget">
             <div class="prog-top-bar"><span class="prog-label">▶ verificar_dominancia.py</span><div class="dots"><div class="dot" style="background:#10b981"></div></div></div>
@@ -945,10 +1015,11 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria"><strong>Ingeniería y Física:</strong> Los métodos iterativos como Jacobi y Gauss-Seidel se utilizan para resolver grandes sistemas lineales en el análisis de redes eléctricas (cálculo de voltajes y corrientes), en problemas de transferencia de calor (distribución de temperaturas en sólidos) y en mecánica de fluidos.</p>
-          <p class="teoria"><strong>Biología y Ecología:</strong> Los sistemas de ecuaciones diferenciales no lineales modelan la interacción entre especies. El modelo depredador-presa de Lotka-Volterra es un ejemplo clásico que describe las fluctuaciones cíclicas de poblaciones.</p>
-          <p class="teoria"><strong>Fenómenos Naturales:</strong> El movimiento del péndulo con ángulos grandes es un ejemplo de sistema no lineal. A diferencia del péndulo lineal, en este caso el periodo de oscilación depende de la amplitud, y pueden aparecer comportamientos caóticos.</p>
-          <p class="teoria"><strong>Economía y Química:</strong> En economía, los sistemas no lineales modelan mercados con oferta y demanda no lineales, pudiendo producir múltiples puntos de equilibrio. En química, reacciones complejas como las oscilantes de Belousov-Zhabotinsky se describen con sistemas no lineales.</p>
+          <p class="teoria">Estos métodos tienen aplicaciones extensas en diversas áreas de la ciencia y la ingeniería. Algunos ejemplos incluyen:</p>
+          <p class="teoria"><strong>Ingeniería y Física:</strong> Los métodos iterativos como Jacobi y Gauss-Seidel se utilizan para resolver grandes sistemas lineales en el análisis de redes eléctricas (cálculo de voltajes y corrientes), en problemas de transferencia de calor (distribución de temperaturas en sólidos) y en mecánica de fluidos (análisis de flujos en tuberías y perfiles aerodinámicos). Estos métodos son preferidos por su eficiencia computacional cuando se trabaja con matrices grandes y dispersas.</p>
+          <p class="teoria"><strong>Biología y Ecología:</strong> Los sistemas de ecuaciones diferenciales no lineales modelan la interacción entre especies. El modelo depredador-presa de Lotka-Volterra es un ejemplo clásico que describe las fluctuaciones cíclicas de poblaciones como lobos y ciervos, generando comportamientos como oscilaciones sostenidas que no pueden explicarse con modelos lineales.</p>
+          <p class="teoria"><strong>Fenómenos Naturales:</strong> El movimiento del péndulo con ángulos grandes es un ejemplo de sistema no lineal. A diferencia del péndulo lineal (para pequeñas oscilaciones), en este caso el periodo de oscilación depende de la amplitud, y al añadir amortiguamiento y fuerzas externas pueden aparecer comportamientos caóticos.</p>
+          <p class="teoria"><strong>Economía y Química:</strong> En economía, los sistemas no lineales modelan mercados con oferta y demanda no lineales, pudiendo producir múltiples puntos de equilibrio (distintos precios estables) o inestabilidades como burbujas especulativas y colapsos. En química, reacciones complejas como las oscilantes de Belousov-Zhabotinsky se describen con sistemas no lineales, donde los puntos de equilibrio determinan si la reacción se estabiliza u oscila en el tiempo.</p>
         </div>
       </div>
     </div>
@@ -974,9 +1045,13 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">La diferenciación numérica consiste en aproximar la derivada de una función utilizando fórmulas basadas en diferencias finitas. Estas técnicas son particularmente útiles cuando la función es muy compleja o cuando solo se dispone de valores puntuales de la misma.</p>
-          <p class="teoria"><strong>Fórmulas:</strong> Diferencia hacia adelante: f'(x) ≈ (f(x+h)-f(x))/h (error O(h)). Diferencia centrada: f'(x) ≈ (f(x+h)-f(x-h))/(2h) (error O(h²)). Segunda derivada: f''(x) ≈ (f(x+h)-2f(x)+f(x-h))/h² (error O(h²)).</p>
-          <p class="teoria">Es importante señalar que, aunque teóricamente el error disminuye al hacer h más pequeño, en la práctica computacional existe un valor crítico por debajo del cual los errores de redondeo comienzan a dominar.</p>
+          <p class="teoria">La diferenciación numérica se basa en aproximar la derivada de una función mediante fórmulas de diferencias finitas, que se obtienen a partir de la expansión en series de Taylor. La aproximación más directa para la primera derivada es la fórmula de diferencia hacia adelante:</p>
+          <p class="teoria" style="text-align:center; font-family:var(--mono);">f'(x) ≈ (f(x+h)-f(x))/h</p>
+          <p class="teoria">donde h es un incremento pequeño. Esta fórmula tiene un error de orden O(h), lo que significa que converge linealmente. Para obtener mayor precisión, se puede utilizar la fórmula de diferencia centrada:</p>
+          <p class="teoria" style="text-align:center; font-family:var(--mono);">f'(x) ≈ (f(x+h)-f(x-h))/(2h) + O(h²)</p>
+          <p class="teoria">Esta aproximación tiene error de orden cuadrático, lo que implica que al reducir h a la mitad, el error se reduce aproximadamente a la cuarta parte. Para la segunda derivada, una fórmula común es:</p>
+          <p class="teoria" style="text-align:center; font-family:var(--mono);">f''(x) ≈ (f(x+h)-2f(x)+f(x-h))/h² + O(h²)</p>
+          <p class="teoria">Es importante señalar que, aunque teóricamente el error disminuye al hacer h más pequeño, en la práctica computacional existe un valor crítico por debajo del cual los errores de redondeo comienzan a dominar, empeorando la aproximación.</p>
           <div class="prog-widget">
             <div class="prog-top-bar"><span class="prog-label">▶ diferenciacion.py</span><div class="dots"><div class="dot" style="background:#f59e0b"></div></div></div>
             <div class="prog-inputs">
@@ -997,10 +1072,12 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria">La integración numérica, también llamada cuadratura numérica, tiene como objetivo aproximar el valor de una integral definida cuando la función no puede integrarse analíticamente o solo se conoce en puntos discretos.</p>
-          <p class="teoria"><strong>Regla del trapecio:</strong> ∫f(x)dx ≈ (b-a)/2·[f(a)+f(b)].</p>
-          <p class="teoria"><strong>Regla de Simpson 1/3:</strong> Para su aplicación, el número de subintervalos n debe ser par. ∫f(x)dx ≈ (b-a)/6·[f(a)+4f((a+b)/2)+f(b)].</p>
-          <p class="teoria"><strong>Regla de Simpson 3/8:</strong> Requiere n múltiplo de 3.</p>
+          <p class="teoria">La integración numérica, también denominada cuadratura numérica, tiene como objetivo aproximar el valor de una integral definida I = ∫_a^b f(x)dx. Las fórmulas de cuadratura son expresiones de la forma:</p>
+          <p class="teoria" style="text-align:center; font-family:var(--mono);">∫_a^b f(x)dx ≈ ω₀ f(x₀) + ω₁ f(x₁) + ... + ω_N f(x_N)</p>
+          <p class="teoria">Las fórmulas de cuadratura pueden clasificarse en simples, si la aproximación se realiza sobre el intervalo completo [a,b], o compuestas, si primero se divide el intervalo en n subintervalos y luego se aplica la fórmula a cada uno.</p>
+          <p class="teoria"><strong>Regla del punto medio.</strong> Es la fórmula más simple: ∫_a^b f(x)dx ≈ (b-a)·f((a+b)/2)</p>
+          <p class="teoria"><strong>Regla del trapecio.</strong> ∫_a^b f(x)dx ≈ (b-a)/2·[f(a)+f(b)]</p>
+          <p class="teoria"><strong>Regla de Simpson 1/3.</strong> ∫_a^b f(x)dx ≈ (b-a)/6·[f(a)+4f((a+b)/2)+f(b)]</p>
           <div class="prog-widget">
             <div class="prog-top-bar"><span class="prog-label">▶ simpson.py</span><div class="dots"><div class="dot" style="background:#f59e0b"></div></div></div>
             <div class="prog-inputs">
@@ -1022,8 +1099,9 @@
         </div>
         <div class="subtema-body">
           <p class="teoria">La integración múltiple se refiere a la aproximación de integrales en dos o más dimensiones. A medida que aumenta la dimensionalidad, los métodos tradicionales basados en cuadrículas regulares sufren la llamada "maldición de la dimensionalidad", ya que el número de puntos necesarios crece exponencialmente con el número de dimensiones.</p>
-          <p class="teoria"><strong>Método de Monte Carlo:</strong> Una alternativa poderosa para integrales multidimensionales. Emplea muestreo aleatorio. Su velocidad de convergencia (del orden de 1/√n) es independiente del número de dimensiones.</p>
-          <p class="teoria">La gran ventaja es que resulta especialmente eficiente para integrales en espacios de alta dimensionalidad, como las que aparecen en mecánica cuántica de muchos cuerpos o en problemas estadísticos.</p>
+          <p class="teoria"><strong>Método de Monte Carlo.</strong> Este es un enfoque probabilístico que emplea números aleatorios para aproximar integrales, resultando particularmente útil para integrales en dimensiones altas. A diferencia de los métodos determinísticos que evalúan el integrando en una cuadrícula regular, Monte Carlo selecciona puntos al azar. La ley de los grandes números garantiza que el promedio de las evaluaciones converge al valor real de la integral.</p>
+          <p class="teoria">La aproximación básica consiste en generar N muestras uniformes x̄₁,...,x̄_N dentro del volumen de integración Ω y calcular: I ≈ Q_N = V·(1/N)·Σ f(x̄_i)</p>
+          <p class="teoria">Una propiedad fundamental del método de Monte Carlo es que su velocidad de convergencia es independiente del número de dimensiones, a diferencia de los métodos determinísticos. Por ello, resulta especialmente eficiente para problemas en espacios de alta dimensionalidad, como los que aparecen en mecánica cuántica, finanzas o estadística bayesiana.</p>
         </div>
       </div>
 
@@ -1035,10 +1113,12 @@
           <span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
-          <p class="teoria"><strong>En ingeniería y física:</strong> En mecánica de fluidos, la diferenciación numérica se utiliza para calcular campos de velocidad y aceleración a partir de datos experimentales discretos. En termodinámica, la integración numérica permite calcular el trabajo realizado por un gas. En problemas de transferencia de calor, ambos métodos son esenciales para resolver ecuaciones diferenciales parciales mediante el método de diferencias finitas.</p>
-          <p class="teoria"><strong>En economía y finanzas:</strong> El método de Monte Carlo es particularmente popular en la valoración de opciones financieras y otros derivados, especialmente cuando los modelos incluyen múltiples fuentes de incertidumbre.</p>
-          <p class="teoria"><strong>En estadística y ciencia de datos:</strong> La integración de Monte Carlo se emplea ampliamente en inferencia bayesiana para aproximar integrales que no tienen solución analítica.</p>
-          <p class="teoria"><strong>En procesamiento de señales:</strong> La diferenciación numérica se utiliza para extraer información de señales digitales, como calcular la velocidad a partir de datos de posición obtenidos por GPS.</p>
+          <p class="teoria">Los métodos de diferenciación e integración numérica tienen aplicaciones muy variadas en distintos campos de la ciencia y la ingeniería.</p>
+          <p class="teoria"><strong>En ingeniería y física.</strong> En mecánica de fluidos, la diferenciación numérica se utiliza para calcular campos de velocidad y aceleración a partir de datos experimentales discretos. En termodinámica, la integración numérica permite calcular el trabajo realizado por un gas en procesos donde la presión varía de forma no analítica. En problemas de transferencia de calor, ambos métodos son esenciales para resolver ecuaciones diferenciales parciales mediante el método de diferencias finitas.</p>
+          <p class="teoria"><strong>En economía y finanzas.</strong> El cálculo de derivadas de curvas de oferta y demanda a partir de datos de mercado permite estimar elasticidades. El método de Monte Carlo es particularmente popular en la valoración de opciones financieras y otros derivados, especialmente cuando los modelos incluyen múltiples fuentes de incertidumbre.</p>
+          <p class="teoria"><strong>En estadística y ciencia de datos.</strong> La integración numérica es fundamental para calcular funciones de densidad de probabilidad y valores esperados. En inferencia bayesiana, el método de Monte Carlo se emplea ampliamente para aproximar integrales que no tienen solución analítica.</p>
+          <p class="teoria"><strong>En procesamiento de señales.</strong> La diferenciación numérica se utiliza para extraer información de señales digitales, como calcular la velocidad a partir de datos de posición obtenidos por GPS.</p>
+          <p class="teoria"><strong>En simulación computacional.</strong> Cualquier simulación que modele fenómenos continuos requiere, en algún punto, aproximar derivadas o integrales. Los modelos climáticos, las simulaciones aeroespaciales, los estudios de dinámica molecular y las simulaciones de sistemas biológicos dependen fuertemente de estas técnicas numéricas.</p>
         </div>
       </div>
     </div>
