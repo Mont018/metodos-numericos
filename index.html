@@ -5,547 +5,91 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Métodos Numéricos</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
   :root {
-    --bg: #0a0e1a;
-    --bg2: #111827;
-    --bg3: #1a2235;
-    --accent: #00d4ff;
-    --accent2: #7c3aed;
-    --accent3: #10b981;
-    --accent4: #f59e0b;
-    --accent5: #ef4444;
-    --accent6: #ec4899;
-    --text: #e2e8f0;
-    --text2: #94a3b8;
-    --text3: #64748b;
-    --mono: 'Space Mono', monospace;
-    --sans: 'DM Sans', sans-serif;
-    --radius: 12px;
-    --radius-sm: 8px;
+    --bg: #0a0e1a; --bg2: #111827; --bg3: #1a2235;
+    --accent: #00d4ff; --accent2: #7c3aed; --accent3: #10b981;
+    --accent4: #f59e0b; --accent5: #ef4444; --accent6: #ec4899;
+    --text: #e2e8f0; --text2: #94a3b8; --text3: #64748b;
+    --mono: 'Space Mono', monospace; --sans: 'DM Sans', sans-serif;
+    --radius: 12px; --radius-sm: 8px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .site-header {
-    position: relative;
-    z-index: 10;
-    padding: 3rem 2rem 2rem;
-    text-align: center;
-    border-bottom: 1px solid rgba(0,212,255,0.1);
-    background: linear-gradient(180deg, rgba(0,212,255,0.05) 0%, transparent 100%);
-  }
-
-  .site-header .tag {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid rgba(0,212,255,0.3);
-    padding: 4px 14px;
-    border-radius: 999px;
-    margin-bottom: 1rem;
-  }
-
-  .site-header h1 {
-    font-family: var(--mono);
-    font-size: clamp(1.8rem, 5vw, 3.5rem);
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-
-  .site-header h1 span {
-    color: var(--accent);
-    text-shadow: 0 0 40px rgba(0,212,255,0.4);
-  }
-
-  .site-header p {
-    margin-top: 0.75rem;
-    color: var(--text2);
-    font-size: 15px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .header-stats {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-  }
-
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 0; }
+  .site-header { position: relative; z-index: 10; padding: 3rem 2rem 2rem; text-align: center; border-bottom: 1px solid rgba(0,212,255,0.1); background: linear-gradient(180deg, rgba(0,212,255,0.05) 0%, transparent 100%); }
+  .site-header .tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(0,212,255,0.3); padding: 4px 14px; border-radius: 999px; margin-bottom: 1rem; }
+  .site-header h1 { font-family: var(--mono); font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 700; color: #fff; letter-spacing: -0.02em; line-height: 1.1; }
+  .site-header h1 span { color: var(--accent); text-shadow: 0 0 40px rgba(0,212,255,0.4); }
+  .site-header p { margin-top: 0.75rem; color: var(--text2); font-size: 15px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .header-stats { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
   .stat { text-align: center; }
-
-  .stat-n {
-    font-family: var(--mono);
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .stat-l {
-    font-size: 12px;
-    color: var(--text3);
-    letter-spacing: 0.05em;
-  }
-
-  .nav-wrap {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(10,14,26,0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    padding: 0 1.5rem;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
+  .stat-n { font-family: var(--mono); font-size: 24px; font-weight: 700; color: var(--accent); }
+  .stat-l { font-size: 12px; color: var(--text3); letter-spacing: 0.05em; }
+  .nav-wrap { position: sticky; top: 0; z-index: 100; background: rgba(10,14,26,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 1.5rem; overflow-x: auto; scrollbar-width: none; }
   .nav-wrap::-webkit-scrollbar { display: none; }
-
-  .nav-inner {
-    display: flex;
-    gap: 0;
-    min-width: max-content;
-  }
-
-  .nav-btn {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.05em;
-    padding: 1rem 1.25rem;
-    border: none;
-    background: none;
-    color: var(--text3);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-
+  .nav-inner { display: flex; gap: 0; min-width: max-content; }
+  .nav-btn { font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; padding: 1rem 1.25rem; border: none; background: none; color: var(--text3); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap; }
   .nav-btn:hover { color: var(--text); }
-
-  .nav-btn.active {
-    color: #fff;
-    border-bottom-color: var(--accent);
-  }
-
-  .main {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem 4rem;
-  }
-
+  .nav-btn.active { color: #fff; border-bottom-color: var(--accent); }
+  .main { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
   #overview-view { display: block; }
-
-  .unit-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.25rem;
-    margin-top: 1.5rem;
-  }
-
-  .unit-card {
-    background: var(--bg2);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .unit-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--c);
-    opacity: 0.8;
-  }
-
-  .unit-card:hover {
-    border-color: rgba(255,255,255,0.15);
-    transform: translateY(-2px);
-    background: var(--bg3);
-  }
-
-  .unit-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--c);
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
-  }
-
-  .unit-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 0.75rem;
-    line-height: 1.4;
-  }
-
-  .unit-subtemas-preview {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 1rem;
-  }
-
-  .preview-item {
-    font-size: 12px;
-    color: var(--text3);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .preview-item::before {
-    content: '';
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    background: var(--c);
-    flex-shrink: 0;
-    opacity: 0.6;
-  }
-
-  .unit-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .badge {
-    font-family: var(--mono);
-    font-size: 10px;
-    padding: 3px 10px;
-    border-radius: 999px;
-    border: 1px solid;
-  }
-
-  .open-arrow {
-    font-size: 18px;
-    color: var(--text3);
-    transition: transform 0.2s;
-  }
-
+  .unit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+  .unit-card { background: var(--bg2); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 1.5rem; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; }
+  .unit-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--c); opacity: 0.8; }
+  .unit-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-2px); background: var(--bg3); }
+  .unit-num { font-family: var(--mono); font-size: 11px; color: var(--c); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+  .unit-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 0.75rem; line-height: 1.4; }
+  .unit-subtemas-preview { display: flex; flex-direction: column; gap: 4px; margin-bottom: 1rem; }
+  .preview-item { font-size: 12px; color: var(--text3); display: flex; align-items: center; gap: 6px; }
+  .preview-item::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--c); flex-shrink: 0; opacity: 0.6; }
+  .unit-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+  .badge { font-family: var(--mono); font-size: 10px; padding: 3px 10px; border-radius: 999px; border: 1px solid; }
+  .open-arrow { font-size: 18px; color: var(--text3); transition: transform 0.2s; }
   .unit-card:hover .open-arrow { transform: translateX(4px); color: var(--c); }
-
   .unit-detail { display: none; }
   .unit-detail.active { display: block; }
-
-  .detail-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .back-btn {
-    font-family: var(--mono);
-    font-size: 12px;
-    padding: 8px 16px;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: transparent;
-    color: var(--text2);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
+  .detail-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .back-btn { font-family: var(--mono); font-size: 12px; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: transparent; color: var(--text2); cursor: pointer; transition: all 0.2s; }
   .back-btn:hover { background: rgba(255,255,255,0.05); color: #fff; }
-
-  .detail-title-wrap h2 {
-    font-family: var(--mono);
-    font-size: 20px;
-    color: #fff;
-  }
-
-  .detail-title-wrap p {
-    font-size: 13px;
-    color: var(--text3);
-    margin-top: 2px;
-  }
-
-  .subtemas-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .subtema-block {
-    background: var(--bg2);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: var(--radius);
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-
+  .detail-title-wrap h2 { font-family: var(--mono); font-size: 20px; color: #fff; }
+  .detail-title-wrap p { font-size: 13px; color: var(--text3); margin-top: 2px; }
+  .subtemas-list { display: flex; flex-direction: column; gap: 1rem; }
+  .subtema-block { background: var(--bg2); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s; }
   .subtema-block:hover { border-color: rgba(255,255,255,0.1); }
-
-  .subtema-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.1rem 1.25rem;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .subtema-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    min-width: 32px;
-    color: var(--c);
-    font-weight: 700;
-  }
-
-  .subtema-name {
-    flex: 1;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text);
-  }
-
-  .has-prog {
-    font-family: var(--mono);
-    font-size: 10px;
-    padding: 3px 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(16,185,129,0.3);
-    color: var(--accent3);
-    background: rgba(16,185,129,0.07);
-  }
-
-  .chevron {
-    font-size: 14px;
-    color: var(--text3);
-    transition: transform 0.25s;
-  }
-
+  .subtema-header { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.25rem; cursor: pointer; user-select: none; }
+  .subtema-num { font-family: var(--mono); font-size: 11px; min-width: 32px; color: var(--c); font-weight: 700; }
+  .subtema-name { flex: 1; font-size: 14px; font-weight: 500; color: var(--text); }
+  .has-prog { font-family: var(--mono); font-size: 10px; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(16,185,129,0.3); color: var(--accent3); background: rgba(16,185,129,0.07); }
+  .chevron { font-size: 14px; color: var(--text3); transition: transform 0.25s; }
   .subtema-block.open .chevron { transform: rotate(180deg); }
-
-  .subtema-body {
-    display: none;
-    padding: 0 1.25rem 1.25rem;
-    border-top: 1px solid rgba(255,255,255,0.05);
-  }
-
+  .subtema-body { display: none; padding: 0 1.25rem 1.25rem; border-top: 1px solid rgba(255,255,255,0.05); }
   .subtema-block.open .subtema-body { display: block; }
-
-  .subtema-body .teoria {
-    font-size: 14px;
-    color: var(--text2);
-    line-height: 1.8;
-    margin-bottom: 1.25rem;
-    margin-top: 1rem;
-  }
-
-  .subtema-body .teoria strong {
-    color: var(--text);
-  }
-
-  .subtema-body ul, .subtema-body ol {
-    color: var(--text2);
-    font-size: 14px;
-    line-height: 1.8;
-    margin-left: 1.5rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .subtema-body li {
-    margin-bottom: 0.25rem;
-  }
-
-  .subtema-body .formula {
-    text-align: center;
-    font-family: var(--mono);
-    font-size: 14px;
-    margin: 1rem 0;
-    padding: 0.75rem;
-    background: rgba(0,212,255,0.05);
-    border-radius: 8px;
-  }
-
-  .prog-widget {
-    background: var(--bg);
-    border: 1px solid rgba(0,212,255,0.15);
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    margin-top: 1rem;
-  }
-
-  .prog-top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.6rem 1rem;
-    background: rgba(0,212,255,0.04);
-    border-bottom: 1px solid rgba(0,212,255,0.1);
-  }
-
-  .prog-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-  }
-
+  .subtema-body .teoria { font-size: 14px; color: var(--text2); line-height: 1.8; margin-bottom: 1.25rem; margin-top: 1rem; }
+  .subtema-body .teoria strong { color: var(--text); }
+  .subtema-body ul, .subtema-body ol { color: var(--text2); font-size: 14px; line-height: 1.8; margin-left: 1.5rem; margin-bottom: 1.25rem; }
+  .subtema-body li { margin-bottom: 0.25rem; }
+  .formula-box { text-align: center; font-family: var(--mono); font-size: 13px; margin: 1rem 0; padding: 0.75rem 1rem; background: rgba(0,212,255,0.05); border-radius: 8px; border: 1px solid rgba(0,212,255,0.1); color: #a5f3fc; }
+  .prog-widget { background: var(--bg); border: 1px solid rgba(0,212,255,0.15); border-radius: var(--radius-sm); overflow: hidden; margin-top: 1rem; }
+  .prog-top-bar { display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 1rem; background: rgba(0,212,255,0.04); border-bottom: 1px solid rgba(0,212,255,0.1); }
+  .prog-label { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.05em; }
   .dots { display: flex; gap: 5px; }
   .dot { width: 10px; height: 10px; border-radius: 50%; }
-
-  .code-area {
-    font-family: var(--mono);
-    font-size: 12px;
-    line-height: 1.8;
-    padding: 1rem;
-    color: #a5f3fc;
-    background: transparent;
-    white-space: pre;
-    overflow-x: auto;
-  }
-
-  .code-area .kw { color: #c084fc; }
-  .code-area .fn { color: #6ee7b7; }
-  .code-area .st { color: #fde68a; }
-  .code-area .cm { color: #475569; }
-  .code-area .nm { color: #fb923c; }
-
-  .prog-inputs {
-    padding: 0.75rem 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    background: rgba(255,255,255,0.02);
-  }
-
-  .inp-group {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    flex: 1;
-    min-width: 120px;
-  }
-
-  .inp-group label {
-    font-size: 11px;
-    color: var(--text3);
-    font-family: var(--mono);
-  }
-
-  .prog-input {
-    background: var(--bg2);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 6px;
-    padding: 7px 10px;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text);
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-  }
-
+  .code-area { font-family: var(--mono); font-size: 12px; line-height: 1.8; padding: 1rem; color: #a5f3fc; background: transparent; white-space: pre; overflow-x: auto; }
+  .code-area .kw { color: #c084fc; } .code-area .fn { color: #6ee7b7; } .code-area .st { color: #fde68a; } .code-area .cm { color: #475569; } .code-area .nm { color: #fb923c; }
+  .prog-inputs { padding: 0.75rem 1rem; display: flex; flex-wrap: wrap; gap: 0.75rem; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); }
+  .inp-group { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 120px; }
+  .inp-group label { font-size: 11px; color: var(--text3); font-family: var(--mono); }
+  .prog-input { background: var(--bg2); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 7px 10px; font-family: var(--mono); font-size: 12px; color: var(--text); outline: none; transition: border-color 0.2s; width: 100%; }
   .prog-input:focus { border-color: rgba(0,212,255,0.4); }
-
-  .prog-footer {
-    padding: 0.75rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    border-top: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .run-btn {
-    font-family: var(--mono);
-    font-size: 12px;
-    padding: 8px 20px;
-    border-radius: 999px;
-    border: none;
-    background: var(--accent);
-    color: #000;
-    font-weight: 700;
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    transition: all 0.2s;
-  }
-
+  .prog-footer { padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+  .run-btn { font-family: var(--mono); font-size: 12px; padding: 8px 20px; border-radius: 999px; border: none; background: var(--accent); color: #000; font-weight: 700; cursor: pointer; letter-spacing: 0.05em; transition: all 0.2s; }
   .run-btn:hover { opacity: 0.85; transform: scale(0.98); }
-
-  .output-box {
-    flex: 1;
-    background: var(--bg2);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 6px;
-    padding: 8px 12px;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent3);
-    min-height: 38px;
-    white-space: pre-wrap;
-    word-break: break-all;
-  }
-
-  .section-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: var(--text3);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    margin-top: 0.5rem;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
+  .output-box { flex: 1; background: var(--bg2); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 8px 12px; font-family: var(--mono); font-size: 12px; color: var(--accent3); min-height: 38px; white-space: pre-wrap; word-break: break-all; }
+  .section-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; color: var(--text3); text-transform: uppercase; margin-bottom: 1rem; margin-top: 0.5rem; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
   .unit-card { animation: fadeIn 0.3s ease both; }
-  .unit-card:nth-child(1) { animation-delay: 0s; }
-  .unit-card:nth-child(2) { animation-delay: 0.05s; }
-  .unit-card:nth-child(3) { animation-delay: 0.1s; }
-  .unit-card:nth-child(4) { animation-delay: 0.15s; }
-  .unit-card:nth-child(5) { animation-delay: 0.2s; }
-  .unit-card:nth-child(6) { animation-delay: 0.25s; }
+  .unit-card:nth-child(1){animation-delay:0s} .unit-card:nth-child(2){animation-delay:.05s} .unit-card:nth-child(3){animation-delay:.1s} .unit-card:nth-child(4){animation-delay:.15s} .unit-card:nth-child(5){animation-delay:.2s} .unit-card:nth-child(6){animation-delay:.25s}
 </style>
 </head>
 <body>
@@ -556,7 +100,7 @@
   <p>Unidades, subtemas y programas interactivos para comprender y aplicar los métodos numéricos.</p>
   <div class="header-stats">
     <div class="stat"><div class="stat-n">6</div><div class="stat-l">Unidades</div></div>
-    <div class="stat"><div class="stat-n">27</div><div class="stat-l">Subtemas</div></div>
+    <div class="stat"><div class="stat-n">28</div><div class="stat-l">Subtemas</div></div>
     <div class="stat"><div class="stat-n">10+</div><div class="stat-l">Programas</div></div>
   </div>
 </header>
@@ -579,7 +123,6 @@
   <div id="overview-view">
     <p class="section-label">Selecciona una unidad para explorar</p>
     <div class="unit-grid">
-
       <div class="unit-card" style="--c:#00d4ff" onclick="showUnit(1)">
         <div class="unit-num">UNIDAD 01</div>
         <div class="unit-title">Introducción a los Métodos Numéricos</div>
@@ -590,12 +133,8 @@
           <div class="preview-item">Software de cómputo numérico</div>
           <div class="preview-item">Métodos iterativos</div>
         </div>
-        <div class="unit-footer">
-          <span class="badge" style="border-color:rgba(0,212,255,0.3);color:#00d4ff">5 subtemas</span>
-          <span class="open-arrow">→</span>
-        </div>
+        <div class="unit-footer"><span class="badge" style="border-color:rgba(0,212,255,0.3);color:#00d4ff">5 subtemas</span><span class="open-arrow">→</span></div>
       </div>
-
       <div class="unit-card" style="--c:#7c3aed" onclick="showUnit(2)">
         <div class="unit-num">UNIDAD 02</div>
         <div class="unit-title">Métodos de Solución de Ecuaciones</div>
@@ -606,12 +145,8 @@
           <div class="preview-item">Métodos de interpolación</div>
           <div class="preview-item">Aplicaciones</div>
         </div>
-        <div class="unit-footer">
-          <span class="badge" style="border-color:rgba(124,58,237,0.3);color:#7c3aed">5 subtemas</span>
-          <span class="open-arrow">→</span>
-        </div>
+        <div class="unit-footer"><span class="badge" style="border-color:rgba(124,58,237,0.3);color:#7c3aed">5 subtemas</span><span class="open-arrow">→</span></div>
       </div>
-
       <div class="unit-card" style="--c:#10b981" onclick="showUnit(3)">
         <div class="unit-num">UNIDAD 03</div>
         <div class="unit-title">Métodos de Solución de Sistemas de Ecuaciones</div>
@@ -621,12 +156,8 @@
           <div class="preview-item">Iteración y convergencia</div>
           <div class="preview-item">Aplicaciones</div>
         </div>
-        <div class="unit-footer">
-          <span class="badge" style="border-color:rgba(16,185,129,0.3);color:#10b981">4 subtemas</span>
-          <span class="open-arrow">→</span>
-        </div>
+        <div class="unit-footer"><span class="badge" style="border-color:rgba(16,185,129,0.3);color:#10b981">4 subtemas</span><span class="open-arrow">→</span></div>
       </div>
-
       <div class="unit-card" style="--c:#f59e0b" onclick="showUnit(4)">
         <div class="unit-num">UNIDAD 04</div>
         <div class="unit-title">Diferenciación e Integración Numérica</div>
@@ -636,12 +167,8 @@
           <div class="preview-item">Integración múltiple</div>
           <div class="preview-item">Aplicaciones</div>
         </div>
-        <div class="unit-footer">
-          <span class="badge" style="border-color:rgba(245,158,11,0.3);color:#f59e0b">4 subtemas</span>
-          <span class="open-arrow">→</span>
-        </div>
+        <div class="unit-footer"><span class="badge" style="border-color:rgba(245,158,11,0.3);color:#f59e0b">4 subtemas</span><span class="open-arrow">→</span></div>
       </div>
-
       <div class="unit-card" style="--c:#ef4444" onclick="showUnit(5)">
         <div class="unit-num">UNIDAD 05</div>
         <div class="unit-title">Interpolación y Ajuste de Funciones</div>
@@ -649,29 +176,22 @@
           <div class="preview-item">Polinomio de Newton</div>
           <div class="preview-item">Polinomio de Lagrange</div>
           <div class="preview-item">Interpolación segmentada</div>
-          <div class="preview-item">Regresión y mínimos cuadrados</div>
+          <div class="preview-item">Regresión, mínimos cuadrados</div>
+          <div class="preview-item">Problemas de aplicación</div>
         </div>
-        <div class="unit-footer">
-          <span class="badge" style="border-color:rgba(239,68,68,0.3);color:#ef4444">4 subtemas</span>
-          <span class="open-arrow">→</span>
-        </div>
+        <div class="unit-footer"><span class="badge" style="border-color:rgba(239,68,68,0.3);color:#ef4444">6 subtemas</span><span class="open-arrow">→</span></div>
       </div>
-
       <div class="unit-card" style="--c:#ec4899" onclick="showUnit(6)">
         <div class="unit-num">UNIDAD 06</div>
         <div class="unit-title">Solución de Ecuaciones Diferenciales</div>
         <div class="unit-subtemas-preview">
-          <div class="preview-item">Métodos de paso</div>
-          <div class="preview-item">Método de pasos múltiples</div>
+          <div class="preview-item">Método de Euler</div>
+          <div class="preview-item">Runge-Kutta 4to orden</div>
           <div class="preview-item">Sistemas de EDOs</div>
           <div class="preview-item">Aplicaciones</div>
         </div>
-        <div class="unit-footer">
-          <span class="badge" style="border-color:rgba(236,72,153,0.3);color:#ec4899">4 subtemas</span>
-          <span class="open-arrow">→</span>
-        </div>
+        <div class="unit-footer"><span class="badge" style="border-color:rgba(236,72,153,0.3);color:#ec4899">4 subtemas</span><span class="open-arrow">→</span></div>
       </div>
-
     </div>
   </div>
 
@@ -679,67 +199,50 @@
   <div class="unit-detail" id="unit-1">
     <div class="detail-header">
       <button class="back-btn" onclick="showOverview()">← Volver</button>
-      <div class="detail-title-wrap">
-        <h2 style="color:#00d4ff">Unidad 1</h2>
-        <p>Introducción a los Métodos Numéricos</p>
-      </div>
+      <div class="detail-title-wrap"><h2 style="color:#00d4ff">Unidad 1</h2><p>Introducción a los Métodos Numéricos</p></div>
     </div>
     <div class="subtemas-list">
 
-      <!-- 1.1 Importancia -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">1.1</span>
-          <span class="subtema-name">Importancia de los métodos numéricos</span>
-          <span class="chevron">▾</span>
+          <span class="subtema-num">1.1</span><span class="subtema-name">Importancia de los métodos numéricos</span><span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
           <p class="teoria">Los métodos numéricos vuelven aptos para entender esquemas numéricos a fin de resolver problemas matemáticos, de ingeniería y científicos en una computadora, reducir esquemas numéricos básicos, escribir programas y resolverlos en una computadora y usar correctamente el software existente para dichos métodos y no solo aumenta nuestra habilidad para el uso de computadoras sino que también amplia la pericia matemática y la comprensión de los principios científicos básicos.</p>
           <p class="teoria">Pueden ser aplicados para resolver procedimientos matemáticos en:</p>
-          <ul>
-            <li>Cálculo de derivadas.</li>
-            <li>Integrales.</li>
-            <li>Ecuaciones diferenciales.</li>
-            <li>Operaciones con matrices.</li>
-            <li>Interpolaciones.</li>
-            <li>Ajuste de curvas.</li>
-            <li>Polinomios.</li>
-          </ul>
+          <ul><li>Cálculo de derivadas.</li><li>Integrales.</li><li>Ecuaciones diferenciales.</li><li>Operaciones con matrices.</li><li>Interpolaciones.</li><li>Ajuste de curvas.</li><li>Polinomios.</li></ul>
           <p class="teoria">En el proceso de solución de problemas por medio de computadoras, se requieren los siguientes pasos:</p>
           <ul>
             <li><strong>Especificación del problema.</strong> Con esto se indica que se debe identificar perfectamente el problema y sus limitaciones, las variables que intervienen y los resultados deseados.</li>
             <li><strong>Análisis.</strong> Es la formulación de la solución del problema denominada también algoritmo, de manera que se tenga una serie de pasos que resuelvan el problema y que sean susceptibles de ejecutarse en la computadora.</li>
             <li><strong>Programación.</strong> Este paso consiste en traducir el método de análisis o algoritmo de solución expresándole como una serie detallada de operaciones.</li>
-            <li><strong>Verificación.</strong> Es la prueba exhaustiva del programa para eliminar todos los errores que tenga de manera que efectúe lo que desea los resultados de prueba se comparan con soluciones conocidas de problemas ya resueltos.</li>
+            <li><strong>Verificación.</strong> Es la prueba exhaustiva del programa para eliminar todos los errores que tenga de manera que efectúe lo que desea; los resultados de prueba se comparan con soluciones conocidas de problemas ya resueltos.</li>
             <li><strong>Documentación.</strong> Consiste en preparar un instructivo del programa de manera que cualquier persona pueda conocer y utilizar el programa.</li>
             <li><strong>Producción.</strong> Es la última etapa en la que solo se proporcionan datos de entrada del programa obteniéndose las soluciones correspondientes.</li>
           </ul>
+          <div style="margin-top:2rem;">
+            <h3 style="text-align:center;color:var(--accent);font-family:var(--mono);font-size:13px;letter-spacing:0.1em;margin-bottom:1rem;">INFOGRAFÍA · MÉTODOS NUMÉRICOS</h3>
+            <embed src="Infografia_metodos_numericos.pdf" type="application/pdf" width="100%" height="700px" style="border-radius:12px;border:1px solid rgba(0,212,255,0.15);">
+          </div>
         </div>
       </div>
 
-      <!-- 1.2 Conceptos básicos -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">1.2</span>
-          <span class="subtema-name">Conceptos básicos: cifra significativa, precisión, exactitud, incertidumbre y sesgo</span>
-          <span class="chevron">▾</span>
+          <span class="subtema-num">1.2</span><span class="subtema-name">Conceptos básicos: cifra significativa, precisión, exactitud, incertidumbre y sesgo</span><span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
           <p class="teoria"><strong>CIFRAS SIGNIFICATIVAS:</strong><br>Las cifras significativas son los dígitos de un número que consideramos no nulos.<br>Norma: Son significativos todos los dígitos distintos de cero.<br>Ejemplo: 8723 tiene cuatro cifras significativas.</p>
           <p class="teoria"><strong>PRECISIÓN Y EXACTITUD:</strong><br>La exactitud es lo cerca que el resultado de una medición está del valor verdadero.<br>La precisión es lo cerca que los valores medidos están unos de otros.</p>
-          <p class="teoria">Exactitud baja / Precisión alta → Exactitud alta / Precisión baja → Exactitud alta / Precisión alta</p>
-          <p class="teoria"><strong>INCERTIDUMBRE.</strong><br>Se refiere al grado de alejamiento entre sí, a las diversas aproximaciones a un valor verdadero. La incertidumbre puede derivarse de una falta de información o incluso por que exista desacuerdo sobre lo que se sabe o lo que podría saberse. Puede tener varios tipos de origen, desde errores cuantificables en los datos hasta terminología definida de forma ambigua o previsiones inciertas del comportamiento humano. La incertidumbre puede, por lo tanto, ser representada por medidas cuantitativas (por ejemplo, un rango de valores calculados según distintos modelos) o por afirmaciones cualitativas (por ejemplo, al reflejar el juicio de un grupo de expertos).</p>
-          <p class="teoria"><strong>SESGO.</strong><br>Es un alejamiento sistemático del valor verdadero a calcular. Así como el error, de acuerdo con las formas por las cuales se produce, puede minimizarse, la ocurrencia de sesgo también puede ser neutralizada o controlada. En ocasiones sin embargo, es imposible controlar el sesgo y por cierto el error. En tales circunstancias conviene al menos estar en antecedente y tener conciencia de su existencia.</p>
+          <ul><li>Exactitud baja / Precisión alta</li><li>Exactitud alta / Precisión baja</li><li>Exactitud alta / Precisión alta</li></ul>
+          <p class="teoria"><strong>INCERTIDUMBRE:</strong><br>Se refiere al grado de alejamiento entre sí, a las diversas aproximaciones a un valor verdadero. La incertidumbre puede derivarse de una falta de información o incluso por que exista desacuerdo sobre lo que se sabe o lo que podría saberse. Puede tener varios tipos de origen, desde errores cuantificables en los datos hasta terminología definida de forma ambigua o previsiones inciertas del comportamiento humano. La incertidumbre puede, por lo tanto, ser representada por medidas cuantitativas (por ejemplo, un rango de valores calculados según distintos modelos) o por afirmaciones cualitativas (por ejemplo, al reflejar el juicio de un grupo de expertos).</p>
+          <p class="teoria"><strong>SESGO:</strong><br>Es un alejamiento sistemático del valor verdadero a calcular. Así como el error, de acuerdo con las formas por las cuales se produce, puede minimizarse, la ocurrencia de sesgo también puede ser neutralizada o controlada. En ocasiones sin embargo, es imposible controlar el sesgo y por cierto el error. En tales circunstancias conviene al menos estar en antecedente y tener conciencia de su existencia.</p>
         </div>
       </div>
 
-      <!-- 1.3 Tipos de errores -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">1.3</span>
-          <span class="subtema-name">Tipos de errores</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
+          <span class="subtema-num">1.3</span><span class="subtema-name">Tipos de errores</span><span class="has-prog">Programa</span><span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
           <p class="teoria"><strong>Errores Inherentes a los Métodos Numéricos:</strong> Un error es una incertidumbre en el resultado de una medida. Se define como la diferencia entre el valor real y una aproximación a este valor.</p>
@@ -750,30 +253,45 @@
           <p class="teoria"><strong>Error Inherente:</strong> En ocasiones, los datos que se inician los cálculos contienen un cierto error debido a que se han obtenido mediante la medida experimental de una determinada magnitud física.</p>
           <p class="teoria"><strong>Error Absoluto:</strong> El error absoluto no es negativo. Es una colección (suma) de errores. Debido a que si un número y su parte fraccionaria conformada por un conjunto de dígitos infinita requieren ser representada numéricamente, su forma aproximada es donde se presenta este tipo de error.</p>
           <p class="teoria"><strong>Error Relativo:</strong> Es el error absoluto dividido entre un número positivo adecuado. Generalmente, el divisor es una de tres elecciones: la magnitud del valor exacto, la magnitud del valor calculado (o redondeado) o el promedio de estas dos cantidades.</p>
-          
           <div class="prog-widget">
-            <div class="prog-top-bar">
-              <span class="prog-label">▶ Calculadora de Errores</span>
-              <div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div>
-            </div>
+            <div class="prog-top-bar"><span class="prog-label">▶ CalculadoraErrores.java</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
+            <div class="code-area"><span class="kw">public class</span> <span class="fn">CalculadoraErrores</span> {
+  <span class="kw">public static void</span> <span class="fn">main</span>(String[] args) {
+    Scanner scanner = <span class="kw">new</span> <span class="fn">Scanner</span>(System.in);
+    <span class="kw">int</span> opcion;
+    <span class="kw">do</span> {
+      <span class="fn">mostrarMenu</span>();
+      opcion = scanner.<span class="fn">nextInt</span>();
+      <span class="kw">switch</span>(opcion) {
+        <span class="kw">case</span> <span class="nm">1</span>: <span class="fn">calcularErrorValorRealAproximado</span>(scanner); <span class="kw">break</span>;
+        <span class="kw">case</span> <span class="nm">2</span>: <span class="fn">calcularErrorValorVerdaderoMedido</span>(scanner); <span class="kw">break</span>;
+        <span class="kw">case</span> <span class="nm">3</span>: System.out.<span class="fn">println</span>(<span class="st">"¡Hasta luego!"</span>); <span class="kw">break</span>;
+      }
+    } <span class="kw">while</span>(opcion != <span class="nm">3</span>);
+  }
+  <span class="kw">public static double</span> <span class="fn">calcularErrorAbsoluto</span>(<span class="kw">double</span> vReal, <span class="kw">double</span> vAprox) {
+    <span class="kw">return</span> Math.<span class="fn">abs</span>(vReal - vAprox);
+  }
+  <span class="kw">public static double</span> <span class="fn">calcularErrorRelativo</span>(<span class="kw">double</span> vReal, <span class="kw">double</span> eAbs) {
+    <span class="kw">if</span> (vReal == <span class="nm">0</span>) { System.out.<span class="fn">println</span>(<span class="st">"¡Advertencia!"</span>); <span class="kw">return</span> <span class="nm">0</span>; }
+    <span class="kw">return</span> eAbs / Math.<span class="fn">abs</span>(vReal);
+  }
+  <span class="kw">public static double</span> <span class="fn">calcularErrorPorcentual</span>(<span class="kw">double</span> eRelativo) {
+    <span class="kw">return</span> eRelativo * <span class="nm">100</span>;
+  }
+}</div>
             <div class="prog-inputs">
-              <div class="inp-group"><label>Valor real</label><input class="prog-input" id="java-vr" type="number" value="9.81"></div>
-              <div class="inp-group"><label>Valor aproximado</label><input class="prog-input" id="java-va" type="number" value="9.75"></div>
+              <div class="inp-group"><label>Valor real</label><input class="prog-input" id="java-vr" type="number" value="9.81" step="any"></div>
+              <div class="inp-group"><label>Valor aproximado</label><input class="prog-input" id="java-va" type="number" value="9.75" step="any"></div>
             </div>
-            <div class="prog-footer">
-              <button class="run-btn" onclick="runJava()">▶ Ejecutar</button>
-              <div class="output-box" id="out-java">Esperando...</div>
-            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="runJava()">▶ Ejecutar</button><div class="output-box" id="out-java">Esperando...</div></div>
           </div>
         </div>
       </div>
 
-      <!-- 1.4 Software -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">1.4</span>
-          <span class="subtema-name">Software de cómputo numérico</span>
-          <span class="chevron">▾</span>
+          <span class="subtema-num">1.4</span><span class="subtema-name">Software de cómputo numérico</span><span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
           <p class="teoria">Muchos problemas de cómputo en ingeniería pueden ser divididos en pedazos de cálculos bien conocidos, como solución de sistemas de ecuaciones lineales, transformada rápida de Fourier, etc. Por consecuencia, frecuentemente el programador sólo tiene que escribir una rutina pequeña (driver) para el problema particular que tenga, porque el software para resolver las subtareas se encuentra ya disponible. De esta forma la gente no tiene que realizar el problema una y otra vez. Para álgebra lineal y algunos otros cómputos numéricos básicos hay software de calidad gratis (a través de Netlib).</p>
@@ -786,12 +304,9 @@
         </div>
       </div>
 
-      <!-- 1.5 Métodos iterativos -->
       <div class="subtema-block" style="--c:#00d4ff">
         <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">1.5</span>
-          <span class="subtema-name">Métodos iterativos</span>
-          <span class="chevron">▾</span>
+          <span class="subtema-num">1.5</span><span class="subtema-name">Métodos iterativos</span><span class="chevron">▾</span>
         </div>
         <div class="subtema-body">
           <p class="teoria">Un método iterativo trata de resolver un problema matemático (como una ecuación o un sistema de ecuaciones) mediante aproximaciones sucesivas a la solución, empezando desde una estimación inicial.</p>
@@ -799,14 +314,10 @@
           <p class="teoria">Los métodos iterativos son muy útiles para resolver problemas que involucran un número grande de variables (a veces del orden de millones), donde los métodos directos tendrían un coste prohibitivo incluso con la potencia del mejor computador disponible.</p>
           <p class="teoria">En este tipo de métodos se parte de un valor inicial y se aplica un proceso repetitivo que va mejorando la aproximación hasta obtener un resultado suficientemente cercano al valor real.</p>
           <p class="teoria">Entre las principales características de los métodos iterativos se encuentran:</p>
-          <ul>
-            <li>Utilizan aproximaciones sucesivas.</li>
-            <li>Requieren un valor inicial.</li>
-            <li>Funcionan mejor en problemas grandes.</li>
-            <li>Permiten reducir el tiempo de cálculo en comparación con los métodos directos.</li>
-          </ul>
+          <ul><li>Utilizan aproximaciones sucesivas.</li><li>Requieren un valor inicial.</li><li>Funcionan mejor en problemas grandes.</li><li>Permiten reducir el tiempo de cálculo en comparación con los métodos directos.</li></ul>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -814,50 +325,33 @@
   <div class="unit-detail" id="unit-2">
     <div class="detail-header">
       <button class="back-btn" onclick="showOverview()">← Volver</button>
-      <div class="detail-title-wrap">
-        <h2 style="color:#7c3aed">Unidad 2</h2>
-        <p>Métodos de Solución de Ecuaciones</p>
-      </div>
+      <div class="detail-title-wrap"><h2 style="color:#7c3aed">Unidad 2</h2><p>Métodos de Solución de Ecuaciones</p></div>
     </div>
     <div class="subtemas-list">
 
       <div class="subtema-block" style="--c:#7c3aed">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">2.1</span>
-          <span class="subtema-name">Métodos de intervalo</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">2.1</span><span class="subtema-name">Métodos de intervalo</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
           <p class="teoria">Los métodos de intervalo son técnicas numéricas utilizadas para encontrar raíces de ecuaciones no lineales. Estos métodos se basan en reducir progresivamente el intervalo de búsqueda de la solución hasta alcanzar la precisión deseada. Su característica principal es que no solo aproximan el valor de la raíz, sino que también acotan el intervalo que la contiene, lo que proporciona una garantía sobre la ubicación de la solución.</p>
-          <p class="teoria">Para aplicar un método de intervalo, es necesario que se verifiquen las condiciones del Teorema de Bolzano: la función debe ser continua en el intervalo cerrado [a,b] y cambiar de signo en sus extremos, es decir, f(a)·f(b)&lt;0. Entre los métodos más conocidos de esta categoría se encuentran el método de bisección y el método de Regula Falsi.</p>
+          <p class="teoria">Para aplicar un método de intervalo, es necesario que se verifiquen las condiciones del <strong>Teorema de Bolzano</strong>: la función debe ser continua en el intervalo cerrado [a,b] y cambiar de signo en sus extremos, es decir, f(a)·f(b) &lt; 0. Entre los métodos más conocidos de esta categoría se encuentran el método de bisección y el método de Regula Falsi.</p>
         </div>
       </div>
 
       <div class="subtema-block" style="--c:#7c3aed">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">2.2</span>
-          <span class="subtema-name">Método de bisección</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">2.2</span><span class="subtema-name">Método de bisección</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
-          <p class="teoria">El método de la bisección o también llamado Método de Bolzano, parte de una función F(x) y un intervalo [x1, x2] tal que F(x1) y F(x2) tienen signos contrarios. Si la función es continua en este intervalo, entonces existe una raíz de F(x) entre x1 y x2.</p>
-          <p class="teoria">Una vez determinado el intervalo [x1, x2] y asegurada la continuidad de la función en dicho intervalo, se evalúa ésta en el punto medio xm del intervalo.</p>
-          <p class="teoria">Si F(xm) y F(x1) tienen signos contrarios, se reducirá el intervalo de x1 a xm, ya que dentro de estos valores se encuentra la raíz buscada. Al repetir este proceso, hasta lograr que la diferencia entre los dos últimos valores de xm sea menor que una tolerancia prefijada, el último valor xm será una buena aproximación de la raíz.</p>
+          <p class="teoria">El método de la bisección o también llamado <strong>Método de Bolzano</strong>, parte de una función F(x) y un intervalo [x1, x2] tal que F(x1) y F(x2) tienen signos contrarios. Si la función es continua en este intervalo, entonces existe una raíz de F(x) entre x1 y x2.</p>
+          <p class="teoria">Una vez determinado el intervalo [x1, x2] y asegurada la continuidad de la función en dicho intervalo, se evalúa ésta en el punto medio xm del intervalo. Si F(xm) y F(x1) tienen signos contrarios, se reducirá el intervalo de x1 a xm. Al repetir este proceso, hasta lograr que la diferencia entre los dos últimos valores de xm sea menor que una tolerancia prefijada, el último valor xm será una buena aproximación de la raíz.</p>
           <p class="teoria"><strong>Pasos:</strong></p>
           <ul>
-            <li>Elija valores iniciales inferior x1, y superior x2, que encierren a la raíz, de forma que la función cambie el signo en el intervalo. Esto se verifica comprobando que f(x1) f(x2) &lt; 0.</li>
+            <li>Elija valores iniciales inferior x1, y superior x2, que encierren a la raíz, de forma que la función cambie el signo en el intervalo. Esto se verifica comprobando que f(x1)·f(x2) &lt; 0.</li>
             <li>Una aproximación de la raíz se determina mediante: Xr = (x1 + x2) / 2.</li>
-            <li>Realice las siguientes evaluaciones para determinar en qué subintervalo está la raíz:
-              <ul>
-                <li>Si f(x1) f(Xr) &lt; 0, entonces la raíz se encuentra dentro del subintervalo inferior o izquierdo. Por tanto, haga X2 = Xr y vuelva al paso 2.</li>
-                <li>Si f(x1) f(Xr) &gt; 0, entonces la raíz se encuentra dentro del subintervalo superior o derecho. Por tanto, haga X1 = Xr y vuelva al paso 2.</li>
-                <li>Si f(x1) f(Xr) = 0, entonces la raíz es igual a Xr; y termina el cálculo.</li>
-              </ul>
-            </li>
+            <li>Si f(x1)·f(Xr) &lt; 0, haga X2 = Xr y vuelva al paso 2.</li>
+            <li>Si f(x1)·f(Xr) &gt; 0, haga X1 = Xr y vuelva al paso 2.</li>
+            <li>Si f(x1)·f(Xr) = 0, la raíz es igual a Xr; termina el cálculo.</li>
           </ul>
           <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ biseccion.py</span><div class="dots"><div class="dot" style="background:#7c3aed"></div></div></div>
+            <div class="prog-top-bar"><span class="prog-label">▶ biseccion.py — f(x)=x³-x-2</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
             <div class="prog-inputs">
               <div class="inp-group"><label>x1 (inferior)</label><input class="prog-input" id="p22a" type="number" value="1"></div>
               <div class="inp-group"><label>x2 (superior)</label><input class="prog-input" id="p22b" type="number" value="2"></div>
@@ -868,19 +362,14 @@
       </div>
 
       <div class="subtema-block" style="--c:#7c3aed">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">2.3</span>
-          <span class="subtema-name">Método de aproximaciones sucesivas</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">2.3</span><span class="subtema-name">Método de aproximaciones sucesivas</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
-          <p class="teoria">El método de aproximaciones sucesivas consiste en generar funciones convergentes bajo un esquema iterativo partiendo de la función original, lo cual se soporta con el siguiente teorema:</p>
+          <p class="teoria">El método de aproximaciones sucesivas consiste en generar funciones convergentes bajo un esquema iterativo partiendo de la función original.</p>
           <p class="teoria"><strong>Teorema de convergencia:</strong> La raíz de cualquier subfunción extraída de una función f(x) obtenida por una iteración convergente, es también una raíz de f(x).</p>
-          <p class="teoria"><strong>Ejemplo de aplicación del teorema:</strong> Sea f(x) = 5 sen x - 3x, la subfunción sen(x) tiene como raíz x = 0, la cual resulta ser también la raíz de la función f(x).</p>
+          <p class="teoria"><strong>Ejemplo:</strong> Sea f(x) = 5 sen x - 3x, la subfunción sen(x) tiene como raíz x = 0, la cual resulta ser también la raíz de la función f(x).</p>
           <p class="teoria">En este método se requiere de una regla, fórmula o subfunción g(x), con la que se calculan los términos sucesivos junto con un valor de partida. Esto produce una sucesión de valores {xn} obtenida mediante el proceso iterativo xn+1 = g(xn).</p>
           <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ punto_fijo.py</span><div class="dots"><div class="dot" style="background:#7c3aed"></div></div></div>
+            <div class="prog-top-bar"><span class="prog-label">▶ punto_fijo.py — √N por iteración</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
             <div class="prog-inputs">
               <div class="inp-group"><label>N (radicando)</label><input class="prog-input" id="p23a" type="number" value="2"></div>
               <div class="inp-group"><label>x0 (inicial)</label><input class="prog-input" id="p23b" type="number" value="1.5"></div>
@@ -891,37 +380,29 @@
       </div>
 
       <div class="subtema-block" style="--c:#7c3aed">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">2.4</span>
-          <span class="subtema-name">Métodos de interpolación</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">2.4</span><span class="subtema-name">Métodos de interpolación</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
-          <p class="teoria">Los métodos de interpolación para la resolución de ecuaciones son técnicas que utilizan aproximaciones polinómicas para estimar las raíces de una función. Se pueden mencionar métodos como:</p>
-          <p class="teoria"><strong>Método de la secante.</strong> Es una variante del método de Newton que no requiere calcular derivadas. En lugar de usar la tangente, aproxima la derivada mediante una diferencia finita entre dos iteraciones anteriores. La fórmula de recurrencia es:</p>
-          <p class="teoria formula">xₙ₊₁ = xₙ - f(xₙ)·(xₙ - xₙ₋₁)/(f(xₙ) - f(xₙ₋₁))</p>
-          <p class="teoria">Este método converge más rápido que la bisección (su orden de convergencia es aproximadamente 1.618, el número áureo), pero no garantiza la convergencia para todas las funciones.</p>
-          <p class="teoria"><strong>Interpolación cuadrática inversa.</strong> Este método utiliza tres puntos para construir un polinomio de interpolación cuadrático y estimar la raíz. Suele ser más robusto que el método de la secante.</p>
-          <p class="teoria"><strong>Método de Ridder.</strong> Es una variante que combina la bisección con interpolación exponencial, ofreciendo convergencia rápida y garantizada para funciones continuas.</p>
+          <p class="teoria">Los métodos de interpolación para la resolución de ecuaciones son técnicas que utilizan aproximaciones polinómicas para estimar las raíces de una función.</p>
+          <p class="teoria"><strong>Método de la secante.</strong> Es una variante del método de Newton que no requiere calcular derivadas. Aproxima la derivada mediante una diferencia finita entre dos iteraciones anteriores. Fórmula de recurrencia:</p>
+          <div class="formula-box">xₙ₊₁ = xₙ - f(xₙ)·(xₙ - xₙ₋₁) / (f(xₙ) - f(xₙ₋₁))</div>
+          <p class="teoria">Converge más rápido que la bisección (orden ≈ 1.618, número áureo), pero no garantiza convergencia para todas las funciones.</p>
+          <p class="teoria"><strong>Interpolación cuadrática inversa.</strong> Utiliza tres puntos para construir un polinomio cuadrático y estimar la raíz. Más robusto que el método de la secante.</p>
+          <p class="teoria"><strong>Método de Ridder.</strong> Combina la bisección con interpolación exponencial, ofreciendo convergencia rápida y garantizada para funciones continuas.</p>
         </div>
       </div>
 
       <div class="subtema-block" style="--c:#7c3aed">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">2.5</span>
-          <span class="subtema-name">Aplicaciones</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">2.5</span><span class="subtema-name">Aplicaciones</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
           <p class="teoria">Los métodos numéricos para la resolución de ecuaciones tienen aplicaciones muy variadas en distintos campos de la ciencia y la ingeniería.</p>
-          <p class="teoria"><strong>En ingeniería.</strong> Los métodos de intervalo y de aproximaciones sucesivas se utilizan para calcular raíces de ecuaciones que modelan fenómenos físicos. Por ejemplo, en termodinámica se emplean para resolver ecuaciones de estado como la de Van der Waals. En mecánica de fluidos, para determinar el factor de fricción mediante la ecuación de Colebrook-White.</p>
-          <p class="teoria"><strong>En economía y finanzas.</strong> El cálculo de tasas internas de retorno (TIR) de inversiones requiere resolver ecuaciones polinómicas o no lineales, donde la bisección o Newton son herramientas estándar.</p>
-          <p class="teoria"><strong>En ciencias naturales.</strong> Modelos de crecimiento poblacional (logístico) y cálculos de concentraciones en equilibrio químico.</p>
+          <p class="teoria"><strong>En ingeniería.</strong> Los métodos de intervalo y de aproximaciones sucesivas se utilizan para calcular raíces de ecuaciones que modelan fenómenos físicos. Por ejemplo, en termodinámica se emplean para resolver ecuaciones de estado como la de Van der Waals, que permite predecir el comportamiento de gases reales. En mecánica de fluidos, el método de la secante o de Newton se aplica para determinar el factor de fricción en tuberías mediante la ecuación de Colebrook-White, una ecuación no lineal implícita.</p>
+          <p class="teoria"><strong>En economía y finanzas.</strong> El cálculo de tasas internas de retorno (TIR) de inversiones requiere resolver ecuaciones polinómicas o no lineales, donde la bisección o Newton son herramientas estándar. También se aplican en modelos de oferta y demanda para encontrar puntos de equilibrio cuando las curvas son no lineales.</p>
+          <p class="teoria"><strong>En ciencias naturales.</strong> En biología, los modelos de crecimiento poblacional (como el modelo logístico) involucran ecuaciones no lineales que requieren métodos numéricos para su resolución. En química, el cálculo de concentraciones en equilibrio de reacciones complejas a menudo conduce a ecuaciones polinómicas de grado superior que deben resolverse numéricamente.</p>
+          <p class="teoria"><strong>En el ámbito educativo y computacional.</strong> Existen numerosas aplicaciones móviles y software especializado que implementan estos métodos para ayudar a estudiantes y profesionales. Por ejemplo, Photomath y Symbolab son herramientas que permiten escanear o ingresar ecuaciones y obtienen soluciones paso a paso utilizando técnicas como Newton-Raphson, bisección y otros métodos numéricos.</p>
           <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ interes_compuesto.py</span><div class="dots"><div class="dot" style="background:#7c3aed"></div></div></div>
+            <div class="prog-top-bar"><span class="prog-label">▶ interes_compuesto.py</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
             <div class="prog-inputs">
-              <div class="inp-group"><label>Capital inicial (P)</label><input class="prog-input" id="p25a" type="number" value="1000"></div>
+              <div class="inp-group"><label>Capital inicial P ($)</label><input class="prog-input" id="p25a" type="number" value="1000"></div>
               <div class="inp-group"><label>Tasa anual % (r)</label><input class="prog-input" id="p25b" type="number" value="5"></div>
               <div class="inp-group"><label>Años (n)</label><input class="prog-input" id="p25c" type="number" value="10"></div>
             </div>
@@ -929,6 +410,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -936,58 +418,50 @@
   <div class="unit-detail" id="unit-3">
     <div class="detail-header">
       <button class="back-btn" onclick="showOverview()">← Volver</button>
-      <div class="detail-title-wrap">
-        <h2 style="color:#10b981">Unidad 3</h2>
-        <p>Métodos de Solución de Sistemas de Ecuaciones</p>
-      </div>
+      <div class="detail-title-wrap"><h2 style="color:#10b981">Unidad 3</h2><p>Métodos de Solución de Sistemas de Ecuaciones</p></div>
     </div>
     <div class="subtemas-list">
 
       <div class="subtema-block" style="--c:#10b981">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">3.1</span>
-          <span class="subtema-name">Métodos iterativos</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">3.1</span><span class="subtema-name">Métodos iterativos</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
-          <p class="teoria">Los métodos iterativos son técnicas utilizadas para resolver sistemas de ecuaciones lineales, especialmente eficientes cuando se trabaja con matrices grandes y dispersas. A diferencia de los métodos directos, estos generan una sucesión de aproximaciones que, bajo ciertas condiciones, converge a la solución exacta.</p>
-          <p class="teoria"><strong>Método de Jacobi.</strong> Despeja cada variable en función de las demás usando valores de la iteración anterior. Característica clave: todas las nuevas aproximaciones se calculan exclusivamente con los valores de la iteración anterior.</p>
-          <p class="teoria"><strong>Método de Gauss-Seidel.</strong> Mejora del método de Jacobi que utiliza los valores más actualizados de las variables tan pronto como están disponibles. Esta actualización inmediata generalmente acelera la convergencia.</p>
-          <p class="teoria"><strong>Convergencia:</strong> Para que estos métodos converjan, la matriz debe ser diagonalmente dominante.</p>
+          <p class="teoria">Los métodos iterativos son técnicas utilizadas para resolver sistemas de ecuaciones lineales, especialmente eficientes cuando se trabaja con matrices grandes y dispersas (con muchos ceros). A diferencia de los métodos directos, estos generan una sucesión de aproximaciones que, bajo ciertas condiciones, converge a la solución exacta.</p>
+          <p class="teoria"><strong>Método de Jacobi.</strong> Este método, nombrado en honor al matemático Carl Gustav Jacob Jacobi, resuelve un sistema de ecuaciones lineales despejando cada variable en función de las demás y usando los valores de la iteración anterior para calcular los nuevos. Una característica clave del método de Jacobi es que todas las nuevas aproximaciones se calculan exclusivamente con los valores de la iteración anterior.</p>
+          <p class="teoria"><strong>Método de Gauss-Seidel.</strong> Este método recibe su nombre de los matemáticos Carl Friedrich Gauss y Philipp Ludwig von Seidel. Es una mejora del método de Jacobi, ya que utiliza los valores más actualizados de las variables tan pronto como están disponibles. Esta actualización inmediata generalmente acelera la convergencia.</p>
+          <p class="teoria"><strong>Comparación:</strong> El método de Gauss-Seidel suele preferirse sobre el de Jacobi porque converge más rápidamente. Para que estos métodos converjan, la matriz del sistema debe ser diagonalmente dominante.</p>
           <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ gauss_seidel.py</span><div class="dots"><div class="dot" style="background:#10b981"></div></div></div>
-            <div class="prog-footer"><button class="run-btn" onclick="run31()">▶ Ejecutar</button><div class="output-box" id="out31">Esperando...</div></div>
+            <div class="prog-top-bar"><span class="prog-label">▶ gauss_seidel.py — 4x+y=9, x+3y=7</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
+            <div class="prog-footer" style="padding:0.75rem 1rem;"><button class="run-btn" onclick="run31()">▶ Ejecutar</button><div class="output-box" id="out31">Esperando...</div></div>
           </div>
         </div>
       </div>
 
       <div class="subtema-block" style="--c:#10b981">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">3.2</span>
-          <span class="subtema-name">Sistemas de ecuaciones no lineales</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">3.2</span><span class="subtema-name">Sistemas de ecuaciones no lineales</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
-          <p class="teoria">Un sistema de ecuaciones no lineales incluye términos como potencias (x²), productos (xy), funciones trigonométricas (sen x), exponenciales, etc. Son más complejos que los lineales y modelan mayor variedad de fenómenos reales.</p>
-          <p class="teoria"><strong>Linealización:</strong> Técnica que aproxima el sistema no lineal por uno lineal alrededor de un punto de interés, válido localmente.</p>
-          <p class="teoria"><strong>Comportamientos complejos posibles:</strong> Múltiples puntos de equilibrio, ciclos límite, caos (efecto mariposa).</p>
+          <p class="teoria">Un sistema de ecuaciones no lineales incluye términos que no son lineales, como potencias (ej. x²), productos (ej. xy), funciones trigonométricas (ej. sin(x)), exponenciales, etc. Estos sistemas son inherentemente más complejos que los lineales y modelan una mayor variedad de fenómenos reales.</p>
+          <p class="teoria"><strong>Linealización:</strong> Una técnica común para estudiar sistemas no lineales es linealizarlos alrededor de un punto de interés. Esto implica aproximar el sistema no lineal por un sistema lineal válido en una región pequeña ("localmente"), lo que permite analizar su comportamiento cualitativo.</p>
+          <p class="teoria"><strong>Comportamientos complejos:</strong> Los sistemas no lineales pueden presentar fenómenos que no existen en los lineales, como:</p>
+          <ul>
+            <li><strong>Múltiples puntos de equilibrio:</strong> Varias soluciones estacionarias.</li>
+            <li><strong>Ciclos límite:</strong> Trayectorias cerradas hacia las cuales evoluciona el sistema.</li>
+            <li><strong>Caos:</strong> Comportamiento aparentemente aleatorio y extremadamente sensible a las condiciones iniciales, como en el famoso "efecto mariposa".</li>
+          </ul>
         </div>
       </div>
 
       <div class="subtema-block" style="--c:#10b981">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">3.3</span>
-          <span class="subtema-name">Iteración y convergencia de sistemas de ecuaciones</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">3.3</span><span class="subtema-name">Iteración y convergencia de sistemas de ecuaciones</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
-          <p class="teoria">Tanto para sistemas lineales como no lineales, los métodos iterativos se basan en el concepto de punto fijo: x = F(x).</p>
-          <p class="teoria"><strong>Criterios de convergencia:</strong> Cota de error y número máximo de iteraciones.</p>
-          <p class="teoria">La convergencia no está garantizada para cualquier sistema; depende de la forma de las ecuaciones, la aproximación inicial y las propiedades matemáticas.</p>
+          <p class="teoria">Tanto para sistemas lineales como no lineales, los métodos iterativos se basan en el concepto de punto fijo: reescribir el sistema como x = F(x) y generar una sucesión x(k) = F(x(k-1)).</p>
+          <p class="teoria"><strong>Criterios de convergencia:</strong></p>
+          <ul>
+            <li><strong>Cota de error:</strong> Se define una tolerancia (ej. 10⁻⁶) y detiene el proceso cuando la diferencia entre iteraciones sucesivas es menor que ese valor.</li>
+            <li><strong>Número de iteraciones:</strong> Se establece un número máximo de iteraciones para evitar ciclos infinitos en caso de que el método no converja.</li>
+          </ul>
+          <p class="teoria">La convergencia no está garantizada para cualquier sistema. Factores como la forma de las ecuaciones, la aproximación inicial y las propiedades matemáticas del sistema determinan si el proceso se acercará a una solución.</p>
           <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ verificar_dominancia.py</span><div class="dots"><div class="dot" style="background:#10b981"></div></div></div>
+            <div class="prog-top-bar"><span class="prog-label">▶ verificar_dominancia.py</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
             <div class="prog-inputs">
               <div class="inp-group"><label>a₁₁</label><input class="prog-input" id="p33a" type="number" value="4"></div>
               <div class="inp-group"><label>a₁₂</label><input class="prog-input" id="p33b" type="number" value="1"></div>
@@ -1000,18 +474,15 @@
       </div>
 
       <div class="subtema-block" style="--c:#10b981">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">3.4</span>
-          <span class="subtema-name">Aplicaciones</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">3.4</span><span class="subtema-name">Aplicaciones</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
-          <p class="teoria"><strong>Ingeniería y Física:</strong> Redes eléctricas, transferencia de calor, mecánica de fluidos.</p>
-          <p class="teoria"><strong>Biología y Ecología:</strong> Modelo depredador-presa de Lotka-Volterra.</p>
-          <p class="teoria"><strong>Fenómenos Naturales:</strong> Péndulo con ángulos grandes, caos.</p>
-          <p class="teoria"><strong>Economía y Química:</strong> Mercados con oferta-demanda no lineal, reacciones de Belousov-Zhabotinsky.</p>
+          <p class="teoria"><strong>Ingeniería y Física.</strong> Los métodos iterativos como Jacobi y Gauss-Seidel se utilizan para resolver grandes sistemas lineales en el análisis de redes eléctricas (cálculo de voltajes y corrientes), en problemas de transferencia de calor (distribución de temperaturas en sólidos) y en mecánica de fluidos (análisis de flujos en tuberías y perfiles aerodinámicos).</p>
+          <p class="teoria"><strong>Biología y Ecología.</strong> Los sistemas de ecuaciones diferenciales no lineales modelan la interacción entre especies. El modelo depredador-presa de Lotka-Volterra es un ejemplo clásico que describe las fluctuaciones cíclicas de poblaciones como lobos y ciervos.</p>
+          <p class="teoria"><strong>Fenómenos Naturales.</strong> El movimiento del péndulo con ángulos grandes es un ejemplo de sistema no lineal. A diferencia del péndulo lineal (para pequeñas oscilaciones), en este caso el periodo de oscilación depende de la amplitud, y al añadir amortiguamiento y fuerzas externas pueden aparecer comportamientos caóticos.</p>
+          <p class="teoria"><strong>Economía y Química.</strong> En economía, los sistemas no lineales modelan mercados con oferta y demanda no lineales, pudiendo producir múltiples puntos de equilibrio. En química, reacciones complejas como las oscilantes de Belousov-Zhabotinsky se describen con sistemas no lineales.</p>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -1019,30 +490,23 @@
   <div class="unit-detail" id="unit-4">
     <div class="detail-header">
       <button class="back-btn" onclick="showOverview()">← Volver</button>
-      <div class="detail-title-wrap">
-        <h2 style="color:#f59e0b">Unidad 4</h2>
-        <p>Diferenciación e Integración Numérica</p>
-      </div>
+      <div class="detail-title-wrap"><h2 style="color:#f59e0b">Unidad 4</h2><p>Diferenciación e Integración Numérica</p></div>
     </div>
     <div class="subtemas-list">
 
       <div class="subtema-block" style="--c:#f59e0b">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">4.1</span>
-          <span class="subtema-name">Diferenciación numérica</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">4.1</span><span class="subtema-name">Diferenciación numérica</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
           <p class="teoria">La diferenciación numérica se basa en aproximar la derivada de una función mediante fórmulas de diferencias finitas, que se obtienen a partir de la expansión en series de Taylor.</p>
-          <p class="teoria"><strong>Diferencia hacia adelante (O(h)):</strong></p>
-          <p class="teoria formula">f'(x) ≈ (f(x+h) - f(x))/h</p>
-          <p class="teoria"><strong>Diferencia centrada (O(h²)):</strong></p>
-          <p class="teoria formula">f'(x) ≈ (f(x+h) - f(x-h))/(2h)</p>
-          <p class="teoria"><strong>Segunda derivada:</strong></p>
-          <p class="teoria formula">f''(x) ≈ (f(x+h) - 2f(x) + f(x-h))/h²</p>
+          <p class="teoria"><strong>Diferencia hacia adelante — O(h):</strong></p>
+          <div class="formula-box">f'(x) ≈ [f(x+h) - f(x)] / h</div>
+          <p class="teoria"><strong>Diferencia centrada — O(h²):</strong></p>
+          <div class="formula-box">f'(x) ≈ [f(x+h) - f(x-h)] / (2h)</div>
+          <p class="teoria"><strong>Segunda derivada — O(h²):</strong></p>
+          <div class="formula-box">f''(x) ≈ [f(x+h) - 2f(x) + f(x-h)] / h²</div>
+          <p class="teoria">Es importante señalar que, aunque teóricamente el error disminuye al hacer h más pequeño, en la práctica computacional existe un valor crítico por debajo del cual los errores de redondeo comienzan a dominar, empeorando la aproximación.</p>
           <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ diferenciacion.py</span><div class="dots"><div class="dot" style="background:#f59e0b"></div></div></div>
+            <div class="prog-top-bar"><span class="prog-label">▶ diferenciacion.py — f(x)=x²</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
             <div class="prog-inputs">
               <div class="inp-group"><label>x</label><input class="prog-input" id="p41a" type="number" value="2"></div>
               <div class="inp-group"><label>h</label><input class="prog-input" id="p41b" type="number" value="0.001"></div>
@@ -1053,21 +517,18 @@
       </div>
 
       <div class="subtema-block" style="--c:#f59e0b">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">4.2</span>
-          <span class="subtema-name">Integración numérica</span>
-          <span class="has-prog">Programa</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">4.2</span><span class="subtema-name">Integración numérica</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
-          <p class="teoria">La integración numérica, también llamada cuadratura numérica, tiene como objetivo aproximar el valor de una integral definida cuando la función no puede integrarse analíticamente o solo se conoce en puntos discretos.</p>
+          <p class="teoria">La integración numérica, también denominada <strong>cuadratura numérica</strong>, tiene como objetivo aproximar el valor de una integral definida I = ∫[a,b] f(x)dx. Las fórmulas de cuadratura pueden clasificarse en simples o compuestas.</p>
+          <p class="teoria"><strong>Regla del punto medio:</strong></p>
+          <div class="formula-box">∫[a,b] f(x)dx ≈ (b-a) · f((a+b)/2)</div>
           <p class="teoria"><strong>Regla del trapecio:</strong></p>
-          <p class="teoria formula">∫ₐᵇ f(x) dx ≈ (b-a)/2 · [f(a) + f(b)]</p>
-          <p class="teoria"><strong>Regla de Simpson 1/3:</strong> Para su aplicación, el número de subintervalos n debe ser par.</p>
-          <p class="teoria formula">∫ₐᵇ f(x) dx ≈ (b-a)/6 · [f(a) + 4f((a+b)/2) + f(b)]</p>
-          <p class="teoria"><strong>Regla de Simpson 3/8:</strong> Requiere n múltiplo de 3.</p>
+          <div class="formula-box">∫[a,b] f(x)dx ≈ (b-a)/2 · (f(a) + f(b))</div>
+          <p class="teoria"><strong>Regla de Simpson 1/3</strong> (n debe ser par):</p>
+          <div class="formula-box">∫[a,b] f(x)dx ≈ (b-a)/6 · (f(a) + 4·f((a+b)/2) + f(b))</div>
+          <p class="teoria"><strong>Regla de Simpson 3/8</strong> (n múltiplo de 3): usa polinomios cúbicos.</p>
           <div class="prog-widget">
-            <div class="prog-top-bar"><span class="prog-label">▶ simpson.py</span><div class="dots"><div class="dot" style="background:#f59e0b"></div></div></div>
+            <div class="prog-top-bar"><span class="prog-label">▶ simpson.py — f(x)=x²</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
             <div class="prog-inputs">
               <div class="inp-group"><label>a</label><input class="prog-input" id="p42a" type="number" value="0"></div>
               <div class="inp-group"><label>b</label><input class="prog-input" id="p42b" type="number" value="2"></div>
@@ -1079,32 +540,25 @@
       </div>
 
       <div class="subtema-block" style="--c:#f59e0b">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">4.3</span>
-          <span class="subtema-name">Integración múltiple</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">4.3</span><span class="subtema-name">Integración múltiple</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
-          <p class="teoria">La integración múltiple se refiere a la aproximación de integrales en dos o más dimensiones. A medida que aumenta la dimensionalidad, los métodos tradicionales basados en cuadrículas regulares sufren la "maldición de la dimensionalidad".</p>
-          <p class="teoria"><strong>Método de Monte Carlo.</strong> Enfoque probabilístico que emplea números aleatorios. Su velocidad de convergencia (1/√N) es independiente del número de dimensiones.</p>
-          <p class="teoria">Variantes: muestreo estratificado, muestreo por importancia, algoritmo MISER.</p>
+          <p class="teoria">La integración múltiple se refiere a la aproximación de integrales en dos o más dimensiones. A medida que aumenta la dimensionalidad, los métodos tradicionales basados en cuadrículas regulares sufren la llamada <strong>"maldición de la dimensionalidad"</strong>, ya que el número de puntos necesarios crece exponencialmente con el número de dimensiones.</p>
+          <p class="teoria"><strong>Método de Monte Carlo.</strong> Este es un enfoque probabilístico que emplea números aleatorios para aproximar integrales, resultando particularmente útil para integrales en dimensiones altas. La ley de los grandes números garantiza que el promedio de las evaluaciones converge al valor real de la integral. La incertidumbre disminuye como 1/√N, independientemente del número de dimensiones.</p>
+          <p class="teoria">Variantes avanzadas: muestreo estratificado, muestreo por importancia y algoritmo MISER.</p>
         </div>
       </div>
 
       <div class="subtema-block" style="--c:#f59e0b">
-        <div class="subtema-header" onclick="toggle(this)">
-          <span class="subtema-num">4.4</span>
-          <span class="subtema-name">Aplicaciones</span>
-          <span class="chevron">▾</span>
-        </div>
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">4.4</span><span class="subtema-name">Aplicaciones</span><span class="chevron">▾</span></div>
         <div class="subtema-body">
-          <p class="teoria"><strong>Ingeniería y física:</strong> Mecánica de fluidos, termodinámica, transferencia de calor.</p>
-          <p class="teoria"><strong>Economía y finanzas:</strong> Elasticidades, valoración de opciones, Monte Carlo.</p>
-          <p class="teoria"><strong>Estadística y ciencia de datos:</strong> Inferencia bayesiana, distribuciones de probabilidad.</p>
-          <p class="teoria"><strong>Procesamiento de señales:</strong> GPS, acelerómetros.</p>
-          <p class="teoria"><strong>Simulación computacional:</strong> Modelos climáticos, dinámica molecular.</p>
+          <p class="teoria"><strong>En ingeniería y física.</strong> En mecánica de fluidos, la diferenciación numérica se utiliza para calcular campos de velocidad y aceleración a partir de datos experimentales discretos. En termodinámica, la integración numérica permite calcular el trabajo realizado por un gas. En problemas de transferencia de calor, ambos métodos son esenciales para resolver ecuaciones diferenciales parciales mediante el método de diferencias finitas.</p>
+          <p class="teoria"><strong>En economía y finanzas.</strong> El cálculo de derivadas de curvas de oferta y demanda permite estimar elasticidades. El método de Monte Carlo es particularmente popular en la valoración de opciones financieras y otros derivados.</p>
+          <p class="teoria"><strong>En estadística y ciencia de datos.</strong> La integración numérica es fundamental para calcular funciones de densidad de probabilidad y valores esperados. En inferencia bayesiana, el método de Monte Carlo se emplea ampliamente para aproximar integrales sin solución analítica.</p>
+          <p class="teoria"><strong>En procesamiento de señales.</strong> La diferenciación numérica se utiliza para calcular la velocidad a partir de datos de posición GPS. La integración numérica se emplea para reconstruir señales a partir de sus derivadas, por ejemplo, para obtener posición a partir de acelerómetros.</p>
+          <p class="teoria"><strong>En simulación computacional.</strong> Los modelos climáticos, las simulaciones aeroespaciales, los estudios de dinámica molecular y las simulaciones de sistemas biológicos dependen fuertemente de estas técnicas numéricas.</p>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -1112,15 +566,146 @@
   <div class="unit-detail" id="unit-5">
     <div class="detail-header">
       <button class="back-btn" onclick="showOverview()">← Volver</button>
-      <div class="detail-title-wrap">
-        <h2 style="color:#ef4444">Unidad 5</h2>
-        <p>Interpolación y Ajuste de Funciones</p>
-      </div>
+      <div class="detail-title-wrap"><h2 style="color:#ef4444">Unidad 5</h2><p>Interpolación y Ajuste de Funciones</p></div>
     </div>
     <div class="subtemas-list">
-      <div class="subtema-block" style="--c:#ef4444"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.1</span><span class="subtema-name">Polinomio de Newton</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ newton.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x1,y1</label><input id="p51a" class="prog-input" placeholder="1,1"></div><div class="inp-group"><label>x2,y2</label><input id="p51b" class="prog-input" placeholder="2,4"></div><div class="inp-group"><label>x3,y3</label><input id="p51c" class="prog-input" placeholder="3,9"></div><div class="inp-group"><label>Evaluar x</label><input id="p51d" class="prog-input" type="number" value="2.5"></div></div><div class="prog-footer"><button class="run-btn" onclick="run51()">▶ Ejecutar</button><div class="output-box" id="out51">Esperando...</div></div></div></div></div>
-      <div class="subtema-block" style="--c:#ef4444"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.2</span><span class="subtema-name">Polinomio de Lagrange</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ lagrange.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x1,y1</label><input id="p52a" class="prog-input" placeholder="0,1"></div><div class="inp-group"><label>x2,y2</label><input id="p52b" class="prog-input" placeholder="1,2.718"></div><div class="inp-group"><label>x3,y3</label><input id="p52c" class="prog-input" placeholder="2,7.389"></div><div class="inp-group"><label>Evaluar x</label><input id="p52d" class="prog-input" type="number" value="0.5"></div></div><div class="prog-footer"><button class="run-btn" onclick="run52()">▶ Ejecutar</button><div class="output-box" id="out52">Esperando...</div></div></div></div></div>
-      <div class="subtema-block" style="--c:#ef4444"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.3</span><span class="subtema-name">Mínimos cuadrados</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ minimos_cuadrados.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x (separados ,)</label><input id="p55a" class="prog-input" value="1,2,3,4,5"></div><div class="inp-group"><label>y (separados ,)</label><input id="p55b" class="prog-input" value="2.1,3.9,6.2,7.8,10.1"></div></div><div class="prog-footer"><button class="run-btn" onclick="run55()">▶ Ejecutar</button><div class="output-box" id="out55">Esperando...</div></div></div></div></div>
+
+      <!-- 5.1 Newton -->
+      <div class="subtema-block" style="--c:#ef4444">
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.1</span><span class="subtema-name">Polinomio de Interpolación de Newton</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div>
+        <div class="subtema-body">
+          <p class="teoria">El cálculo de la derivada de una función puede ser un proceso "difícil" ya sea por lo complicado de la definición analítica de la función o por que esta se conoce únicamente en un número discreto de puntos. (Este es el caso si la función representa el resultado de algún experimento). En esta lección estudiaremos técnicas para aproximar las derivadas de una función y veremos el análisis de error de dichas formulas.</p>
+          <p class="teoria">La definición de la derivada de una función f(x) en el punto "x" está dada en términos del límite.</p>
+          <p class="teoria"><strong>Características:</strong></p>
+          <ul>
+            <li>Usa diferencias divididas.</li>
+            <li>Permite interpolar datos de manera eficiente.</li>
+            <li>Muy utilizado en programación y análisis numérico.</li>
+          </ul>
+          <p class="teoria"><strong>Aplicación:</strong></p>
+          <ul>
+            <li>Estimación de valores intermedios en tablas de datos.</li>
+          </ul>
+          <div class="prog-widget">
+            <div class="prog-top-bar"><span class="prog-label">▶ newton_interpolacion.py</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
+            <div class="prog-inputs">
+              <div class="inp-group"><label>x1, y1</label><input class="prog-input" id="p51a" placeholder="1, 1"></div>
+              <div class="inp-group"><label>x2, y2</label><input class="prog-input" id="p51b" placeholder="2, 4"></div>
+              <div class="inp-group"><label>x3, y3</label><input class="prog-input" id="p51c" placeholder="3, 9"></div>
+              <div class="inp-group"><label>Evaluar en x=</label><input class="prog-input" id="p51d" type="number" value="2.5"></div>
+            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="run51()">▶ Ejecutar</button><div class="output-box" id="out51">Esperando...</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.2 Lagrange -->
+      <div class="subtema-block" style="--c:#ef4444">
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.2</span><span class="subtema-name">Polinomio de Interpolación de Lagrange</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div>
+        <div class="subtema-body">
+          <p class="teoria">En análisis numérico la integración numérica constituye una amplia gama de algoritmos para calcular el valor numérico de una integral definida y, por extensión, el término se usa a veces para describir algoritmos numéricos para resolver ecuaciones diferenciales. El término cuadratura numérica (a menudo abreviado a cuadratura) es más o menos sinónimo de integración numérica, especialmente si se aplica a integrales de una dimensión. El problema básico considerado por la integración numérica es calcular una solución aproximada a la integral definida.</p>
+          <p class="teoria"><strong>Características:</strong></p>
+          <ul>
+            <li>No requiere formar tablas de diferencias.</li>
+            <li>Fácil de entender matemáticamente.</li>
+            <li>Adecuado para pocos puntos.</li>
+          </ul>
+          <p class="teoria"><strong>Aplicación:</strong></p>
+          <ul>
+            <li>Aproximación de funciones y modelado de datos.</li>
+          </ul>
+          <div class="prog-widget">
+            <div class="prog-top-bar"><span class="prog-label">▶ lagrange.py</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
+            <div class="prog-inputs">
+              <div class="inp-group"><label>x1, y1</label><input class="prog-input" id="p52a" placeholder="0, 1"></div>
+              <div class="inp-group"><label>x2, y2</label><input class="prog-input" id="p52b" placeholder="1, 2.718"></div>
+              <div class="inp-group"><label>x3, y3</label><input class="prog-input" id="p52c" placeholder="2, 7.389"></div>
+              <div class="inp-group"><label>Evaluar en x=</label><input class="prog-input" id="p52d" type="number" value="0.5"></div>
+            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="run52()">▶ Ejecutar</button><div class="output-box" id="out52">Esperando...</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.3 Interpolación segmentada -->
+      <div class="subtema-block" style="--c:#ef4444">
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.3</span><span class="subtema-name">Interpolación Segmentada</span><span class="chevron">▾</span></div>
+        <div class="subtema-body">
+          <p class="teoria">También conocida como interpolación por splines, divide el intervalo en varios segmentos y utiliza funciones diferentes en cada uno.</p>
+          <p class="teoria"><strong>Características:</strong></p>
+          <ul>
+            <li>Reduce errores de aproximación.</li>
+            <li>Genera curvas más suaves.</li>
+            <li>Muy usada en gráficos y diseño computacional.</li>
+          </ul>
+          <p class="teoria"><strong>Aplicación:</strong></p>
+          <ul>
+            <li>Diseño de curvas, animaciones y modelado geométrico.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5.4 Regresión -->
+      <div class="subtema-block" style="--c:#ef4444">
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.4</span><span class="subtema-name">Regresión y Correlación</span><span class="chevron">▾</span></div>
+        <div class="subtema-body">
+          <p class="teoria">La regresión estudia la relación entre variables para encontrar una función que describa su comportamiento. La correlación mide el grado de relación entre ellas.</p>
+          <p class="teoria"><strong>Características:</strong></p>
+          <ul>
+            <li>Analiza tendencias de datos.</li>
+            <li>Puede ser lineal o no lineal.</li>
+            <li>Usa el coeficiente de correlación.</li>
+          </ul>
+          <p class="teoria"><strong>Aplicación:</strong></p>
+          <ul>
+            <li>Predicciones estadísticas y análisis de datos.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5.5 Mínimos cuadrados -->
+      <div class="subtema-block" style="--c:#ef4444">
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.5</span><span class="subtema-name">Mínimos Cuadrados</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div>
+        <div class="subtema-body">
+          <p class="teoria">El método de mínimos cuadrados encuentra la función que minimiza el error total entre los datos reales y los valores aproximados.</p>
+          <p class="teoria"><strong>Características:</strong></p>
+          <ul>
+            <li>Minimiza la suma de errores cuadrados.</li>
+            <li>Muy utilizado en regresión lineal.</li>
+            <li>Permite obtener modelos matemáticos precisos.</li>
+          </ul>
+          <p class="teoria"><strong>Aplicación:</strong></p>
+          <ul>
+            <li>Ajuste de curvas y análisis experimental.</li>
+          </ul>
+          <p class="teoria">Para regresión lineal y=ax+b, las ecuaciones normales son: a=(nΣxy-ΣxΣy)/(nΣx²-(Σx)²), b=(Σy-aΣx)/n.</p>
+          <div class="prog-widget">
+            <div class="prog-top-bar"><span class="prog-label">▶ minimos_cuadrados.py</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
+            <div class="prog-inputs">
+              <div class="inp-group" style="flex:2;min-width:200px"><label>Puntos x (separados por comas)</label><input class="prog-input" id="p55a" value="1,2,3,4,5"></div>
+              <div class="inp-group" style="flex:2;min-width:200px"><label>Puntos y (separados por comas)</label><input class="prog-input" id="p55b" value="2.1,3.9,6.2,7.8,10.1"></div>
+            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="run55()">▶ Ejecutar</button><div class="output-box" id="out55">Esperando...</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.6 Problemas de aplicación -->
+      <div class="subtema-block" style="--c:#ef4444">
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">5.6</span><span class="subtema-name">Problemas de Aplicación</span><span class="chevron">▾</span></div>
+        <div class="subtema-body">
+          <p class="teoria">Los métodos de interpolación y ajuste se aplican en numerosos campos científicos y tecnológicos.</p>
+          <p class="teoria"><strong>Ejemplos:</strong></p>
+          <ul>
+            <li>Predicción de temperaturas.</li>
+            <li>Análisis financiero.</li>
+            <li>Procesamiento de imágenes.</li>
+            <li>Ingeniería estructural.</li>
+            <li>Simulación computacional.</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -1128,39 +713,93 @@
   <div class="unit-detail" id="unit-6">
     <div class="detail-header">
       <button class="back-btn" onclick="showOverview()">← Volver</button>
-      <div class="detail-title-wrap">
-        <h2 style="color:#ec4899">Unidad 6</h2>
-        <p>Solución de Ecuaciones Diferenciales</p>
-      </div>
+      <div class="detail-title-wrap"><h2 style="color:#ec4899">Unidad 6</h2><p>Solución de Ecuaciones Diferenciales</p></div>
     </div>
     <div class="subtemas-list">
-      <div class="subtema-block" style="--c:#ec4899"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">6.1</span><span class="subtema-name">Método de Euler</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ euler.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x final</label><input id="p61a" class="prog-input" type="number" value="1"></div><div class="inp-group"><label>h</label><input id="p61b" class="prog-input" type="number" value="0.1"></div></div><div class="prog-footer"><button class="run-btn" onclick="run61()">▶ Ejecutar</button><div class="output-box" id="out61">Esperando...</div></div></div></div></div>
-      <div class="subtema-block" style="--c:#ec4899"><div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">6.2</span><span class="subtema-name">Runge-Kutta 4to orden</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div><div class="subtema-body"><div class="prog-widget"><div class="prog-top-bar"><span class="prog-label">▶ rk4.py</span></div><div class="prog-inputs"><div class="inp-group"><label>x final</label><input id="p62a" class="prog-input" type="number" value="1"></div><div class="inp-group"><label>h</label><input id="p62b" class="prog-input" type="number" value="0.1"></div></div><div class="prog-footer"><button class="run-btn" onclick="run62()">▶ Ejecutar</button><div class="output-box" id="out62">Esperando...</div></div></div></div></div>
+
+      <div class="subtema-block" style="--c:#ec4899">
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">6.1</span><span class="subtema-name">Método de Euler</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div>
+        <div class="subtema-body">
+          <p class="teoria">Los métodos de paso único calculan yₙ₊₁ usando solo información de yₙ. El más simple es el <strong>método de Euler</strong>: yₙ₊₁ = yₙ + h·f(xₙ,yₙ). Es el más básico pero con mayor error acumulado por paso.</p>
+          <div class="prog-widget">
+            <div class="prog-top-bar"><span class="prog-label">▶ euler.py — dy/dx=y, y(0)=1</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
+            <div class="prog-inputs">
+              <div class="inp-group"><label>x final</label><input class="prog-input" id="p61a" type="number" value="1"></div>
+              <div class="inp-group"><label>h</label><input class="prog-input" id="p61b" type="number" value="0.1"></div>
+            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="run61()">▶ Ejecutar</button><div class="output-box" id="out61">Esperando...</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subtema-block" style="--c:#ec4899">
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">6.2</span><span class="subtema-name">Runge-Kutta 4to Orden</span><span class="has-prog">Programa</span><span class="chevron">▾</span></div>
+        <div class="subtema-body">
+          <p class="teoria">El método de <strong>Runge-Kutta de 4° orden (RK4)</strong> es el más popular por su precisión y estabilidad, con error O(h⁴). Los métodos de pasos múltiples como <strong>Adams-Bashforth</strong> (predictor) y <strong>Adams-Moulton</strong> (corrector) son más eficientes que RK4 por requerir menos evaluaciones de la función por paso.</p>
+          <div class="prog-widget">
+            <div class="prog-top-bar"><span class="prog-label">▶ rk4.py — dy/dx=-2xy, y(0)=1</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
+            <div class="prog-inputs">
+              <div class="inp-group"><label>x final</label><input class="prog-input" id="p62a" type="number" value="1"></div>
+              <div class="inp-group"><label>h</label><input class="prog-input" id="p62b" type="number" value="0.1"></div>
+            </div>
+            <div class="prog-footer"><button class="run-btn" onclick="run62()">▶ Ejecutar</button><div class="output-box" id="out62">Esperando...</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subtema-block" style="--c:#ec4899">
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">6.3</span><span class="subtema-name">Sistemas de ecuaciones diferenciales ordinarias</span><span class="chevron">▾</span></div>
+        <div class="subtema-body">
+          <p class="teoria">Los sistemas de EDOs surgen naturalmente en dinámica: un péndulo, un circuito RLC, modelos depredador-presa (Lotka-Volterra). Se resuelven aplicando métodos de paso a cada ecuación simultáneamente. RK4 se extiende fácilmente a sistemas vectoriales y es el estándar.</p>
+        </div>
+      </div>
+
+      <div class="subtema-block" style="--c:#ec4899">
+        <div class="subtema-header" onclick="toggle(this)"><span class="subtema-num">6.4</span><span class="subtema-name">Aplicaciones</span><span class="chevron">▾</span></div>
+        <div class="subtema-body">
+          <p class="teoria">Las ecuaciones diferenciales se aplican en: simulación de circuitos eléctricos, dinámica de estructuras y sismos, transferencia de calor transiente, modelado de epidemias (SIR), trayectorias de proyectiles, y control de sistemas mecánicos y robóticos.</p>
+        </div>
+      </div>
+
     </div>
   </div>
+
 </div>
 
 <script>
-function showOverview() { document.getElementById('overview-view').style.display = 'block'; document.querySelectorAll('.unit-detail').forEach(d => d.classList.remove('active')); document.querySelectorAll('.nav-btn').forEach((b,i) => b.classList.toggle('active', i===0)); }
-function showUnit(n) { document.getElementById('overview-view').style.display = 'none'; document.querySelectorAll('.unit-detail').forEach(d => d.classList.remove('active')); document.getElementById('unit-'+n).classList.add('active'); document.querySelectorAll('.nav-btn').forEach((b,i) => b.classList.toggle('active', i===n)); window.scrollTo({top:0,behavior:'smooth'}); }
-function toggle(header) { header.parentElement.classList.toggle('open'); }
-function v(id) { return document.getElementById(id).value; }
-function out(id, text) { document.getElementById(id).textContent = text; }
+function showOverview(){document.getElementById('overview-view').style.display='block';document.querySelectorAll('.unit-detail').forEach(d=>d.classList.remove('active'));document.querySelectorAll('.nav-btn').forEach((b,i)=>b.classList.toggle('active',i===0));}
+function showUnit(n){document.getElementById('overview-view').style.display='none';document.querySelectorAll('.unit-detail').forEach(d=>d.classList.remove('active'));document.getElementById('unit-'+n).classList.add('active');document.querySelectorAll('.nav-btn').forEach((b,i)=>b.classList.toggle('active',i===n));window.scrollTo({top:0,behavior:'smooth'});}
+function toggle(h){h.parentElement.classList.toggle('open');}
+function v(id){return document.getElementById(id).value;}
+function out(id,text){document.getElementById(id).textContent=text;}
 
-function runJava() { const vr=parseFloat(v('java-vr')), va=parseFloat(v('java-va')); if(isNaN(vr)||isNaN(va)){out('out-java','Inválido');return;} const eAbs=Math.abs(vr-va), eRel=eAbs/Math.abs(vr), ePct=eRel*100; out('out-java',`Error Absoluto: ${eAbs.toFixed(4)}\nError Relativo: ${eRel.toFixed(6)}\nError Porcentual: ${ePct.toFixed(4)}%`); }
-function run22() { const a=parseFloat(v('p22a')),b=parseFloat(v('p22b')); const f=x=>x*x*x-x-2; if(f(a)*f(b)>=0){out('out22','No hay cambio de signo');return;} let aa=a,bb=b,iter=0; while((bb-aa)/2>1e-6&&iter<100){const c=(aa+bb)/2;iter++; if(f(c)===0)break; else if(f(aa)*f(c)<0)bb=c; else aa=c;} const r=(aa+bb)/2; out('out22',`Raíz ≈ ${r.toFixed(7)}\nf(r)=${f(r).toExponential(2)}\nIter: ${iter}`); }
-function run23() { const N=parseFloat(v('p23a')), x0=parseFloat(v('p23b')); if(isNaN(N)||N<=0){out('out23','N positivo');return;} let x=x0; for(let i=0;i<50;i++){const xn=(x+N/x)/2; if(Math.abs(xn-x)<1e-12){x=xn;break;} x=xn;} out('out23',`√${N} ≈ ${x.toFixed(10)}\nVerif: ${(x*x).toFixed(6)}`); }
-function run25() { const P=parseFloat(v('p25a')),r=parseFloat(v('p25b')),n=parseFloat(v('p25c')); if(isNaN(P)||isNaN(r)||isNaN(n)){out('out25','Inválido');return;} const total=P*Math.pow(1+r/100,n); out('out25',`Capital final: $${total.toFixed(2)}\nGanancia: $${(total-P).toFixed(2)}`); }
-function run31() { let x=0,y=0; for(let i=0;i<30;i++){x=(9-y)/4; y=(7-x)/3;} out('out31',`x = ${x.toFixed(6)}\ny = ${y.toFixed(6)}\n4x+y = ${(4*x+y).toFixed(4)} (≈9)`); }
-function run33() { const a=Math.abs(parseFloat(v('p33a'))),b=Math.abs(parseFloat(v('p33b'))),c=Math.abs(parseFloat(v('p33c'))),d=Math.abs(parseFloat(v('p33d'))); out('out33',`Fila1: |${a}| > |${b}| ? ${a>b?'✓':'✗'}\nFila2: |${d}| > |${c}| ? ${d>c?'✓':'✗'}`); }
-function run41() { const x=parseFloat(v('p41a')),h=parseFloat(v('p41b'))||0.001; const aprox=((x+h)*(x+h)-(x-h)*(x-h))/(2*h); out('out41',`f'(x) ≈ ${aprox.toFixed(8)}\nExacto: ${(2*x).toFixed(8)}\nError: ${Math.abs(aprox-2*x).toExponential(2)}`); }
-function run42() { const a=parseFloat(v('p42a')),b=parseFloat(v('p42b')),n=parseInt(v('p42c'))||100; const h=(b-a)/n; let s=0; for(let i=0;i<=n;i++){const xi=a+i*h, yi=xi*xi; if(i===0||i===n) s+=yi; else if(i%2===0) s+=2*yi; else s+=4*yi;} const res=s*h/3, exact=(b*b*b-a*a*a)/3; out('out42',`Simpson: ${res.toFixed(8)}\nExacto: ${exact.toFixed(8)}\nError: ${Math.abs(res-exact).toExponential(2)}`); }
-function parsePoint(s){const p=s.split(',').map(v=>parseFloat(v.trim())); return p.length===2&&!isNaN(p[0])&&!isNaN(p[1])?p:null;}
-function run51(){const p1=parsePoint(v('p51a')),p2=parsePoint(v('p51b')),p3=parsePoint(v('p51c')); const xe=parseFloat(v('p51d')); if(!p1||!p2||!p3){out('out51','Formato: x,y');return;} const xs=[p1[0],p2[0],p3[0]], ys=[p1[1],p2[1],p3[1]]; let r=ys[2]; r=r*(xe-xs[1])+ys[1]; r=r*(xe-xs[0])+ys[0]; out('out51',`P(${xe}) ≈ ${r.toFixed(6)}`); }
-function run52(){const p1=parsePoint(v('p52a')),p2=parsePoint(v('p52b')),p3=parsePoint(v('p52c')); const xe=parseFloat(v('p52d')); if(!p1||!p2||!p3){out('out52','Formato: x,y');return;} const xs=[p1[0],p2[0],p3[0]], ys=[p1[1],p2[1],p3[1]]; let res=0; for(let i=0;i<3;i++){let L=1; for(let j=0;j<3;j++) if(i!==j) L*=(xe-xs[j])/(xs[i]-xs[j]); res+=ys[i]*L;} out('out52',`P(${xe}) ≈ ${res.toFixed(6)}`); }
-function run55(){const xs=v('p55a').split(',').map(Number), ys=v('p55b').split(',').map(Number); if(xs.length!==ys.length||xs.some(isNaN)){out('out55','Misma cantidad de puntos');return;} const n=xs.length; const sx=xs.reduce((a,b)=>a+b,0), sy=ys.reduce((a,b)=>a+b,0); const sxy=xs.reduce((s,x,i)=>s+x*ys[i],0), sx2=xs.reduce((s,x)=>s+x*x,0); const a=(n*sxy-sx*sy)/(n*sx2-sx*sx); const b=(sy-a*sx)/n; out('out55',`y = ${a.toFixed(4)}x + ${b.toFixed(4)}`); }
-function run61(){const xf=parseFloat(v('p61a')), h=parseFloat(v('p61b'))||0.1; let x=0,y=1; while(x<xf-1e-9){y+=h*y; x+=h;} const exact=Math.exp(xf); out('out61',`Euler: y(${xf}) = ${y.toFixed(8)}\nExacto e^${xf} = ${exact.toFixed(8)}\nError: ${Math.abs(y-exact).toExponential(2)}`); }
-function run62(){const xf=parseFloat(v('p62a')), h=parseFloat(v('p62b'))||0.1; const f=(x,y)=>-2*x*y; let x=0,y=1; while(x<xf-1e-9){const k1=h*f(x,y), k2=h*f(x+h/2,y+k1/2), k3=h*f(x+h/2,y+k2/2), k4=h*f(x+h,y+k3); y+=(k1+2*k2+2*k3+k4)/6; x+=h;} const exact=Math.exp(-xf*xf); out('out62',`RK4: y(${xf}) = ${y.toFixed(10)}\nExacto e^(-${xf}²) = ${exact.toFixed(10)}\nError: ${Math.abs(y-exact).toExponential(2)}`); }
+function runJava(){const vr=parseFloat(v('java-vr')),va=parseFloat(v('java-va'));if(isNaN(vr)||isNaN(va)||vr===0){out('out-java','Error: valores inválidos');return;}const eAbs=Math.abs(vr-va),eRel=eAbs/Math.abs(vr),ePct=eRel*100;let interp='';if(eAbs<0.01)interp='✓ Error absoluto muy pequeño (excelente precisión)';else if(eAbs<0.1)interp='✓ Error absoluto pequeño (buena precisión)';else if(eAbs<1)interp='△ Error absoluto moderado';else interp='✗ Error absoluto grande (baja precisión)';if(ePct<1)interp+='\n✓ Error porcentual < 1% (excelente exactitud)';else if(ePct<5)interp+='\n✓ Error porcentual 1%-5% (buena exactitud)';else if(ePct<10)interp+='\n△ Error porcentual 5%-10% (aceptable)';else interp+='\n✗ Error porcentual > 10% (baja exactitud)';out('out-java',`Error Absoluto: ${eAbs.toFixed(4)}\nError Relativo: ${eRel.toFixed(6)}\nError Porcentual: ${ePct.toFixed(4)}%\n${interp}`);}
+
+function run22(){const a=parseFloat(v('p22a')),b=parseFloat(v('p22b'));const f=x=>x*x*x-x-2;if(f(a)*f(b)>=0){out('out22','No hay cambio de signo en [x1,x2]');return;}let aa=a,bb=b,iter=0;while((bb-aa)/2>1e-6&&iter<100){const c=(aa+bb)/2;iter++;if(f(c)===0)break;else if(f(aa)*f(c)<0)bb=c;else aa=c;}const r=(aa+bb)/2;out('out22',`Raíz ≈ ${r.toFixed(7)}\nf(r) = ${f(r).toExponential(2)}\nIteraciones: ${iter}`);}
+
+function run23(){const N=parseFloat(v('p23a')),x0=parseFloat(v('p23b'));if(isNaN(N)||N<=0){out('out23','N debe ser positivo');return;}let x=x0;for(let i=0;i<50;i++){const xn=(x+N/x)/2;if(Math.abs(xn-x)<1e-12){x=xn;break;}x=xn;}out('out23',`√${N} ≈ ${x.toFixed(10)}\nVerificación: ${(x*x).toFixed(6)}`);}
+
+function run25(){const P=parseFloat(v('p25a')),r=parseFloat(v('p25b')),n=parseFloat(v('p25c'));if(isNaN(P)||isNaN(r)||isNaN(n)){out('out25','Valores inválidos');return;}const total=P*Math.pow(1+r/100,n);out('out25',`Capital final: $${total.toFixed(2)}\nGanancia: $${(total-P).toFixed(2)}`);}
+
+function run31(){let x=0,y=0;for(let i=0;i<50;i++){x=(9-y)/4;y=(7-x)/3;}out('out31',`x = ${x.toFixed(6)}\ny = ${y.toFixed(6)}\n4x+y = ${(4*x+y).toFixed(4)} (≈9)`);}
+
+function run33(){const a=Math.abs(parseFloat(v('p33a'))),b=Math.abs(parseFloat(v('p33b'))),c=Math.abs(parseFloat(v('p33c'))),d=Math.abs(parseFloat(v('p33d')));out('out33',`Fila 1: |${a}| > |${b}| → ${a>b?'✓':'✗'}\nFila 2: |${d}| > |${c}| → ${d>c?'✓':'✗'}\n${a>b&&d>c?'✓ Diagonal dominante: converge':'✗ No garantiza convergencia'}`);}
+
+function run41(){const x=parseFloat(v('p41a')),h=parseFloat(v('p41b'))||0.001;const aprox=((x+h)*(x+h)-(x-h)*(x-h))/(2*h);out('out41',`f'(x) numérica ≈ ${aprox.toFixed(8)}\nExacto (2x) = ${(2*x).toFixed(8)}\nError: ${Math.abs(aprox-2*x).toExponential(2)}`);}
+
+function run42(){const a=parseFloat(v('p42a')),b=parseFloat(v('p42b')),n=parseInt(v('p42c'))||100;const h=(b-a)/n;let s=0;for(let i=0;i<=n;i++){const xi=a+i*h,yi=xi*xi;if(i===0||i===n)s+=yi;else if(i%2===0)s+=2*yi;else s+=4*yi;}const res=s*h/3,exact=(b*b*b-a*a*a)/3;out('out42',`∫x² dx de ${a} a ${b}\nSimpson: ${res.toFixed(8)}\nExacto: ${exact.toFixed(8)}\nError: ${Math.abs(res-exact).toExponential(2)}`);}
+
+function parsePoint(s){const p=s.split(',').map(x=>parseFloat(x.trim()));return p.length===2&&!isNaN(p[0])&&!isNaN(p[1])?p:null;}
+
+function run51(){const p1=parsePoint(v('p51a')),p2=parsePoint(v('p51b')),p3=parsePoint(v('p51c'));const xe=parseFloat(v('p51d'));if(!p1||!p2||!p3||isNaN(xe)){out('out51','Formato: x, y  ej: 1, 1');return;}const xs=[p1[0],p2[0],p3[0]],ys=[p1[1],p2[1],p3[1]];const dd=[...ys];const coefs=[dd[0]];for(let j=1;j<3;j++){for(let i=2-j;i>=0;i--)dd[i]=(dd[i+1]-dd[i])/(xs[i+j]-xs[i]);coefs.push(dd[0]);}let r=coefs[2];r=r*(xe-xs[1])+coefs[1];r=r*(xe-xs[0])+coefs[0];out('out51',`P(${xe}) ≈ ${r.toFixed(6)}`);}
+
+function run52(){const p1=parsePoint(v('p52a')),p2=parsePoint(v('p52b')),p3=parsePoint(v('p52c'));const xe=parseFloat(v('p52d'));if(!p1||!p2||!p3||isNaN(xe)){out('out52','Formato: x, y  ej: 0, 1');return;}const xs=[p1[0],p2[0],p3[0]],ys=[p1[1],p2[1],p3[1]];let total=0;for(let i=0;i<3;i++){let Li=1;for(let j=0;j<3;j++)if(i!==j)Li*=(xe-xs[j])/(xs[i]-xs[j]);total+=ys[i]*Li;}out('out52',`P(${xe}) ≈ ${total.toFixed(6)}\ne^${xe} exacto ≈ ${Math.exp(xe).toFixed(6)}`);}
+
+function run55(){const xs=v('p55a').split(',').map(Number),ys=v('p55b').split(',').map(Number);if(xs.length!==ys.length||xs.some(isNaN)){out('out55','Misma cantidad de puntos x e y');return;}const n=xs.length;const sx=xs.reduce((a,b)=>a+b,0),sy=ys.reduce((a,b)=>a+b,0);const sxy=xs.reduce((s,x,i)=>s+x*ys[i],0),sx2=xs.reduce((s,x)=>s+x*x,0);const a=(n*sxy-sx*sy)/(n*sx2-sx*sx);const b=(sy-a*sx)/n;out('out55',`Regresión: y = ${a.toFixed(4)}x + ${b.toFixed(4)}\nPendiente a = ${a.toFixed(4)}\nIntercepto b = ${b.toFixed(4)}`);}
+
+function run61(){const xf=parseFloat(v('p61a')),h=parseFloat(v('p61b'))||0.1;let x=0,y=1;while(x<xf-1e-9){y+=h*y;x+=h;}const exact=Math.exp(xf);out('out61',`Euler: y(${xf}) ≈ ${y.toFixed(8)}\nExacto e^${xf} = ${exact.toFixed(8)}\nError: ${Math.abs(y-exact).toExponential(2)}`);}
+
+function run62(){const xf=parseFloat(v('p62a')),h=parseFloat(v('p62b'))||0.1;const f=(x,y)=>-2*x*y;let x=0,y=1;while(x<xf-1e-9){const k1=h*f(x,y),k2=h*f(x+h/2,y+k1/2),k3=h*f(x+h/2,y+k2/2),k4=h*f(x+h,y+k3);y+=(k1+2*k2+2*k3+k4)/6;x+=h;}const exact=Math.exp(-xf*xf);out('out62',`RK4: y(${xf}) ≈ ${y.toFixed(10)}\nExacto e^(-${xf}²) = ${exact.toFixed(10)}\nError: ${Math.abs(y-exact).toExponential(2)}`);}
 </script>
 </body>
 </html>
