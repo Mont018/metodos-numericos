@@ -6,11 +6,7 @@
 <title>Métodos Numéricos · Laboratorio Interactivo</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
     --bg-deep: #0a0c15;
@@ -27,7 +23,6 @@
     --text-primary: #f0f3fa;
     --text-secondary: #9aa3bf;
     --text-muted: #5f6a8a;
-    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
     --radius-md: 14px;
     --radius-sm: 10px;
   }
@@ -40,7 +35,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* bg grid pattern */
   body::before {
     content: '';
     position: fixed;
@@ -51,472 +45,83 @@
     z-index: 0;
   }
 
-  /* layout */
-  .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 24px;
-    position: relative;
-    z-index: 2;
-  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
 
   /* header */
-  .hero {
-    text-align: center;
-    padding: 56px 0 40px;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(0, 224, 255, 0.08);
-    padding: 6px 14px;
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    color: var(--accent-cyan);
-    border: 1px solid rgba(0, 224, 255, 0.25);
-    margin-bottom: 24px;
-  }
-
-  h1 {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #fff 30%, var(--accent-cyan) 80%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 16px;
-  }
-
-  .hero-sub {
-    color: var(--text-secondary);
-    max-width: 580px;
-    margin: 0 auto 32px;
-    font-size: 1rem;
-  }
-
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-
-  .stat-item {
-    text-align: center;
-  }
-
-  .stat-number {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 26px;
-    font-weight: 600;
-    color: var(--accent-cyan);
-  }
-
-  .stat-label {
-    font-size: 12px;
-    color: var(--text-muted);
-    letter-spacing: 0.5px;
-  }
+  .hero { text-align: center; padding: 56px 0 40px; border-bottom: 1px solid var(--border-subtle); }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 224, 255, 0.08); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 500; letter-spacing: 0.5px; color: var(--accent-cyan); border: 1px solid rgba(0, 224, 255, 0.25); margin-bottom: 24px; }
+  h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.02em; background: linear-gradient(135deg, #fff 30%, var(--accent-cyan) 80%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 16px; }
+  .hero-sub { color: var(--text-secondary); max-width: 580px; margin: 0 auto 32px; font-size: 1rem; }
+  .stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat-item { text-align: center; }
+  .stat-number { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 600; color: var(--accent-cyan); }
+  .stat-label { font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; }
 
   /* navegación */
-  .nav-strip {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(10, 12, 21, 0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border-subtle);
-    padding: 8px 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
+  .nav-strip { position: sticky; top: 0; z-index: 50; background: rgba(10, 12, 21, 0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); padding: 8px 0; overflow-x: auto; scrollbar-width: none; }
+  .nav-strip::-webkit-scrollbar { display: none; }
+  .nav-links { display: flex; gap: 8px; justify-content: center; flex-wrap: nowrap; min-width: max-content; }
+  .nav-btn { background: transparent; border: none; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; padding: 8px 18px; border-radius: 40px; color: var(--text-secondary); cursor: pointer; transition: all 0.2s ease; white-space: nowrap; }
+  .nav-btn.active { background: rgba(0, 224, 255, 0.12); color: var(--accent-cyan); border: 1px solid rgba(0, 224, 255, 0.3); }
+  .nav-btn:hover:not(.active) { background: rgba(255, 255, 255, 0.04); color: #fff; }
 
-  .nav-strip::-webkit-scrollbar {
-    display: none;
-  }
+  /* views */
+  .view { display: none; padding: 40px 0 64px; }
+  .view.active-view { display: block; animation: fadeInUp 0.35s ease-out; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
-  .nav-links {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    flex-wrap: nowrap;
-    min-width: max-content;
-  }
+  /* grid tarjetas */
+  .units-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 24px; }
+  .unit-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden; }
+  .unit-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent-color); opacity: 0.8; }
+  .unit-card:hover { border-color: var(--border-medium); transform: translateY(-3px); background: var(--bg-elevated); }
+  .unit-badge { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent-color); letter-spacing: 0.5px; margin-bottom: 12px; }
+  .unit-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; line-height: 1.3; }
+  .preview-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+  .preview-item { font-size: 13px; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; }
+  .preview-item::before { content: '▹'; color: var(--accent-color); font-size: 10px; }
+  .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 14px; margin-top: 8px; }
+  .topic-count { font-size: 12px; background: rgba(255, 255, 255, 0.04); padding: 4px 10px; border-radius: 30px; color: var(--accent-color); }
 
-  .nav-btn {
-    background: transparent;
-    border: none;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 8px 18px;
-    border-radius: 40px;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-  }
+  /* detalle unidad */
+  .detail-header { display: flex; align-items: center; gap: 20px; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border-subtle); flex-wrap: wrap; }
+  .back-btn { background: transparent; border: 1px solid var(--border-medium); padding: 8px 20px; border-radius: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-secondary); cursor: pointer; transition: all 0.2s; }
+  .back-btn:hover { background: rgba(255, 255, 255, 0.05); color: #fff; border-color: var(--accent-cyan); }
+  .subtema-list { display: flex; flex-direction: column; gap: 16px; }
+  .subtema-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; transition: border 0.2s; }
+  .subtema-card.open { border-color: rgba(255, 255, 255, 0.18); }
+  .subtema-header { display: flex; align-items: center; gap: 14px; padding: 16px 20px; cursor: pointer; user-select: none; background: rgba(0, 0, 0, 0.2); }
+  .subtema-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; background: var(--bg-elevated); padding: 4px 10px; border-radius: 20px; color: var(--accent-color); }
+  .subtema-name { flex: 1; font-weight: 500; }
+  .prog-badge { font-size: 10px; padding: 4px 10px; border-radius: 40px; background: rgba(46, 229, 157, 0.15); border: 1px solid rgba(46, 229, 157, 0.4); color: var(--accent-green); }
+  .chevron { font-size: 16px; color: var(--text-muted); transition: transform 0.25s; }
+  .subtema-card.open .chevron { transform: rotate(180deg); }
+  .subtema-body { display: none; padding: 0 20px 20px 20px; border-top: 1px solid var(--border-subtle); }
+  .subtema-card.open .subtema-body { display: block; }
 
-  .nav-btn.active {
-    background: rgba(0, 224, 255, 0.12);
-    color: var(--accent-cyan);
-    border: 1px solid rgba(0, 224, 255, 0.3);
-  }
+  /* contenido */
+  .teoria { color: var(--text-secondary); font-size: 14px; line-height: 1.65; margin-bottom: 20px; }
+  .teoria strong { color: var(--text-primary); }
+  .formula-card { background: rgba(0, 224, 255, 0.04); border: 1px solid rgba(0, 224, 255, 0.15); border-radius: 12px; padding: 14px 18px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; margin: 20px 0; color: #b3f0ff; }
+  .widget { background: var(--bg-elevated); border-radius: var(--radius-sm); margin-top: 20px; border: 1px solid var(--border-subtle); overflow: hidden; }
+  .widget-header { padding: 12px 16px; background: rgba(0, 0, 0, 0.3); border-bottom: 1px solid var(--border-subtle); display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent-cyan); }
+  .code-block { padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; overflow-x: auto; background: #0c0f17; color: #cbd5ff; }
+  .input-group { display: flex; flex-wrap: wrap; gap: 16px; padding: 14px 16px; background: rgba(0, 0, 0, 0.2); border-top: 1px solid var(--border-subtle); }
+  .field { flex: 1; min-width: 100px; }
+  .field label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 4px; font-family: monospace; }
+  .field input { width: 100%; background: var(--bg-deep); border: 1px solid var(--border-subtle); padding: 8px 12px; border-radius: 8px; color: #fff; font-family: monospace; font-size: 13px; }
+  .run-btn { background: var(--accent-cyan); border: none; padding: 8px 24px; border-radius: 40px; font-weight: 600; font-family: monospace; color: #0a0c15; cursor: pointer; transition: 0.2s; margin: 12px 16px; }
+  .run-btn:hover { opacity: 0.85; transform: scale(0.97); }
+  .output-box { background: #0c0f17; padding: 12px 16px; margin: 0 16px 16px 16px; border-radius: 10px; font-family: monospace; font-size: 13px; border-left: 3px solid var(--accent-green); color: #c9f0e1; white-space: pre-wrap; }
+  hr { border-color: var(--border-subtle); margin: 20px 0; }
 
-  .nav-btn:hover:not(.active) {
-    background: rgba(255, 255, 255, 0.04);
-    color: #fff;
-  }
+  /* tablas */
+  .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+  .data-table th, .data-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-subtle); }
+  .data-table th { color: var(--accent-cyan); font-weight: 600; background: rgba(0, 224, 255, 0.05); }
+  .data-table tr:hover { background: rgba(255, 255, 255, 0.02); }
 
-  /* vista principal */
-  .view {
-    display: none;
-    padding: 40px 0 64px;
-  }
-
-  .view.active-view {
-    display: block;
-    animation: fadeInUp 0.35s ease-out;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(14px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* grid de tarjetas */
-  .units-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-    margin-top: 24px;
-  }
-
-  .unit-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.25s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .unit-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--accent-color);
-    opacity: 0.8;
-  }
-
-  .unit-card:hover {
-    border-color: var(--border-medium);
-    transform: translateY(-3px);
-    background: var(--bg-elevated);
-  }
-
-  .unit-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--accent-color);
-    letter-spacing: 0.5px;
-    margin-bottom: 12px;
-  }
-
-  .unit-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    line-height: 1.3;
-  }
-
-  .preview-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 18px;
-  }
-
-  .preview-item {
-    font-size: 13px;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .preview-item::before {
-    content: '▹';
-    color: var(--accent-color);
-    font-size: 10px;
-  }
-
-  .card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid var(--border-subtle);
-    padding-top: 14px;
-    margin-top: 8px;
-  }
-
-  .topic-count {
-    font-size: 12px;
-    background: rgba(255, 255, 255, 0.04);
-    padding: 4px 10px;
-    border-radius: 30px;
-    color: var(--accent-color);
-  }
-
-  /* detalle de unidad */
-  .detail-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 32px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border-subtle);
-    flex-wrap: wrap;
-  }
-
-  .back-btn {
-    background: transparent;
-    border: 1px solid var(--border-medium);
-    padding: 8px 20px;
-    border-radius: 40px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .back-btn:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-    border-color: var(--accent-cyan);
-  }
-
-  .subtema-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .subtema-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    transition: border 0.2s;
-  }
-
-  .subtema-card.open {
-    border-color: rgba(255, 255, 255, 0.18);
-  }
-
-  .subtema-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 20px;
-    cursor: pointer;
-    user-select: none;
-    background: rgba(0, 0, 0, 0.2);
-  }
-
-  .subtema-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    font-weight: 600;
-    background: var(--bg-elevated);
-    padding: 4px 10px;
-    border-radius: 20px;
-    color: var(--accent-color);
-  }
-
-  .subtema-name {
-    flex: 1;
-    font-weight: 500;
-  }
-
-  .prog-badge {
-    font-size: 10px;
-    padding: 4px 10px;
-    border-radius: 40px;
-    background: rgba(46, 229, 157, 0.15);
-    border: 1px solid rgba(46, 229, 157, 0.4);
-    color: var(--accent-green);
-  }
-
-  .chevron {
-    font-size: 16px;
-    color: var(--text-muted);
-    transition: transform 0.25s;
-  }
-
-  .subtema-card.open .chevron {
-    transform: rotate(180deg);
-  }
-
-  .subtema-body {
-    display: none;
-    padding: 0 20px 20px 20px;
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .subtema-card.open .subtema-body {
-    display: block;
-  }
-
-  /* contenido académico */
-  .teoria {
-    color: var(--text-secondary);
-    font-size: 14px;
-    line-height: 1.65;
-    margin-bottom: 20px;
-  }
-
-  .teoria strong {
-    color: var(--text-primary);
-  }
-
-  .formula-card {
-    background: rgba(0, 224, 255, 0.04);
-    border: 1px solid rgba(0, 224, 255, 0.15);
-    border-radius: 12px;
-    padding: 14px 18px;
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    margin: 20px 0;
-    color: #b3f0ff;
-  }
-
-  .widget {
-    background: var(--bg-elevated);
-    border-radius: var(--radius-sm);
-    margin-top: 20px;
-    border: 1px solid var(--border-subtle);
-    overflow: hidden;
-  }
-
-  .widget-header {
-    padding: 12px 16px;
-    background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid var(--border-subtle);
-    display: flex;
-    justify-content: space-between;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--accent-cyan);
-  }
-
-  .code-block {
-    padding: 16px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    line-height: 1.6;
-    overflow-x: auto;
-    background: #0c0f17;
-    color: #cbd5ff;
-  }
-
-  .input-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 14px 16px;
-    background: rgba(0, 0, 0, 0.2);
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .field {
-    flex: 1;
-    min-width: 100px;
-  }
-
-  .field label {
-    display: block;
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-    font-family: monospace;
-  }
-
-  .field input {
-    width: 100%;
-    background: var(--bg-deep);
-    border: 1px solid var(--border-subtle);
-    padding: 8px 12px;
-    border-radius: 8px;
-    color: #fff;
-    font-family: monospace;
-    font-size: 13px;
-  }
-
-  .run-btn {
-    background: var(--accent-cyan);
-    border: none;
-    padding: 8px 24px;
-    border-radius: 40px;
-    font-weight: 600;
-    font-family: monospace;
-    color: #0a0c15;
-    cursor: pointer;
-    transition: 0.2s;
-    margin: 12px 16px;
-  }
-
-  .run-btn:hover {
-    opacity: 0.85;
-    transform: scale(0.97);
-  }
-
-  .output-box {
-    background: #0c0f17;
-    padding: 12px 16px;
-    margin: 0 16px 16px 16px;
-    border-radius: 10px;
-    font-family: monospace;
-    font-size: 13px;
-    border-left: 3px solid var(--accent-green);
-    color: #c9f0e1;
-    white-space: pre-wrap;
-  }
-
-  hr {
-    border-color: var(--border-subtle);
-    margin: 20px 0;
-  }
-
-  /* responsive */
-  @media (max-width: 760px) {
-    .container {
-      padding: 0 16px;
-    }
-    .detail-header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
+  @media (max-width: 760px) { .container { padding: 0 16px; } .detail-header { flex-direction: column; align-items: flex-start; } }
 </style>
 </head>
 <body>
@@ -528,8 +133,8 @@
     <p class="hero-sub">Unidades, fundamentos y simuladores interactivos para dominar el análisis numérico.</p>
     <div class="stats">
       <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">UNIDADES</div></div>
-      <div class="stat-item"><div class="stat-number">28+</div><div class="stat-label">SUBTEMAS</div></div>
-      <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label">PROGRAMAS</div></div>
+      <div class="stat-item"><div class="stat-number">28</div><div class="stat-label">SUBTEMAS</div></div>
+      <div class="stat-item"><div class="stat-number">12+</div><div class="stat-label">PROGRAMAS</div></div>
     </div>
   </div>
 </div>
@@ -549,60 +154,72 @@
 </div>
 
 <div class="container">
-  <!-- ========= VISTA PRINCIPAL ========= -->
   <div id="overview-view" class="view active-view">
     <div class="units-grid" id="unitsGrid"></div>
   </div>
-
-  <!-- ========= UNIDADES (se llenan dinámicamente) ========= -->
   <div id="unit-details"></div>
 </div>
 
 <script>
-  // --------------------------------------------------------------
-  // DATA DEFINITION (CONTENIDO ORIGINAL COMPLETO)
-  // --------------------------------------------------------------
+  // ==================== DATOS COMPLETOS DE LAS UNIDADES ====================
   const unitsData = [
-    { id: 1, title: "Introducción a los Métodos Numéricos", color: "#00e0ff", topics: 5, preview: ["Importancia", "Cifras significativas", "Errores", "Software", "Métodos iterativos"],
+    // UNIDAD 1
+    { id: 1, title: "Introducción a los Métodos Numéricos", color: "#00e0ff", topics: 5, preview: ["Importancia", "Cifras significativas", "Tipos de errores", "Software", "Métodos iterativos"],
       subtemas: [
-        { num: "1.1", name: "Importancia de los métodos numéricos", hasProg: false, content: `<p class="teoria">Los métodos numéricos permiten resolver problemas matemáticos complejos mediante algoritmos computacionales. Se aplican en derivadas, integrales, EDOs, matrices, interpolación y ajuste de curvas. Las etapas incluyen especificación, análisis, programación, verificación y documentación.</p><div style="margin-top:1rem; background:rgba(0,224,255,0.03); border-radius:12px; padding:12px; text-align:center;"><span style="font-family:monospace;">📘 Infografía detallada integrada en el recurso</span></div>` },
+        { num: "1.1", name: "Importancia de los métodos numéricos", hasProg: false, content: `<p class="teoria">Los métodos numéricos permiten resolver problemas matemáticos complejos mediante algoritmos computacionales. Se aplican en derivadas, integrales, EDOs, matrices, interpolación y ajuste de curvas. Las etapas incluyen especificación, análisis, programación, verificación y documentación.</p><div style="margin:20px 0; background:rgba(0,224,255,0.03); border-radius:12px; padding:20px; text-align:center;"><span style="font-family:monospace;">📘 Infografía detallada: Proceso de solución computacional</span></div>` },
         { num: "1.2", name: "Conceptos básicos: precisión, exactitud, sesgo", hasProg: false, content: `<p class="teoria"><strong>Cifras significativas:</strong> dígitos no nulos. <strong>Exactitud:</strong> cercanía al valor real. <strong>Precisión:</strong> cercanía entre mediciones. <strong>Incertidumbre y sesgo:</strong> incertidumbre cuantifica dispersión, sesgo es desviación sistemática.</p>` },
-        { num: "1.3", name: "Tipos de errores (redondeo, truncamiento, absoluto, relativo)", hasProg: true, content: `<p class="teoria">Error absoluto = |valor real - aproximado|, error relativo = error absoluto / |valor real|. Redondeo y truncamiento se combinan en error total.</p><div class="widget"><div class="widget-header"><span>📐 Calculadora de Errores</span></div><div class="input-group"><div class="field"><label>Valor real</label><input id="errReal" type="number" value="9.81"></div><div class="field"><label>Aproximado</label><input id="errAprox" type="number" value="9.78"></div></div><div class="input-group"><button class="run-btn" onclick="calcError()">Calcular error</button></div><div class="output-box" id="errOutput">Esperando cálculo...</div></div>` },
-        { num: "1.4", name: "Software de cómputo numérico", hasProg: false, content: `<p class="teoria">Netlib, NAG, IMSL, Numerical Recipes, MATLAB y GNU Octave son herramientas esenciales para computación numérica de alto rendimiento.</p>` },
-        { num: "1.5", name: "Métodos iterativos", hasProg: false, content: `<p class="teoria">Los métodos iterativos generan aproximaciones sucesivas a partir de un valor inicial. Ideales para problemas grandes (millones de variables).</p>` }
+        { num: "1.3", name: "Tipos de errores (redondeo, truncamiento, absoluto, relativo)", hasProg: true, content: `<p class="teoria">Error absoluto = |valor real - aproximado|, error relativo = error absoluto / |valor real|. Redondeo y truncamiento se combinan en error total.</p><div class="widget"><div class="widget-header"><span>📐 Calculadora de Errores</span></div><div class="input-group"><div class="field"><label>Valor real</label><input id="errReal" type="number" value="9.81"></div><div class="field"><label>Aproximado</label><input id="errAprox" type="number" value="9.78"></div></div><button class="run-btn" onclick="calcError()">Calcular error</button><div class="output-box" id="errOutput">Esperando cálculo...</div></div>` },
+        { num: "1.4", name: "Software de cómputo numérico", hasProg: false, content: `<p class="teoria">Netlib, NAG, IMSL, Numerical Recipes, MATLAB y GNU Octave son herramientas esenciales para computación numérica de alto rendimiento. Cada una ofrece ventajas específicas según el área de aplicación.</p>` },
+        { num: "1.5", name: "Métodos iterativos", hasProg: false, content: `<p class="teoria">Los métodos iterativos generan aproximaciones sucesivas a partir de un valor inicial. Ideales para problemas grandes (millones de variables). La convergencia depende de las propiedades matemáticas del problema.</p>` }
       ] },
-    { id: 2, title: "Métodos de Solución de Ecuaciones", color: "#b77cff", topics: 5, preview: ["Intervalo", "Bisección", "Aproximaciones sucesivas", "Interpolación", "Aplicaciones"],
+    // UNIDAD 2
+    { id: 2, title: "Métodos de Solución de Ecuaciones", color: "#b77cff", topics: 5, preview: ["Métodos de intervalo", "Bisección", "Aproximaciones sucesivas", "Interpolación", "Aplicaciones"],
       subtemas: [
-        { num: "2.1", name: "Métodos de intervalo", hasProg: false, content: `<p class="teoria">Teorema de Bolzano: función continua en [a,b] con signo opuesto en extremos. Métodos de intervalo garantizan raíz.</p>` },
-        { num: "2.2", name: "Método de bisección", hasProg: true, content: `<p class="teoria">Divide el intervalo en mitades y selecciona subintervalo que contiene raíz. Converge linealmente.</p><div class="widget"><div class="widget-header"><span>📐 Bisección: f(x)=x³-x-2</span></div><div class="input-group"><div class="field"><label>a</label><input id="bisA" type="number" value="1"></div><div class="field"><label>b</label><input id="bisB" type="number" value="2"></div></div><button class="run-btn" onclick="runBiseccion()">Ejecutar bisección</button><div class="output-box" id="bisOut">Esperando...</div></div>` },
-        { num: "2.3", name: "Aproximaciones sucesivas (punto fijo)", hasProg: true, content: `<p class="teoria">Consiste en reescribir f(x)=0 como x=g(x). Iteración x_{n+1}=g(x_n). Converge si |g'(x)|&lt;1.</p><div class="widget"><div class="widget-header"><span>🔁 Punto fijo √N</span></div><div class="input-group"><div class="field"><label>N (radicando)</label><input id="pfN" type="number" value="2"></div><div class="field"><label>x₀ inicial</label><input id="pfX0" type="number" value="1.5"></div></div><button class="run-btn" onclick="runPuntoFijo()">Iterar</button><div class="output-box" id="pfOut">Resultado</div></div>` },
-        { num: "2.4", name: "Métodos de interpolación (secante)", hasProg: false, content: `<p class="teoria">Método de la secante: aproxima derivada por diferencia finita, converge con orden φ ≈ 1.618.</p>` },
-        { num: "2.5", name: "Aplicaciones", hasProg: true, content: `<p class="teoria">Interés compuesto, termodinámica, ecuaciones de estado, TIR financiera.</p><div class="widget"><div class="widget-header"><span>💰 Interés compuesto</span></div><div class="input-group"><div class="field"><label>Capital inicial</label><input id="invP" type="number" value="1000"></div><div class="field"><label>Tasa anual %</label><input id="invR" type="number" value="5"></div><div class="field"><label>Años</label><input id="invN" type="number" value="10"></div></div><button class="run-btn" onclick="runInteres()">Calcular</button><div class="output-box" id="invOut">Esperando...</div></div>` }
+        { num: "2.1", name: "Métodos de intervalo", hasProg: false, content: `<p class="teoria">Teorema de Bolzano: función continua en [a,b] con signo opuesto en extremos. Métodos de intervalo garantizan raíz. La convergencia es lineal pero segura.</p>` },
+        { num: "2.2", name: "Método de bisección", hasProg: true, content: `<p class="teoria">Divide el intervalo en mitades y selecciona subintervalo que contiene raíz. Converge linealmente, error se reduce a la mitad en cada iteración.</p><div class="widget"><div class="widget-header"><span>📐 Bisección: f(x)=x³-x-2</span></div><div class="input-group"><div class="field"><label>a (inferior)</label><input id="bisA" type="number" value="1"></div><div class="field"><label>b (superior)</label><input id="bisB" type="number" value="2"></div></div><button class="run-btn" onclick="runBiseccion()">Ejecutar bisección</button><div class="output-box" id="bisOut">Esperando...</div></div>` },
+        { num: "2.3", name: "Método de aproximaciones sucesivas (punto fijo)", hasProg: true, content: `<p class="teoria">Consiste en reescribir f(x)=0 como x=g(x). Iteración x_{n+1}=g(x_n). Converge si |g'(x)|&lt;1 en el entorno de la raíz.</p><div class="widget"><div class="widget-header"><span>🔁 Punto fijo para √N</span></div><div class="input-group"><div class="field"><label>N (radicando)</label><input id="pfN" type="number" value="2"></div><div class="field"><label>x₀ inicial</label><input id="pfX0" type="number" value="1.5"></div></div><button class="run-btn" onclick="runPuntoFijo()">Iterar</button><div class="output-box" id="pfOut">Resultado</div></div>` },
+        { num: "2.4", name: "Métodos de interpolación (secante)", hasProg: false, content: `<p class="teoria">Método de la secante: aproxima derivada por diferencia finita, converge con orden φ ≈ 1.618 (número áureo). No requiere calcular derivadas.</p><div class="formula-card">xₙ₊₁ = xₙ - f(xₙ)·(xₙ - xₙ₋₁) / (f(xₙ) - f(xₙ₋₁))</div>` },
+        { num: "2.5", name: "Aplicaciones", hasProg: true, content: `<p class="teoria">Interés compuesto, termodinámica, ecuaciones de estado, TIR financiera, factor de fricción en tuberías.</p><div class="widget"><div class="widget-header"><span>💰 Interés compuesto</span></div><div class="input-group"><div class="field"><label>Capital inicial ($)</label><input id="invP" type="number" value="1000"></div><div class="field"><label>Tasa anual %</label><input id="invR" type="number" value="5"></div><div class="field"><label>Años</label><input id="invN" type="number" value="10"></div></div><button class="run-btn" onclick="runInteres()">Calcular</button><div class="output-box" id="invOut">Esperando...</div></div>` }
       ] },
+    // UNIDAD 3
     { id: 3, title: "Sistemas de Ecuaciones", color: "#2ee59d", topics: 4, preview: ["Métodos iterativos", "Sistemas no lineales", "Convergencia", "Aplicaciones"],
       subtemas: [
-        { num: "3.1", name: "Métodos iterativos (Jacobi, Gauss-Seidel)", hasProg: true, content: `<p class="teoria">Jacobi y Gauss-Seidel resuelven sistemas lineales grandes. Gauss-Seidel actualiza variables inmediatamente y converge más rápido.</p><div class="widget"><div class="widget-header"><span>⚙️ Gauss-Seidel (2x2)</span></div><div class="input-group"><div class="field"><label>Ecuación 1: 4x + y = 9</label></div><div class="field"><label>Ecuación 2: x + 3y = 7</label></div></div><button class="run-btn" onclick="runGaussSeidel()">Resolver</button><div class="output-box" id="gsOut">Aproximación</div></div>` },
-        { num: "3.2", name: "Sistemas no lineales", hasProg: false, content: `<p class="teoria">Sistemas con términos no lineales (x², sin(x), xy). Pueden tener múltiples equilibrios, ciclos límite o caos.</p>` },
-        { num: "3.3", name: "Convergencia en sistemas", hasProg: true, content: `<p class="teoria">La convergencia requiere diagonal dominante o matriz simétrica definida positiva. Cota de error y número máximo de iteraciones.</p><div class="widget"><div class="widget-header"><span>🔍 Verificar diagonal dominante</span></div><div class="input-group"><div class="field"><label>|a₁₁|</label><input id="dd11" value="4"></div><div class="field"><label>|a₁₂|</label><input id="dd12" value="1"></div><div class="field"><label>|a₂₁|</label><input id="dd21" value="1"></div><div class="field"><label>|a₂₂|</label><input id="dd22" value="3"></div></div><button class="run-btn" onclick="verificarDiagonal()">Verificar</button><div class="output-box" id="ddOut">Esperando...</div></div>` }
+        { num: "3.1", name: "Métodos iterativos (Jacobi, Gauss-Seidel)", hasProg: true, content: `<p class="teoria">Jacobi y Gauss-Seidel resuelven sistemas lineales grandes. Gauss-Seidel actualiza variables inmediatamente y converge más rápido. Requieren matriz diagonal dominante.</p><div class="widget"><div class="widget-header"><span>⚙️ Gauss-Seidel</span></div><div class="input-group"><div class="field"><label>4x + y = 9</label></div><div class="field"><label>x + 3y = 7</label></div></div><button class="run-btn" onclick="runGaussSeidel()">Resolver</button><div class="output-box" id="gsOut">Aproximación</div></div>` },
+        { num: "3.2", name: "Sistemas no lineales", hasProg: false, content: `<p class="teoria">Sistemas con términos no lineales (x², sin(x), xy). Pueden tener múltiples equilibrios, ciclos límite o caos. Se resuelven con Newton-Raphson multidimensional.</p>` },
+        { num: "3.3", name: "Convergencia en sistemas", hasProg: true, content: `<p class="teoria">La convergencia requiere diagonal dominante o matriz simétrica definida positiva. Cota de error y número máximo de iteraciones son criterios de parada.</p><div class="widget"><div class="widget-header"><span>🔍 Verificar diagonal dominante</span></div><div class="input-group"><div class="field"><label>|a₁₁|</label><input id="dd11" value="4"></div><div class="field"><label>|a₁₂|</label><input id="dd12" value="1"></div><div class="field"><label>|a₂₁|</label><input id="dd21" value="1"></div><div class="field"><label>|a₂₂|</label><input id="dd22" value="3"></div></div><button class="run-btn" onclick="verificarDiagonal()">Verificar</button><div class="output-box" id="ddOut">Esperando...</div></div>` },
+        { num: "3.4", name: "Aplicaciones", hasProg: false, content: `<p class="teoria">Análisis de redes eléctricas, transferencia de calor, mecánica de fluidos, modelos depredador-presa, equilibrio químico.</p>` }
       ] },
+    // UNIDAD 4
     { id: 4, title: "Diferenciación e Integración Numérica", color: "#ffb347", topics: 4, preview: ["Diferenciación", "Integración", "Integración múltiple", "Aplicaciones"],
       subtemas: [
-        { num: "4.1", name: "Diferenciación numérica", hasProg: true, content: `<p class="teoria">Fórmulas diferencias finitas: adelante O(h), centrada O(h²). La derivada centrada es más precisa.</p><div class="widget"><div class="widget-header"><span>📈 Derivada centrada de f(x)=x² en x=2</span></div><div class="input-group"><div class="field"><label>h (paso)</label><input id="diffH" type="number" value="0.001"></div></div><button class="run-btn" onclick="runDerivada()">Calcular derivada</button><div class="output-box" id="diffOut">Resultado</div></div>` },
-        { num: "4.2", name: "Integración numérica (Simpson, Trapecio)", hasProg: true, content: `<p class="teoria">Regla del trapecio y Simpson 1/3 aproximan integrales definidas. Simpson tiene orden O(h⁴).</p><div class="widget"><div class="widget-header"><span>∫ x² dx [0,2] - Simpson</span></div><div class="input-group"><div class="field"><label>a</label><input id="intA" value="0"></div><div class="field"><label>b</label><input id="intB" value="2"></div><div class="field"><label>n (par)</label><input id="intN" value="100"></div></div><button class="run-btn" onclick="runIntegral()">Calcular</button><div class="output-box" id="intOut">Esperando...</div></div>` }
+        { num: "4.1", name: "Diferenciación numérica", hasProg: true, content: `<p class="teoria">Fórmulas diferencias finitas: adelante O(h), centrada O(h²). La derivada centrada es más precisa. Error de redondeo limita el paso h.</p><div class="widget"><div class="widget-header"><span>📈 Derivada centrada f(x)=x² en x=2</span></div><div class="input-group"><div class="field"><label>h (paso)</label><input id="diffH" type="number" value="0.001" step="0.0001"></div></div><button class="run-btn" onclick="runDerivada()">Calcular derivada</button><div class="output-box" id="diffOut">Resultado</div></div>` },
+        { num: "4.2", name: "Integración numérica (Simpson, Trapecio)", hasProg: true, content: `<p class="teoria">Regla del trapecio: O(h²). Simpson 1/3: O(h⁴). Para mayor precisión se usan fórmulas compuestas. La cuadratura gaussiana es más eficiente.</p><div class="widget"><div class="widget-header"><span>∫ x² dx [0,2] - Simpson</span></div><div class="input-group"><div class="field"><label>a</label><input id="intA" value="0"></div><div class="field"><label>b</label><input id="intB" value="2"></div><div class="field"><label>n (par)</label><input id="intN" value="100"></div></div><button class="run-btn" onclick="runIntegral()">Calcular</button><div class="output-box" id="intOut">Esperando...</div></div>` },
+        { num: "4.3", name: "Integración múltiple", hasProg: false, content: `<p class="teoria">Método de Monte Carlo para dimensiones altas. Integración numérica en 2D con cuadrícula. La "maldición de la dimensionalidad" limita métodos tradicionales.</p>` },
+        { num: "4.4", name: "Aplicaciones", hasProg: false, content: `<p class="teoria">Cálculo de áreas y volúmenes, procesamiento de señales, valoración de opciones financieras, simulaciones climáticas, dinámica molecular.</p>` }
       ] },
-    { id: 5, title: "Interpolación y Ajuste", color: "#ff6b8b", topics: 6, preview: ["Newton", "Lagrange", "Splines", "Regresión", "Mínimos cuadrados"],
+    // UNIDAD 5
+    { id: 5, title: "Interpolación y Ajuste", color: "#ff6b8b", topics: 6, preview: ["Newton", "Lagrange", "Splines", "Regresión", "Mínimos cuadrados", "Aplicaciones"],
       subtemas: [
-        { num: "5.1", name: "Polinomio de Newton", hasProg: true, content: `<p class="teoria">Usa diferencias divididas para construir polinomio interpolador, eficiente para añadir nodos.</p><div class="widget"><div class="widget-header"><span>📌 Newton (puntos fijos)</span></div><div class="input-group"><div class="field"><label>Nodos x: 0,1,2,3</label><input id="newX" value="0,1,2,3"></div><div class="field"><label>Nodos y: 1,1,3,7</label><input id="newY" value="1,1,3,7"></div><div class="field"><label>x a evaluar</label><input id="newT" type="number" value="2.5"></div></div><button class="run-btn" onclick="runNewton()">Interpolar</button><div class="output-box" id="newOut">Resultado</div></div>` },
-        { num: "5.2", name: "Polinomio de Lagrange", hasProg: true, content: `<p class="teoria">Lagrange explicita cada polinomio base, evita diferencias pero más costoso con muchos puntos.</p><div class="widget"><div class="widget-header"><span>📌 Lagrange (ln(x))</span></div><div class="input-group"><div class="field"><label>Nodos x: 1,2,3,4,5</label><input id="lagX" value="1,2,3,4,5"></div><div class="field"><label>Evaluar en t</label><input id="lagT" type="number" value="1.5"></div><div class="field"><label>Cantidad puntos (2-5)</label><input id="lagN" type="number" value="4"></div></div><button class="run-btn" onclick="runLagrange()">Calcular</button><div class="output-box" id="lagOut">Resultado</div></div>` }
+        { num: "5.1", name: "Polinomio de Newton", hasProg: true, content: `<p class="teoria">Usa diferencias divididas para construir polinomio interpolador. Eficiente para añadir nodos. El error se estima con diferencias de orden superior.</p><div class="widget"><div class="widget-header"><span>📌 Newton (diferencias divididas)</span></div><div class="input-group"><div class="field"><label>Nodos x (0,1,2,3)</label><input id="newX" value="0,1,2,3"></div><div class="field"><label>Nodos y (1,1,3,7)</label><input id="newY" value="1,1,3,7"></div><div class="field"><label>x a evaluar</label><input id="newT" type="number" value="2.5"></div></div><button class="run-btn" onclick="runNewton()">Interpolar</button><div class="output-box" id="newOut">Resultado</div></div>` },
+        { num: "5.2", name: "Polinomio de Lagrange", hasProg: true, content: `<p class="teoria">Lagrange explicita cada polinomio base L_i(x). Evita diferencias pero más costoso con muchos puntos. Útil para demostraciones teóricas.</p><div class="widget"><div class="widget-header"><span>📌 Lagrange (ln(x))</span></div><div class="input-group"><div class="field"><label>Nodos x (1,2,3,4,5)</label><input id="lagX" value="1,2,3,4,5"></div><div class="field"><label>Evaluar en t</label><input id="lagT" type="number" value="1.5"></div><div class="field"><label>Cantidad puntos (2-5)</label><input id="lagN" type="number" value="4"></div></div><button class="run-btn" onclick="runLagrange()">Calcular</button><div class="output-box" id="lagOut">Resultado</div></div>` },
+        { num: "5.3", name: "Interpolación segmentada (Splines)", hasProg: false, content: `<p class="teoria">Los splines cúbicos usan polinomios de grado 3 en cada intervalo. Garantizan continuidad hasta segunda derivada. Evitan el fenómeno de Runge.</p>` },
+        { num: "5.4", name: "Regresión y correlación", hasProg: false, content: `<p class="teoria">Regresión lineal: y = ax + b. Coeficiente de correlación r mide la fuerza de la relación lineal. R² indica calidad del ajuste.</p>` },
+        { num: "5.5", name: "Mínimos cuadrados", hasProg: true, content: `<p class="teoria">Minimiza Σ(y_i - (ax_i+b))². Las ecuaciones normales: a = (nΣxy - ΣxΣy)/(nΣx²-(Σx)²), b = (Σy - aΣx)/n.</p><div class="widget"><div class="widget-header"><span>📊 Regresión lineal</span></div><div class="input-group"><div class="field"><label>Datos x (ej: 1,2,3,4)</label><input id="regX" value="1,2,3,4"></div><div class="field"><label>Datos y (ej: 2,4,5,7)</label><input id="regY" value="2,4,5,7"></div></div><button class="run-btn" onclick="runRegresion()">Calcular regresión</button><div class="output-box" id="regOut">Resultado</div></div>` },
+        { num: "5.6", name: "Problemas de aplicación", hasProg: false, content: `<p class="teoria">Predicción de temperaturas, análisis financiero, procesamiento de imágenes, ingeniería estructural, simulación computacional, curvas de calibración.</p>` }
       ] },
-    { id: 6, title: "Ecuaciones Diferenciales", color: "#ff8cce", topics: 4, preview: ["Euler", "Runge-Kutta", "Sistemas EDO", "Aplicaciones"],
+    // UNIDAD 6
+    { id: 6, title: "Ecuaciones Diferenciales", color: "#ff8cce", topics: 4, preview: ["Método de Euler", "Runge-Kutta", "Sistemas EDO", "Aplicaciones"],
       subtemas: [
-        { num: "6.1", name: "Método de Euler", hasProg: true, content: `<p class="teoria">Euler: y_{n+1}=y_n + h f(x_n,y_n). Es simple pero poco preciso.</p><div class="widget"><div class="widget-header"><span>🧪 Euler dy/dx = y, y(0)=1</span></div><div class="input-group"><div class="field"><label>x final</label><input id="eulerXf" value="1"></div><div class="field"><label>h</label><input id="eulerH" value="0.1"></div></div><button class="run-btn" onclick="runEuler()">Resolver</button><div class="output-box" id="eulerOut">Resultado</div></div>` },
-        { num: "6.2", name: "Runge-Kutta 4to orden (RK4)", hasProg: true, content: `<p class="teoria">RK4: k1..k4, error O(h⁴). Preciso y estable.</p><div class="widget"><div class="widget-header"><span>🌀 RK4: dy/dx = -2xy, y(0)=1</span></div><div class="input-group"><div class="field"><label>x final</label><input id="rk4Xf" value="1"></div><div class="field"><label>h</label><input id="rk4H" value="0.1"></div></div><button class="run-btn" onclick="runRK4()">Resolver</button><div class="output-box" id="rk4Out">Resultado</div></div>` }
+        { num: "6.1", name: "Método de Euler", hasProg: true, content: `<p class="teoria">Euler: y_{n+1}=y_n + h f(x_n,y_n). Es simple pero poco preciso (error O(h)). Útil para introducción a métodos numéricos.</p><div class="widget"><div class="widget-header"><span>🧪 Euler: dy/dx = y, y(0)=1</span></div><div class="input-group"><div class="field"><label>x final</label><input id="eulerXf" value="1"></div><div class="field"><label>h (paso)</label><input id="eulerH" value="0.1"></div></div><button class="run-btn" onclick="runEuler()">Resolver</button><div class="output-box" id="eulerOut">Resultado</div></div>` },
+        { num: "6.2", name: "Runge-Kutta 4to orden (RK4)", hasProg: true, content: `<p class="teoria">RK4: k₁ = h·f(x_n,y_n), k₂ = h·f(x_n+h/2, y_n+k₁/2), k₃ = h·f(x_n+h/2, y_n+k₂/2), k₄ = h·f(x_n+h, y_n+k₃), y_{n+1} = y_n + (k₁+2k₂+2k₃+k₄)/6. Error O(h⁴).</p><div class="widget"><div class="widget-header"><span>🌀 RK4: dy/dx = -2xy, y(0)=1</span></div><div class="input-group"><div class="field"><label>x final</label><input id="rk4Xf" value="1"></div><div class="field"><label>h (paso)</label><input id="rk4H" value="0.1"></div></div><button class="run-btn" onclick="runRK4()">Resolver</button><div class="output-box" id="rk4Out">Resultado</div></div>` },
+        { num: "6.3", name: "Sistemas de ecuaciones diferenciales ordinarias", hasProg: false, content: `<p class="teoria">Sistemas de EDOs surgen en dinámica: péndulo, circuito RLC, modelos depredador-presa (Lotka-Volterra). Se resuelven aplicando métodos a cada ecuación simultáneamente.</p>` },
+        { num: "6.4", name: "Aplicaciones", hasProg: false, content: `<p class="teoria">Simulación de circuitos eléctricos, dinámica de estructuras, transferencia de calor transiente, modelado de epidemias (SIR), trayectorias de proyectiles, control robótico.</p>` }
       ] }
   ];
 
-  // Render vista general
+  // Cache de unidades renderizadas
+  const renderedUnits = {};
+
   function renderOverview() {
     const grid = document.getElementById('unitsGrid');
     grid.innerHTML = unitsData.map(unit => `
@@ -615,92 +232,139 @@
     `).join('');
   }
 
-  // Render unidades detalle
-  function renderUnitDetails() {
-    const container = document.getElementById('unit-details');
-    container.innerHTML = unitsData.map(unit => `
-      <div class="view" id="unit-${unit.id}">
-        <div class="detail-header">
-          <button class="back-btn" onclick="showOverview()">← Volver al inicio</button>
-          <div><h2 style="color:${unit.color}; margin-bottom:4px;">Unidad ${unit.id}</h2><p style="color:var(--text-secondary);">${unit.title}</p></div>
-        </div>
-        <div class="subtema-list">
-          ${unit.subtemas.map(sub => `
-            <div class="subtema-card" style="--accent-color: ${unit.color}" onclick="toggleSubtema(this, event)">
-              <div class="subtema-header">
-                <span class="subtema-num">${sub.num}</span>
-                <span class="subtema-name">${sub.name}</span>
-                ${sub.hasProg ? '<span class="prog-badge">CÓDIGO</span>' : ''}
-                <span class="chevron">▼</span>
-              </div>
-              <div class="subtema-body">
-                ${sub.content}
-              </div>
-            </div>
-          `).join('')}
-        </div>
+  function renderUnitHTML(unit) {
+    return `
+      <div class="detail-header">
+        <button class="back-btn" onclick="showOverview()">← Volver al inicio</button>
+        <div><h2 style="color:${unit.color}; margin-bottom:4px;">Unidad ${unit.id}</h2><p style="color:var(--text-secondary);">${unit.title}</p></div>
       </div>
-    `).join('');
+      <div class="subtema-list">
+        ${unit.subtemas.map(sub => `
+          <div class="subtema-card" style="--accent-color: ${unit.color}" onclick="toggleSubtema(this, event)">
+            <div class="subtema-header">
+              <span class="subtema-num">${sub.num}</span>
+              <span class="subtema-name">${sub.name}</span>
+              ${sub.hasProg ? '<span class="prog-badge">💻 PROGRAMA</span>' : ''}
+              <span class="chevron">▼</span>
+            </div>
+            <div class="subtema-body">
+              ${sub.content}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
   }
 
   window.toggleSubtema = (card, ev) => {
-    if(ev.target.closest('.run-btn')) return;
+    if(ev.target.closest('.run-btn') || ev.target.closest('input')) return;
     card.classList.toggle('open');
   };
 
   window.showOverview = () => {
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active-view'));
     document.getElementById('overview-view').classList.add('active-view');
-    document.querySelectorAll('.nav-btn').forEach((btn,idx) => btn.classList.toggle('active', idx === 0));
+    const unitContainer = document.getElementById('unit-details');
+    unitContainer.querySelectorAll('.unit-view').forEach(v => v.classList.remove('active-view'));
+    document.querySelectorAll('.nav-btn').forEach((btn, idx) => btn.classList.toggle('active', idx === 0));
   };
 
   window.showUnit = (id) => {
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active-view'));
-    document.getElementById(`unit-${id}`).classList.add('active-view');
-    document.querySelectorAll('.nav-btn').forEach((btn,idx) => btn.classList.toggle('active', idx === id));
+    document.getElementById('overview-view').classList.remove('active-view');
+    const unitContainer = document.getElementById('unit-details');
+    
+    let unitView = document.getElementById(`unit-${id}`);
+    if (!unitView) {
+      const unit = unitsData.find(u => u.id === id);
+      unitView = document.createElement('div');
+      unitView.className = 'view unit-view';
+      unitView.id = `unit-${id}`;
+      unitView.innerHTML = renderUnitHTML(unit);
+      unitContainer.appendChild(unitView);
+    }
+    
+    unitContainer.querySelectorAll('.unit-view').forEach(v => v.classList.remove('active-view'));
+    unitView.classList.add('active-view');
+    document.querySelectorAll('.nav-btn').forEach((btn, idx) => btn.classList.toggle('active', idx === id));
   };
 
-  // funciones simuladores (CONTENIDO ORIGINAL)
+  // ==================== FUNCIONES DE LOS SIMULADORES ====================
+  
   window.calcError = () => {
     const real = parseFloat(document.getElementById('errReal').value);
     const aprox = parseFloat(document.getElementById('errAprox').value);
-    if(isNaN(real) || isNaN(aprox) || real === 0) { document.getElementById('errOutput').innerText = 'Error: valores inválidos'; return; }
+    if(isNaN(real) || isNaN(aprox) || real === 0) { 
+      document.getElementById('errOutput').innerHTML = '❌ Error: valores inválidos o real = 0'; 
+      return; 
+    }
     const absErr = Math.abs(real - aprox);
     const relErr = absErr / Math.abs(real);
     const perErr = relErr * 100;
-    document.getElementById('errOutput').innerHTML = `Error absoluto = ${absErr.toExponential(5)}<br>Error relativo = ${relErr.toExponential(5)}<br>Error porcentual = ${perErr.toFixed(6)}%`;
+    let nivel = '';
+    if (perErr < 1) nivel = '✅ Excelente precisión';
+    else if (perErr < 5) nivel = '⚠️ Buena precisión';
+    else if (perErr < 10) nivel = '⚠️ Precisión aceptable';
+    else nivel = '❌ Baja precisión, revisar datos';
+    document.getElementById('errOutput').innerHTML = `📊 Error absoluto = ${absErr.toExponential(6)}<br>📊 Error relativo = ${relErr.toExponential(6)}<br>📊 Error porcentual = ${perErr.toFixed(6)}%<br>📌 ${nivel}`;
   };
 
   window.runBiseccion = () => {
     let a = parseFloat(document.getElementById('bisA').value);
     let b = parseFloat(document.getElementById('bisB').value);
     const f = x => x*x*x - x - 2;
-    if(f(a)*f(b) >= 0) { document.getElementById('bisOut').innerText = 'No hay cambio de signo en el intervalo'; return; }
-    let iter=0; let c;
-    while((b-a)/2 > 1e-7 && iter<100) { c = (a+b)/2; if(f(c)===0) break; else if(f(a)*f(c)<0) b=c; else a=c; iter++; }
-    document.getElementById('bisOut').innerHTML = `Raíz ≈ ${c.toFixed(8)}<br>f(raíz) = ${f(c).toExponential(3)}<br>Iteraciones: ${iter}`;
+    if(f(a)*f(b) >= 0) { 
+      document.getElementById('bisOut').innerHTML = '❌ No hay cambio de signo en el intervalo. Elija a y b con f(a) y f(b) de signos opuestos.'; 
+      return; 
+    }
+    let iter = 0; let c;
+    while((b-a)/2 > 1e-8 && iter < 100) { 
+      c = (a+b)/2; 
+      if(f(c) === 0) break; 
+      else if(f(a)*f(c) < 0) b = c; 
+      else a = c; 
+      iter++; 
+    }
+    document.getElementById('bisOut').innerHTML = `🎯 Raíz aproximada = ${c.toFixed(10)}<br>📐 f(raíz) = ${f(c).toExponential(4)}<br>🔄 Iteraciones: ${iter}<br>📏 Error estimado: ${((b-a)/2).toExponential(4)}`;
   };
 
   window.runPuntoFijo = () => {
     let N = parseFloat(document.getElementById('pfN').value);
     let x = parseFloat(document.getElementById('pfX0').value);
-    if(N<=0) { document.getElementById('pfOut').innerText = 'N positivo requerido'; return; }
-    for(let i=0;i<50;i++) { let xn = (x + N/x)/2; if(Math.abs(xn-x) < 1e-12) { x=xn; break; } x=xn; }
-    document.getElementById('pfOut').innerHTML = `√${N} ≈ ${x.toFixed(10)}<br>Verificación: ${(x*x).toFixed(8)}`;
+    if(N <= 0) { 
+      document.getElementById('pfOut').innerHTML = '❌ N debe ser positivo'; 
+      return; 
+    }
+    let iter = 0;
+    for(let i = 0; i < 50; i++) { 
+      let xn = (x + N/x)/2; 
+      if(Math.abs(xn - x) < 1e-12) { 
+        x = xn; 
+        break; 
+      } 
+      x = xn; 
+      iter++;
+    }
+    document.getElementById('pfOut').innerHTML = `🔢 √${N} ≈ ${x.toFixed(12)}<br>✓ Verificación: ${x}^2 = ${(x*x).toFixed(10)}<br>🔄 Iteraciones: ${iter}`;
   };
 
   window.runInteres = () => {
     let P = parseFloat(document.getElementById('invP').value);
     let r = parseFloat(document.getElementById('invR').value);
     let n = parseFloat(document.getElementById('invN').value);
+    if(isNaN(P) || isNaN(r) || isNaN(n)) {
+      document.getElementById('invOut').innerHTML = '❌ Ingrese valores numéricos válidos';
+      return;
+    }
     let total = P * Math.pow(1 + r/100, n);
-    document.getElementById('invOut').innerHTML = `Monto final: $${total.toFixed(2)}<br>Interés ganado: $${(total-P).toFixed(2)}`;
+    document.getElementById('invOut').innerHTML = `💰 Capital final: $${total.toFixed(2)}<br>📈 Interés ganado: $${(total-P).toFixed(2)}<br>📊 Tasa efectiva: ${((Math.pow(1+r/100,n)-1)*100).toFixed(2)}%`;
   };
 
   window.runGaussSeidel = () => {
-    let x=0, y=0;
-    for(let i=0;i<50;i++) { x = (9 - y)/4; y = (7 - x)/3; }
-    document.getElementById('gsOut').innerHTML = `x ≈ ${x.toFixed(6)}<br>y ≈ ${y.toFixed(6)}<br>4x+y = ${(4*x+y).toFixed(6)} (≈9)`;
+    let x = 0, y = 0;
+    for(let i = 0; i < 50; i++) { 
+      x = (9 - y)/4; 
+      y = (7 - x)/3; 
+    }
+    document.getElementById('gsOut').innerHTML = `✅ Solución aproximada:<br>• x = ${x.toFixed(8)}<br>• y = ${y.toFixed(8)}<br>✓ Verificación: 4x+y = ${(4*x+y).toFixed(8)} (≈9)<br>✓ Verificación: x+3y = ${(x+3*y).toFixed(8)} (≈7)`;
   };
 
   window.verificarDiagonal = () => {
@@ -708,70 +372,129 @@
     const a12 = Math.abs(parseFloat(document.getElementById('dd12').value));
     const a21 = Math.abs(parseFloat(document.getElementById('dd21').value));
     const a22 = Math.abs(parseFloat(document.getElementById('dd22').value));
-    const dom1 = a11 > a12, dom2 = a22 > a21;
-    document.getElementById('ddOut').innerHTML = `Fila1: |${a11}| > |${a12}| → ${dom1?'✓':'✗'}<br>Fila2: |${a22}| > |${a21}| → ${dom2?'✓':'✗'}<br>${dom1&&dom2?'✅ Diagonal dominante → convergencia garantizada':'⚠️ Puede no converger'}`;
+    const dom1 = a11 > a12;
+    const dom2 = a22 > a21;
+    document.getElementById('ddOut').innerHTML = `🔍 Análisis de diagonal dominante:<br>│ Fila 1: |${a11}| > |${a12}| → ${dom1 ? '✅ Sí' : '❌ No'}<br>│ Fila 2: |${a22}| > |${a21}| → ${dom2 ? '✅ Sí' : '❌ No'}<br>${dom1 && dom2 ? '✅ La matriz es diagonal dominante → convergencia garantizada' : '⚠️ No hay garantía de convergencia'}`;
   };
 
   window.runDerivada = () => {
     let h = parseFloat(document.getElementById('diffH').value);
-    let x=2; let exact = 2*x;
-    let der = ( (x+h)*(x+h) - (x-h)*(x-h) ) / (2*h);
-    document.getElementById('diffOut').innerHTML = `f'(2) numérica = ${der.toFixed(8)}<br>Exacto = ${exact}<br>Error = ${Math.abs(der-exact).toExponential(3)}`;
+    if(h <= 0 || isNaN(h)) {
+      document.getElementById('diffOut').innerHTML = '❌ h debe ser positivo';
+      return;
+    }
+    let x = 2; 
+    let exact = 2*x;
+    let der = ((x+h)*(x+h) - (x-h)*(x-h)) / (2*h);
+    document.getElementById('diffOut').innerHTML = `📈 Derivada numérica f'(2) = ${der.toFixed(10)}<br>📐 Derivada exacta = ${exact}<br>📉 Error absoluto = ${Math.abs(der-exact).toExponential(4)}<br>💡 La fórmula centrada tiene error O(h²)`;
   };
 
   window.runIntegral = () => {
     let a = parseFloat(document.getElementById('intA').value);
     let b = parseFloat(document.getElementById('intB').value);
     let n = parseInt(document.getElementById('intN').value);
-    if(n%2!==0) n++;
+    if(n % 2 !== 0) n++;
     let h = (b-a)/n;
     let sum = (a*a + b*b);
-    for(let i=1;i<n;i++) { let xi = a + i*h; let val = xi*xi; sum += (i%2===0 ? 2 : 4) * val; }
+    for(let i = 1; i < n; i++) { 
+      let xi = a + i*h; 
+      let val = xi*xi; 
+      sum += (i%2 === 0 ? 2 : 4) * val; 
+    }
     let integral = sum * h / 3.0;
     let exact = (b*b*b - a*a*a)/3;
-    document.getElementById('intOut').innerHTML = `∫ x² dx ≈ ${integral.toFixed(8)}<br>Exacto = ${exact}<br>Error = ${Math.abs(integral-exact).toExponential(4)}`;
+    let error = Math.abs(integral - exact);
+    document.getElementById('intOut').innerHTML = `📐 ∫ x² dx [${a},${b}]<br>📊 Simpson 1/3 = ${integral.toFixed(10)}<br>✓ Valor exacto = ${exact}<br>📉 Error = ${error.toExponential(4)}<br>🔢 Subintervalos = ${n}`;
   };
 
   window.runNewton = () => {
     const xs = document.getElementById('newX').value.split(',').map(Number);
     const ys = document.getElementById('newY').value.split(',').map(Number);
     let t = parseFloat(document.getElementById('newT').value);
-    if(xs.length !== ys.length || xs.some(isNaN)) { document.getElementById('newOut').innerText = 'Formato incorrecto'; return; }
+    if(xs.length !== ys.length || xs.some(isNaN) || ys.some(isNaN)) { 
+      document.getElementById('newOut').innerHTML = '❌ Formato incorrecto. Use números separados por coma (ej: 0,1,2,3)'; 
+      return; 
+    }
     let n = xs.length;
     let coef = [...ys];
-    for(let j=1;j<n;j++) for(let i=n-1;i>=j;i--) coef[i] = (coef[i] - coef[i-1])/(xs[i] - xs[i-j]);
+    for(let j = 1; j < n; j++) 
+      for(let i = n-1; i >= j; i--) 
+        coef[i] = (coef[i] - coef[i-1])/(xs[i] - xs[i-j]);
     let res = coef[n-1];
-    for(let i=n-2;i>=0;i--) res = res*(t - xs[i]) + coef[i];
-    document.getElementById('newOut').innerHTML = `P(${t}) ≈ ${res.toFixed(8)}`;
+    for(let i = n-2; i >= 0; i--) res = res*(t - xs[i]) + coef[i];
+    document.getElementById('newOut').innerHTML = `📌 Polinomio de Newton<br>P(${t}) = ${res.toFixed(10)}<br>📊 Diferencias divididas: [${coef.map(c=>c.toFixed(4)).join(', ')}]`;
   };
 
   window.runLagrange = () => {
     const xs = document.getElementById('lagX').value.split(',').map(Number);
     let t = parseFloat(document.getElementById('lagT').value);
     let m = parseInt(document.getElementById('lagN').value);
-    if(m<2 || m>xs.length) { document.getElementById('lagOut').innerText = 'Cantidad de puntos inválida'; return; }
-    let useX = xs.slice(0,m);
+    if(m < 2 || m > xs.length || xs.some(isNaN)) { 
+      document.getElementById('lagOut').innerHTML = '❌ Cantidad de puntos inválida o formato incorrecto'; 
+      return; 
+    }
+    let useX = xs.slice(0, m);
     let useY = useX.map(x => Math.log(x));
     let res = 0;
-    for(let i=0;i<m;i++) { let Li=1; for(let j=0;j<m;j++) if(i!==j) Li *= (t - useX[j])/(useX[i]-useX[j]); res += useY[i]*Li; }
+    for(let i = 0; i < m; i++) { 
+      let Li = 1; 
+      for(let j = 0; j < m; j++) 
+        if(i !== j) Li *= (t - useX[j])/(useX[i]-useX[j]); 
+      res += useY[i]*Li; 
+    }
     let exact = Math.log(t);
-    document.getElementById('lagOut').innerHTML = `Lagrange ln(${t}) ≈ ${res.toFixed(8)}<br>Exacto = ${exact.toFixed(8)}<br>Error = ${Math.abs(res-exact).toExponential(4)}`;
+    document.getElementById('lagOut').innerHTML = `📌 Polinomio de Lagrange<br>ln(${t}) ≈ ${res.toFixed(10)}<br>✓ Valor exacto = ${exact.toFixed(10)}<br>📉 Error = ${Math.abs(res-exact).toExponential(4)}<br>🔢 Puntos utilizados: ${m}`;
+  };
+
+  window.runRegresion = () => {
+    const xs = document.getElementById('regX').value.split(',').map(Number);
+    const ys = document.getElementById('regY').value.split(',').map(Number);
+    if(xs.length !== ys.length || xs.length < 2) {
+      document.getElementById('regOut').innerHTML = '❌ Misma cantidad de puntos (mínimo 2)';
+      return;
+    }
+    const n = xs.length;
+    const sx = xs.reduce((a,b) => a+b, 0);
+    const sy = ys.reduce((a,b) => a+b, 0);
+    const sxy = xs.reduce((s,x,i) => s + x*ys[i], 0);
+    const sx2 = xs.reduce((s,x) => s + x*x, 0);
+    const a = (n*sxy - sx*sy) / (n*sx2 - sx*sx);
+    const b = (sy - a*sx) / n;
+    const yPred = xs.map(x => a*x + b);
+    const ssRes = ys.reduce((s,y,i) => s + Math.pow(y - yPred[i], 2), 0);
+    const ssTot = ys.reduce((s,y) => s + Math.pow(y - sy/n, 2), 0);
+    const r2 = 1 - ssRes/ssTot;
+    document.getElementById('regOut').innerHTML = `📊 Regresión lineal: y = ${a.toFixed(6)}·x + ${b.toFixed(6)}<br>📈 Coeficiente de determinación R² = ${r2.toFixed(6)}<br>📐 Pendiente (a) = ${a.toFixed(6)}<br>📐 Intercepto (b) = ${b.toFixed(6)}`;
   };
 
   window.runEuler = () => {
     let xf = parseFloat(document.getElementById('eulerXf').value);
     let h = parseFloat(document.getElementById('eulerH').value);
-    let x=0, y=1;
-    while(x < xf - 1e-12) { y += h*y; x+=h; }
+    if(h <= 0 || isNaN(xf) || isNaN(h)) {
+      document.getElementById('eulerOut').innerHTML = '❌ Valores inválidos';
+      return;
+    }
+    let x = 0, y = 1;
+    let pasos = 0;
+    while(x < xf - 1e-12) { 
+      y += h*y; 
+      x += h; 
+      pasos++;
+    }
     let exact = Math.exp(xf);
-    document.getElementById('eulerOut').innerHTML = `Euler: y(${xf}) ≈ ${y.toFixed(8)}<br>Exacto e^${xf} = ${exact.toFixed(8)}<br>Error = ${Math.abs(y-exact).toExponential(4)}`;
+    document.getElementById('eulerOut').innerHTML = `📐 Método de Euler<br>y(${xf}) ≈ ${y.toFixed(10)}<br>✓ Valor exacto e^${xf} = ${exact.toFixed(10)}<br>📉 Error = ${Math.abs(y-exact).toExponential(4)}<br>🔄 Pasos = ${pasos}`;
   };
 
   window.runRK4 = () => {
     let xf = parseFloat(document.getElementById('rk4Xf').value);
     let h = parseFloat(document.getElementById('rk4H').value);
-    let x=0, y=1;
+    if(h <= 0 || isNaN(xf) || isNaN(h)) {
+      document.getElementById('rk4Out').innerHTML = '❌ Valores inválidos';
+      return;
+    }
+    let x = 0, y = 1;
     const f = (x,y) => -2*x*y;
+    let pasos = 0;
     while(x < xf - 1e-12) {
       let k1 = h*f(x,y);
       let k2 = h*f(x+h/2, y+k1/2);
@@ -779,15 +502,14 @@
       let k4 = h*f(x+h, y+k3);
       y += (k1+2*k2+2*k3+k4)/6;
       x += h;
+      pasos++;
     }
     let exact = Math.exp(-xf*xf);
-    document.getElementById('rk4Out').innerHTML = `RK4: y(${xf}) ≈ ${y.toFixed(10)}<br>Exacto e^(-${xf}²) = ${exact.toFixed(10)}<br>Error = ${Math.abs(y-exact).toExponential(4)}`;
+    document.getElementById('rk4Out').innerHTML = `🌀 Método RK4 (Runge-Kutta 4to orden)<br>y(${xf}) ≈ ${y.toFixed(12)}<br>✓ Valor exacto e^(-${xf}²) = ${exact.toFixed(12)}<br>📉 Error = ${Math.abs(y-exact).toExponential(4)}<br>🔄 Pasos = ${pasos}<br>💡 Error O(h⁴) - alta precisión`;
   };
 
-  // init
+  // Inicializar
   renderOverview();
-  renderUnitDetails();
-  showOverview();
 </script>
 </body>
 </html>
