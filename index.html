@@ -93,7 +93,73 @@
 </style>
 </head>
 <body>
+<!-- ===== PORTADA ===== -->
+<div id="portada" style="
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+">
+  <!-- Fondo grid -->
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;"></div>
 
+  <!-- Logo / Institución -->
+  <div style="position:relative;z-index:1;max-width:700px;width:100%;">
+    <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.3em;color:var(--accent);border:1px solid rgba(0,212,255,0.3);padding:6px 20px;border-radius:999px;display:inline-block;margin-bottom:2rem;">
+      TECNM · INSTITUTO TECNOLÓGICO DE COMITÁN
+    </div>
+
+    <h1 style="font-family:var(--mono);font-size:clamp(1.6rem,4vw,3rem);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1.2;margin-bottom:0.5rem;">
+      Métodos<br><span style="color:var(--accent);text-shadow:0 0 40px rgba(0,212,255,0.4);">Numéricos</span>
+    </h1>
+
+    <p style="color:var(--text2);font-size:14px;margin-bottom:0.5rem;font-family:var(--mono);">SCC – 1017</p>
+    <p style="color:var(--text3);font-size:13px;margin-bottom:2.5rem;">Ingeniería en Sistemas Computacionales · 4° Semestre Grupo "B"</p>
+
+    <!-- Línea separadora -->
+    <div style="width:60px;height:2px;background:var(--accent);margin:0 auto 2rem;border-radius:999px;opacity:0.6;"></div>
+
+    <!-- Integrantes -->
+    <p style="font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--text3);text-transform:uppercase;margin-bottom:1.25rem;">Equipo 5 · Integrantes</p>
+
+    <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2.5rem;">
+      <div style="font-size:15px;color:var(--text);font-weight:500;">Hernández Morales Yaretzi</div>
+      <div style="font-size:15px;color:var(--text);font-weight:500;">Aguilar Hernández María Cecilia</div>
+      <div style="font-size:15px;color:var(--text);font-weight:500;">Pérez Gómez Monserrat</div>
+      <div style="font-size:15px;color:var(--text);font-weight:500;">Morales Morales Diego</div>
+    </div>
+
+    <!-- Docente -->
+    <div style="margin-bottom:2.5rem;">
+      <p style="font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--text3);text-transform:uppercase;margin-bottom:0.5rem;">Docente</p>
+      <p style="font-size:14px;color:var(--text2);">Ing. José Flavio Guillén Vera</p>
+    </div>
+
+    <!-- Botón entrar -->
+    <button onclick="entrar()" style="
+      font-family:var(--mono);
+      font-size:13px;
+      padding:12px 40px;
+      border-radius:999px;
+      border:none;
+      background:var(--accent);
+      color:#000;
+      font-weight:700;
+      cursor:pointer;
+      letter-spacing:0.1em;
+      transition:all 0.2s;
+      box-shadow:0 0 30px rgba(0,212,255,0.3);
+    " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+      ENTRAR →
+    </button>
+  </div>
+</div>
 <header class="site-header">
   <div class="tag">Ingeniería · Matemáticas</div>
   <h1>Métodos<br><span>Numéricos</span></h1>
@@ -1105,7 +1171,12 @@ function runJLagrange(){
   out('out-jlagrange',`Lagrange ln(x), ${np} nodos: [${xs.join(',')}]\nP(${t}) ≈ ${total.toFixed(8)}\nln(${t}) exacto = ${exact.toFixed(8)}\nError abs: ${err.toExponential(2)}\nError rel: ${(err/Math.abs(exact)*100).toFixed(6)}%`);
 }
  
-
+function entrar() {
+  const portada = document.getElementById('portada');
+  portada.style.transition = 'opacity 0.6s ease';
+  portada.style.opacity = '0';
+  setTimeout(() => { portada.style.display = 'none'; }, 600);
+}
 function parsePoint(s){const p=s.split(',').map(x=>parseFloat(x.trim()));return p.length===2&&!isNaN(p[0])&&!isNaN(p[1])?p:null;}
 
 function run51(){const p1=parsePoint(v('p51a')),p2=parsePoint(v('p51b')),p3=parsePoint(v('p51c'));const xe=parseFloat(v('p51d'));if(!p1||!p2||!p3||isNaN(xe)){out('out51','Formato: x, y  ej: 1, 1');return;}const xs=[p1[0],p2[0],p3[0]],ys=[p1[1],p2[1],p3[1]];const dd=[...ys];const coefs=[dd[0]];for(let j=1;j<3;j++){for(let i=2-j;i>=0;i--)dd[i]=(dd[i+1]-dd[i])/(xs[i+j]-xs[i]);coefs.push(dd[0]);}let r=coefs[2];r=r*(xe-xs[1])+coefs[1];r=r*(xe-xs[0])+coefs[0];out('out51',`P(${xe}) ≈ ${r.toFixed(6)}`);}
