@@ -431,6 +431,56 @@
           <p class="teoria"><strong>Método de Jacobi.</strong> Este método, nombrado en honor al matemático Carl Gustav Jacob Jacobi, resuelve un sistema de ecuaciones lineales despejando cada variable en función de las demás y usando los valores de la iteración anterior para calcular los nuevos. Una característica clave del método de Jacobi es que todas las nuevas aproximaciones se calculan exclusivamente con los valores de la iteración anterior.</p>
           <p class="teoria"><strong>Método de Gauss-Seidel.</strong> Este método recibe su nombre de los matemáticos Carl Friedrich Gauss y Philipp Ludwig von Seidel. Es una mejora del método de Jacobi, ya que utiliza los valores más actualizados de las variables tan pronto como están disponibles. Esta actualización inmediata generalmente acelera la convergencia.</p>
           <p class="teoria"><strong>Comparación:</strong> El método de Gauss-Seidel suele preferirse sobre el de Jacobi porque converge más rápidamente. Para que estos métodos converjan, la matriz del sistema debe ser diagonalmente dominante.</p>
+          <!-- TABLA DE CARACTERÍSTICAS -->
+<p class="teoria"><strong>Tabla de Características y su Uso:</strong></p>
+<div style="overflow-x:auto; margin-bottom:1.25rem;">
+  <table style="width:100%; border-collapse:collapse; font-size:13px; color:var(--text2);">
+    <thead>
+      <tr style="background:rgba(16,185,129,0.15);">
+        <th style="padding:10px 12px; text-align:left; border:1px solid rgba(255,255,255,0.08); color:var(--text); font-weight:600;">Método</th>
+        <th style="padding:10px 12px; text-align:left; border:1px solid rgba(255,255,255,0.08); color:var(--text); font-weight:600;">Tipo de método</th>
+        <th style="padding:10px 12px; text-align:left; border:1px solid rgba(255,255,255,0.08); color:var(--text); font-weight:600;">Características Principales</th>
+        <th style="padding:10px 12px; text-align:left; border:1px solid rgba(255,255,255,0.08); color:var(--text); font-weight:600;">Uso recomendado</th>
+        <th style="padding:10px 12px; text-align:left; border:1px solid rgba(255,255,255,0.08); color:var(--text); font-weight:600;">Ventajas</th>
+        <th style="padding:10px 12px; text-align:left; border:1px solid rgba(255,255,255,0.08); color:var(--text); font-weight:600;">Desventajas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:rgba(255,255,255,0.02);">
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08); font-weight:600; color:var(--text);">Eliminación Gaussiana</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Directo</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Convierte el sistema de ecuaciones en una matriz triangular superior mediante operaciones.</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Resolver sistemas de ecuaciones lineales pequeños y medianos.</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Rápido, preciso y ampliamente utilizado.</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Puede presentar errores de redondeo; requiere pivoteo en algunos casos.</td>
+      </tr>
+      <tr style="background:rgba(16,185,129,0.04);">
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08); font-weight:600; color:var(--text);">Método de Gauss-Jordan</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Directo</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Lleva la matriz aumentada hasta la forma escalonada reducida, obteniendo directamente el valor de las incógnitas.</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Resolver sistemas lineales y calcular la inversa de matrices.</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Solución directa sin sustitución adicional.</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Requiere más operaciones que Gaussiana.</td>
+      </tr>
+      <tr style="background:rgba(255,255,255,0.02);">
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08); font-weight:600; color:var(--text);">Método de Gauss-Seidel</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Iterativo</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Calcula valores aproximados actualizando cada variable con los valores recién obtenidos en la misma iteración.</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Sistemas grandes o dispersos donde conviene aproximar soluciones.</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Menor uso de memoria y suele converger más rápido que Jacobi.</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">No siempre converge; depende de la matriz.</td>
+      </tr>
+      <tr style="background:rgba(16,185,129,0.04);">
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08); font-weight:600; color:var(--text);">Método de Jacobi</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Iterativo</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Calcula nuevas aproximaciones usando únicamente los valores de la iteración anterior.</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Sistemas grandes y cuando se desea paralelizar cálculos.</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Fácil de implementar y entender.</td>
+        <td style="padding:10px 12px; border:1px solid rgba(255,255,255,0.08);">Convergencia más lenta que Gauss-Seidel; no siempre converge.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
           <div class="prog-widget">
             <div class="prog-top-bar"><span class="prog-label">▶ gauss_seidel.py — 4x+y=9, x+3y=7</span><div class="dots"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#10b981"></div></div></div>
             <div class="prog-footer" style="padding:0.75rem 1rem;"><button class="run-btn" onclick="run31()">▶ Ejecutar</button><div class="output-box" id="out31">Esperando...</div></div>
