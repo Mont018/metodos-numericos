@@ -6,6 +6,7 @@
 <title>Métodos Numéricos · Laboratorio Interactivo</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* ========== ESTILOS (iguales para todas las unidades, sin conflictos) ========== */
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
@@ -115,12 +116,6 @@
   .output-box { background: #0c0f17; padding: 12px 16px; margin: 0 16px 16px 16px; border-radius: 10px; font-family: monospace; font-size: 13px; border-left: 3px solid var(--accent-green); color: #c9f0e1; white-space: pre-wrap; }
   hr { border-color: var(--border-subtle); margin: 20px 0; }
 
-  /* tablas */
-  .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
-  .data-table th, .data-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-subtle); }
-  .data-table th { color: var(--accent-cyan); font-weight: 600; background: rgba(0, 224, 255, 0.05); }
-  .data-table tr:hover { background: rgba(255, 255, 255, 0.02); }
-
   @media (max-width: 760px) { .container { padding: 0 16px; } .detail-header { flex-direction: column; align-items: flex-start; } }
 </style>
 </head>
@@ -161,14 +156,14 @@
 </div>
 
 <script>
-  // ==================== DATOS COMPLETOS DE LAS UNIDADES ====================
+  // ==================== DATOS COMPLETOS DE LAS UNIDADES (CON IDs ÚNICOS POR UNIDAD) ====================
   const unitsData = [
     // UNIDAD 1
     { id: 1, title: "Introducción a los Métodos Numéricos", color: "#00e0ff", topics: 5, preview: ["Importancia", "Cifras significativas", "Tipos de errores", "Software", "Métodos iterativos"],
       subtemas: [
         { num: "1.1", name: "Importancia de los métodos numéricos", hasProg: false, content: `<p class="teoria">Los métodos numéricos permiten resolver problemas matemáticos complejos mediante algoritmos computacionales. Se aplican en derivadas, integrales, EDOs, matrices, interpolación y ajuste de curvas. Las etapas incluyen especificación, análisis, programación, verificación y documentación.</p><div style="margin:20px 0; background:rgba(0,224,255,0.03); border-radius:12px; padding:20px; text-align:center;"><span style="font-family:monospace;">📘 Infografía detallada: Proceso de solución computacional</span></div>` },
         { num: "1.2", name: "Conceptos básicos: precisión, exactitud, sesgo", hasProg: false, content: `<p class="teoria"><strong>Cifras significativas:</strong> dígitos no nulos. <strong>Exactitud:</strong> cercanía al valor real. <strong>Precisión:</strong> cercanía entre mediciones. <strong>Incertidumbre y sesgo:</strong> incertidumbre cuantifica dispersión, sesgo es desviación sistemática.</p>` },
-        { num: "1.3", name: "Tipos de errores (redondeo, truncamiento, absoluto, relativo)", hasProg: true, content: `<p class="teoria">Error absoluto = |valor real - aproximado|, error relativo = error absoluto / |valor real|. Redondeo y truncamiento se combinan en error total.</p><div class="widget"><div class="widget-header"><span>📐 Calculadora de Errores</span></div><div class="input-group"><div class="field"><label>Valor real</label><input id="errReal" type="number" value="9.81"></div><div class="field"><label>Aproximado</label><input id="errAprox" type="number" value="9.78"></div></div><button class="run-btn" onclick="calcError()">Calcular error</button><div class="output-box" id="errOutput">Esperando cálculo...</div></div>` },
+        { num: "1.3", name: "Tipos de errores (redondeo, truncamiento, absoluto, relativo)", hasProg: true, content: `<p class="teoria">Error absoluto = |valor real - aproximado|, error relativo = error absoluto / |valor real|. Redondeo y truncamiento se combinan en error total.</p><div class="widget" id="widget-u1-3"><div class="widget-header"><span>📐 Calculadora de Errores</span></div><div class="input-group"><div class="field"><label>Valor real</label><input id="errReal_u1" type="number" value="9.81"></div><div class="field"><label>Aproximado</label><input id="errAprox_u1" type="number" value="9.78"></div></div><button class="run-btn" onclick="calcError(1)">Calcular error</button><div class="output-box" id="errOutput_u1">Esperando cálculo...</div></div>` },
         { num: "1.4", name: "Software de cómputo numérico", hasProg: false, content: `<p class="teoria">Netlib, NAG, IMSL, Numerical Recipes, MATLAB y GNU Octave son herramientas esenciales para computación numérica de alto rendimiento. Cada una ofrece ventajas específicas según el área de aplicación.</p>` },
         { num: "1.5", name: "Métodos iterativos", hasProg: false, content: `<p class="teoria">Los métodos iterativos generan aproximaciones sucesivas a partir de un valor inicial. Ideales para problemas grandes (millones de variables). La convergencia depende de las propiedades matemáticas del problema.</p>` }
       ] },
@@ -176,42 +171,42 @@
     { id: 2, title: "Métodos de Solución de Ecuaciones", color: "#b77cff", topics: 5, preview: ["Métodos de intervalo", "Bisección", "Aproximaciones sucesivas", "Interpolación", "Aplicaciones"],
       subtemas: [
         { num: "2.1", name: "Métodos de intervalo", hasProg: false, content: `<p class="teoria">Teorema de Bolzano: función continua en [a,b] con signo opuesto en extremos. Métodos de intervalo garantizan raíz. La convergencia es lineal pero segura.</p>` },
-        { num: "2.2", name: "Método de bisección", hasProg: true, content: `<p class="teoria">Divide el intervalo en mitades y selecciona subintervalo que contiene raíz. Converge linealmente, error se reduce a la mitad en cada iteración.</p><div class="widget"><div class="widget-header"><span>📐 Bisección: f(x)=x³-x-2</span></div><div class="input-group"><div class="field"><label>a (inferior)</label><input id="bisA" type="number" value="1"></div><div class="field"><label>b (superior)</label><input id="bisB" type="number" value="2"></div></div><button class="run-btn" onclick="runBiseccion()">Ejecutar bisección</button><div class="output-box" id="bisOut">Esperando...</div></div>` },
-        { num: "2.3", name: "Método de aproximaciones sucesivas (punto fijo)", hasProg: true, content: `<p class="teoria">Consiste en reescribir f(x)=0 como x=g(x). Iteración x_{n+1}=g(x_n). Converge si |g'(x)|&lt;1 en el entorno de la raíz.</p><div class="widget"><div class="widget-header"><span>🔁 Punto fijo para √N</span></div><div class="input-group"><div class="field"><label>N (radicando)</label><input id="pfN" type="number" value="2"></div><div class="field"><label>x₀ inicial</label><input id="pfX0" type="number" value="1.5"></div></div><button class="run-btn" onclick="runPuntoFijo()">Iterar</button><div class="output-box" id="pfOut">Resultado</div></div>` },
+        { num: "2.2", name: "Método de bisección", hasProg: true, content: `<p class="teoria">Divide el intervalo en mitades y selecciona subintervalo que contiene raíz. Converge linealmente, error se reduce a la mitad en cada iteración.</p><div class="widget"><div class="widget-header"><span>📐 Bisección: f(x)=x³-x-2</span></div><div class="input-group"><div class="field"><label>a (inferior)</label><input id="bisA_u2" type="number" value="1"></div><div class="field"><label>b (superior)</label><input id="bisB_u2" type="number" value="2"></div></div><button class="run-btn" onclick="runBiseccion(2)">Ejecutar bisección</button><div class="output-box" id="bisOut_u2">Esperando...</div></div>` },
+        { num: "2.3", name: "Método de aproximaciones sucesivas (punto fijo)", hasProg: true, content: `<p class="teoria">Consiste en reescribir f(x)=0 como x=g(x). Iteración x_{n+1}=g(x_n). Converge si |g'(x)|&lt;1 en el entorno de la raíz.</p><div class="widget"><div class="widget-header"><span>🔁 Punto fijo para √N</span></div><div class="input-group"><div class="field"><label>N (radicando)</label><input id="pfN_u2" type="number" value="2"></div><div class="field"><label>x₀ inicial</label><input id="pfX0_u2" type="number" value="1.5"></div></div><button class="run-btn" onclick="runPuntoFijo(2)">Iterar</button><div class="output-box" id="pfOut_u2">Resultado</div></div>` },
         { num: "2.4", name: "Métodos de interpolación (secante)", hasProg: false, content: `<p class="teoria">Método de la secante: aproxima derivada por diferencia finita, converge con orden φ ≈ 1.618 (número áureo). No requiere calcular derivadas.</p><div class="formula-card">xₙ₊₁ = xₙ - f(xₙ)·(xₙ - xₙ₋₁) / (f(xₙ) - f(xₙ₋₁))</div>` },
-        { num: "2.5", name: "Aplicaciones", hasProg: true, content: `<p class="teoria">Interés compuesto, termodinámica, ecuaciones de estado, TIR financiera, factor de fricción en tuberías.</p><div class="widget"><div class="widget-header"><span>💰 Interés compuesto</span></div><div class="input-group"><div class="field"><label>Capital inicial ($)</label><input id="invP" type="number" value="1000"></div><div class="field"><label>Tasa anual %</label><input id="invR" type="number" value="5"></div><div class="field"><label>Años</label><input id="invN" type="number" value="10"></div></div><button class="run-btn" onclick="runInteres()">Calcular</button><div class="output-box" id="invOut">Esperando...</div></div>` }
+        { num: "2.5", name: "Aplicaciones", hasProg: true, content: `<p class="teoria">Interés compuesto, termodinámica, ecuaciones de estado, TIR financiera, factor de fricción en tuberías.</p><div class="widget"><div class="widget-header"><span>💰 Interés compuesto</span></div><div class="input-group"><div class="field"><label>Capital inicial ($)</label><input id="invP_u2" type="number" value="1000"></div><div class="field"><label>Tasa anual %</label><input id="invR_u2" type="number" value="5"></div><div class="field"><label>Años</label><input id="invN_u2" type="number" value="10"></div></div><button class="run-btn" onclick="runInteres(2)">Calcular</button><div class="output-box" id="invOut_u2">Esperando...</div></div>` }
       ] },
     // UNIDAD 3
     { id: 3, title: "Sistemas de Ecuaciones", color: "#2ee59d", topics: 4, preview: ["Métodos iterativos", "Sistemas no lineales", "Convergencia", "Aplicaciones"],
       subtemas: [
-        { num: "3.1", name: "Métodos iterativos (Jacobi, Gauss-Seidel)", hasProg: true, content: `<p class="teoria">Jacobi y Gauss-Seidel resuelven sistemas lineales grandes. Gauss-Seidel actualiza variables inmediatamente y converge más rápido. Requieren matriz diagonal dominante.</p><div class="widget"><div class="widget-header"><span>⚙️ Gauss-Seidel</span></div><div class="input-group"><div class="field"><label>4x + y = 9</label></div><div class="field"><label>x + 3y = 7</label></div></div><button class="run-btn" onclick="runGaussSeidel()">Resolver</button><div class="output-box" id="gsOut">Aproximación</div></div>` },
+        { num: "3.1", name: "Métodos iterativos (Jacobi, Gauss-Seidel)", hasProg: true, content: `<p class="teoria">Jacobi y Gauss-Seidel resuelven sistemas lineales grandes. Gauss-Seidel actualiza variables inmediatamente y converge más rápido. Requieren matriz diagonal dominante.</p><div class="widget"><div class="widget-header"><span>⚙️ Gauss-Seidel</span></div><div class="input-group"><div class="field"><label>4x + y = 9</label></div><div class="field"><label>x + 3y = 7</label></div></div><button class="run-btn" onclick="runGaussSeidel(3)">Resolver</button><div class="output-box" id="gsOut_u3">Aproximación</div></div>` },
         { num: "3.2", name: "Sistemas no lineales", hasProg: false, content: `<p class="teoria">Sistemas con términos no lineales (x², sin(x), xy). Pueden tener múltiples equilibrios, ciclos límite o caos. Se resuelven con Newton-Raphson multidimensional.</p>` },
-        { num: "3.3", name: "Convergencia en sistemas", hasProg: true, content: `<p class="teoria">La convergencia requiere diagonal dominante o matriz simétrica definida positiva. Cota de error y número máximo de iteraciones son criterios de parada.</p><div class="widget"><div class="widget-header"><span>🔍 Verificar diagonal dominante</span></div><div class="input-group"><div class="field"><label>|a₁₁|</label><input id="dd11" value="4"></div><div class="field"><label>|a₁₂|</label><input id="dd12" value="1"></div><div class="field"><label>|a₂₁|</label><input id="dd21" value="1"></div><div class="field"><label>|a₂₂|</label><input id="dd22" value="3"></div></div><button class="run-btn" onclick="verificarDiagonal()">Verificar</button><div class="output-box" id="ddOut">Esperando...</div></div>` },
+        { num: "3.3", name: "Convergencia en sistemas", hasProg: true, content: `<p class="teoria">La convergencia requiere diagonal dominante o matriz simétrica definida positiva. Cota de error y número máximo de iteraciones son criterios de parada.</p><div class="widget"><div class="widget-header"><span>🔍 Verificar diagonal dominante</span></div><div class="input-group"><div class="field"><label>|a₁₁|</label><input id="dd11_u3" value="4"></div><div class="field"><label>|a₁₂|</label><input id="dd12_u3" value="1"></div><div class="field"><label>|a₂₁|</label><input id="dd21_u3" value="1"></div><div class="field"><label>|a₂₂|</label><input id="dd22_u3" value="3"></div></div><button class="run-btn" onclick="verificarDiagonal(3)">Verificar</button><div class="output-box" id="ddOut_u3">Esperando...</div></div>` },
         { num: "3.4", name: "Aplicaciones", hasProg: false, content: `<p class="teoria">Análisis de redes eléctricas, transferencia de calor, mecánica de fluidos, modelos depredador-presa, equilibrio químico.</p>` }
       ] },
     // UNIDAD 4
     { id: 4, title: "Diferenciación e Integración Numérica", color: "#ffb347", topics: 4, preview: ["Diferenciación", "Integración", "Integración múltiple", "Aplicaciones"],
       subtemas: [
-        { num: "4.1", name: "Diferenciación numérica", hasProg: true, content: `<p class="teoria">Fórmulas diferencias finitas: adelante O(h), centrada O(h²). La derivada centrada es más precisa. Error de redondeo limita el paso h.</p><div class="widget"><div class="widget-header"><span>📈 Derivada centrada f(x)=x² en x=2</span></div><div class="input-group"><div class="field"><label>h (paso)</label><input id="diffH" type="number" value="0.001" step="0.0001"></div></div><button class="run-btn" onclick="runDerivada()">Calcular derivada</button><div class="output-box" id="diffOut">Resultado</div></div>` },
-        { num: "4.2", name: "Integración numérica (Simpson, Trapecio)", hasProg: true, content: `<p class="teoria">Regla del trapecio: O(h²). Simpson 1/3: O(h⁴). Para mayor precisión se usan fórmulas compuestas. La cuadratura gaussiana es más eficiente.</p><div class="widget"><div class="widget-header"><span>∫ x² dx [0,2] - Simpson</span></div><div class="input-group"><div class="field"><label>a</label><input id="intA" value="0"></div><div class="field"><label>b</label><input id="intB" value="2"></div><div class="field"><label>n (par)</label><input id="intN" value="100"></div></div><button class="run-btn" onclick="runIntegral()">Calcular</button><div class="output-box" id="intOut">Esperando...</div></div>` },
+        { num: "4.1", name: "Diferenciación numérica", hasProg: true, content: `<p class="teoria">Fórmulas diferencias finitas: adelante O(h), centrada O(h²). La derivada centrada es más precisa. Error de redondeo limita el paso h.</p><div class="widget"><div class="widget-header"><span>📈 Derivada centrada f(x)=x² en x=2</span></div><div class="input-group"><div class="field"><label>h (paso)</label><input id="diffH_u4" type="number" value="0.001" step="0.0001"></div></div><button class="run-btn" onclick="runDerivada(4)">Calcular derivada</button><div class="output-box" id="diffOut_u4">Resultado</div></div>` },
+        { num: "4.2", name: "Integración numérica (Simpson, Trapecio)", hasProg: true, content: `<p class="teoria">Regla del trapecio: O(h²). Simpson 1/3: O(h⁴). Para mayor precisión se usan fórmulas compuestas. La cuadratura gaussiana es más eficiente.</p><div class="widget"><div class="widget-header"><span>∫ x² dx [0,2] - Simpson</span></div><div class="input-group"><div class="field"><label>a</label><input id="intA_u4" value="0"></div><div class="field"><label>b</label><input id="intB_u4" value="2"></div><div class="field"><label>n (par)</label><input id="intN_u4" value="100"></div></div><button class="run-btn" onclick="runIntegral(4)">Calcular</button><div class="output-box" id="intOut_u4">Esperando...</div></div>` },
         { num: "4.3", name: "Integración múltiple", hasProg: false, content: `<p class="teoria">Método de Monte Carlo para dimensiones altas. Integración numérica en 2D con cuadrícula. La "maldición de la dimensionalidad" limita métodos tradicionales.</p>` },
         { num: "4.4", name: "Aplicaciones", hasProg: false, content: `<p class="teoria">Cálculo de áreas y volúmenes, procesamiento de señales, valoración de opciones financieras, simulaciones climáticas, dinámica molecular.</p>` }
       ] },
     // UNIDAD 5
     { id: 5, title: "Interpolación y Ajuste", color: "#ff6b8b", topics: 6, preview: ["Newton", "Lagrange", "Splines", "Regresión", "Mínimos cuadrados", "Aplicaciones"],
       subtemas: [
-        { num: "5.1", name: "Polinomio de Newton", hasProg: true, content: `<p class="teoria">Usa diferencias divididas para construir polinomio interpolador. Eficiente para añadir nodos. El error se estima con diferencias de orden superior.</p><div class="widget"><div class="widget-header"><span>📌 Newton (diferencias divididas)</span></div><div class="input-group"><div class="field"><label>Nodos x (0,1,2,3)</label><input id="newX" value="0,1,2,3"></div><div class="field"><label>Nodos y (1,1,3,7)</label><input id="newY" value="1,1,3,7"></div><div class="field"><label>x a evaluar</label><input id="newT" type="number" value="2.5"></div></div><button class="run-btn" onclick="runNewton()">Interpolar</button><div class="output-box" id="newOut">Resultado</div></div>` },
-        { num: "5.2", name: "Polinomio de Lagrange", hasProg: true, content: `<p class="teoria">Lagrange explicita cada polinomio base L_i(x). Evita diferencias pero más costoso con muchos puntos. Útil para demostraciones teóricas.</p><div class="widget"><div class="widget-header"><span>📌 Lagrange (ln(x))</span></div><div class="input-group"><div class="field"><label>Nodos x (1,2,3,4,5)</label><input id="lagX" value="1,2,3,4,5"></div><div class="field"><label>Evaluar en t</label><input id="lagT" type="number" value="1.5"></div><div class="field"><label>Cantidad puntos (2-5)</label><input id="lagN" type="number" value="4"></div></div><button class="run-btn" onclick="runLagrange()">Calcular</button><div class="output-box" id="lagOut">Resultado</div></div>` },
+        { num: "5.1", name: "Polinomio de Newton", hasProg: true, content: `<p class="teoria">Usa diferencias divididas para construir polinomio interpolador. Eficiente para añadir nodos. El error se estima con diferencias de orden superior.</p><div class="widget"><div class="widget-header"><span>📌 Newton (diferencias divididas)</span></div><div class="input-group"><div class="field"><label>Nodos x (0,1,2,3)</label><input id="newX_u5" value="0,1,2,3"></div><div class="field"><label>Nodos y (1,1,3,7)</label><input id="newY_u5" value="1,1,3,7"></div><div class="field"><label>x a evaluar</label><input id="newT_u5" type="number" value="2.5"></div></div><button class="run-btn" onclick="runNewton(5)">Interpolar</button><div class="output-box" id="newOut_u5">Resultado</div></div>` },
+        { num: "5.2", name: "Polinomio de Lagrange", hasProg: true, content: `<p class="teoria">Lagrange explicita cada polinomio base L_i(x). Evita diferencias pero más costoso con muchos puntos. Útil para demostraciones teóricas.</p><div class="widget"><div class="widget-header"><span>📌 Lagrange (ln(x))</span></div><div class="input-group"><div class="field"><label>Nodos x (1,2,3,4,5)</label><input id="lagX_u5" value="1,2,3,4,5"></div><div class="field"><label>Evaluar en t</label><input id="lagT_u5" type="number" value="1.5"></div><div class="field"><label>Cantidad puntos (2-5)</label><input id="lagN_u5" type="number" value="4"></div></div><button class="run-btn" onclick="runLagrange(5)">Calcular</button><div class="output-box" id="lagOut_u5">Resultado</div></div>` },
         { num: "5.3", name: "Interpolación segmentada (Splines)", hasProg: false, content: `<p class="teoria">Los splines cúbicos usan polinomios de grado 3 en cada intervalo. Garantizan continuidad hasta segunda derivada. Evitan el fenómeno de Runge.</p>` },
         { num: "5.4", name: "Regresión y correlación", hasProg: false, content: `<p class="teoria">Regresión lineal: y = ax + b. Coeficiente de correlación r mide la fuerza de la relación lineal. R² indica calidad del ajuste.</p>` },
-        { num: "5.5", name: "Mínimos cuadrados", hasProg: true, content: `<p class="teoria">Minimiza Σ(y_i - (ax_i+b))². Las ecuaciones normales: a = (nΣxy - ΣxΣy)/(nΣx²-(Σx)²), b = (Σy - aΣx)/n.</p><div class="widget"><div class="widget-header"><span>📊 Regresión lineal</span></div><div class="input-group"><div class="field"><label>Datos x (ej: 1,2,3,4)</label><input id="regX" value="1,2,3,4"></div><div class="field"><label>Datos y (ej: 2,4,5,7)</label><input id="regY" value="2,4,5,7"></div></div><button class="run-btn" onclick="runRegresion()">Calcular regresión</button><div class="output-box" id="regOut">Resultado</div></div>` },
+        { num: "5.5", name: "Mínimos cuadrados", hasProg: true, content: `<p class="teoria">Minimiza Σ(y_i - (ax_i+b))². Las ecuaciones normales: a = (nΣxy - ΣxΣy)/(nΣx²-(Σx)²), b = (Σy - aΣx)/n.</p><div class="widget"><div class="widget-header"><span>📊 Regresión lineal</span></div><div class="input-group"><div class="field"><label>Datos x (ej: 1,2,3,4)</label><input id="regX_u5" value="1,2,3,4"></div><div class="field"><label>Datos y (ej: 2,4,5,7)</label><input id="regY_u5" value="2,4,5,7"></div></div><button class="run-btn" onclick="runRegresion(5)">Calcular regresión</button><div class="output-box" id="regOut_u5">Resultado</div></div>` },
         { num: "5.6", name: "Problemas de aplicación", hasProg: false, content: `<p class="teoria">Predicción de temperaturas, análisis financiero, procesamiento de imágenes, ingeniería estructural, simulación computacional, curvas de calibración.</p>` }
       ] },
     // UNIDAD 6
     { id: 6, title: "Ecuaciones Diferenciales", color: "#ff8cce", topics: 4, preview: ["Método de Euler", "Runge-Kutta", "Sistemas EDO", "Aplicaciones"],
       subtemas: [
-        { num: "6.1", name: "Método de Euler", hasProg: true, content: `<p class="teoria">Euler: y_{n+1}=y_n + h f(x_n,y_n). Es simple pero poco preciso (error O(h)). Útil para introducción a métodos numéricos.</p><div class="widget"><div class="widget-header"><span>🧪 Euler: dy/dx = y, y(0)=1</span></div><div class="input-group"><div class="field"><label>x final</label><input id="eulerXf" value="1"></div><div class="field"><label>h (paso)</label><input id="eulerH" value="0.1"></div></div><button class="run-btn" onclick="runEuler()">Resolver</button><div class="output-box" id="eulerOut">Resultado</div></div>` },
-        { num: "6.2", name: "Runge-Kutta 4to orden (RK4)", hasProg: true, content: `<p class="teoria">RK4: k₁ = h·f(x_n,y_n), k₂ = h·f(x_n+h/2, y_n+k₁/2), k₃ = h·f(x_n+h/2, y_n+k₂/2), k₄ = h·f(x_n+h, y_n+k₃), y_{n+1} = y_n + (k₁+2k₂+2k₃+k₄)/6. Error O(h⁴).</p><div class="widget"><div class="widget-header"><span>🌀 RK4: dy/dx = -2xy, y(0)=1</span></div><div class="input-group"><div class="field"><label>x final</label><input id="rk4Xf" value="1"></div><div class="field"><label>h (paso)</label><input id="rk4H" value="0.1"></div></div><button class="run-btn" onclick="runRK4()">Resolver</button><div class="output-box" id="rk4Out">Resultado</div></div>` },
+        { num: "6.1", name: "Método de Euler", hasProg: true, content: `<p class="teoria">Euler: y_{n+1}=y_n + h f(x_n,y_n). Es simple pero poco preciso (error O(h)). Útil para introducción a métodos numéricos.</p><div class="widget"><div class="widget-header"><span>🧪 Euler: dy/dx = y, y(0)=1</span></div><div class="input-group"><div class="field"><label>x final</label><input id="eulerXf_u6" value="1"></div><div class="field"><label>h (paso)</label><input id="eulerH_u6" value="0.1"></div></div><button class="run-btn" onclick="runEuler(6)">Resolver</button><div class="output-box" id="eulerOut_u6">Resultado</div></div>` },
+        { num: "6.2", name: "Runge-Kutta 4to orden (RK4)", hasProg: true, content: `<p class="teoria">RK4: k₁ = h·f(x_n,y_n), k₂ = h·f(x_n+h/2, y_n+k₁/2), k₃ = h·f(x_n+h/2, y_n+k₂/2), k₄ = h·f(x_n+h, y_n+k₃), y_{n+1} = y_n + (k₁+2k₂+2k₃+k₄)/6. Error O(h⁴).</p><div class="widget"><div class="widget-header"><span>🌀 RK4: dy/dx = -2xy, y(0)=1</span></div><div class="input-group"><div class="field"><label>x final</label><input id="rk4Xf_u6" value="1"></div><div class="field"><label>h (paso)</label><input id="rk4H_u6" value="0.1"></div></div><button class="run-btn" onclick="runRK4(6)">Resolver</button><div class="output-box" id="rk4Out_u6">Resultado</div></div>` },
         { num: "6.3", name: "Sistemas de ecuaciones diferenciales ordinarias", hasProg: false, content: `<p class="teoria">Sistemas de EDOs surgen en dinámica: péndulo, circuito RLC, modelos depredador-presa (Lotka-Volterra). Se resuelven aplicando métodos a cada ecuación simultáneamente.</p>` },
         { num: "6.4", name: "Aplicaciones", hasProg: false, content: `<p class="teoria">Simulación de circuitos eléctricos, dinámica de estructuras, transferencia de calor transiente, modelado de epidemias (SIR), trayectorias de proyectiles, control robótico.</p>` }
       ] }
@@ -264,7 +259,9 @@
   window.showOverview = () => {
     document.getElementById('overview-view').classList.add('active-view');
     const unitContainer = document.getElementById('unit-details');
-    unitContainer.querySelectorAll('.unit-view').forEach(v => v.classList.remove('active-view'));
+    if(unitContainer) {
+      Array.from(unitContainer.children).forEach(v => v.classList.remove('active-view'));
+    }
     document.querySelectorAll('.nav-btn').forEach((btn, idx) => btn.classList.toggle('active', idx === 0));
   };
 
@@ -282,18 +279,18 @@
       unitContainer.appendChild(unitView);
     }
     
-    unitContainer.querySelectorAll('.unit-view').forEach(v => v.classList.remove('active-view'));
+    Array.from(unitContainer.children).forEach(v => v.classList.remove('active-view'));
     unitView.classList.add('active-view');
     document.querySelectorAll('.nav-btn').forEach((btn, idx) => btn.classList.toggle('active', idx === id));
   };
 
-  // ==================== FUNCIONES DE LOS SIMULADORES ====================
+  // ==================== FUNCIONES DE LOS SIMULADORES (reciben unitId para usar inputs correctos) ====================
   
-  window.calcError = () => {
-    const real = parseFloat(document.getElementById('errReal').value);
-    const aprox = parseFloat(document.getElementById('errAprox').value);
+  window.calcError = (unitId) => {
+    const real = parseFloat(document.getElementById(`errReal_u${unitId}`).value);
+    const aprox = parseFloat(document.getElementById(`errAprox_u${unitId}`).value);
     if(isNaN(real) || isNaN(aprox) || real === 0) { 
-      document.getElementById('errOutput').innerHTML = '❌ Error: valores inválidos o real = 0'; 
+      document.getElementById(`errOutput_u${unitId}`).innerHTML = '❌ Error: valores inválidos o real = 0'; 
       return; 
     }
     const absErr = Math.abs(real - aprox);
@@ -304,15 +301,15 @@
     else if (perErr < 5) nivel = '⚠️ Buena precisión';
     else if (perErr < 10) nivel = '⚠️ Precisión aceptable';
     else nivel = '❌ Baja precisión, revisar datos';
-    document.getElementById('errOutput').innerHTML = `📊 Error absoluto = ${absErr.toExponential(6)}<br>📊 Error relativo = ${relErr.toExponential(6)}<br>📊 Error porcentual = ${perErr.toFixed(6)}%<br>📌 ${nivel}`;
+    document.getElementById(`errOutput_u${unitId}`).innerHTML = `📊 Error absoluto = ${absErr.toExponential(6)}<br>📊 Error relativo = ${relErr.toExponential(6)}<br>📊 Error porcentual = ${perErr.toFixed(6)}%<br>📌 ${nivel}`;
   };
 
-  window.runBiseccion = () => {
-    let a = parseFloat(document.getElementById('bisA').value);
-    let b = parseFloat(document.getElementById('bisB').value);
+  window.runBiseccion = (unitId) => {
+    let a = parseFloat(document.getElementById(`bisA_u${unitId}`).value);
+    let b = parseFloat(document.getElementById(`bisB_u${unitId}`).value);
     const f = x => x*x*x - x - 2;
     if(f(a)*f(b) >= 0) { 
-      document.getElementById('bisOut').innerHTML = '❌ No hay cambio de signo en el intervalo. Elija a y b con f(a) y f(b) de signos opuestos.'; 
+      document.getElementById(`bisOut_u${unitId}`).innerHTML = '❌ No hay cambio de signo en el intervalo. Elija a y b con f(a) y f(b) de signos opuestos.'; 
       return; 
     }
     let iter = 0; let c;
@@ -323,14 +320,14 @@
       else a = c; 
       iter++; 
     }
-    document.getElementById('bisOut').innerHTML = `🎯 Raíz aproximada = ${c.toFixed(10)}<br>📐 f(raíz) = ${f(c).toExponential(4)}<br>🔄 Iteraciones: ${iter}<br>📏 Error estimado: ${((b-a)/2).toExponential(4)}`;
+    document.getElementById(`bisOut_u${unitId}`).innerHTML = `🎯 Raíz aproximada = ${c.toFixed(10)}<br>📐 f(raíz) = ${f(c).toExponential(4)}<br>🔄 Iteraciones: ${iter}<br>📏 Error estimado: ${((b-a)/2).toExponential(4)}`;
   };
 
-  window.runPuntoFijo = () => {
-    let N = parseFloat(document.getElementById('pfN').value);
-    let x = parseFloat(document.getElementById('pfX0').value);
+  window.runPuntoFijo = (unitId) => {
+    let N = parseFloat(document.getElementById(`pfN_u${unitId}`).value);
+    let x = parseFloat(document.getElementById(`pfX0_u${unitId}`).value);
     if(N <= 0) { 
-      document.getElementById('pfOut').innerHTML = '❌ N debe ser positivo'; 
+      document.getElementById(`pfOut_u${unitId}`).innerHTML = '❌ N debe ser positivo'; 
       return; 
     }
     let iter = 0;
@@ -343,56 +340,56 @@
       x = xn; 
       iter++;
     }
-    document.getElementById('pfOut').innerHTML = `🔢 √${N} ≈ ${x.toFixed(12)}<br>✓ Verificación: ${x}^2 = ${(x*x).toFixed(10)}<br>🔄 Iteraciones: ${iter}`;
+    document.getElementById(`pfOut_u${unitId}`).innerHTML = `🔢 √${N} ≈ ${x.toFixed(12)}<br>✓ Verificación: ${x}^2 = ${(x*x).toFixed(10)}<br>🔄 Iteraciones: ${iter}`;
   };
 
-  window.runInteres = () => {
-    let P = parseFloat(document.getElementById('invP').value);
-    let r = parseFloat(document.getElementById('invR').value);
-    let n = parseFloat(document.getElementById('invN').value);
+  window.runInteres = (unitId) => {
+    let P = parseFloat(document.getElementById(`invP_u${unitId}`).value);
+    let r = parseFloat(document.getElementById(`invR_u${unitId}`).value);
+    let n = parseFloat(document.getElementById(`invN_u${unitId}`).value);
     if(isNaN(P) || isNaN(r) || isNaN(n)) {
-      document.getElementById('invOut').innerHTML = '❌ Ingrese valores numéricos válidos';
+      document.getElementById(`invOut_u${unitId}`).innerHTML = '❌ Ingrese valores numéricos válidos';
       return;
     }
     let total = P * Math.pow(1 + r/100, n);
-    document.getElementById('invOut').innerHTML = `💰 Capital final: $${total.toFixed(2)}<br>📈 Interés ganado: $${(total-P).toFixed(2)}<br>📊 Tasa efectiva: ${((Math.pow(1+r/100,n)-1)*100).toFixed(2)}%`;
+    document.getElementById(`invOut_u${unitId}`).innerHTML = `💰 Capital final: $${total.toFixed(2)}<br>📈 Interés ganado: $${(total-P).toFixed(2)}<br>📊 Tasa efectiva: ${((Math.pow(1+r/100,n)-1)*100).toFixed(2)}%`;
   };
 
-  window.runGaussSeidel = () => {
+  window.runGaussSeidel = (unitId) => {
     let x = 0, y = 0;
     for(let i = 0; i < 50; i++) { 
       x = (9 - y)/4; 
       y = (7 - x)/3; 
     }
-    document.getElementById('gsOut').innerHTML = `✅ Solución aproximada:<br>• x = ${x.toFixed(8)}<br>• y = ${y.toFixed(8)}<br>✓ Verificación: 4x+y = ${(4*x+y).toFixed(8)} (≈9)<br>✓ Verificación: x+3y = ${(x+3*y).toFixed(8)} (≈7)`;
+    document.getElementById(`gsOut_u${unitId}`).innerHTML = `✅ Solución aproximada:<br>• x = ${x.toFixed(8)}<br>• y = ${y.toFixed(8)}<br>✓ Verificación: 4x+y = ${(4*x+y).toFixed(8)} (≈9)<br>✓ Verificación: x+3y = ${(x+3*y).toFixed(8)} (≈7)`;
   };
 
-  window.verificarDiagonal = () => {
-    const a11 = Math.abs(parseFloat(document.getElementById('dd11').value));
-    const a12 = Math.abs(parseFloat(document.getElementById('dd12').value));
-    const a21 = Math.abs(parseFloat(document.getElementById('dd21').value));
-    const a22 = Math.abs(parseFloat(document.getElementById('dd22').value));
+  window.verificarDiagonal = (unitId) => {
+    const a11 = Math.abs(parseFloat(document.getElementById(`dd11_u${unitId}`).value));
+    const a12 = Math.abs(parseFloat(document.getElementById(`dd12_u${unitId}`).value));
+    const a21 = Math.abs(parseFloat(document.getElementById(`dd21_u${unitId}`).value));
+    const a22 = Math.abs(parseFloat(document.getElementById(`dd22_u${unitId}`).value));
     const dom1 = a11 > a12;
     const dom2 = a22 > a21;
-    document.getElementById('ddOut').innerHTML = `🔍 Análisis de diagonal dominante:<br>│ Fila 1: |${a11}| > |${a12}| → ${dom1 ? '✅ Sí' : '❌ No'}<br>│ Fila 2: |${a22}| > |${a21}| → ${dom2 ? '✅ Sí' : '❌ No'}<br>${dom1 && dom2 ? '✅ La matriz es diagonal dominante → convergencia garantizada' : '⚠️ No hay garantía de convergencia'}`;
+    document.getElementById(`ddOut_u${unitId}`).innerHTML = `🔍 Análisis de diagonal dominante:<br>│ Fila 1: |${a11}| > |${a12}| → ${dom1 ? '✅ Sí' : '❌ No'}<br>│ Fila 2: |${a22}| > |${a21}| → ${dom2 ? '✅ Sí' : '❌ No'}<br>${dom1 && dom2 ? '✅ La matriz es diagonal dominante → convergencia garantizada' : '⚠️ No hay garantía de convergencia'}`;
   };
 
-  window.runDerivada = () => {
-    let h = parseFloat(document.getElementById('diffH').value);
+  window.runDerivada = (unitId) => {
+    let h = parseFloat(document.getElementById(`diffH_u${unitId}`).value);
     if(h <= 0 || isNaN(h)) {
-      document.getElementById('diffOut').innerHTML = '❌ h debe ser positivo';
+      document.getElementById(`diffOut_u${unitId}`).innerHTML = '❌ h debe ser positivo';
       return;
     }
     let x = 2; 
     let exact = 2*x;
     let der = ((x+h)*(x+h) - (x-h)*(x-h)) / (2*h);
-    document.getElementById('diffOut').innerHTML = `📈 Derivada numérica f'(2) = ${der.toFixed(10)}<br>📐 Derivada exacta = ${exact}<br>📉 Error absoluto = ${Math.abs(der-exact).toExponential(4)}<br>💡 La fórmula centrada tiene error O(h²)`;
+    document.getElementById(`diffOut_u${unitId}`).innerHTML = `📈 Derivada numérica f'(2) = ${der.toFixed(10)}<br>📐 Derivada exacta = ${exact}<br>📉 Error absoluto = ${Math.abs(der-exact).toExponential(4)}<br>💡 La fórmula centrada tiene error O(h²)`;
   };
 
-  window.runIntegral = () => {
-    let a = parseFloat(document.getElementById('intA').value);
-    let b = parseFloat(document.getElementById('intB').value);
-    let n = parseInt(document.getElementById('intN').value);
+  window.runIntegral = (unitId) => {
+    let a = parseFloat(document.getElementById(`intA_u${unitId}`).value);
+    let b = parseFloat(document.getElementById(`intB_u${unitId}`).value);
+    let n = parseInt(document.getElementById(`intN_u${unitId}`).value);
     if(n % 2 !== 0) n++;
     let h = (b-a)/n;
     let sum = (a*a + b*b);
@@ -404,15 +401,15 @@
     let integral = sum * h / 3.0;
     let exact = (b*b*b - a*a*a)/3;
     let error = Math.abs(integral - exact);
-    document.getElementById('intOut').innerHTML = `📐 ∫ x² dx [${a},${b}]<br>📊 Simpson 1/3 = ${integral.toFixed(10)}<br>✓ Valor exacto = ${exact}<br>📉 Error = ${error.toExponential(4)}<br>🔢 Subintervalos = ${n}`;
+    document.getElementById(`intOut_u${unitId}`).innerHTML = `📐 ∫ x² dx [${a},${b}]<br>📊 Simpson 1/3 = ${integral.toFixed(10)}<br>✓ Valor exacto = ${exact}<br>📉 Error = ${error.toExponential(4)}<br>🔢 Subintervalos = ${n}`;
   };
 
-  window.runNewton = () => {
-    const xs = document.getElementById('newX').value.split(',').map(Number);
-    const ys = document.getElementById('newY').value.split(',').map(Number);
-    let t = parseFloat(document.getElementById('newT').value);
+  window.runNewton = (unitId) => {
+    const xs = document.getElementById(`newX_u${unitId}`).value.split(',').map(Number);
+    const ys = document.getElementById(`newY_u${unitId}`).value.split(',').map(Number);
+    let t = parseFloat(document.getElementById(`newT_u${unitId}`).value);
     if(xs.length !== ys.length || xs.some(isNaN) || ys.some(isNaN)) { 
-      document.getElementById('newOut').innerHTML = '❌ Formato incorrecto. Use números separados por coma (ej: 0,1,2,3)'; 
+      document.getElementById(`newOut_u${unitId}`).innerHTML = '❌ Formato incorrecto. Use números separados por coma (ej: 0,1,2,3)'; 
       return; 
     }
     let n = xs.length;
@@ -422,15 +419,15 @@
         coef[i] = (coef[i] - coef[i-1])/(xs[i] - xs[i-j]);
     let res = coef[n-1];
     for(let i = n-2; i >= 0; i--) res = res*(t - xs[i]) + coef[i];
-    document.getElementById('newOut').innerHTML = `📌 Polinomio de Newton<br>P(${t}) = ${res.toFixed(10)}<br>📊 Diferencias divididas: [${coef.map(c=>c.toFixed(4)).join(', ')}]`;
+    document.getElementById(`newOut_u${unitId}`).innerHTML = `📌 Polinomio de Newton<br>P(${t}) = ${res.toFixed(10)}<br>📊 Diferencias divididas: [${coef.map(c=>c.toFixed(4)).join(', ')}]`;
   };
 
-  window.runLagrange = () => {
-    const xs = document.getElementById('lagX').value.split(',').map(Number);
-    let t = parseFloat(document.getElementById('lagT').value);
-    let m = parseInt(document.getElementById('lagN').value);
+  window.runLagrange = (unitId) => {
+    const xs = document.getElementById(`lagX_u${unitId}`).value.split(',').map(Number);
+    let t = parseFloat(document.getElementById(`lagT_u${unitId}`).value);
+    let m = parseInt(document.getElementById(`lagN_u${unitId}`).value);
     if(m < 2 || m > xs.length || xs.some(isNaN)) { 
-      document.getElementById('lagOut').innerHTML = '❌ Cantidad de puntos inválida o formato incorrecto'; 
+      document.getElementById(`lagOut_u${unitId}`).innerHTML = '❌ Cantidad de puntos inválida o formato incorrecto'; 
       return; 
     }
     let useX = xs.slice(0, m);
@@ -443,14 +440,14 @@
       res += useY[i]*Li; 
     }
     let exact = Math.log(t);
-    document.getElementById('lagOut').innerHTML = `📌 Polinomio de Lagrange<br>ln(${t}) ≈ ${res.toFixed(10)}<br>✓ Valor exacto = ${exact.toFixed(10)}<br>📉 Error = ${Math.abs(res-exact).toExponential(4)}<br>🔢 Puntos utilizados: ${m}`;
+    document.getElementById(`lagOut_u${unitId}`).innerHTML = `📌 Polinomio de Lagrange<br>ln(${t}) ≈ ${res.toFixed(10)}<br>✓ Valor exacto = ${exact.toFixed(10)}<br>📉 Error = ${Math.abs(res-exact).toExponential(4)}<br>🔢 Puntos utilizados: ${m}`;
   };
 
-  window.runRegresion = () => {
-    const xs = document.getElementById('regX').value.split(',').map(Number);
-    const ys = document.getElementById('regY').value.split(',').map(Number);
+  window.runRegresion = (unitId) => {
+    const xs = document.getElementById(`regX_u${unitId}`).value.split(',').map(Number);
+    const ys = document.getElementById(`regY_u${unitId}`).value.split(',').map(Number);
     if(xs.length !== ys.length || xs.length < 2) {
-      document.getElementById('regOut').innerHTML = '❌ Misma cantidad de puntos (mínimo 2)';
+      document.getElementById(`regOut_u${unitId}`).innerHTML = '❌ Misma cantidad de puntos (mínimo 2)';
       return;
     }
     const n = xs.length;
@@ -464,14 +461,14 @@
     const ssRes = ys.reduce((s,y,i) => s + Math.pow(y - yPred[i], 2), 0);
     const ssTot = ys.reduce((s,y) => s + Math.pow(y - sy/n, 2), 0);
     const r2 = 1 - ssRes/ssTot;
-    document.getElementById('regOut').innerHTML = `📊 Regresión lineal: y = ${a.toFixed(6)}·x + ${b.toFixed(6)}<br>📈 Coeficiente de determinación R² = ${r2.toFixed(6)}<br>📐 Pendiente (a) = ${a.toFixed(6)}<br>📐 Intercepto (b) = ${b.toFixed(6)}`;
+    document.getElementById(`regOut_u${unitId}`).innerHTML = `📊 Regresión lineal: y = ${a.toFixed(6)}·x + ${b.toFixed(6)}<br>📈 Coeficiente de determinación R² = ${r2.toFixed(6)}<br>📐 Pendiente (a) = ${a.toFixed(6)}<br>📐 Intercepto (b) = ${b.toFixed(6)}`;
   };
 
-  window.runEuler = () => {
-    let xf = parseFloat(document.getElementById('eulerXf').value);
-    let h = parseFloat(document.getElementById('eulerH').value);
+  window.runEuler = (unitId) => {
+    let xf = parseFloat(document.getElementById(`eulerXf_u${unitId}`).value);
+    let h = parseFloat(document.getElementById(`eulerH_u${unitId}`).value);
     if(h <= 0 || isNaN(xf) || isNaN(h)) {
-      document.getElementById('eulerOut').innerHTML = '❌ Valores inválidos';
+      document.getElementById(`eulerOut_u${unitId}`).innerHTML = '❌ Valores inválidos';
       return;
     }
     let x = 0, y = 1;
@@ -482,14 +479,14 @@
       pasos++;
     }
     let exact = Math.exp(xf);
-    document.getElementById('eulerOut').innerHTML = `📐 Método de Euler<br>y(${xf}) ≈ ${y.toFixed(10)}<br>✓ Valor exacto e^${xf} = ${exact.toFixed(10)}<br>📉 Error = ${Math.abs(y-exact).toExponential(4)}<br>🔄 Pasos = ${pasos}`;
+    document.getElementById(`eulerOut_u${unitId}`).innerHTML = `📐 Método de Euler<br>y(${xf}) ≈ ${y.toFixed(10)}<br>✓ Valor exacto e^${xf} = ${exact.toFixed(10)}<br>📉 Error = ${Math.abs(y-exact).toExponential(4)}<br>🔄 Pasos = ${pasos}`;
   };
 
-  window.runRK4 = () => {
-    let xf = parseFloat(document.getElementById('rk4Xf').value);
-    let h = parseFloat(document.getElementById('rk4H').value);
+  window.runRK4 = (unitId) => {
+    let xf = parseFloat(document.getElementById(`rk4Xf_u${unitId}`).value);
+    let h = parseFloat(document.getElementById(`rk4H_u${unitId}`).value);
     if(h <= 0 || isNaN(xf) || isNaN(h)) {
-      document.getElementById('rk4Out').innerHTML = '❌ Valores inválidos';
+      document.getElementById(`rk4Out_u${unitId}`).innerHTML = '❌ Valores inválidos';
       return;
     }
     let x = 0, y = 1;
@@ -505,7 +502,7 @@
       pasos++;
     }
     let exact = Math.exp(-xf*xf);
-    document.getElementById('rk4Out').innerHTML = `🌀 Método RK4 (Runge-Kutta 4to orden)<br>y(${xf}) ≈ ${y.toFixed(12)}<br>✓ Valor exacto e^(-${xf}²) = ${exact.toFixed(12)}<br>📉 Error = ${Math.abs(y-exact).toExponential(4)}<br>🔄 Pasos = ${pasos}<br>💡 Error O(h⁴) - alta precisión`;
+    document.getElementById(`rk4Out_u${unitId}`).innerHTML = `🌀 Método RK4 (Runge-Kutta 4to orden)<br>y(${xf}) ≈ ${y.toFixed(12)}<br>✓ Valor exacto e^(-${xf}²) = ${exact.toFixed(12)}<br>📉 Error = ${Math.abs(y-exact).toExponential(4)}<br>🔄 Pasos = ${pasos}<br>💡 Error O(h⁴) - alta precisión`;
   };
 
   // Inicializar
